@@ -1,6 +1,9 @@
-
+﻿<<<<<<< HEAD
 ﻿
 
+        System.Console.WriteLine("Enter RawmaterialID");
+        r.SetRawmaterialID(System.Convert.ToInt32(System.Console.ReadLine()));
+        System.Console.WriteLine(r.GetRawmaterialID());
 
 
 ﻿class   A
@@ -12,8 +15,7 @@
         
             System.Console.WriteLine("Hello World");
             System.Console.ReadKey();
-        System.Console.WriteLine("Inventory Management");
         }
-
+////ef5b56f5ac47728fa574887362bb31e2abc5e812
     }
 
