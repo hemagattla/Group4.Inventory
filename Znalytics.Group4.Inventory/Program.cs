@@ -1,60 +1,35 @@
-﻿class   A
+class program
 {
     static void Main()
     {
-        Product p;
-        p = new Product();
-        int Choice;
-        bool b;
-        while (true)
-        {
-            System.Console.WriteLine("1. Add Product");
-            System.Console.WriteLine("2.Show product");
-            System.Console.WriteLine("3. Delete Product");
+        rawmaterials r;
+        r = new rawmaterials();
 
-            b = int.TryParse(System.Console.ReadLine(), out Choice);
+        System.Console.WriteLine("Enter RawmaterialID");
+        r.SetRawmaterialID(System.Convert.ToInt32(System.Console.ReadLine()));
+        System.Console.WriteLine(r.GetRawmaterialID());
 
-            if (b == true)
-            {
+        System.Console.WriteLine("Enter RawmaterialName");
+        r.SetRawmaterialName(System.Console.ReadLine());
+        System.Console.WriteLine(r.GetRawmaterialName());
 
-                switch (Choice)
-                {
-                    case 1:
-                        System.Console.WriteLine("Enter the ProductName: ");
-                        p.AddProductName(System.Console.ReadLine());
-                        System.Console.WriteLine("Enter the ProductID: ");
-                        p.AddProductID(int.Parse(System.Console.ReadLine()));
-                        System.Console.WriteLine("enter the no Products avaliable");
-                        p.SetProductAvalability(int.Parse(System.Console.ReadLine()));
+        System.Console.WriteLine("Enter Quantity");
+        r.Setquantity(System.Convert.ToDouble(System.Console.ReadLine()));
+        System.Console.WriteLine(r.GetQuantity());
 
-                        System.Console.WriteLine("Product Added Sucessfully!!!");
+        System.Console.WriteLine("Enter unitsused");
+        r.SetUnitsused(System.Convert.ToDouble(System.Console.ReadLine()));
+        System.Console.WriteLine(r.GetUnitsused());
 
-                        break;
-                    case 2:
-                        System.Console.WriteLine("===============Product Details=============");
-                        System.Console.WriteLine("ProductName" + "   " + "ProductID" + "  " + "Number of Products Avalilable ");
-                        System.Console.WriteLine("-----------------------------------------------------------------------");
-                        System.Console.WriteLine(p.GetProduct() + "        " + p.GetProductID() + "        " + p.GetNoofProducts());
+        System.Console.WriteLine("Available units are");
+        r.SetAvailableunits();
+        System.Console.WriteLine(System.Convert.ToDouble(r.GetAvailableunits()));
+        System.Console.WriteLine("Enter Price");
+        r.SetPrice(System.Convert.ToDouble(System.Console.ReadLine()));
+        System.Console.WriteLine(r.GetPrice());
 
-                        break;
-
-                    default:
-                        System.Console.WriteLine("Please Enter the Correct Option");
-                        break;
-
-
-                }
-
-
-            }
-            else
-            {
-                System.Console.WriteLine("Please Enter the only digits");
-            }
+        System.Console.ReadKey();
 
 
 
-        }
 
-    }
-}
