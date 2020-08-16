@@ -1,4 +1,5 @@
-﻿/// <summary>
+﻿//Created by Nitya
+/// <summary>
 /// Represents Inventory Warehouse
 /// </summary>
 public class WareHouse
@@ -16,59 +17,56 @@ public class WareHouse
 
 
     /// <summary>
-    /// Sets value into _managerName
+    /// Default constructor 
     /// </summary>
-    /// <param name="value">Value to assign into _managerName</param>
-    public void SetMangerName(string value)
+    public WareHouse()
     {
-        if (value.Length <= 30)
-        {
-            _managerName = value;
-        }
-    }
-    /// <summary>
-    /// Gets the value of _managerName
-    /// </summary>
-    /// <returns>Returns _managerName</returns>
-    public string GetManagerName()
-    {
-        return _managerName;
-    }
-    /// <summary>
-    /// Sets value into _warehouseId
-    /// </summary>
-    /// <param name="value">Value to assign into _warehouseId</param>
-    public void SetWarehouseId(string value)
-    {
-        bool isSpaceFound = false;
-        for (int i = 0; i < value.Length; i++)
-        {
-            if (value[i] == ' ')
-            {
-                isSpaceFound = true;
-            }
-        }
-        if (isSpaceFound == false)
-        {
-            _warehouseId = value;
-        }
+
 
     }
     /// <summary>
-    /// Gets value of _warehouseId
+    /// Parameterized constructor
     /// </summary>
-    /// <returns>Returns  _warehouseId</returns>
-    public string GetWarehouseId()
+    /// <param name="name"></param>
+    /// <param name="wareid"></param>
+    /// <param name="locid"></param>
+    /// <param name="locname"></param>
+    /// <param name="pincode"></param>
+    /// <param name="warecapacity"></param>
+    public WareHouse(string name, string wareId, string locId, string locName, string pincode, int wareCapacity)
     {
-        return _warehouseId;
+        this._managerName = name;
+        this._warehouseId = wareId;
+        this._locationId = locId;
+        this._locationName = locName;
+        this._pincode = pincode;
+        this._warehouseCapacity = wareCapacity;
     }
     /// <summary>
-    /// Sets value into _locationId
+    /// Property for ManagerName
     /// </summary>
-    /// <param name="value">Value to assign into _locationId</param>
-    public void SetLocationId(string value)
+    public string MangerName
     {
-        if (value.Length == 2)
+        set
+        {
+            if (value.Length <= 30)
+            {
+                _managerName = value;
+            }
+        }
+        get
+        {
+            return _managerName;
+        }
+    }
+
+
+    /// <summary>
+    /// Property for WarehouseId
+    /// </summary>
+    public string WarehouseId
+    {
+        set
         {
             bool isSpaceFound = false;
             for (int i = 0; i < value.Length; i++)
@@ -83,90 +81,135 @@ public class WareHouse
                 _warehouseId = value;
             }
         }
-    }
-    /// <summary>
-    /// Gets value of _locationId
-    /// </summary>
-    /// <returns>Returns _locationId</returns>
-    public string GetLocationId()
-    {
-        return _locationId;
+        get
+        {
+            return _warehouseId;
+
+        }
 
     }
     /// <summary>
-    /// Sets value into _locationName
+    /// Property for LocationId
     /// </summary>
-    /// <param name="value">Value to assign into _locationName</param>
-    public void SetLocationName(string value)
+    public string LocationId
     {
-        if (value.Length <= 30)
+        set
         {
-            _locationName = value;
-        }
-    }
-    /// <summary>
-    /// Gets value of _locationName
-    /// </summary>
-    /// <returns>Returns _locationName</returns>
-    public string GetLocationName()
-    {
-        return _locationName;
-    }
-    /// <summary>
-    /// Sets value into _pincode
-    /// </summary>
-    /// <param name="value">Value to assign into pincode</param>
-    public void SetPincode(string value)
-    {
-        if (value.Length == 6)
-        {
-            for (int i = 0; i < value.Length; i++)
+            if (value.Length == 2)
             {
-                if (value[i] < '0' || value[i] > 9)
+                bool isSpaceFound = false;
+                for (int i = 0; i < value.Length; i++)
                 {
-                    _pincode = value;
+                    if (value[i] == ' ')
+                    {
+                        isSpaceFound = true;
+                    }
+                }
+                if (isSpaceFound == false)
+                {
+                    _locationId = value;
                 }
             }
         }
+        get
+        {
+            return _locationId;
+
+        }
+    }
+
+    /// <summary>
+    /// Property for Location Name
+    /// </summary>
+    public string LocationName
+    {
+        set
+        {
+            if (value.Length <= 30)
+            {
+                _locationName = value;
+            }
+        }
+        get
+        {
+            return _locationName;
+        }
+    }
+
+    /// <summary>
+    /// Property for Pincode
+    /// </summary>
+    public string Pincode
+    {
+        set
+        {
+            if (value.Length == 6)
+            {
+                for (int i = 0; i < value.Length; i++)
+                {
+                    if (value[i] < '0' || value[i] > 9)
+                    {
+                        _pincode = value;
+                    }
+                }
+            }
+        }
+        get
+        {
+            return _pincode;
+        }
     }
     /// <summary>
-    /// Gets the value of _pincode
+    /// Property for WarehouseCapacity
     /// </summary>
-    /// <returns>Returns pincode</returns>
-    public string GetPincode()
+    public int WarehouseCapacity
     {
-        return _pincode;
+        set
+        {
+            _warehouseCapacity = value;
+        }
+        get
+        {
+            return _warehouseCapacity;
+
+        }
     }
     /// <summary>
-    ///Sets value into warehouseCapacity
+    /// Property for Warehouse Status
     /// </summary>
-    /// <param name="value">Value to assign into _warehouseCapacity</param>
-    public void SetCapacity(int value)
+    public string WarehouseStatus
     {
-        _warehouseCapacity = value;
+        get
+        {
+            if (WarehouseCapacity <= 0)
+            {
+                return "Empty";
+            }
+            else
+            {
+                return "Not Empty";
+            }
+        }
+
     }
-    /// <summary>
-    /// Gets value of _warehouseCapacity
-    /// </summary>
-    /// <returns>Returns the value of _warehouseCapacity</returns>
-    public int GetCapacity()
-    {
-        return _warehouseCapacity;
-    }
+
+
+}
 
 
 
 
 
+/*
     public void Add()
     {
-
+        
 
 
     }
     public void Display()
     {
-
+        
     }
 
     public void Update()
@@ -184,3 +227,5 @@ public class WareHouse
 
 
 }
+*/
+
