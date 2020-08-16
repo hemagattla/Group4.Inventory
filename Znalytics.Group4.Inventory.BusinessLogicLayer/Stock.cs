@@ -1,87 +1,160 @@
-﻿public class Stock
+﻿using System.Dynamic;
+/// <summary>
+/// Stock Details
+/// </summary>
+public class Stock
 {
+    //Private fields
     private int _WareHouseID;
     private int _AddressID;
     private int _ProductID;
     private int _Quantity = 0;
-    public void SetWareHouseID(int value1, int value2, int value3, int value4, int value5)
+    /// <summary>
+    /// Add method with 4 parameters 
+    /// </summary>
+    /// <param name="WHID">Represents WareHouseID</param>
+    /// <param name="AID">Represents AddressID</param>
+    /// <param name="PID">Represents ProductID</param>
+    /// <param name="ADD">Represents the no.of quantity u want to add</param>
+    public void AddQuantity(int WHID, int AID, int PID, int ADD)
     {
-        if (value1 == 1234)
-        {
-            _WareHouseID = value1;
-            SetAddressID(value2, value3, value4, value5);
-        }
-        else
-        {
-            throw new System.Exception("ur entered WareHouseID is invalid");
-        }
+            WareHouseID = WHID;
+            AddressID = AID;
+            ProductID = PID;  
+            Add=ADD;
     }
-    public int GetWareHouseID()
+    /// <summary>
+    /// Delete method with 4 parameters
+    /// </summary>
+    /// <param name="WHID">Represents WareHouseID</param>
+    /// <param name="AID">Represents AddressID</param>
+    /// <param name="PID">Represents ProductID</param>
+    /// <param name="SUB">Represents the no.of quamtities u want to delete</param>
+    public void DeleteQuantity(int WHID, int AID, int PID, int SUB)
     {
-        return _WareHouseID;
+        WareHouseID = WHID;
+        AddressID = AID;
+        ProductID = PID;
+        Delete = SUB;
     }
-    public void SetAddressID(int value2, int value3, int value4, int value5)
+    /// <summary>
+    /// Update method with 3 parameters
+    /// </summary>
+    /// <param name="WHID">Represents WareHouseID</param>
+    /// <param name="AID">Represents AddressID</param>
+    /// <param name="PID">Represents ProductID</param>
+    public void UpDateQuantity(int WHID, int AID, int PID)
     {
-        if (value2 == 2345)
-        {
-            _AddressID = value2;
-            SetProductID(value3, value4, value5);
-        }
-        else
-        {
-            throw new System.Exception("ur entered AddressID is invalid");
-        }
+       
+            WareHouseID = WHID;
+            AddressID = AID;
+            ProductID = PID;
     }
-    public int GetAddressID()
+    //Property of WareHouseID
+    public int WareHouseID
     {
-        return _AddressID;
-    }
-    public void SetProductID(int value3, int value4, int value5)
-    {
-        if (value3 == 3456)
+        set
         {
-            _ProductID = value3;
-            switch (value4)
+            //if input value and WareHouseID present in database matches then the value will be assigned to the _WareHouseID
+            //else it will throw an exception
+            if (1234 == value)
             {
-                case 1:
-                    AddQuantity(value5);
-                    break;
-                case 2:
-                    DeleteQuantity(value5);
-                    break;
-                case 3:
-                    UpDateQuantity();
-                    break;
+                _WareHouseID = value;
+
+            }
+            else
+            {
+                throw new System.Exception("ur entered WareHouseID is invalid");
             }
         }
-        else
+
+        get
         {
-            throw new System.Exception("ur entered ProductID is invalid");
+            return _WareHouseID;
         }
     }
-    public int GetProductID()
+    public int AddressID
     {
-        return _ProductID;
-    }
-    public void AddQuantity(int value5)
-    {
-        _Quantity += value5;
-    }
-    public void DeleteQuantity(int value5)
-    {
-        _Quantity -= value5;
-        if (_Quantity > 0)
+        set
         {
-            _Quantity -= value5;
+            //if input value and AddressID present in database matches then the value will be assigned to the _AddressID
+            //else it will throw an exception
+            if (2345 == value)
+            {
+                _AddressID = value;
+            }
+            else
+            {
+                throw new System.Exception("ur entered AddressID is invalid");
+            }
         }
-        else
+        get 
         {
-            _Quantity = 0;
+            return _AddressID;
         }
     }
-    public int UpDateQuantity()
+
+    public int ProductID
     {
-        return _Quantity;
+        set
+        {
+            //if input value and ProductID present in database matches then the value will be assigned to the _ProductID
+            //else it will throw an exception
+            if (value == 3456)
+            {
+                _ProductID = value;
+            }
+            else
+            {
+                throw new System.Exception("ur entered ProductID is invalid");
+            }
+        }
+        get
+        {
+                return _ProductID;
+        }
+    }
+    
+    public int Add
+    {
+        set
+        {
+            //it takes in put value and add to the exsisting quantity
+            _Quantity += value;
+        }
+        get
+        {
+            return _Quantity;
+        }
+    }
+    public int Delete
+    {
+        set
+        {
+            //it will take input value and substract from the exsisting quantity
+            //after that if the quantity is more than 0 then only it will assign the value
+            //else it makes quantity =0 and returns
+            _Quantity -= value;
+            if (_Quantity > 0)
+            {
+                _Quantity -= value;
+            }
+            else
+            {
+                _Quantity = 0;
+            }
+        }
+        get
+        {
+            return _Quantity;
+        }
+    }
+    public int UpDate
+    {
+        get
+        {
+            return _Quantity;
+        }
     }
 
 }
