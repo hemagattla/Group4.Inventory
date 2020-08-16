@@ -43,14 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class2.cs" />
+    <Compile Include="Customer program.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
-    <Compile Include="ShippingAddressDetails.cs" />
-=======
-    <Compile Include="StockPresentation.cs" />
-    <Compile Include="WarehousePresentationcs.cs" />
->>>>>>> a465d96002a002598ae6f949b9216c5228509f73
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
