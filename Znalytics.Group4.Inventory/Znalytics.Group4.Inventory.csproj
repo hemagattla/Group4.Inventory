@@ -48,6 +48,7 @@
     <Compile Include="ProductPresentaton.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="shippingAds.cs" />
     <Compile Include="StockPresentation1.cs" />
   </ItemGroup>
   <ItemGroup>
