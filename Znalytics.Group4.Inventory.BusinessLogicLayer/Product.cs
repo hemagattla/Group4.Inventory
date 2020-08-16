@@ -1,73 +1,43 @@
-﻿using System.ComponentModel;
-using System.Data;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System.Collections.Generic;
+using System.Security.Policy;
 
 public class Product
 {
-    int i = 0, j = 0, k = 0;
-    private string[] _productName = new string[10];
-    private int[] _productID = new int[10];
-    private int[] _productAvailable = new int[10];
-    public void AddProductName(string Value)
+    private string _productName;
+    private int _productId;
+    // private string _ProductsAvailable;
+    // private string _price;
+
+    public void AddProduct(string productname, int productId)
     {
 
-        _productName[i] = Value;
-        i++;
-
-
+        ProductName = productname;
+        ProductID = productId;
 
     }
-    public void AddProductID(int ProductID)
+
+    public string ProductName
     {
-
-        _productID[j] = ProductID;
-        j++;
-    }
-
-    public void SetProductAvalability(int ProductAvailable)
-    {
-
-        _productAvailable[k] = ProductAvailable;
-        k++;
-    }
-
-
-    public string GetProduct()
-    {
-
-        for (int i = 0; i < _productName.Length; i++)
+        set
         {
-            return (_productName[i]);
+            if (value != " ")
+                _productName = value;
         }
-        return null;
-
-
-    }
-    public int GetProductID()
-    {
-
-        for (int i = 0; i < _productID.Length; i++)
+        get
         {
-            return _productID[i];
-
+            return _productName;
         }
-        return 0;
-
-
     }
 
-    public int GetNoofProducts()
+    public int ProductID
     {
-
-        for (int i = 0; i < _productAvailable.Length; i++)
+        set
         {
-            return _productAvailable[i];
-
+            _productId = value;
         }
-        return 0;
-
-
+        get
+        {
+            return _productId;
+        }
     }
 }
