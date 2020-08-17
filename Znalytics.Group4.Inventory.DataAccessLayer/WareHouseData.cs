@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-/*public class DataAccess
+public class DataAccess
 {
     public List<WareHouse> wareHouseList
     {
@@ -11,5 +11,5 @@
     {
         wareHouseList = new List<WareHouse>();
     }
-}*/
+}
 
