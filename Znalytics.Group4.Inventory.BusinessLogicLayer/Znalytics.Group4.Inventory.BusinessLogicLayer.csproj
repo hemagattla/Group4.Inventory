@@ -42,12 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="ProductBusinessLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rawmaterialclass.cs" />
     <Compile Include="shippingAddressBusinessLogic.cs" />
     <Compile Include="Stock.cs" />
-    <Compile Include="Warehouse.cs" />
+    <Compile Include="WareHouseBusinessLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Znalytics.Group4.Inventory.DataAccessLayer\Znalytics.Group4.Inventory.DataAccessLayer.csproj">
