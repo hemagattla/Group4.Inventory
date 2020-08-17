@@ -1,4 +1,4 @@
-﻿class StockDetails
+﻿class StockDetail
 {
     static void Main()
     {
