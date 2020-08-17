@@ -47,7 +47,6 @@
     <Compile Include="rawmaterialclass.cs" />
     <Compile Include="shippingAddressBusinessLogic.cs" />
     <Compile Include="Stock.cs" />
-    <Compile Include="Warehouse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Znalytics.Group4.Inventory.DataAccessLayer\Znalytics.Group4.Inventory.DataAccessLayer.csproj">

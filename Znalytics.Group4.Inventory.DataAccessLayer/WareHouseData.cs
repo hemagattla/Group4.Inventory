@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+//using System.Znalytics.Group4.Iventory.BusinessLogicLayer
 
 public class DataAccess
 {
@@ -10,6 +11,11 @@ public class DataAccess
     public DataAccess()
     {
         wareHouseList = new List<WareHouse>();
+    }
+
+    public void AddWareHouse(WareHouse warehouse)
+    {
+        wareHouseList.Add(warehouse);
     }
 }
 
