@@ -3,19 +3,17 @@
     static void Main()
     {
 
-        //create object of WareHouse
-
-        // WareHouse n = new WareHouse("nitya", "1", "TN", "Warangal", "506001", 100);
+       
 
         //Created object of Menu
         Menu m = new Menu();
         int Option;
 
-        //Created object for DataAccess
-        DataAccess d = new DataAccess();
-
         //Created object for WareHouse
         WareHouse n = new WareHouse();
+
+        //Created object for BusinessLogicsLayer
+        WareHouseBusinessLayer wbl = new WareHouseBusinessLayer();
 
         //do-while loop for menu
         do
@@ -40,8 +38,7 @@
                         System.Console.WriteLine("Enter Warehouse capacity");
                         n.WarehouseCapacity = int.Parse(System.Console.ReadLine());
 
-                        //Adding WareHouse details into list
-                        d.wareHouseList.Add(n);
+                       
 
 
 
@@ -59,7 +56,7 @@
                         System.Console.WriteLine("Pincode: " + n.Pincode);
                         System.Console.WriteLine("WarehouseCapacity: " + n.WarehouseCapacity);
                         System.Console.WriteLine("WarehouseStatus: " + n.WarehouseStatus);
-                        printWarehouse(d);
+                       
                         break;
 
                     }
@@ -91,19 +88,6 @@
             System.Console.ReadKey();
         } while (Option != 6);
     }
-
-    //Method to display List of WareHouses
-    public static void printWarehouse(DataAccess d)
-    {
-        System.Console.WriteLine("The Existing List of Warehouses");
-        for (int i = 0; i < d.wareHouseList.Count; i++)
-        {
-            WareHouse n = d.wareHouseList[i];
-            System.Console.WriteLine("Manager Name ={0},WareHouse Id ={1},Location Id={2},Location Name ={3},pincode ={4},warehouse capacity ={5}, stock status= {6}", n.MangerName, n.WarehouseId, n.LocationId, n.LocationName, n.Pincode, n.WarehouseCapacity, n.WarehouseStatus);
-        }
-    }
-
-
 
 
     // Class for Menu
