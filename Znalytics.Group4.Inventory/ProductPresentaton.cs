@@ -2,14 +2,15 @@
 using System.CodeDom;
 using System.Xml.Serialization;
 
-class Inventory
+class Product
 {
 
 
     static void Main()
     {
-        Product p;
-        p = new Product();
+        ProductDetails p = new ProductDetails();
+
+
         int Choice;
         bool b;
         while (true)
@@ -26,26 +27,22 @@ class Inventory
                 switch (Choice)
                 {
                     case 1:
-                        System.Console.WriteLine("Enter the ProductName: ");
-                        string a = System.Console.ReadLine();
-                        System.Console.WriteLine("Enter the ProductID: ");
-                        int c = int.Parse(System.Console.ReadLine());
-                        p.AddProduct(productname: a, productId: c);
+                        System.Console.WriteLine("enter the ProductName:");
+                        p.ProductName = System.Console.ReadLine();
+                        System.Console.WriteLine("enter the ProductId");
+                        p.ProductID = int.Parse(System.Console.ReadLine());
+                        System.Console.WriteLine("enter the Productprice:");
+                        p.Price = System.Convert.ToDouble(System.Console.ReadLine());
+                        System.Console.WriteLine("Product Added Sucessfully!!!");
 
                         break;
-                    /*System.Console.WriteLine("Enter the ProductID: ");
-                    p.AddProductID(int.Parse(System.Console.ReadLine()));
-                    System.Console.WriteLine("enter the no Products avaliable");
-                    p.SetProductAvalability(int.Parse(System.Console.ReadLine()));
-
-                    System.Console.WriteLine("Product Added Sucessfully!!!");
-
-                    break;*/
+                    
+       
                     case 2:
                         System.Console.WriteLine("===============Product Details=============");
                         System.Console.WriteLine("ProductName" + "   " + "ProductID" + "  " + "Number of Products Avalilable ");
                         System.Console.WriteLine("-----------------------------------------------------------------------");
-                        System.Console.WriteLine(p.ProductName + "    " + p.ProductID);
+                        System.Console.WriteLine(p.ProductName + "    " + p.ProductID+"     "+p.Price);
 
                         break;
 

@@ -1,55 +1,29 @@
-﻿//Created by R.Krushal
+﻿using System;
 using System.Collections.Generic;
-using System.Security.Policy;
-/// <summary>
-/// Represents Product Class
-/// </summary>
-public class Product
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+public class ProductBusiness
 {
-    private string _productName;
-    private int _productId;
-    private string _ProductsAvailable;
-    private string _price;
 
-    /// <summary>
-    /// adding a product passing arguments of product name and product id
-    /// </summary>
-    /// <param name="productname"></param>
-    /// <param name="productId"></param>
-    public void AddProduct(string productname, int productId)
+
+    public void AddWareHouse(ProductDetails n)
     {
-
-        ProductName = productname;
-        ProductID = productId;
-
-    }
-    /// <summary>
-    /// properties of Productname
-    /// </summary>
-    public string ProductName
-    {
-        set
+        if (n.ProductName != null)
         {
-            if (value != " ")
-                _productName = value;
-        }
-        get
-        {
-            return _productName;
+            Productdata d = new Productdata();
+            d.AddProduct(n);
         }
     }
-    /// <summary>
-    /// properties of ProductID
-    /// </summary>
-    public int ProductID
+
+    public void DisplayProducts(ProductDetails n)
     {
-        set
-        {
-            _productId = value;
-        }
-        get
-        {
-            return _productId;
-        }
+        Productdata d = new Productdata();
+        d.DisplayProducts(n);
+
     }
+
+
 }
