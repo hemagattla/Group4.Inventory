@@ -1,8 +1,12 @@
-﻿class StockDetail
+﻿/// <summary>
+/// Created by Hema
+/// </summary>
+class StockDetail
 {
     static void Main()
     {
         Stock s = new Stock();
+        StockBusinessLogicLayer ss = new StockBusinessLogicLayer();
         /*System.Console.WriteLine("1.enter the WareHouseID");
         System.Console.WriteLine("2.enter the AddressID");
         System.Console.WriteLine("3.enter the productID");
@@ -34,7 +38,7 @@
                         int p = System.Convert.ToInt32(System.Console.ReadLine());
                         System.Console.WriteLine("Enter no of Quantities u want to add");
                         int add = System.Convert.ToInt32(System.Console.ReadLine());
-                        s.AddQuantity(WHID: w, AID: a, PID: p, ADD: add);
+                        ss.AddQuantity(WHID: w, AID: a, PID: p, ADD: add);
                         break;
                     case 2:
                         System.Console.WriteLine("Enter WareHouseID");
@@ -45,7 +49,7 @@
                         int d = System.Convert.ToInt32(System.Console.ReadLine());
                         System.Console.WriteLine("Enter no of Quantities u want to substract");
                         int sub = System.Convert.ToInt32(System.Console.ReadLine());
-                        s.DeleteQuantity(WHID: b, AID: c, PID: d, SUB: sub);
+                        ss.DeleteQuantity(WHID: b, AID: c, PID: d, SUB: sub);
                         break;
                     case 3:
                         System.Console.WriteLine("Enter WareHouseID");
@@ -54,7 +58,7 @@
                         int f = System.Convert.ToInt32(System.Console.ReadLine());
                         System.Console.WriteLine("Enter Product ID");
                         int g = System.Convert.ToInt32(System.Console.ReadLine());
-                        s.UpDateQuantity(WHID: e, AID: f, PID: g);
+                        ss.UpDateQuantity(WHID: e, AID: f, PID: g);
                         System.Console.WriteLine("WareHouseID:- " + e + "             AddressID" + f + "              ProductID" + g + "           Quantity" + s.UpDate);
                         break;
                     default:
