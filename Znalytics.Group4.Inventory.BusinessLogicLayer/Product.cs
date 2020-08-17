@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Security.Policy;
-
+/// <summary>
+/// Represents Product Class
+/// </summary>
 public class Product
 {
     private string _productName;
@@ -8,6 +10,11 @@ public class Product
     // private string _ProductsAvailable;
     // private string _price;
 
+    /// <summary>
+    /// adding a product passing arguments of product name and product id
+    /// </summary>
+    /// <param name="productname"></param>
+    /// <param name="productId"></param>
     public void AddProduct(string productname, int productId)
     {
 
@@ -15,7 +22,9 @@ public class Product
         ProductID = productId;
 
     }
-
+    /// <summary>
+    /// properties of Productname
+    /// </summary>
     public string ProductName
     {
         set
@@ -28,7 +37,9 @@ public class Product
             return _productName;
         }
     }
-
+    /// <summary>
+    /// properties of ProductID
+    /// </summary>
     public int ProductID
     {
         set
