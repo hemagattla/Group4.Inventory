@@ -1,5 +1,4 @@
 ﻿using System.Dynamic;
-///Created by hema
 /// <summary>
 /// Stock Details
 /// </summary>
@@ -10,7 +9,7 @@ public class Stock
     private int _AddressID;
     private int _ProductID;
     private int _Quantity = 0;
-   
+
     //Property of WareHouseID
     public int WareHouseID
     {

@@ -1,12 +1,9 @@
-﻿/// <summary>
-/// Created by Hema
-/// </summary>
-class StockDetail
+﻿class StockDetail
 {
     static void Main()
     {
-        Stock s = new Stock();
-        StockBusinessLogicLayer ss = new StockBusinessLogicLayer();
+        Stock1 s = new Stock1();
+        Stock ss = new Stock();
         /*System.Console.WriteLine("1.enter the WareHouseID");
         System.Console.WriteLine("2.enter the AddressID");
         System.Console.WriteLine("3.enter the productID");
@@ -38,7 +35,7 @@ class StockDetail
                         int p = System.Convert.ToInt32(System.Console.ReadLine());
                         System.Console.WriteLine("Enter no of Quantities u want to add");
                         int add = System.Convert.ToInt32(System.Console.ReadLine());
-                        ss.AddQuantity(WHID: w, AID: a, PID: p, ADD: add);
+                        s.AddQuantity(WHID: w, AID: a, PID: p, ADD: add);
                         break;
                     case 2:
                         System.Console.WriteLine("Enter WareHouseID");
@@ -49,7 +46,7 @@ class StockDetail
                         int d = System.Convert.ToInt32(System.Console.ReadLine());
                         System.Console.WriteLine("Enter no of Quantities u want to substract");
                         int sub = System.Convert.ToInt32(System.Console.ReadLine());
-                        ss.DeleteQuantity(WHID: b, AID: c, PID: d, SUB: sub);
+                        s.DeleteQuantity(WHID: b, AID: c, PID: d, SUB: sub);
                         break;
                     case 3:
                         System.Console.WriteLine("Enter WareHouseID");
@@ -58,8 +55,8 @@ class StockDetail
                         int f = System.Convert.ToInt32(System.Console.ReadLine());
                         System.Console.WriteLine("Enter Product ID");
                         int g = System.Convert.ToInt32(System.Console.ReadLine());
-                        ss.UpDateQuantity(WHID: e, AID: f, PID: g);
-                        System.Console.WriteLine("WareHouseID:- " + e + "             AddressID" + f + "              ProductID" + g + "           Quantity" + s.UpDate);
+                        s.UpDateQuantity(WHID: e, AID: f, PID: g);
+                        System.Console.WriteLine("WareHouseID:- " + e + "             AddressID:-" + f + "              ProductID:-" + g + "           Quantity:-" + ss.UpDate);
                         break;
                     default:
                         System.Console.WriteLine("Please Enter the Correct Option from 1  to 3");

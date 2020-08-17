@@ -1,7 +1,4 @@
-﻿/// <summary>
-/// created by hema
-/// </summary>
-public class StockBusinessLogicLayer
+﻿public class Stock1
 {
     Stock v = new Stock();
     /// <summary>
