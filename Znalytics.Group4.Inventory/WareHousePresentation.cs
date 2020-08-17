@@ -38,11 +38,6 @@
                         System.Console.WriteLine("Enter Warehouse capacity");
                         n.WarehouseCapacity = int.Parse(System.Console.ReadLine());
 
-                       
-
-
-
-
                         break;
                     }
                 //Display Warehouse Details
