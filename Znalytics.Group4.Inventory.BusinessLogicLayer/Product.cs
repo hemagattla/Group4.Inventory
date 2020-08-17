@@ -8,8 +8,8 @@ public class Product
 {
     private string _productName;
     private int _productId;
-    // private string _ProductsAvailable;
-    // private string _price;
+    private string _ProductsAvailable;
+    private string _price;
 
     /// <summary>
     /// adding a product passing arguments of product name and product id
