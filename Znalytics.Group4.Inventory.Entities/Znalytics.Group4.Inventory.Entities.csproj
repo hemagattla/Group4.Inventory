@@ -45,6 +45,7 @@
     <Compile Include="customer.cs" />
     <Compile Include="ProductEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StockEntities1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
