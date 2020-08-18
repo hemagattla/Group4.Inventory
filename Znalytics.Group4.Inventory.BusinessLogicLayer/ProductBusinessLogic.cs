@@ -19,7 +19,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
         /// <summary>
         /// adding the products 
         /// </summary>
-        /// <param name="n"></param>
+        /// <param name="n"> gets object of ProductDetails</param>
         public void AddProducts(ProductDetails n)
         {
             if (n.ProductName != null)
@@ -31,6 +31,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
         /// <summary>
         /// displaying the products
         /// </summary>
+        /// <param name="n">gets object of ProductDeatils</param>
 
         public void DisplayProducts(ProductDetails n)
         {
