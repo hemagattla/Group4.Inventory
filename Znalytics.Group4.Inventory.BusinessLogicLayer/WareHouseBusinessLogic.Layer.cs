@@ -1,5 +1,5 @@
-﻿
-using Znalytics.Inventory.WareHouseModule.Entities;
+﻿using Znalytics.Inventory.WareHouseModule.Entities;
+using Znalytics.Group4.Inventory.BusinessLogicLayer;
 namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
 {
 
@@ -7,7 +7,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
     /// Represents BusinessLogic class of WareHouse
     /// </summary>
 
-    public class WareHouseBusinessLayer
+    public class WareHouseBusinessLayer: IWareHouseBusinessLayer
     {
 
         //Method to add details to the list
@@ -27,6 +27,14 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             WareHouseDataAccessLayer d = new WareHouseDataAccessLayer();
             d.DisplayWareHouse(n);
 
+        }
+       public string getStockStatus()
+        {
+            return null;
+        }
+       public int getStockQuantity()
+        {
+            return 0;
         }
     }
 }
