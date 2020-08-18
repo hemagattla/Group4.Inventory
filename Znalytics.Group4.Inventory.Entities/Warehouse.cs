@@ -4,10 +4,10 @@
 /// </summary>
 public class WareHouse
 {
-
+    //Private Fields
     private string _managerName;
     private string _warehouseId;
-    private string _locationId;
+   // private string _locationId;
     private string _locationName;
     private string _pincode;
     private int _warehouseCapacity;
@@ -33,11 +33,11 @@ public class WareHouse
     /// <param name="locname"></param>
     /// <param name="pincode"></param>
     /// <param name="warecapacity"></param>
-    public WareHouse(string name, string wareId, string locId, string locName, string pincode, int wareCapacity)
+    public WareHouse(string name, string wareId, string locName, string pincode, int wareCapacity)
     {
         this._managerName = name;
         this._warehouseId = wareId;
-        this._locationId = locId;
+       // this._locationId = locId;
         this._locationName = locName;
         this._pincode = pincode;
         this._warehouseCapacity = wareCapacity;
@@ -91,7 +91,7 @@ public class WareHouse
     /// <summary>
     /// Property for LocationId
     /// </summary>
-    public string LocationId
+   /* public string LocationId
     {
         set
         {
@@ -116,7 +116,7 @@ public class WareHouse
             return _locationId;
 
         }
-    }
+    }*/
 
     /// <summary>
     /// Property for Location Name

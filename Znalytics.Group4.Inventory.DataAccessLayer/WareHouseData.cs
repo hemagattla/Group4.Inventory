@@ -1,22 +1,29 @@
 ﻿using System.Collections.Generic;
 //using System.Znalytics.Group4.Iventory.BusinessLogicLayer
-
+/// <summary>
+/// Represents Data for WareHouse
+/// </summary>
 public class DataAccess
 {
+    //Created a list for WareHouse
     public List<WareHouse> WareHouseList
     {
         set;
         get;
     }
+    // Constructor 
     public DataAccess()
     {
         WareHouseList = new List<WareHouse>();
     }
-
+    
+    //Method to add details to the list
     public void AddWareHouse(WareHouse warehouse)
     {
         WareHouseList.Add(warehouse);
     }
+
+    // Method to display the added details
     public void DisplayWareHouse(WareHouse wareHouse)
     {
         for (int i = 0; i < WareHouseList.Count; i++)

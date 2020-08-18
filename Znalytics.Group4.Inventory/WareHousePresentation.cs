@@ -14,6 +14,7 @@
 
         //Created object for BusinessLogicsLayer
         WareHouseBusinessLayer wbl = new WareHouseBusinessLayer();
+        wbl.AddWareHouse(n);
 
         //do-while loop for menu
         do
