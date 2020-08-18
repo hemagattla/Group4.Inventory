@@ -1,59 +1,62 @@
 ﻿// created by R.Krushal
 
 
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/// <summary>
-/// referes to ProductDeatails class in Entities 
-/// </summary>
-public class ProductDetails
+
+
+namespace Znalytics.Inventory.Product.Entities
 {
-    //creating private feilds
-    private string _productName;
-    private int _productId;
-    private double _price;
-
-
     /// <summary>
-    /// Property for ProductName
+    /// referes to ProductDeatails class in Entities 
     /// </summary>
-    public string ProductName
+    public class ProductDetails
     {
-        set
-        {
-            if (value != " ")
-                _productName = value;
-        }
-        get
-        {
-            return _productName;
-        }
-    }
+        //creating private feilds
+        private string _productName;
+        private int _productId;
+        private double _price;
 
-    /// <summary>
-    /// Property for ProductID
-    /// </summary>
-    public int ProductID
-    {
-        set
-        {
-            _productId = value;
-        }
-        get
-        {
-            return _productId;
-        }
-    }
-    /// <summary>
-    /// Property for Price
-    /// </summary>
-    public double Price { set; get; }
 
+        /// <summary>
+        /// Property for ProductName
+        /// </summary>
+        public string ProductName
+        {
+            set
+            {
+                if (value != " ")
+                    _productName = value;
+            }
+            get
+            {
+                return _productName;
+            }
+        }
+
+        /// <summary>
+        /// Property for ProductID
+        /// </summary>
+        public int ProductID
+        {
+            set
+            {
+                _productId = value;
+            }
+            get
+            {
+                return _productId;
+            }
+        }
+        /// <summary>
+        /// Property for Price
+        /// </summary>
+        public double Price { set; get; }
+
+    }
 }
 
 
