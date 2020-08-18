@@ -37,7 +37,7 @@ namespace Znalytics.Inventory.Product.DataAccessLayer
         /// <summary>
         /// displaying the products in the List
         /// </summary>
-        /// <param name="wareHouse"></param>
+        
         public void DisplayProducts(ProductDetails wareHouse)
         {
             for (int i = 0; i < ProductsList.Count; i++)
