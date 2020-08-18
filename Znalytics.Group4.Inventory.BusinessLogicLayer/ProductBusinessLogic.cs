@@ -1,15 +1,21 @@
-﻿using System;
+﻿//created by R.Krushal
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+/// <summary>
+/// refers tp Product BusinessLogic
+/// </summary>
 public class ProductBusiness
 {
 
-
-    public void AddWareHouse(ProductDetails n)
+    /// <summary>
+    /// adding the products 
+    /// </summary>
+    /// <param name="n"></param>
+    public void AddProducts(ProductDetails n)
     {
         if (n.ProductName != null)
         {
@@ -17,7 +23,10 @@ public class ProductBusiness
             d.AddProduct(n);
         }
     }
-
+    /// <summary>
+    /// displaying the products
+    /// </summary>
+    
     public void DisplayProducts(ProductDetails n)
     {
         Productdata d = new Productdata();

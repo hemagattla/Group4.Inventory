@@ -1,4 +1,7 @@
-﻿using System;
+﻿//created bu R.Krushal
+
+
+using System;
 using System.CodeDom;
 using System.Xml.Serialization;
 
@@ -8,7 +11,9 @@ class Product
 
     static void Main()
     {
-        ProductDetails p = new ProductDetails();
+        ProductDetails p = new ProductDetails();// creating the object fro ProductDeatils class
+
+        ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
 
 
         int Choice;
@@ -27,12 +32,14 @@ class Product
                 switch (Choice)
                 {
                     case 1:
-                        System.Console.WriteLine("enter the ProductName:");
-                        p.ProductName = System.Console.ReadLine();
+                        System.Console.WriteLine("enter the ProductName:"); 
+                        p.ProductName = System.Console.ReadLine();  
                         System.Console.WriteLine("enter the ProductId");
                         p.ProductID = int.Parse(System.Console.ReadLine());
                         System.Console.WriteLine("enter the Productprice:");
                         p.Price = System.Convert.ToDouble(System.Console.ReadLine());
+                        pb.AddProducts(p); //adding the products into the List
+
                         System.Console.WriteLine("Product Added Sucessfully!!!");
 
                         break;
@@ -42,7 +49,7 @@ class Product
                         System.Console.WriteLine("===============Product Details=============");
                         System.Console.WriteLine("ProductName" + "   " + "ProductID" + "  " + "Number of Products Avalilable ");
                         System.Console.WriteLine("-----------------------------------------------------------------------");
-                        System.Console.WriteLine(p.ProductName + "    " + p.ProductID+"     "+p.Price);
+                        System.Console.WriteLine(p.ProductName + "    " + p.ProductID+"     "+p.Price);// Displaying the products
 
                         break;
 
@@ -52,9 +59,7 @@ class Product
 
 
                 }
-                System.Collections.Generic.List<Product> products = new System.Collections.Generic.List<Product>();
-                products.Add(p);
-
+              
 
 
             }

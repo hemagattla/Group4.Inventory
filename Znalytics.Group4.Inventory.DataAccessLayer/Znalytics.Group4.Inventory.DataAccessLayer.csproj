@@ -47,5 +47,11 @@
     <Compile Include="rawmaterials.cs" />
     <Compile Include="WareHouseData.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Znalytics.Group4.Inventory.Entities\Znalytics.Group4.Inventory.Entities.csproj">
+      <Project>{1ed01dc5-8c6c-429f-9858-0c7cc0f0b4ff}</Project>
+      <Name>Znalytics.Group4.Inventory.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

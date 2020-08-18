@@ -1,15 +1,27 @@
-﻿using System;
+﻿// created by R.Krushal
+
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// referes to ProductDeatails class in Entities 
+/// </summary>
 public class ProductDetails
 {
+    //creating private feilds
     private string _productName;
     private int _productId;
     private double _price;
 
+
+    /// <summary>
+    /// Property for ProductName
+    /// </summary>
     public string ProductName
     {
         set
@@ -23,6 +35,9 @@ public class ProductDetails
         }
     }
 
+    /// <summary>
+    /// Property for ProductID
+    /// </summary>
     public int ProductID
     {
         set
@@ -34,7 +49,9 @@ public class ProductDetails
             return _productId;
         }
     }
-
+    /// <summary>
+    /// Property for Price
+    /// </summary>
     public double Price { set; get; }
 
 }
