@@ -4,6 +4,8 @@
 using System;
 using System.CodeDom;
 using System.Xml.Serialization;
+using Znalytics.Inventory.Product.BusinessLogicLayer;
+using Znalytics.Inventory.Product.Entities;
 
 class Product
 {
