@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Znalytics.Inventory.WareHouse.Entities;
+using Znalytics.Inventory.Group4.WareHouse.Entities;
 //using System.Znalytics.Group4.Iventory.BusinessLogicLayer
 /// <summary>
 /// Represents Data for WareHouse
 /// </summary>
-namespace Znalytics.Inventory.WareHouse.DataAccessLayer
+namespace Znalytics.Inventory.Group4.WareHouse.DataAccessLayer
 {
     public class WareHouseDataAccessLayer
     {
