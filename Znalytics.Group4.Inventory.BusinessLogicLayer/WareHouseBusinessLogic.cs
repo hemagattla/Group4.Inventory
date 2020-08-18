@@ -10,7 +10,7 @@ public class WareHouseBusinessLayer
         //WareHouse Id should not be null
         if (n.WarehouseId != null)
         {
-            DataAccess d = new DataAccess();
+            WareHouseDataAccessLayer d = new WareHouseDataAccessLayer();
             d.AddWareHouse(n);
         }
     }
@@ -18,7 +18,7 @@ public class WareHouseBusinessLayer
     // Method to display the added details
     public void DisplayWareHouse(WareHouse n)
     {
-        DataAccess d = new DataAccess();
+        WareHouseDataAccessLayer d = new WareHouseDataAccessLayer();
         d.DisplayWareHouse(n);
 
     }
