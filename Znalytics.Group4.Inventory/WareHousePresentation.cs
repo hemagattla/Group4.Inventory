@@ -1,4 +1,7 @@
-﻿class Program
+﻿using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
+using Znalytics.Inventory.WareHouseModule.Entities;
+
+class Program
 {
     static void Main()
     {
@@ -30,8 +33,6 @@
                         n.MangerName = System.Console.ReadLine();
                         System.Console.WriteLine("Enter Warehouse Id");
                         n.WarehouseId = System.Console.ReadLine();
-                        System.Console.WriteLine("Enter Location Id");
-                        n.LocationId = System.Console.ReadLine();
                         System.Console.WriteLine("Enter Location Name");
                         n.LocationName = System.Console.ReadLine();
                         System.Console.WriteLine("Enter Pincode");
@@ -47,7 +48,6 @@
                         System.Console.WriteLine("you chose to display the warehouse details");
                         System.Console.WriteLine("ManagerName :" + n.MangerName);
                         System.Console.WriteLine("WarehouseId :" + n.WarehouseId);
-                        System.Console.WriteLine("LocationId: " + n.LocationId);
                         System.Console.WriteLine("LocationName: " + n.LocationName);
                         System.Console.WriteLine("Pincode: " + n.Pincode);
                         System.Console.WriteLine("WarehouseCapacity: " + n.WarehouseCapacity);

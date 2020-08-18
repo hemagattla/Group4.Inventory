@@ -1,6 +1,11 @@
-﻿/// <summary>
-/// Represents BusinessLogic of WareHouse
-/// </summary>
+﻿
+using Znalytics.Inventory.WareHouseModule.Entities;
+namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
+{
+
+    /// <summary>
+    /// Represents BusinessLogic class of WareHouse
+    /// </summary>
 
     public class WareHouseBusinessLayer
     {
@@ -24,3 +29,4 @@
 
         }
     }
+}

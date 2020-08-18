@@ -1,197 +1,206 @@
 ﻿
-        //Created by Nitya
+
+
+
+
+
+
+
+
+namespace Znalytics.Inventory.WareHouseModule.Entities
+{
+    //Created by Nitya
+    /// <summary>
+    /// Represents Inventory Warehouse
+    /// </summary>
+    public class WareHouse
+    {
+        //Private Fields
+        private string _managerName;
+        private string _warehouseId;
+        private string _locationName;
+        private string _pincode;
+        private int _warehouseCapacity;
+        //private string _warehouseStatus;
+
+
+
+
         /// <summary>
-        /// Represents Inventory Warehouse
+        /// Default constructor 
         /// </summary>
-        public class WareHouse
+        public WareHouse()
         {
-            //Private Fields
-            private string _managerName;
-            private string _warehouseId;
-            // private string _locationId;
-            private string _locationName;
-            private string _pincode;
-            private int _warehouseCapacity;
-            //private string _warehouseStatus;
 
 
-
-
-            /// <summary>
-            /// Default constructor 
-            /// </summary>
-            public WareHouse()
+        }
+        /// <summary>
+        /// Parameterized constructor
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="wareid"></param>
+        /// <param name="locid"></param>
+        /// <param name="locname"></param>
+        /// <param name="pincode"></param>
+        /// <param name="warecapacity"></param>
+        public WareHouse(string name, string wareId, string locName, string pincode, int wareCapacity)
+        {
+            this._managerName = name;
+            this._warehouseId = wareId;
+            this._locationName = locName;
+            this._pincode = pincode;
+            this._warehouseCapacity = wareCapacity;
+        }
+        /// <summary>
+        /// Property for ManagerName
+        /// </summary>
+        public string MangerName
+        {
+            set
             {
-
-
-            }
-            /// <summary>
-            /// Parameterized constructor
-            /// </summary>
-            /// <param name="name"></param>
-            /// <param name="wareid"></param>
-            /// <param name="locid"></param>
-            /// <param name="locname"></param>
-            /// <param name="pincode"></param>
-            /// <param name="warecapacity"></param>
-            public WareHouse(string name, string wareId, string locName, string pincode, int wareCapacity)
-            {
-                this._managerName = name;
-                this._warehouseId = wareId;
-                // this._locationId = locId;
-                this._locationName = locName;
-                this._pincode = pincode;
-                this._warehouseCapacity = wareCapacity;
-            }
-            /// <summary>
-            /// Property for ManagerName
-            /// </summary>
-            public string MangerName
-            {
-                set
+                if (value.Length <= 30)
                 {
-                    if (value.Length <= 30)
+                    _managerName = value;
+                }
+            }
+            get
+            {
+                return _managerName;
+            }
+        }
+
+
+        /// <summary>
+        /// Property for WarehouseId
+        /// </summary>
+        public string WarehouseId
+        {
+            set
+            {
+                bool isSpaceFound = false;
+                for (int i = 0; i < value.Length; i++)
+                {
+                    if (value[i] == ' ')
                     {
-                        _managerName = value;
+                        isSpaceFound = true;
                     }
                 }
-                get
+                if (isSpaceFound == false)
                 {
-                    return _managerName;
+                    _warehouseId = value;
                 }
             }
-
-
-            /// <summary>
-            /// Property for WarehouseId
-            /// </summary>
-            public string WarehouseId
+            get
             {
-                set
-                {
-                    bool isSpaceFound = false;
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        if (value[i] == ' ')
-                        {
-                            isSpaceFound = true;
-                        }
-                    }
-                    if (isSpaceFound == false)
-                    {
-                        _warehouseId = value;
-                    }
-                }
-                get
-                {
-                    return _warehouseId;
-
-                }
+                return _warehouseId;
 
             }
-            /// <summary>
-            /// Property for LocationId
-            /// </summary>
-            /* public string LocationId
+
+        }
+        /// <summary>
+        /// Property for LocationId
+        /// </summary>
+        /* public string LocationId
+         {
+             set
              {
-                 set
+                 if (value.Length == 2)
                  {
-                     if (value.Length == 2)
+                     bool isSpaceFound = false;
+                     for (int i = 0; i < value.Length; i++)
                      {
-                         bool isSpaceFound = false;
-                         for (int i = 0; i < value.Length; i++)
+                         if (value[i] == ' ')
                          {
-                             if (value[i] == ' ')
-                             {
-                                 isSpaceFound = true;
-                             }
-                         }
-                         if (isSpaceFound == false)
-                         {
-                             _locationId = value;
+                             isSpaceFound = true;
                          }
                      }
+                     if (isSpaceFound == false)
+                     {
+                         _locationId = value;
+                     }
                  }
-                 get
-                 {
-                     return _locationId;
-                 }
-             }*/
+             }
+             get
+             {
+                 return _locationId;
+             }
+         }*/
 
-            /// <summary>
-            /// Property for Location Name
-            /// </summary>
-            public string LocationName
+        /// <summary>
+        /// Property for Location Name
+        /// </summary>
+        public string LocationName
+        {
+            set
             {
-                set
+                if (value.Length <= 30)
                 {
-                    if (value.Length <= 30)
-                    {
-                        _locationName = value;
-                    }
-                }
-                get
-                {
-                    return _locationName;
+                    _locationName = value;
                 }
             }
-
-            /// <summary>
-            /// Property for Pincode
-            /// </summary>
-            public string Pincode
+            get
             {
-                set
+                return _locationName;
+            }
+        }
+
+        /// <summary>
+        /// Property for Pincode
+        /// </summary>
+        public string Pincode
+        {
+            set
+            {
+                if (value.Length == 6)
                 {
-                    if (value.Length == 6)
+                    for (int i = 0; i < value.Length; i++)
                     {
-                        for (int i = 0; i < value.Length; i++)
+                        if (value[i] < '0' || value[i] > 9)
                         {
-                            if (value[i] < '0' || value[i] > 9)
-                            {
-                                _pincode = value;
-                            }
+                            _pincode = value;
                         }
                     }
                 }
-                get
-                {
-                    return _pincode;
-                }
             }
-            /// <summary>
-            /// Property for WarehouseCapacity
-            /// </summary>
-            public int WarehouseCapacity
+            get
             {
-                set
-                {
-                    _warehouseCapacity = value;
-                }
-                get
-                {
-                    return _warehouseCapacity;
-
-                }
+                return _pincode;
             }
-            /// <summary>
-            /// Property for Warehouse Status
-            /// </summary>
-            public string WarehouseStatus
+        }
+        /// <summary>
+        /// Property for WarehouseCapacity
+        /// </summary>
+        public int WarehouseCapacity
+        {
+            set
             {
-                get
-                {
-                    if (WarehouseCapacity <= 0)
-                    {
-                        return "Empty";
-                    }
-                    else
-                    {
-                        return "Not Empty";
-                    }
-                }
+                _warehouseCapacity = value;
+            }
+            get
+            {
+                return _warehouseCapacity;
 
             }
+        }
+        /// <summary>
+        /// Property for Warehouse Status
+        /// </summary>
+        public string WarehouseStatus
+        {
+            get
+            {
+                if (WarehouseCapacity <= 0)
+                {
+                    return "Empty";
+                }
+                else
+                {
+                    return "Not Empty";
+                }
+            }
+
+        }
+    }
 
 
         
