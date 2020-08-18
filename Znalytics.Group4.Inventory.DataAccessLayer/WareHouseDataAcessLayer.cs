@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-using Znalytics.Inventory.Group4.WareHouse.Entities;
-//using System.Znalytics.Group4.Iventory.BusinessLogicLayer
+﻿
 /// <summary>
-/// Represents Data for WareHouse
-/// </summary>
-namespace Znalytics.Inventory.Group4.WareHouse.DataAccessLayer
-{
+
+
     public class WareHouseDataAccessLayer
     {
         //Created a list for WareHouse
@@ -38,5 +34,5 @@ namespace Znalytics.Inventory.Group4.WareHouse.DataAccessLayer
 
         }
     }
-}
+
 

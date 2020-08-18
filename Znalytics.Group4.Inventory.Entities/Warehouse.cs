@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Znalytics.Inventory.Group4.WareHouse.Entities
-{
-    
+﻿
         //Created by Nitya
         /// <summary>
         /// Represents Inventory Warehouse
@@ -202,7 +194,7 @@ namespace Znalytics.Inventory.Group4.WareHouse.Entities
             }
 
 
-        }
+        
 
 
 
