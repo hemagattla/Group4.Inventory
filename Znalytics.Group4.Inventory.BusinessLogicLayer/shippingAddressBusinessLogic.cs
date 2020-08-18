@@ -1,87 +1,172 @@
 ﻿/// <summary>
 /// product shipping address module of inventory management system
 /// </summary>
-public class ShippingAddress
+public class ShippingAddressBusinessLogic
 {
-    private string _productName;
-    private string _productID;
-    private double _productPrice;
-    private string _customerName;
-    private string _countryName;
-    private string _stateName;
-    private string _districtName;
-    private string _cityName;
-    private string _colony;
-    private string _homeNo;
-    private string _pincode;
-    private string _mobileNumber;
-    private string _emailID;
-    //set productName Metod
-    public void SetProductName(string value)
+    ShippingAddressDataLayer dl = new ShippingAddressDataLayer();
+
+    /// <summary>
+    /// Adding ProductName to collections
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddProductName(ShippingAddress value)
     {
-        value = _productName;
+        if (value.ProductName != null)
+        {
+            dl.AddShippingDetails(value);
+        }
+        else
+        {
+            throw new System.Exception("Enter valid ProductName");
+        }
     }
-    //set productID Metod
-    public void SetProductID(string value)
+    /// <summary>
+    /// Adding ProductID to collections
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddProductID(ShippingAddress value)
     {
-        value = _productID;
+        dl.AddShippingDetails(value);
     }
-    //set productprice Method
-    public void SetProductPrice(double value)
+    /// <summary>
+    /// Adding ProductPrice to Collections
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddProductPrice(ShippingAddress value)
     {
-        value = _productPrice;
+        if (value.ProductPrice > 0)
+        {
+            dl.AddShippingDetails(value);
+        }
+        else { throw new System.Exception("Enter valid product price"); }
     }
-    // set customerName Method
-    public void SetCustomerName(string value)
+    /// <summary>
+    /// Add CustomerName to Collections
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddCustomerName(ShippingAddress value)
     {
-        value = _countryName;
+        if (value.CustomerName != null)
+        {
+            dl.AddShippingDetails(value);
+        }
+        else { throw new System.Exception("Enter valid CustomerName"); }
+
     }
-    //Set CountryName Method
-    public void SetCountryName(string value)
+    /// <summary>
+    /// Add CountryName to Collections
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddCountryName(ShippingAddress value)
     {
-        value = _countryName;
+        if (value.CustomerName != null)
+        {
+            dl.AddShippingDetails(value);
+        }
+        else throw new System.Exception("Enter valid CountryName");
+
     }
-    //Set StateName Method
-    public void SetStateName(string value)
+    /// <summary>
+    /// Add StateName to Collections
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddStateName(ShippingAddress value)
     {
-        value = _stateName;
+        if (value.StateName != null)
+        {
+            dl.AddShippingDetails(value);
+        }
+        else throw new System.Exception("Enter valid product price");
     }
-    //Set DistrictName Method
-    public void SetDistrictName(string value)
+    /// <summary>
+    /// Add DistrictName to Collections
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddDistictName(ShippingAddress value)
     {
-        value = _districtName;
+        if (value.DistrictName != null)
+        {
+            dl.AddShippingDetails(value);
+        }
+        else throw new System.Exception("Enter valid StateName");
+
+    }/// <summary>
+     /// AddCity Name
+     /// </summary>
+     /// <param name="value"></param>
+
+    public void AddCityName(ShippingAddress value)
+    {
+        if (value.CityName != null)
+        {
+            dl.AddShippingDetails(value);
+        }
+        else throw new System.Exception("Enter valid CityName");
     }
-    //Set City Name Method
-    public void SetCityName(string value)
+    /// <summary>
+    /// Add ColonyName to Collections
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddColonyName(ShippingAddress value)
     {
-        value = _countryName;
+        if (value.Colony != null)
+        {
+            dl.AddShippingDetails(value);
+        }
+        else throw new System.Exception("Enter valid ColonyName");
     }
-    // set Colony Method
-    public void SetColony(string value)
+    //Add homeno to Collections
+    public void AddHomeNo(ShippingAddress value)
     {
-        value = _colony;
+        if (value.HomeNo != null)
+        {
+            dl.AddShippingDetails(value);
+        }
+        else throw new System.Exception("Enter valid HomeNo");
     }
-    //set homeno method
-    public void SetHomeNo(string value)
+    /// <summary>
+    /// ADD pincode To Collections
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddPinCode(ShippingAddress value)
     {
-        value = _homeNo;
+        if (value.PinCode != null)
+        {
+            dl.AddShippingDetails(value);
+        }
+        else throw new System.Exception("Enter valid Pincode");
     }
-    //Set Pincode method
-    public void SetPinCode(string value)
+    /// <summary>
+    /// Add MobileNumber to Collections
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddMobileNumber(ShippingAddress value)
     {
-        value = _pincode;
-    }
-    //set MobileNumber Method
-    public void SetMobileNumber(string value)
-    {
-        value = _mobileNumber;
+        if (value.MobileNumber.Length == 10)
+        {
+            dl.AddShippingDetails(value);
+        }
+        else throw new System.Exception("Enter valid Mobile Number");
     }
     //set EmailID Method
-    public void SetEmailID(string value)
+    public void AddEmailID(ShippingAddress value)
     {
-        value = _emailID;
+        bool flag = true;
+        for (int i = 0; i < value.EmailID.Length; i++)
+            if (value.EmailID[i] == ' ')
+            {
+                flag = false;
+
+            }
+        if (flag == true)
+        {
+            dl.AddShippingDetails(value);
+        }
+
+        else throw new System.Exception("Enter valid HomeNo");
     }
-    //Get productName Method
+}
+    /*Get productName Method
     public string GetProductName()
     {
         return _productName;
@@ -147,4 +232,4 @@ public class ShippingAddress
     {
         return _emailID;
     }
-}
+}*/

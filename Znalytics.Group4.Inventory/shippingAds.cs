@@ -1,69 +1,86 @@
 ﻿
 
-class Program
+class Productshipping
 {
     static void Main()
     {
-        ShippingAddress s = new ShippingAddress();
+        ShippingAddress s1=new ShippingAddress();
+       
+
+        ShippingAddressBusinessLogic s = new ShippingAddressBusinessLogic();
         void AddAddressDetails()
         {
             System.Console.WriteLine("Enter productname");
-            s.SetProductName(System.Console.ReadLine());
+            string pName = System.Console.ReadLine();
             System.Console.WriteLine("Enter ProductID");
-            s.SetProductID(System.Console.ReadLine());
+            string pID=(System.Console.ReadLine());
             System.Console.WriteLine("Enter Product price");
-            s.SetProductPrice(double.Parse(System.Console.ReadLine()));
+            double price=double.Parse(System.Console.ReadLine());
+          
             System.Console.WriteLine("Enter Customer Name");
-            s.SetCustomerName(System.Console.ReadLine());
+            string cName=(System.Console.ReadLine());
             System.Console.WriteLine("Enter Country Name");
-            s.SetCountryName(System.Console.ReadLine());
+            string countryName=(System.Console.ReadLine());
             System.Console.WriteLine("Enter state Name");
-            s.SetStateName(System.Console.ReadLine());
+            string sName = (System.Console.ReadLine());
             System.Console.WriteLine("Enter District Name");
-            s.SetDistrictName(System.Console.ReadLine());
+            string districtName=(System.Console.ReadLine());
             System.Console.WriteLine("Enter city Name");
-            s.SetCityName(System.Console.ReadLine());
+            string cityName=(System.Console.ReadLine());
             System.Console.WriteLine("Enter colony");
-            s.SetColony(System.Console.ReadLine());
+            string colony=(System.Console.ReadLine());
             System.Console.WriteLine("Enter HouseNO");
-            s.SetHomeNo(System.Console.ReadLine());
+            string hNo=(System.Console.ReadLine());
             System.Console.WriteLine("Enter pincode");
-            s.SetPinCode(System.Console.ReadLine());
+            string pinCode=(System.Console.ReadLine());
             System.Console.WriteLine("Enter Mobile Number");
-            s.SetMobileNumber(System.Console.ReadLine());
+            string mobileNumber=(System.Console.ReadLine());
             System.Console.WriteLine("Enter emailID");
-            s.SetEmailID(System.Console.ReadLine());
+            string emailID=(System.Console.ReadLine());
+            ShippingAddress s2 = new ShippingAddress(pName,pID,price,countryName, sName, districtName, cityName, colony, hNo, pinCode,cName,mobileNumber,emailID);
+            s.AddProductName(s2);
+            s.AddProductID(s2);
+            s.AddProductPrice(s2);
+            s.AddCustomerName(s2);
+            s.AddCountryName(s2);
+            s.AddStateName(s2);
+            s.AddDistictName(s2);
+            s.AddCityName(s2);
+            s.AddColonyName(s2);
+            s.AddHomeNo(s2);
+            s.AddPinCode(s2);
+            s.AddMobileNumber(s2);
+            s.AddEmailID(s2);
         }
         void ViewAddressDetails()
         {
-            System.Console.Write("ProductName:");
-            System.Console.WriteLine(s.GetProductName());
-            System.Console.Write("ProductID:");
-            System.Console.WriteLine(s.GetProductID());
-            System.Console.Write("ProductPrice:");
-            System.Console.WriteLine(s.GetProductPrice());
-            System.Console.Write("CustomerName:");
-            System.Console.WriteLine(s.GetCustomerName());
-            System.Console.Write("CountryName:");
-            System.Console.WriteLine(s.GetCountryName());
-            System.Console.Write("StateName:");
-            System.Console.WriteLine(s.GetStateName());
-            System.Console.Write("DistrictName:");
-            System.Console.WriteLine(s.GetDistrictName());
-            System.Console.Write("CityName:");
-            System.Console.WriteLine(s.GetCityName());
-            System.Console.Write("ColonyName:");
-            System.Console.WriteLine(s.Getcolony());
-            System.Console.Write("HomeNO:");
-            System.Console.WriteLine(s.GetHomeNo());
-            System.Console.Write("PinCode:");
-            System.Console.WriteLine(s.GetPinCode());
-            System.Console.Write("MobileNumber:");
-            System.Console.WriteLine(s.GetMobileNumber());
-            System.Console.Write("EmailID:");
-            System.Console.WriteLine(s.GetEmailID());
+            System.Console.WriteLine("ProductName:"+s1.ProductName);
+          
+            System.Console.WriteLine("ProductID:"+s1.ProductID);
+           
+            System.Console.WriteLine("ProductPrice:"+s1.ProductPrice);
+            
+            System.Console.WriteLine("CustomerName:"+s1.CustomerName);
+           
+            System.Console.WriteLine("CountryName:"+s1.CountryName);
+        
+            System.Console.WriteLine("StateName:"+s1.StateName);
+            System.Console.WriteLine("DistrictName:" + s1.DistrictName);
+            ;
+            System.Console.Write("CityName:"+s1.CityName);
+          
+            System.Console.Write("ColonyName:"+s1.Colony);
+           
+            System.Console.Write("HomeNO:"+s1.HomeNo);
+          
+            System.Console.Write("PinCode:"+s1.PinCode);
+            
+            System.Console.Write("MobileNumber:"+s1.MobileNumber);
+       
+            System.Console.Write("EmailID:"+s1.EmailID);
+       
         }
-        void UpdateAdressDetails()
+        /*void UpdateAdressDetails()
         {
             System.Console.WriteLine("Enter which details do you want to change");
             System.Console.WriteLine("1.productName,2.ProductID,3.productPrice,4.customerName,5.countryName,6.stateName,7.districtName,8.cityName,9.colony,10.HomeNo,11.pincode12.MobileNumber,13.emailID");
@@ -130,7 +147,7 @@ class Program
 
 
 
-        }
+        }*/
         while (true)
         {
             System.Console.WriteLine("1.add 2.update 3.view");
@@ -144,9 +161,9 @@ class Program
                     AddAddressDetails();
 
                     break;
-                case 2:
+               /* case 2:
                     UpdateAdressDetails();
-                    break;
+                    break;*/
                 case 3:
                     ViewAddressDetails();
 
