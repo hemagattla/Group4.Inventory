@@ -1,55 +1,45 @@
-﻿//Created by R.Krushal
+﻿//created by R.Krushal
+using System;
 using System.Collections.Generic;
-using System.Security.Policy;
-/// <summary>
-/// Represents Product Class
-/// </summary>
-public class Product
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Znalytics.Inventory.Product.DataAccessLayer;
+using Znalytics.Inventory.Product.Entities;
+
+namespace Znalytics.Inventory.Product.BusinessLogicLayer
 {
-    private string _productName;
-    private int _productId;
-    private string _ProductsAvailable;
-    private string _price;
 
     /// <summary>
-    /// adding a product passing arguments of product name and product id
+    /// refers tp Product BusinessLogic
     /// </summary>
-    /// <param name="productname"></param>
-    /// <param name="productId"></param>
-    public void AddProduct(string productname, int productId)
+    public class ProductBusiness
     {
 
-        ProductName = productname;
-        ProductID = productId;
+        /// <summary>
+        /// adding the products 
+        /// </summary>
+        /// <param name="n"> gets object of ProductDetails</param>
+        public void AddProducts(ProductDetails n)
+        {
+            if (n.ProductName != null)
+            {
+                Productdata d = new Productdata();
+                d.AddProduct(n);
+            }
+        }
+        /// <summary>
+        /// displaying the products
+        /// </summary>
+        /// <param name="n">gets object of ProductDeatils</param>
 
-    }
-    /// <summary>
-    /// properties of Productname
-    /// </summary>
-    public string ProductName
-    {
-        set
+        public void DisplayProducts(ProductDetails n)
         {
-            if (value != " ")
-                _productName = value;
+            Productdata d = new Productdata();
+            d.DisplayProducts(n);
+
         }
-        get
-        {
-            return _productName;
-        }
-    }
-    /// <summary>
-    /// properties of ProductID
-    /// </summary>
-    public int ProductID
-    {
-        set
-        {
-            _productId = value;
-        }
-        get
-        {
-            return _productId;
-        }
+
+
     }
 }
