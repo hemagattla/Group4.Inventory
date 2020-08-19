@@ -2,6 +2,9 @@
 
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
+/// <summary>
+///     Represents the class for WareHouse Data
+/// </summary>
 public class WareHouseDataAccessLayer
 {
     //Created a list for WareHouse
