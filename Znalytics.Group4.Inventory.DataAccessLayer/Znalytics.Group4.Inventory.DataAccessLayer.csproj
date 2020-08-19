@@ -46,6 +46,7 @@
     <Compile Include="ProductDataAccessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rawmaterials.cs" />
+    <Compile Include="StockDataAccessLayer.cs" />
     <Compile Include="WareHouseDataAcessLayer.cs" />
   </ItemGroup>
   <ItemGroup>

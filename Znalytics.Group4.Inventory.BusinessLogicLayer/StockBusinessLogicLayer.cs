@@ -1,6 +1,7 @@
-﻿public class Stock1
+﻿public class StockBusinessLogicLayer
 {
     Stock v = new Stock();
+    StockDataAccessLogic sda = new StockDataAccessLogic();
     /// <summary>
     /// Add method with 4 parameters 
     /// </summary>
@@ -10,10 +11,10 @@
     /// <param name="ADD">Represents the no.of quantity u want to add</param>
     public void AddQuantity(int WHID, int AID, int PID, int ADD)
     {
-        v.WareHouseID = WHID;
-        v.AddressID = AID;
-        v.ProductID = PID;
-        v.Add = ADD;
+       if((WHID !=null)&&(AID !=null)&&(PID!=null)&&(ADD!=0))
+        {
+            sda.StockDataAccessLogic()
+        }
     }
     /// <summary>
     /// Delete method with 4 parameters

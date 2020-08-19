@@ -1,8 +1,8 @@
-﻿class StockDetail
+﻿class StockPresentationLayer
 {
     static void Main()
     {
-        Stock1 s = new Stock1();
+        StockBusinessLogicLayer s = new StockBusinessLogicLayer();
         Stock ss = new Stock();
         /*System.Console.WriteLine("1.enter the WareHouseID");
         System.Console.WriteLine("2.enter the AddressID");
