@@ -8,13 +8,13 @@ namespace Znalytics.Group4.Inventory.DataAccessLayer
 { 
         public class CustDataLayer
         {
-            List<Customer> customers = new List<Customer>();/// <summary>
+            List<Customer> _customers = new List<Customer>();/// <summary>
                                                             /// creating list for customer class///
                                                             /// </summary>
                                                             /// <param name="c"></param>
             public void AddCustomer(Customer c)
             {
-                customers.Add(c);///adding values to customer///
+               _customers.Add(c);///adding values to customer///
             }
         }
     }
