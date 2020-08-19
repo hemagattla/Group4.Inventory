@@ -1,4 +1,6 @@
-﻿using Znalytics.Inventory.WareHouseModule.Entities;
+﻿
+using System.Collections.Generic;
+using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
 namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
 {
@@ -10,24 +12,30 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
     public class WareHouseBusinessLayer
     {
 
+        WareHouseDataAccessLayer d = new WareHouseDataAccessLayer();
+
         //Method to add details to the list
         public void AddWareHouse(WareHouse n)
         {
             //WareHouse Id should not be null
             if (n.WarehouseId != null)
             {
-                WareHouseDataAccessLayer d = new WareHouseDataAccessLayer();
+                
                 d.AddWareHouse(n);
             }
         }
 
         // Method to display the added details
-        public void DisplayWareHouse(WareHouse n)
+        public List<WareHouse> GetWareHouses()
         {
-            WareHouseDataAccessLayer d = new WareHouseDataAccessLayer();
-            //d.DisplayWareHouse(n);
-
+            return d.WareHouseList;
         }
+        public WareHouse GetWareHouseByWareHouseID(string WareHouseID)
+        {
+            return d.WareHouseList.Find(temp => temp.WarehouseId == WareHouseID);
+        }
+
+
     }
 }
      /*  public string getStockStatus()
