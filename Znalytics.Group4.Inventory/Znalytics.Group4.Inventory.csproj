@@ -61,10 +61,6 @@
       <Project>{7c59d580-6be4-4c0d-8b02-3408cebad184}</Project>
       <Name>Znalytics.Group4.Inventory.BusinessLogicLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Znalytics.Group4.Inventory.Entities\Znalytics.Group4.Inventory.Entities.csproj">
-      <Project>{1ed01dc5-8c6c-429f-9858-0c7cc0f0b4ff}</Project>
-      <Name>Znalytics.Group4.Inventory.Entities</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
