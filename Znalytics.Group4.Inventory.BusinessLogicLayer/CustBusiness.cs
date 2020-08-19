@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Znalytics.Group4.Inventory.BusinessLogicLayer
 {
  
-        public class CustomerBusinesslogicLayer
+        public class CustBusiness
         {
             CustDataLayer d = new CustDataLayer();
             public void AddCustomer(Customer c)
@@ -28,4 +28,4 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
             }
         }
     }
-}
+

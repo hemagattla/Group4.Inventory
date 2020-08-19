@@ -4,14 +4,18 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Znalytics.Group4.Inventory
+using Znalytics.Group4.Inventory.BusinessLogicLayer;
+using Znalytics.Group4.Inventory.DataAccessLayer;
+namespace Znalytics.Group4.Inventory.PresntationLayer
 {
    public class CustPresentation
     {
         public static void Main()
         {
             Customer c = new Customer();
+
+            CustDataLayer d = new CustDataLayer();
+            CustBusiness cbl = new CustBusiness();
             System.Console.WriteLine("enter custid");
             c.CustomerId = (int.Parse(System.Console.ReadLine()));
             System.Console.WriteLine("first name");
@@ -52,13 +56,13 @@ namespace Znalytics.Group4.Inventory
                 switch (a)
                 {
                     case 1:
-                        ADDCustomer(c);
+                        cbl.AddCustomer(c);
                         break;
                     case 2:
-                        UpDate(c);
+                        cbl.UpDate(c);
                         break;
                     case 3:
-                        Delete(c);
+                       cbl.Del(c);
                         break;
 
                 }
