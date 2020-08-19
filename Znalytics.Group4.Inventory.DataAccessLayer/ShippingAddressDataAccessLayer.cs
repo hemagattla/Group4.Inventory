@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Znalytics.Inventory.ProductShippingAddressModule.Entities;
+namespace Znalytics.Inventory.ProductShippingAddressModule.DataAccesLayer{ 
 /// <summary>
 /// represents ShippingAddress DataLayer of Inventory Management System
 /// </summary>
@@ -14,4 +16,4 @@ public class ShippingAddressDataLayer
         shippingAddresses.Add(value);
     }
 
-} 
+} }
