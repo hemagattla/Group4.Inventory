@@ -2,7 +2,8 @@
 {
     static void Main()
     {
-        Stock s = new Stock();
+        Stock1 s = new Stock1();
+        Stock ss = new Stock();
         /*System.Console.WriteLine("1.enter the WareHouseID");
         System.Console.WriteLine("2.enter the AddressID");
         System.Console.WriteLine("3.enter the productID");
@@ -55,7 +56,7 @@
                         System.Console.WriteLine("Enter Product ID");
                         int g = System.Convert.ToInt32(System.Console.ReadLine());
                         s.UpDateQuantity(WHID: e, AID: f, PID: g);
-                        System.Console.WriteLine("WareHouseID:- " + e + "             AddressID" + f + "              ProductID" + g + "           Quantity" + s.UpDate);
+                        System.Console.WriteLine("WareHouseID:- " + e + "             AddressID:-" + f + "              ProductID:-" + g + "           Quantity:-" + ss.UpDate);
                         break;
                     default:
                         System.Console.WriteLine("Please Enter the Correct Option from 1  to 3");

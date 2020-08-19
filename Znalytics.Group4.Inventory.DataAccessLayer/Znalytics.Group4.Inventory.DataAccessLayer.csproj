@@ -42,10 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="ProductDataAccessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rawmaterials.cs" />
-    <Compile Include="ShippingAddressDataAccessLayer.cs" />
-    <Compile Include="WareHouseData.cs" />
+    <Compile Include="WareHouseDataAcessLayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Znalytics.Group4.Inventory.Entities\Znalytics.Group4.Inventory.Entities.csproj">
