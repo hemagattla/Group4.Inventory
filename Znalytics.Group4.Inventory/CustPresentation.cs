@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Znalytics.Group4.Inventory
 {
-    class CustPresentation
+   public class CustPresentation
     {
         public static void Main()
         {
@@ -52,13 +52,13 @@ namespace Znalytics.Group4.Inventory
                 switch (a)
                 {
                     case 1:
-                        ADDCustomer();
+                        ADDCustomer(c);
                         break;
                     case 2:
-                        UpDate();
+                        UpDate(c);
                         break;
                     case 3:
-                        Delete();
+                        Delete(c);
                         break;
 
                 }
