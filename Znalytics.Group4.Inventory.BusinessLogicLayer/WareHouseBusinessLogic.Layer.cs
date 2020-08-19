@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
+using Znalytics.Group4.Inventory.BusinessLogicLayer;
 namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
 {
 
@@ -9,7 +10,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
     /// Represents BusinessLogic class of WareHouse
     /// </summary>
 
-    public class WareHouseBusinessLayer
+    public class WareHouseBusinessLayer: IWareHouseBusinessLayer
     {
 
         WareHouseDataAccessLayer d = new WareHouseDataAccessLayer();
