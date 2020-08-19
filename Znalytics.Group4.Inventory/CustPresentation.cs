@@ -4,8 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Znalytics.Group4.Inventory.BusinessLogicLayer;
 using Znalytics.Group4.Inventory.DataAccessLayer;
+using Znalytics.Group4.Inventory.BusinessLogicLayer;
 namespace Znalytics.Group4.Inventory.PresntationLayer
 {
    public class CustPresentation
