@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Znalytics.Group4.Inventory.DataAccessLayer
+namespace Znalytics.Group4.Inventory.DataAccessLayer 
 { 
         public class CustDataLayer
         {
