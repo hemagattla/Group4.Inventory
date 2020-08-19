@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class2.cs" />
-    <Compile Include="Customer program.cs" />
+    <Compile Include="CustPresentation.cs" />
     <Compile Include="ProductPresentaton.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
