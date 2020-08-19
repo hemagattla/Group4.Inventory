@@ -1,5 +1,5 @@
 ﻿using Znalytics.Inventory.WareHouseModule.Entities;
-using Znalytics.Group4.Inventory.WareHouseModule.DatAcessLayer;
+using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
 namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
 {
 
@@ -25,9 +25,11 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         public void DisplayWareHouse(WareHouse n)
         {
             WareHouseDataAccessLayer d = new WareHouseDataAccessLayer();
-            d.DisplayWareHouse(n);
+            //d.DisplayWareHouse(n);
 
         }
+    }
+}
      /*  public string getStockStatus()
         {
             return null;
@@ -37,4 +39,4 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             return 0;
         }
     }*/
-}
+
