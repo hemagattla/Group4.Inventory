@@ -10,6 +10,13 @@ public class Customer
     private string _LastName;
     private string _Email;
     private string _MblNo;
+
+    private string _country;
+    private string _City;
+    private string _State;
+    private string _Street;
+    private string _PinNo;
+    private string _HNo;
     public int CustomerId
     {
         set
@@ -96,16 +103,7 @@ public class Customer
     {
         return _Email;
     }
-}
 
-public class Adress : Customer
-{
-    private string _country;
-    private string _City;
-    private string _State;
-    private string _Street;
-    private string _PinNo;
-    private string _HNo;
     public string Country
     {
         set
