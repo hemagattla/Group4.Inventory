@@ -4,7 +4,7 @@ using Znalytics.Inventory.Product.Entities;
 
 namespace Znalytics.Group4.Inventory.DataAccessLayer
 {
-    interface IIproductDataAccessLogic
+    interface IproductDataAccessLogic
     {
         void AddProduct(ProductEntitie productDetails);
         List<ProductEntitie> DisplayProducts();
