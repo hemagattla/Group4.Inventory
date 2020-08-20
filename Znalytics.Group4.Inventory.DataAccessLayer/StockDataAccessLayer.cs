@@ -10,50 +10,47 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
     public class StockDataAccessLogic
     {
         //private field
-        List<Stock> _stocks;
+        private static List<Stock> _stocks;
 
         /// <summary>
         /// Constructor Stock Data Access Logic that initializes collection
         /// </summary>
-        public StockDataAccessLogic()
+        static StockDataAccessLogic()
         {
             _stocks = new List<Stock>();
+            {
+                new Stock() { WareHouseID = "1234", AddressName = "2345", ProductID = "3456", Quantity = 5 },
+                new Stock() { WareHouseID = "1234", AddressName = "2345", ProductID = "5678", Quantity = 34}
+            };
         }
+     
 
         /// <summary>
         /// Add method with 4 parameters 
-        /// </summary>
-        /// <param name="WHID">Represents WareHouseID</param>
-        /// <param name="AID">Represents AddressID</param>
-        /// <param name="PID">Represents ProductID</param>
-        /// <param name="ADD">Represents the no.of quantity u want to add</param>
-        public void AddStock(Stock st)
+       
+        public void AddStock(Stock stock)
         {
-            _stocks.Add(st);
+            Stock st=_stocks.Find(temp=>temp.T)
+            _stocks.Add(stock);
         }
 
         /// <summary>
         /// Delete method with 4 parameters
         /// </summary>
-        /// <param name="WHID">Represents WareHouseID</param>
-        /// <param name="AID">Represents AddressID</param>
-        /// <param name="PID">Represents ProductID</param>
-        /// <param name="SUB">Represents the no.of quamtities u want to delete</param>
-        public void DeleteStockByWareHouseID(string WareHouseID, string AddressID)
+        
+        public void DeleteStockByWareHouseID(Stock stock)
         {
-            _stocks.RemoveAll(temp => temp.WareHouseID == WareHouseID && temp.AddressID == AddressID);
+            
         }
 
 
         /// <summary>
         /// Update method with 3 parameters
         /// </summary>
-        /// <param name="WHID">Represents WareHouseID</param>
-        /// <param name="AID">Represents AddressID</param>
-        /// <param name="PID">Represents ProductID</param>
-        public void UpDateQuantitys(Stock stock)
+        
+        public void ViewQuantitys(Stock stock)
         {
-            Stock matchingData = _stocks.Find(temp => temp.WareHouseID == stock.WareHouseID && temp.AddressID == stock.AddressID && temp.ProductID == stock.ProductID);
+            Stock matchingData = _stocks.Find(temp => temp.WareHouseID == stock.WareHouseID && temp.AddressName == stock.AddressName && temp.ProductID == stock.ProductID);
             matchingData.Quantity = stock.Quantity;
         }
     }

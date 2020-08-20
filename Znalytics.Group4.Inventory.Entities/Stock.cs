@@ -5,19 +5,19 @@
 public class Stock
 {
     //Private fields
-    private int _WareHouseID;
-    private int _AddressID;
-    private int _ProductID;
-    private int _Quantity = 0;
+    private string _WareHouseID;
+    private string _AddressName;
+    private string _ProductID;
+    private int _Quantity;
 
     //Property of WareHouseID
-    public int WareHouseID
+    public string WareHouseID
     {
         set
         {
             //if input value and WareHouseID present in database matches then the value will be assigned to the _WareHouseID
             //else it will throw an exception
-            if (1234 == value)
+            if ("1234" == value)
             {
                 _WareHouseID = value;
 
@@ -33,15 +33,15 @@ public class Stock
             return _WareHouseID;
         }
     }
-    public int AddressID
+    public string AddressName
     {
         set
         {
             //if input value and AddressID present in database matches then the value will be assigned to the _AddressID
             //else it will throw an exception
-            if (2345 == value)
+            if ("2345" == value)
             {
-                _AddressID = value;
+                _AddressName = value;
             }
             else
             {
@@ -50,17 +50,17 @@ public class Stock
         }
         get
         {
-            return _AddressID;
+            return _AddressName;
         }
     }
 
-    public int ProductID
+    public string ProductID
     {
         set
         {
             //if input value and ProductID present in database matches then the value will be assigned to the _ProductID
             //else it will throw an exception
-            if (value == 3456)
+            if ("3456"== value)
             {
                 _ProductID = value;
             }
@@ -109,7 +109,7 @@ public class Stock
             return _Quantity;
         }
     }
-    public int UpDate
+    public int Quantity
     {
         get
         {

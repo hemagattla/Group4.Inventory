@@ -1,46 +1,33 @@
-﻿public class StockBusinessLogicLayer
+﻿using Znalytics.Inventory.StockMaintain.DataAccessLayer;
+public class StockBusinessLogicLayer
 {
-    Stock v = new Stock();
-    StockDataAccessLogic sda = new StockDataAccessLogic();
-    /// <summary>
-    /// Add method with 4 parameters 
-    /// </summary>
-    /// <param name="WHID">Represents WareHouseID</param>
-    /// <param name="AID">Represents AddressID</param>
-    /// <param name="PID">Represents ProductID</param>
-    /// <param name="ADD">Represents the no.of quantity u want to add</param>
-    public void AddQuantity(int WHID, int AID, int PID, int ADD)
+    StockDataAccessLogic _stockDataAccesslogic;
+    public StockBusinessLogicLayer()
     {
-       if((WHID !=null)&&(AID !=null)&&(PID!=null)&&(ADD!=0))
+        _stockDataAccesslogic = new StockDataAccessLogic();
+    }
+
+    public void AddStock(Stock stock)
+    {
+        if ((stock.WareHouseID != null) && (stock.AddressName != null) && (stock.ProductID != null) && (stock.Add != 0))
         {
-            sda.StockDataAccessLogic()
+            _stockDataAccesslogic.AddStock(stock);
         }
     }
-    /// <summary>
-    /// Delete method with 4 parameters
-    /// </summary>
-    /// <param name="WHID">Represents WareHouseID</param>
-    /// <param name="AID">Represents AddressID</param>
-    /// <param name="PID">Represents ProductID</param>
-    /// <param name="SUB">Represents the no.of quamtities u want to delete</param>
-    public void DeleteQuantity(int WHID, int AID, int PID, int SUB)
-    {
-        v.WareHouseID = WHID;
-        v.AddressID = AID;
-        v.ProductID = PID;
-        v.Delete = SUB;
-    }
-    /// <summary>
-    /// Update method with 3 parameters
-    /// </summary>
-    /// <param name="WHID">Represents WareHouseID</param>
-    /// <param name="AID">Represents AddressID</param>
-    /// <param name="PID">Represents ProductID</param>
-    public void UpDateQuantity(int WHID, int AID, int PID)
-    {
 
-        v.WareHouseID = WHID;
-        v.AddressID = AID;
-        v.ProductID = PID;
+    public void DeleteStockByWareHouseID(Stock stock)
+    {
+        if ((stock.WareHouseID != null) && (stock.AddressName != null) && (stock.ProductID != null) && (stock.Delete != 0))
+        {
+            _stockDataAccesslogic.DeleteStockByWareHouseID(stock);
+        }
+    }
+
+    public void ViewQuantity(Stock stock)
+    {
+        if ((stock.WareHouseID != null) && (stock.AddressName != null) && (stock.ProductID != null))
+        {
+            _stockDataAccesslogic.ViewQuantity(stock);
+        }
     }
 }
