@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="CustDataLayer.cs" />
+    <Compile Include="IIproductDataAccessLogic.cs" />
     <Compile Include="IWareHouseDataAccessLayer.cs" />
     <Compile Include="ProductDataAccessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

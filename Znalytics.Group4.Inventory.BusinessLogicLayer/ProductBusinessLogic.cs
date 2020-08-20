@@ -15,16 +15,22 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
     /// </summary>
     public class ProductBusiness
     {
+        Productdata d;
 
+
+        public ProductBusiness()
+        {
+            d = new Productdata();
+        }
         /// <summary>
         /// adding the products 
         /// </summary>
         /// <param name="n"> gets object of ProductDetails</param>
-        public void AddProducts(ProductDetails n)
+        public void AddProducts(ProductEntitie n)
         {
             if (n.ProductName != null)
             {
-                Productdata d = new Productdata();
+
                 d.AddProduct(n);
             }
         }
@@ -33,13 +39,27 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
         /// </summary>
         /// <param name="n">gets object of ProductDeatils</param>
 
-        public void DisplayProducts(ProductDetails n)
+        public List<ProductEntitie> DispalyProducts()
         {
-            Productdata d = new Productdata();
-            d.DisplayProducts(n);
 
+            return d.DisplayProducts();
         }
 
+
+        public void RemoveProductByID(int id)
+        {
+            if (id != 0)
+            {
+                d.RemoveProductByID(id);
+            }
+        }
+        public void RemoveProductByName(string name)
+        {
+            if (name != null)
+            {
+                d.RemoveProductByName(name);
+            }
+        }
 
     }
 }
