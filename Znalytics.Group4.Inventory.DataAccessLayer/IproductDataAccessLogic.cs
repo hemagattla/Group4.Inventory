@@ -1,4 +1,7 @@
-﻿using System;
+﻿//created by R.Krushal
+
+
+using System;
 using System.Collections.Generic;
 using Znalytics.Inventory.Product.Entities;
 
