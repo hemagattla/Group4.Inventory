@@ -19,7 +19,7 @@ namespace Znalytics.Group4.Inventory.DataAccessLayer
         
         public List<Customer> GetCustomers()
         {
-            return _customers;
+            return _customers;///returning values to business logic layer
         }
 
     }
