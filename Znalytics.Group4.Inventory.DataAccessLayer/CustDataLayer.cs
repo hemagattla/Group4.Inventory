@@ -8,7 +8,7 @@ namespace Znalytics.Group4.Inventory.DataAccessLayer
 { 
         public class CustDataLayer
         {
-            List<Customer> _customers = new List<Customer>();/// <summary>
+            List <Customer> _customers = new List <Customer>();/// <summary>
                                                             /// creating list for customer class///
                                                             /// </summary>
                                                             /// <param name="c"></param>
@@ -18,4 +18,3 @@ namespace Znalytics.Group4.Inventory.DataAccessLayer
             }
         }
     }
-Array a[][]={ }

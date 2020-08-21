@@ -12,7 +12,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
             CustDataLayer d = new CustDataLayer();
             public void AddCustomer(Customer c)
             {
-                if (c.FirstName != null)
+                if (c.CustomerName != null)
                 {
                     d.AddCustomer(c);
 
