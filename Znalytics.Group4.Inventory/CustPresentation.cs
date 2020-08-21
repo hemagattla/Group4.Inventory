@@ -1,77 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Znalytics.Group4.Inventory.DataAccessLayer;
 using Znalytics.Group4.Inventory.BusinessLogicLayer;
-namespace Znalytics.Group4.Inventory.PresntationLayer
+using Znalytics.Group4.Inventory.Entities;
+
+class Program
 {
-   public class CustPresentation
+    static void Main()
     {
-        public static void Main()
+
+        int choice = 0;
+        do
         {
-            Customer c = new Customer();
+            Console.WriteLine("Customer MENU");
+            Console.WriteLine("1. Add customer");
+            Console.WriteLine("2. View customer");
+            Console.WriteLine("3. Update customer");
+            Console.WriteLine("4. Exit");
+            Console.Write("Enter choice: ");
+            choice = int.Parse(Console.ReadLine());
 
-            CustDataLayer d = new CustDataLayer();
-            CustBusiness cbl = new CustBusiness();
-            System.Console.WriteLine("enter custid");
-            c.CustomerId = (int.Parse(System.Console.ReadLine()));
-            System.Console.WriteLine("first name");
-            c.FirstName = System.Console.ReadLine();
-            System.Console.WriteLine("enter last name ");
-            c.LastName = System.Console.ReadLine();
-            System.Console.WriteLine("enter mblno");
-            c.MblNo = System.Console.ReadLine();
-            System.Console.WriteLine("enter mail");
-            c.Email = System.Console.ReadLine();
-            System.Console.WriteLine("enter country");
-            c.Country = System.Console.ReadLine();
-            System.Console.WriteLine("enter sate");
-            c.State = System.Console.ReadLine();
-            System.Console.WriteLine("enter city ");
-            c.City = System.Console.ReadLine();
-            System.Console.WriteLine("enter street");
-            c.Street = System.Console.ReadLine();
-            System.Console.WriteLine("enter hno");
-            c.HNo = System.Console.ReadLine();
-            //getting value of customer
-            System.Console.WriteLine("custid is:" + c.CustomerId);
-            System.Console.WriteLine("fisrt name is:" + c.FirstName);
-            System.Console.WriteLine("last name is:" + c.LastName);
-            System.Console.WriteLine("emailis:" + c.Email);
-            System.Console.WriteLine("mblnois:" + c.MblNo);
-            System.Console.WriteLine("country is:" + c.Country);
-            System.Console.WriteLine("state is:" + c.State);
-            System.Console.WriteLine("city is:" + c.City);
-            System.Console.WriteLine("street" + c.Street);
-            System.Console.WriteLine("hno is" + c.HNo);
-            while (true)
+            switch (choice)
             {
-                System.Console.WriteLine("click 1 if u want to add customer");
-                System.Console.WriteLine("click 2 if u want to del customer");
-                System.Console.WriteLine("click 3 if u want to update details");
-                int a = int.Parse(System.Console.ReadLine());
-                switch (a)
-                {
-                    case 1:
-                        cbl.AddCustomer(c);
-                        break;
-                    case 2:
-                        cbl.UpDate(c);
-                        break;
-                    case 3:
-                       cbl.Del(c);
-                        break;
-
-                }
+                case 1: AddCustomer(); break;
+                case 2: DelCustomer(); break;
+                case 3: UpdateCustomer(); break;
             }
-        }
-
-
-
-
-
-        }
+        } while (choice != 4);
     }
+
+    static void AddCustomer()
+    {
+        CustBusiness cbl = new CustBusiness();
+        Customer c = new Customer();
+
+        Console.Write("Enter Emp ID: ");
+        c.CustomerId = int.Parse(Console.ReadLine());
+        Console.Write("Enter cust id: ");
+        c.CustomerName = Console.ReadLine();
+        Console.Write("Enter phno ");
+        c.MblNo = Console.ReadLine();
+        Console.WriteLine("enter email");
+        c.Email = Console.ReadLine();
+        Console.WriteLine("enter Country");
+        c.Country = Console.ReadLine();
+        Console.WriteLine("enter state");
+        c.State = Console.ReadLine();
+
+
+        cbl.AddCustomer(c);///call's the business logic layer of AddCustomer method///
+        Console.WriteLine("customer  Added.\n");
+    }
+    static void UpdateCustomer()
+    {
+
+    }
+    static void DelCustomer()
+    {
+
+    }
+}
