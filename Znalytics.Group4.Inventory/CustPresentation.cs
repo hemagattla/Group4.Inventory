@@ -47,8 +47,8 @@ class Program
         c.State = Console.ReadLine();
 
 
-        cbl.AddCustomer(c);
-        Console.WriteLine("Employee Added.\n");
+        cbl.AddCustomer(c);///call's the business logic layer of AddCustomer method///
+        Console.WriteLine("customer  Added.\n");
     }
     static void UpdateCustomer()
     {

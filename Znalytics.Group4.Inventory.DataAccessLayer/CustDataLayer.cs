@@ -20,7 +20,7 @@ namespace Znalytics.Group4.Inventory.DataAccessLayer
         {
             _customers.Add(c);
         }
-        public List<Customer> GetEmployees()
+        public List<Customer> GetCustomers()
         {
             return _customers;
         }
