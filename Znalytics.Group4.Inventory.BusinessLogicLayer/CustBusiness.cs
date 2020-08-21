@@ -19,7 +19,11 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
 
                 }
             }
-            public void UpdateCustomer(Customer c)
+        public List<Customer> GetCoustomers()
+        {
+            return _d.Getcustomers();
+        }
+        public void UpdateCustomer(Customer c)
             {
 
             }
