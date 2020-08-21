@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Znalytics.Group4.Inventory.BusinessLogicLayer;
 using Znalytics.Inventory.Product.DataAccessLayer;
 using Znalytics.Inventory.Product.Entities;
 
@@ -13,7 +14,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
     /// <summary>
     /// refers tp Product BusinessLogic
     /// </summary>
-    public class ProductBusiness
+    public class ProductBusiness : IProductBusinessLogicLayer
     {
         Productdata d;
 
