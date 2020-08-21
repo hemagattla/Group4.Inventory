@@ -3,7 +3,7 @@
     /// <summary>
     /// product shipping address module of inventory management system
     /// </summary>
-    public class ShippingAddress
+    public class ProductShippingAddress
     {
         private string _productName;
         private string _productID;
@@ -24,7 +24,7 @@
         /// <param name="productName"></param>
         /// <param name="productID"></param>
         /// <param name="productPrice"></param>
-        public ShippingAddress(string productName, string productID, double productPrice, string countryName, string stateName, string districtName, string cityName, string colony, string homeNo, string pincode, string customerName, string phoneNo, string emailID)
+        public ProductShippingAddress(string productName, string productID, double productPrice, string countryName, string stateName, string districtName, string cityName, string colony, string homeNo, string pincode, string customerName, string phoneNo, string emailID)
         {
             productName = _productName;
             productID = _productID;
@@ -41,7 +41,7 @@
             emailID = _emailID;
         }
         //default constructor
-        public ShippingAddress()
+        public ProductShippingAddress()
         {
 
         }
