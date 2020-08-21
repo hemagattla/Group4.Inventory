@@ -50,7 +50,7 @@ class Program
         cbl.AddCustomer(c);
         Console.WriteLine("Employee Added.\n");
     }
-    static void Updatecustomer()
+    static void UpdateCustomer()
     {
 
     }

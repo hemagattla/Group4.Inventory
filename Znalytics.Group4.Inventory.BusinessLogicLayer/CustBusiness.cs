@@ -18,11 +18,11 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
 
                 }
             }
-            public void UpDate(Customer c)
+            public void UpdateCustomer(Customer c)
             {
 
             }
-            public void Del(Customer c)
+            public void Delcustomer(Customer c)
             {
 
             }
