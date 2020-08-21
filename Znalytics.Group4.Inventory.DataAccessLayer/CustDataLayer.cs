@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Znalytics.Group4.Inventory.Entities;
 namespace Znalytics.Group4.Inventory.DataAccessLayer 
 { 
         public class CustDataLayer
@@ -16,5 +16,9 @@ namespace Znalytics.Group4.Inventory.DataAccessLayer
             {
                _customers.Add(c);///adding values to customer///
             }
+        public void Add(Customer c)
+        {
+            _customers.Add(c);
         }
+    }
     }

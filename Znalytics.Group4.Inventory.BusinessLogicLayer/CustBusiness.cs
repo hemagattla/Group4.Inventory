@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Group4.Inventory.DataAccessLayer;
+using Znalytics.Group4.Inventory.Entities;
 namespace Znalytics.Group4.Inventory.BusinessLogicLayer
 {
  
