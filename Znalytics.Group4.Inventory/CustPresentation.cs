@@ -45,6 +45,12 @@ class  CustPresentation
         c.Country = Console.ReadLine();
         Console.WriteLine("enter state");
         c.State = Console.ReadLine();
+        Console.WriteLine("enter city");
+        c.City = Console.ReadLine();
+        Console.WriteLine("enter pinno");
+        c.PinNo = Console.ReadLine();
+        Console.WriteLine("enter hno");
+        c.HNo = Console.ReadLine();
 
 
         cbl.AddCustomer(c);///call's the business logic layer of AddCustomer method///
@@ -52,7 +58,19 @@ class  CustPresentation
     }
     static void UpdateCustomer()
     {
+        CustBusiness employeeBusinessLogic = new CustBusiness();
+        Customer c = new Customer();
 
+        Console.Write("Enter Existing customer ID: ");/// updating name and city by using primary key as customerid///
+        c.CustomerId = int.Parse(Console.ReadLine());
+        Console.Write("Enter New Emp Name: ");
+        c.CustomerName = Console.ReadLine();
+        Console.WriteLine("enter city");
+        c.City = Console.ReadLine();
+
+
+        employeeBusinessLogic.UpdateCustomer(c);
+        Console.WriteLine("Customer  Updated");
     }
     static void DelCustomer()
     {

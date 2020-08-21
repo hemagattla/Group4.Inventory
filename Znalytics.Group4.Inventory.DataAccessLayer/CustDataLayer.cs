@@ -16,11 +16,23 @@ namespace Znalytics.Group4.Inventory.DataAccessLayer
             {
                _customers.Add(c);///adding values to customers list///
             }
-        
+       
         public List<Customer> GetCustomers()
         {
-            return _customers;///returning values to business logic layer
+            return _customers;
         }
-
+        public void UpdateCustomer(Customer c)
+        {
+            //Get matching employee based on EmpID
+            Customer cust = _customers.Find(temp => temp.CustomerId == c.CustomerId);
+            if (cust != null)
+            {
+                cust.CustomerName = c.CustomerName;
+            }
+        }
+        public List<Customer> GetCust()
+        {
+            return _customers;
+        }
     }
-}
+    }

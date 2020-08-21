@@ -25,7 +25,10 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         }
         public void UpdateCustomer(Customer c)
             {
-
+            if(c.CustomerName!=null)
+            {
+                d.UpdateCustomer();
+            }
             }
             public void Delcustomer(Customer c)
             {
