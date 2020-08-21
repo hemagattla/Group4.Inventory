@@ -6,17 +6,35 @@ using System.Text.RegularExpressions;
 public class Customer
 {
     private int _CustomerId;
-    private string _FirstName;
-    private string _LastName;
+    private string _CustomerName;
     private string _Email;
     private string _MblNo;
-
-    private string _country;
+    private string _Country;
     private string _City;
     private string _State;
     private string _Street;
     private string _PinNo;
     private string _HNo;
+    /// <summary>
+    /// parameterized constructor(when ever an object is created  constructed is called)
+    /// 
+    /// </summary>
+   public Customer(int cid,string cstname,string mail,string mblno, string  cntry,string ci,string state,string st,string pin,string hno)
+
+        {
+        this.CustomerId = cid;///cuuurent method CoustomerId will be called and checks the conditons present in the method ant then asigns the value///
+        this.CustomerName = cstname;
+        this.Email = mail;
+        this.MblNo = mblno;
+        this.Country = cntry;
+        this.City = ci;
+        this.State = state;
+        this.Street = st;
+        this.PinNo = pin;
+        this.HNo = hno;
+
+
+        }
     public int CustomerId
     {
         set
@@ -34,32 +52,18 @@ public class Customer
     }
 
 
-    public string FirstName
+    public string CustomerName
     {
         set
         {
-            if (value.Length <= 5)
+            if (value.Length <30)
             {
-                _FirstName = value;
+                _CustomerName = value;
             }
         }
         get
         {
-            return _FirstName;
-        }
-    }
-    public string LastName
-    {
-        set
-        {
-            if (value.Length <= 5)
-            {
-                _LastName = value;
-            }
-        }
-        get
-        {
-            return _LastName;
+            return _CustomerName;
         }
     }
     public string MblNo
@@ -110,12 +114,12 @@ public class Customer
         {
             if (value.Length <= 10)
             {
-                _country = value;
+                _Country = value;
             }
         }
         get
         {
-            return _country;
+            return _Country;
 
         }
     }
@@ -209,5 +213,5 @@ public class Customer
         }
 
     }
-
 }
+

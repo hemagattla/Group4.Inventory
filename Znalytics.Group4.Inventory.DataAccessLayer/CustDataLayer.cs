@@ -18,3 +18,4 @@ namespace Znalytics.Group4.Inventory.DataAccessLayer
             }
         }
     }
+Array a[][]={ }
