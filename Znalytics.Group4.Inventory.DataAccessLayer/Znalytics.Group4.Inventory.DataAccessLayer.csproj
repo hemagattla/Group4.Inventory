@@ -42,10 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="CustDataLayer.cs" />
+    <Compile Include="IproductDataAccessLogic.cs" />
+    <Compile Include="IWareHouseDataAccessLayer.cs" />
     <Compile Include="ProductDataAccessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rawmaterials.cs" />
-    <Compile Include="ShippingAddrressDataAccessLayer.cs" />
+    <Compile Include="StockDataAccessLayer.cs" />
     <Compile Include="WareHouseDataAcessLayer.cs" />
   </ItemGroup>
   <ItemGroup>

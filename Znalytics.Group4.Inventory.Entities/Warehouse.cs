@@ -1,11 +1,4 @@
-﻿
-
-
-
-
-
-
-
+﻿// Created by Nitya
 
 namespace Znalytics.Inventory.WareHouseModule.Entities
 {
