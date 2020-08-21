@@ -34,6 +34,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             return WareHouseList;
         }
 
+        //Method to get the WareHouse by WareHouseID
         public WareHouse GetWareHouseByWareHouseID(string WareHouseID)
         {
             return WareHouseList.Find(temp => temp.WarehouseId == WareHouseID);
