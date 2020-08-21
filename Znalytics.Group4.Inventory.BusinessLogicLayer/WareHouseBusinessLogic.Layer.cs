@@ -31,6 +31,8 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         {
             return d.WareHouseList;
         }
+        
+        //Method to display WareHouse details by WareHouseId
         public WareHouse GetWareHouseByWareHouseID(string WareHouseID)
         {
             return d.WareHouseList.Find(temp => temp.WarehouseId == WareHouseID);

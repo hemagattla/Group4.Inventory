@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressBusinessLogicLayer.cs" />
+    <Compile Include="WareHouseAddressBusinessLogicLayer.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="CustBusiness.cs" />
     <Compile Include="IProductBusinessLogicLayer.cs" />
