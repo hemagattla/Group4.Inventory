@@ -2,8 +2,8 @@
 using Znalytics.Group4.Inventory.DataAccessLayer;
 namespace Group4.Inventory.BusinessLogicLayer
 {
-    
-public class ShippingAddressBusinessLogic
+
+    public class ShippingAddressBusinessLogic
     {
         ShippingAddressDataLayer dl = new ShippingAddressDataLayer();
 
@@ -13,7 +13,7 @@ public class ShippingAddressBusinessLogic
         /// <param name="value"></param>
         public void AddressDetails(ShippingAddress values)
         {
-            if (values != null)
+            if (values.PruductName != null)
             {
                 dl.AddShippingDetails(values);
             }
@@ -21,102 +21,100 @@ public class ShippingAddressBusinessLogic
             {
                 throw new System.Exception("Enter valid Address Details");
             }
-        }
-        /// <summary>
-        /// Adding ProductID to collections
-        /// </summary>
-        /// <param name="value"></param>
-        public void DeleteDetails(ShippingAddress value)
-        {
-            dl.AddShippingDetails(value);
-        }
-        /// <summary>
-        /// Adding ProductPrice to Collections
-        /// </summary>
-        /// <param name="value"></param>
-        public void AddProductPrice(ShippingAddress value)
-        {
-            if (value.ProductPrice > 0)
+
+            /// <summary>
+            /// Adding ProductID to collections
+            /// </summary>
+            /// <param name="value"></param>
+            if (values.ProductID.Length == 10)
             {
-                dl.AddShippingDetails(value);
+                dl.AddShippingDetails(values);
+            }
+            else
+            {
+                throw new System.Exception("enter 10 digit productID");
+            }
+            /// <summary>
+            /// Adding ProductPrice to Collections
+            /// </summary>
+            /// <param name="value"></param>
+
+
+            if (values.ProductPrice > 0)
+            {
+                dl.AddShippingDetails(values);
             }
             else { throw new System.Exception("Enter valid product price"); }
-        }
-        /// <summary>
-        /// Add CustomerName to Collections
-        /// </summary>
-        /// <param name="value"></param>
-        public void AddCustomerName(ShippingAddress value)
-        {
-            if (value.CustomerName != null)
+
+            /// <summary>
+            /// Add CustomerName to Collections
+            /// </summary>
+            /// <param name="value"></param>
+
+            if (values.CustomerName != null)
             {
-                dl.AddShippingDetails(value);
+                dl.AddShippingDetails(values);
             }
             else { throw new System.Exception("Enter valid CustomerName"); }
 
-        }
+        
         /// <summary>
         /// Add CountryName to Collections
         /// </summary>
         /// <param name="value"></param>
-        public void AddCountryName(ShippingAddress value)
-        {
-            if (value.CustomerName != null)
+        
+            if (values.CustomerName != null)
             {
-                dl.AddShippingDetails(value);
+                dl.AddShippingDetails(values);
             }
-            else throw new System.Exception("Enter valid CountryName");
+            else {throw new System.Exception("Enter valid CountryName");}
 
-        }
+        
         /// <summary>
         /// Add StateName to Collections
         /// </summary>
         /// <param name="value"></param>
-        public void AddStateName(ShippingAddress value)
-        {
-            if (value.StateName != null)
+        
+            if (values.StateName != null)
             {
-                dl.AddShippingDetails(value);
+                dl.AddShippingDetails(values);
             }
             else throw new System.Exception("Enter valid product price");
-        }
+        
         /// <summary>
         /// Add DistrictName to Collections
         /// </summary>
         /// <param name="value"></param>
-        public void AddDistictName(ShippingAddress value)
-        {
-            if (value.DistrictName != null)
+        
+            if (values.DistrictName != null)
             {
-                dl.AddShippingDetails(value);
+                dl.AddShippingDetails(values);
             }
             else throw new System.Exception("Enter valid StateName");
 
-        }/// <summary>
+        /// <summary>
          /// AddCity Name
          /// </summary>
          /// <param name="value"></param>
 
-        public void AddCityName(ShippingAddress value)
-        {
-            if (value.CityName != null)
+       
+            if (values.CityName != null)
             {
-                dl.AddShippingDetails(value);
+                dl.AddShippingDetails(values);
             }
             else throw new System.Exception("Enter valid CityName");
-        }
+        
         /// <summary>
         /// Add ColonyName to Collections
         /// </summary>
         /// <param name="value"></param>
-        public void AddColonyName(ShippingAddress value)
-        {
-            if (value.Colony != null)
+       
+            if (values.Colony != null)
             {
-                dl.AddShippingDetails(value);
+                dl.AddShippingDetails(values);
             }
             else throw new System.Exception("Enter valid ColonyName");
-        }
+        
         //Add homeno to Collections
         public void AddHomeNo(ShippingAddress value)
         {
@@ -130,39 +128,37 @@ public class ShippingAddressBusinessLogic
         /// ADD pincode To Collections
         /// </summary>
         /// <param name="value"></param>
-        public void AddPinCode(ShippingAddress value)
-        {
-            if (value.PinCode != null)
+        
+            if (values.PinCode != null)
             {
-                dl.AddShippingDetails(value);
+                dl.AddShippingDetails(values);
             }
             else throw new System.Exception("Enter valid Pincode");
-        }
+        
         /// <summary>
         /// Add MobileNumber to Collections
         /// </summary>
         /// <param name="value"></param>
-        public void AddMobileNumber(ShippingAddress value)
-        {
-            if (value.MobileNumber.Length == 10)
+       
+            if (values.MobileNumber.Length == 10)
             {
-                dl.AddShippingDetails(value);
+                dl.AddShippingDetails(values);
             }
             else throw new System.Exception("Enter valid Mobile Number");
-        }
+        
         //set EmailID Method
-        public void AddEmailID(ShippingAddress value)
-        {
+        
+        
             bool flag = true;
-            for (int i = 0; i < value.EmailID.Length; i++)
-                if (value.EmailID[i] == ' ')
+            for (int i = 0; i < values.EmailID.Length; i++)
+                if (values.EmailID[i] == ' ')
                 {
                     flag = false;
 
                 }
             if (flag == true)
             {
-                dl.AddShippingDetails(value);
+                dl.AddShippingDetails(values);
             }
 
             else throw new System.Exception("Enter valid HomeNo");
