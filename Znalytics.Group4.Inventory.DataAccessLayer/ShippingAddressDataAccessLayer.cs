@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Znalytics.Inventory.ProductShippingAddressModule.Entities;
-namespace Znalytics.Inventory.ProductShippingAddressModule.DataAccesLayer{ 
+using Znalytics.Group4.Inventory.Entities;
+namespace Znalytics.Group4.Inventory.DataAccessLayer{ 
 /// <summary>
 /// represents ShippingAddress DataLayer of Inventory Management System
 /// </summary>
