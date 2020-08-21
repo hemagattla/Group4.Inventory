@@ -44,6 +44,8 @@
     <Compile Include="AddressBusinessLogicLayer.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="CustBusiness.cs" />
+    <Compile Include="IProductBusinessLogicLayer.cs" />
+    <Compile Include="IStockBusinessLogicLayer.cs" />
     <Compile Include="IWareHouseBusinessLayer.cs" />
     <Compile Include="ProductBusinessLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
