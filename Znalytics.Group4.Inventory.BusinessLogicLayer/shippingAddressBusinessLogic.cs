@@ -1,5 +1,7 @@
 ﻿using Znalytics.Group4.Inventory.Entities;
 using Znalytics.Group4.Inventory.DataAccessLayer;
+using System.Collections.Generic;
+
 namespace Group4.Inventory.BusinessLogicLayer
 {
 
@@ -11,7 +13,7 @@ namespace Group4.Inventory.BusinessLogicLayer
         /// Adding ProductName to collections
         /// </summary>
         /// <param name="value"></param>
-        public void AddressDetails(ShippingAddress values)
+        public void AddressDetails(ProductShippingAddress values)
         {
             if (values.PruductName != null)
             {
@@ -146,7 +148,7 @@ namespace Group4.Inventory.BusinessLogicLayer
             }
             else throw new System.Exception("Enter valid Mobile Number");
         
-        //set EmailID Method
+        //Add EmailID to collections
         
         
             bool flag = true;
@@ -162,6 +164,11 @@ namespace Group4.Inventory.BusinessLogicLayer
             }
 
             else throw new System.Exception("Enter valid HomeNo");
+        }
+        public List<ShippingAddress> ShippingAddressesDetails()
+        {
+            return dl.ShippingAddressDetails();
+
         }
     }
 }
