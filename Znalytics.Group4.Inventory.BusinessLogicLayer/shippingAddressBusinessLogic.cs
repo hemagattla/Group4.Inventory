@@ -116,14 +116,14 @@ namespace Group4.Inventory.BusinessLogicLayer
             else throw new System.Exception("Enter valid ColonyName");
         
         //Add homeno to Collections
-        public void AddHomeNo(ShippingAddress value)
-        {
-            if (value.HomeNo != null)
+       
+        
+            if (values.HomeNo != null)
             {
-                dl.AddShippingDetails(value);
+                dl.AddShippingDetails(values);
             }
             else throw new System.Exception("Enter valid HomeNo");
-        }
+        
         /// <summary>
         /// ADD pincode To Collections
         /// </summary>
