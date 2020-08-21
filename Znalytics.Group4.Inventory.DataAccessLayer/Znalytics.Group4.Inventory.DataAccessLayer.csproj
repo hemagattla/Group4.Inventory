@@ -44,12 +44,19 @@
     <Compile Include="Class1.cs" />
     <Compile Include="CustDataLayer.cs" />
     <Compile Include="IproductDataAccessLogic.cs" />
+    <Compile Include="IStockDataAccessLayer.cs" />
     <Compile Include="IWareHouseDataAccessLayer.cs" />
     <Compile Include="ProductDataAccessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rawmaterials.cs" />
     <Compile Include="StockDataAccessLayer.cs" />
     <Compile Include="WareHouseDataAcessLayer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Znalytics.Group4.Inventory.Entities\Znalytics.Group4.Inventory.Entities.csproj">
+      <Project>{1ed01dc5-8c6c-429f-9858-0c7cc0f0b4ff}</Project>
+      <Name>Znalytics.Group4.Inventory.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

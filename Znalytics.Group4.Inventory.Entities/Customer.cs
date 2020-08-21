@@ -15,6 +15,10 @@ public class Customer
     private string _Street;
     private string _PinNo;
     private string _HNo;
+    public Customer()///default constructor
+    {
+
+    }
     /// <summary>
     /// parameterized constructor(when ever an object is created  constructed is called)
     /// 
