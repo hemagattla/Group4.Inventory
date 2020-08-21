@@ -4,7 +4,7 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 using static System.Console;
 namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 {
-    class MenuPresentor
+   public class MenuPresentor
     {
         public static void Menu()
         {
@@ -79,6 +79,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
 
         }
+        
     }
 }
 
