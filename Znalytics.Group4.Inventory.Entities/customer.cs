@@ -23,7 +23,7 @@ public class Customer
     /// parameterized constructor(when ever an object is created  constructed is called)
     /// 
     /// </summary>
-   public Customer(int cid,string cstname,string mail,string mblno, string  cntry,string ci,string state,string st,string pin,string hno)
+  public Customer(int cid,string cstname,string mail,string mblno, string  cntry,string ci,string state,string st,string pin,string hno)
 
         {
         this.CustomerId = cid;///cuuurent method CoustomerId will be called and checks the conditons present in the method ant then asigns the value///
@@ -36,9 +36,9 @@ public class Customer
         this.Street = st;
         this.PinNo = pin;
         this.HNo = hno;
-
-
-        }
+    }/// <summary>
+    
+    /// </summary>
     public int CustomerId
     {
         set
@@ -64,6 +64,10 @@ public class Customer
             {
                 _CustomerName = value;
             }
+            else
+            {
+                throw new System.Exception("enter the name having lessthan 30 charecter");
+            }
         }
         get
         {
@@ -80,7 +84,7 @@ public class Customer
             }
             else
             {
-                System.Console.WriteLine("phone no is must contain  10 digits ");
+                throw new System.Exception("phone no is must contain  10 digits ");
             }
         }
         get
@@ -176,10 +180,6 @@ public class Customer
             return _Street;
         }
     }
-
-
-
-
     public string PinNo
 
     {
@@ -189,7 +189,7 @@ public class Customer
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    if (value[i] > 0 && value[i] < 9)
+                    if (value[i] > 0 || value[i] < 9)
                     {
                         _PinNo = value;
                     }

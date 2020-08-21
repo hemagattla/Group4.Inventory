@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Znalytics.Group4.Inventory.BusinessLogicLayer;
 using Znalytics.Group4.Inventory.Entities;
 
-class Program
+class  CustPresentation
 {
     static void Main()
     {
@@ -30,8 +30,8 @@ class Program
 
     static void AddCustomer()
     {
-        CustBusiness cbl = new CustBusiness();
-        Customer c = new Customer();
+        CustBusiness cbl = new CustBusiness();/// creating object for business logic layer
+        Customer c = new Customer();///creating obj for customer class present in entity layer
 
         Console.Write("Enter Emp ID: ");
         c.CustomerId = int.Parse(Console.ReadLine());
@@ -48,7 +48,7 @@ class Program
 
 
         cbl.AddCustomer(c);///call's the business logic layer of AddCustomer method///
-        Console.WriteLine("customer  Added.\n");
+        Console.WriteLine("customer details are  Added.\n");
     }
     static void UpdateCustomer()
     {

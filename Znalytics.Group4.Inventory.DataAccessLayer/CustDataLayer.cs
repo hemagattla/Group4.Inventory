@@ -9,20 +9,17 @@ namespace Znalytics.Group4.Inventory.DataAccessLayer
         public class CustDataLayer
         {
             List <Customer> _customers = new List <Customer>();/// <summary>
-                                                            /// creating list for customer class///
+                                                            /// creating list as customers///
                                                             /// </summary>
                                                             /// <param name="c"></param>
-            public void AddCustomer(Customer c)
+            public void AddCustomer(Customer c)///called Add Customer method frm business logic layer///
             {
-               _customers.Add(c);///adding values to customer///
+               _customers.Add(c);///adding values to customers list///
             }
-        public void Add(Customer c)
-        {
-            _customers.Add(c);
-        }
+        
         public List<Customer> GetCustomers()
         {
-            return _customers;
+            return _customers;///returning values to business logic layer
         }
 
     }
