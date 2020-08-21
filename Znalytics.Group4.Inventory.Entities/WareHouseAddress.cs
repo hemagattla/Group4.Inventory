@@ -7,6 +7,10 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
     /// </summary>
    public class WareHouseAddress
     {
+
+        /// <summary>
+        /// Private fields
+        /// </summary>
         public readonly string WarehouseId;
         private string _addressId;
         private string _doorNumber;
@@ -29,7 +33,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         /// <param name="locName"></param>
         /// <param name="state"></param>
         /// <param name="pincode"></param>
-       public WareHouseAddress(string locId, string doorNo, string locName, string state, string pincode)
+       public  WareHouseAddress(string locId, string doorNo, string locName, string state, string pincode)
         {
             this._addressId = locId;
             this._doorNumber = doorNo;
