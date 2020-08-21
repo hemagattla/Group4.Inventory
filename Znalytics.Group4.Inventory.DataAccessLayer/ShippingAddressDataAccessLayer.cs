@@ -6,23 +6,23 @@ namespace Znalytics.Group4.Inventory.DataAccessLayer{
 /// </summary>
 public class ShippingAddressDataLayer
 {
-    private List<ShippingAddress> shippingAddresses;
+    private List<ProductShippingAddress> shippingAddresses;
         public ShippingAddressDataLayer()
     {
-        shippingAddresses = new List<ShippingAddress>();
+        shippingAddresses = new List<ProductShippingAddress>();
     }
         //Add Shipping Details
-    public void AddShippingDetails(ShippingAddress value)
+    public void AddShippingDetails(ProductShippingAddress value)
     {
         shippingAddresses.Add(value);
     }
         //ViewDetails
-        public List<Emoloyee> ViewEmployeeDetails()
+        public List<ProductShippingAddress>ShippingAddressesDetails()
         {
             return shippingAddresses;
         }
         //Update AddressDetails
-        public void UpdateAddressDetails(ShippingAddress value)
+        public void UpdateAddressDetails(ProductShippingAddress value)
         {
             foreach(ShippingAddress s in shippingAddresses)
             {
