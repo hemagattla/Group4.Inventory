@@ -64,6 +64,10 @@ public class Customer
             {
                 _CustomerName = value;
             }
+            else
+            {
+                throw new System.Exception("enter the name having lessthan 30 charecter");
+            }
         }
         get
         {
@@ -80,7 +84,7 @@ public class Customer
             }
             else
             {
-                System.Console.WriteLine("phone no is must contain  10 digits ");
+                throw new System.Exception("phone no is must contain  10 digits ");
             }
         }
         get
