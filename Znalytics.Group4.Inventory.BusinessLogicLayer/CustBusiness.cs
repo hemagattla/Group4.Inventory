@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Group4.Inventory.DataAccessLayer;
+using Znalytics.Group4.Inventory.Entities;
 namespace Znalytics.Group4.Inventory.BusinessLogicLayer
 {
  
@@ -12,17 +13,21 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
             CustDataLayer d = new CustDataLayer();
             public void AddCustomer(Customer c)
             {
-                if (c.FirstName != null)
+                if (c.CustomerName != null)
                 {
                     d.AddCustomer(c);
 
                 }
             }
-            public void UpDate(Customer c)
+        public List<Customer> GetCoustomers()
+        {
+            return d.GetCustomers();// return to presentation layer
+        }
+        public void UpdateCustomer(Customer c)
             {
 
             }
-            public void Del(Customer c)
+            public void Delcustomer(Customer c)
             {
 
             }
