@@ -7,6 +7,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
     /// </summary>
    public class Address
     {
+        public readonly string WarehouseId;
         private string _addressId;
         private string _doorNumber;
         private string _locationName;
@@ -16,7 +17,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         /// <summary>
         /// Default constructor
         /// </summary>
-        Address()
+       public Address()
         {
 
         }
@@ -28,7 +29,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         /// <param name="locName"></param>
         /// <param name="state"></param>
         /// <param name="pincode"></param>
-        Address(string locId, string doorNo, string locName, string state, string pincode)
+       public  Address(string locId, string doorNo, string locName, string state, string pincode)
         {
             this._addressId = locId;
             this._doorNumber = doorNo;

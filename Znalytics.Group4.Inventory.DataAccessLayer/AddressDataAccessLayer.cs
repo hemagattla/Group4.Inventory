@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿//Created by Nitya
+
+using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Group4.Inventory.DataAccessLayer;
 namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
@@ -14,11 +16,11 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         {
             AddressList = new List<Address>();
         }
-        public void AddAddress(WareHouse n)
+        public void AddAddress(Address a)
         {
-            AddressList.Add(n);
+            AddressList.Add(a);
         }
-        public List<WareHouse> GetAddresses()
+        public List<Address> GetAddresses()
         {
             return AddressList;
         }
@@ -32,3 +34,5 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             return AddressList.Find(temp => temp.WarehouseId == WareHouseID);
         }
     }
+}
+    
