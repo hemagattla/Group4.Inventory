@@ -30,14 +30,12 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
         {
             if ((stock.WareHouseID != null) && (stock.AddressName != null) && (stock.ProductID != null))
             {
-                _stockDataAccesslogic.ViewQuantity(stock);
+               return _stockDataAccesslogic.ViewQuantity(stock);
             }
             else
             {
                 throw new System.Exception(" ");
             }
-            return _stockDataAccesslogic.ViewQuantity(stock);
-
         }
     }
 }

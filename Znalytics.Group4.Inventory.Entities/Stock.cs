@@ -34,6 +34,7 @@
                 return _WareHouseID;
             }
         }
+        //Property of AddressName
         public string AddressName
         {
             set
@@ -55,6 +56,7 @@
             }
         }
 
+        //Property of ProductID
         public string ProductID
         {
             set
