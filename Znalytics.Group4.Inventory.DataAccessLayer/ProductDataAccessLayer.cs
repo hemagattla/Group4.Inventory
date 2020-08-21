@@ -5,7 +5,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using Znalytics.Inventory.Product.Entities;
-using Znalytics.Inventory.Product.IDataAccessLgoic;
+using Znalytics.Group4.Inventory.IDataAccessLayer;
 
 namespace Znalytics.Inventory.Product.DataAccessLayer
 {

@@ -74,5 +74,9 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
             matchingData.Quantity = stock.Quantity;
             return stock.Quantity;
         }
+        public List<Stock> GetProductID()
+        {
+
+        }
     }
 }
