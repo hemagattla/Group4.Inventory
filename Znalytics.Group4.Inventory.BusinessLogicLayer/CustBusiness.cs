@@ -27,10 +27,14 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
             {
             if(c.CustomerName!=null)
             {
-                d.UpdateCustomer();
+                d.UpdateCustomer(c);
             }
             }
-            public void Delcustomer(Customer c)
+        public List<Customer> GetCust()
+        {
+            return d.GetCust();
+        }
+        public void Delcustomer(Customer c)
             {
 
             }
