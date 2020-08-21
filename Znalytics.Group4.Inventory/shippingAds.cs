@@ -1,6 +1,6 @@
-﻿using Znalytics.Inventory.ProductShippingAddressModule.Entities;
-using Znalytics.Inventory.ProductShippingAddressModule.BusinessLogicLayer;
-namespace Znalytics.Inventory.ProductShippingAddressModule.PresentationLayer
+﻿using Znalytics.Group4.Inventory.Entities;
+using Znalytics.Group4.Inventory.BusinessLogicLayer;
+namespace Znalytics.Group4.Inventory.PresentationLayer
 {
     class Productshipping
     {

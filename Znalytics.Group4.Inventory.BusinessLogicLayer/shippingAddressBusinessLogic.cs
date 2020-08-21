@@ -1,11 +1,9 @@
-﻿using Znalytics.Inventory.ProductShippingAddressModule.Entities;
-using Znalytics.Inventory.ProductShippingAddressModule.DataAccesLayer;
-namespace Znalytics.Inventory.ProductShippingAddressModule.BusinessLogicLayer
+﻿using Znalytics.Group4.Inventory.Entities;
+using Znalytics.Group4.Inventory.DataAccessLayer;
+namespace Group4.Inventory.BusinessLogicLayer
 {
-    /// <summary>
-    /// product shipping address module of inventory management system
-    /// </summary>
-    public class ShippingAddressBusinessLogic
+    
+public class ShippingAddressBusinessLogic
     {
         ShippingAddressDataLayer dl = new ShippingAddressDataLayer();
 
@@ -13,22 +11,22 @@ namespace Znalytics.Inventory.ProductShippingAddressModule.BusinessLogicLayer
         /// Adding ProductName to collections
         /// </summary>
         /// <param name="value"></param>
-        public void AddProductName(ShippingAddress value)
+        public void AddressDetails(ShippingAddress values)
         {
-            if (value.ProductName != null)
+            if (values != null)
             {
-                dl.AddShippingDetails(value);
+                dl.AddShippingDetails(values);
             }
             else
             {
-                throw new System.Exception("Enter valid ProductName");
+                throw new System.Exception("Enter valid Address Details");
             }
         }
         /// <summary>
         /// Adding ProductID to collections
         /// </summary>
         /// <param name="value"></param>
-        public void AddProductID(ShippingAddress value)
+        public void DeleteDetails(ShippingAddress value)
         {
             dl.AddShippingDetails(value);
         }
