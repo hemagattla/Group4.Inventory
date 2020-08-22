@@ -74,5 +74,6 @@ class  CustPresentation
         Console.Write("enter customer id");
         c.CustomerId = int.Parse(Console.ReadLine());
         cbl.DelCustomer(c);
+        Console.WriteLine("customer has deleted");
     }
 }
