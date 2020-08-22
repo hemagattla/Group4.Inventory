@@ -36,19 +36,18 @@ class ProductPresentation
                 switch (Choice)
                 {
                     case 1:
-                        AddProduct();
+                        AddProduct(); // calling AddProduct Method declared Locally
                         break;
 
 
                     case 2:
-                        DisplayProducts();
+                        DisplayProducts();// calling DisplayProducts Method declared Locally
                         break;
-                    case 3: GetProductByID(); break;
-                    case 4: RemoveProduct(); break;
-
+                    case 3: GetProductByID(); break; // calling GetProductByID Method declared Locally
+                    case 4: RemoveProduct(); break;// calling RemoveProduct Method declared Locally
 
                     case 5:
-                        UpdateProduct();
+                        UpdateProduct(); // calling update Method declared Locally
                         break;
 
 
