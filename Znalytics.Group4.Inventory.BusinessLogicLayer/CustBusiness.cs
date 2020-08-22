@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Znalytics.Group4.Inventory.DataAccessLayer;
+using Znalytics.Group4.Inventory.DataAccessLayer;//importing dataaccesslayer by using keyword///
 using Znalytics.Group4.Inventory.Entities;
-namespace Znalytics.Group4.Inventory.BusinessLogicLayer
+namespace Znalytics.Group4.Inventory.BusinessLogicLayer///namespace is nothing bt collection of classes///
 {
- 
-        public class CustBusiness
-        {
-            CustDataLayer d = new CustDataLayer();
-            public void AddCustomer(Customer c)
-            {
-                if (c.CustomerName != null)
-                {
-                    d.AddCustomer(c);
 
-                }
-            }
-        public List<Customer> GetCoustomers()
+    public class CustBusiness
+    {
+        CustDataLayer d = new CustDataLayer();
+        public void AddCustomer(Customer c)///these method is called from presentation layer///
         {
-            return d.GetCustomers();// return to presentation layer
+            if (c.CustomerName != null)///validating the condition///
+            {
+                d.AddCustomer(c);///these calls the method of dataaccess layer///
+
+            }
         }
+
+            public List<Customer> GetCoustomers()
+            {
+                return d.GetCustomers();// return to presentation layer
+            }
+        
         public void UpdateCustomer(Customer c)
             {
             if(c.CustomerName!=null)
@@ -36,7 +38,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         }
         public void Delcustomer(Customer c)
             {
-
+            d.DelCustomer(c);
             }
         }
     }
