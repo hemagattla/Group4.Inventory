@@ -46,6 +46,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
             return d.DisplayProducts();
         }
 
+       public ProductEntitie GetProductByID
 
         public void RemoveProductByID(int id)
         {
