@@ -52,28 +52,27 @@ class  CustPresentation
         Console.WriteLine("enter hno");
         c.HNo = Console.ReadLine();
 
-
-        cbl.AddCustomer(c);///call's the business logic layer of AddCustomer method///
+       cbl.AddCustomer(c);///call's the business logic layer of AddCustomer method///
         Console.WriteLine("customer details are  Added.\n");
     }
     static void UpdateCustomer()
     {
-        CustBusiness employeeBusinessLogic = new CustBusiness();
+        CustBusiness cbl = new CustBusiness();
         Customer c = new Customer();
 
         Console.Write("Enter Existing customer ID: ");/// updating name and city by using primary key as customerid///
         c.CustomerId = int.Parse(Console.ReadLine());
-        Console.Write("Enter New Emp Name: ");
+        Console.Write("enter customer name");
         c.CustomerName = Console.ReadLine();
-        Console.WriteLine("enter city");
-        c.City = Console.ReadLine();
-
-
-        employeeBusinessLogic.UpdateCustomer(c);
+        cbl.UpdateCustomer(c);
         Console.WriteLine("Customer  Updated");
     }
     static void DelCustomer()
     {
+        CustBusiness employeeBusinessLogic = new CustBusiness();
+        Customer c = new Customer();
+        Console.Write("enter customer id");
+        c.CustomerId = int.Parse(Console.ReadLine());
 
     }
 }
