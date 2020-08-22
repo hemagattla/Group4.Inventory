@@ -1,5 +1,6 @@
 ﻿//Created By Nitya
 
+
 namespace Znalytics.Inventory.WareHouseModule.Entities
 {
     /// <summary>
