@@ -11,7 +11,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
     /// <summary>
     /// Represents the class for WareHouse Address
     /// </summary>
-    public class WareHouseAddressDataAccessLayer
+    public class WareHouseAddressDataAccessLayer: IWareHouseAddressDataAccessLayer
     {
         //Created a list for WareHouse Addresses
         public List<WareHouseAddress> AddressList

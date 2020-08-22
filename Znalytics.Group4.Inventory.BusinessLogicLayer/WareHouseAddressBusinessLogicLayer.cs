@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
 using Znalytics.Inventory.AddressModule.Entities;
+using Znalytics.Inventory.AddressModule.BusinessLogicLayer;
 
 namespace Znalytics.Inventory.AddressModule.DataAccessLayer 
 {
@@ -10,8 +11,8 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
     /// <summary>
     /// Represents BusinessLogic class of AddressWareHouse
     /// </summary>
-    public class WareHouseAddressBusinessLogicLayer
-         {
+    public class WareHouseAddressBusinessLogicLayer: IWareHouseAddressBusinessLogicLayer
+    {
        WareHouseAddressDataAccessLayer wadl = new WareHouseAddressDataAccessLayer();
 
         //Method to add Address details to the list
