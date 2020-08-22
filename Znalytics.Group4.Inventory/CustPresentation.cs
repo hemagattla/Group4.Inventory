@@ -69,10 +69,10 @@ class  CustPresentation
     }
     static void DelCustomer()
     {
-        CustBusiness employeeBusinessLogic = new CustBusiness();
+        CustBusiness cbl = new CustBusiness();
         Customer c = new Customer();
         Console.Write("enter customer id");
         c.CustomerId = int.Parse(Console.ReadLine());
-
+        cbl.DelCustomer(c);
     }
 }

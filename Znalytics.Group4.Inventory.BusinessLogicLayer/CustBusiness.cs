@@ -36,7 +36,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer///namespace is nothing b
         {
             return d.GetCust();
         }
-        public void Delcustomer(Customer c)
+        public void DelCustomer(Customer c)
             {
             d.DelCustomer(c);
             }
