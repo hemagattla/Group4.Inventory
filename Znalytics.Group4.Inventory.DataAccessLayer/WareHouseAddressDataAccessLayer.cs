@@ -26,13 +26,13 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             AddressList = new List<WareHouseAddress>();
         }
 
-        //Method to add details to the list
+        //Method to add address details to the list
         public void AddAddress(WareHouseAddress a)
         {
             AddressList.Add(a);
         }
 
-        // Method to display the added details
+        // Method to display the added address details
         public List<WareHouseAddress> GetAddresses()
         {
             return AddressList;
