@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Znalytics.Group4.Inventory.BusinessLogicLayer;
 using Znalytics.Inventory.Product.DataAccessLayer;
 using Znalytics.Inventory.Product.Entities;
 
@@ -14,7 +13,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
     /// <summary>
     /// refers tp Product BusinessLogic
     /// </summary>
-    public class ProductBusiness : IProductBusinessLogicLayer
+    public class ProductBusiness
     {
         Productdata d;
 
@@ -46,8 +45,10 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
             return d.DisplayProducts();
         }
 
-       public ProductEntitie GetProductByID
-
+        /// <summary>
+        /// removing Product By ID
+        /// </summary>
+        /// <param name="id"></param>
         public void RemoveProductByID(int id)
         {
             if (id != 0)
@@ -55,12 +56,22 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
                 d.RemoveProductByID(id);
             }
         }
+        /// <summary>
+        /// remove Product By Product name
+        /// </summary>
+        /// <param name="name"></param>
         public void RemoveProductByName(string name)
         {
             if (name != null)
             {
                 d.RemoveProductByName(name);
             }
+        }
+
+
+        public ProductEntitie GetProductByID(int productID)
+        {
+            return d.GetProductByID(productID);
         }
 
     }

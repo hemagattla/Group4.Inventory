@@ -4,8 +4,10 @@
 
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Znalytics.Inventory.Product.Entities;
-using Znalytics.Group4.Inventory.IDataAccessLayer;
+using Znalytics.Group4.Inventory.IDataAccessLayer
 
 namespace Znalytics.Inventory.Product.DataAccessLayer
 {
@@ -56,6 +58,15 @@ namespace Znalytics.Inventory.Product.DataAccessLayer
             _ProductsList.RemoveAll(n => n.ProductName == name);
         }
 
+        public ProductEntitie GetProductByID(int productID)
+        {
+            ProductEntitie pe;
+            pe = _ProductsList.Find(n => n.ProductID == productID);
+            return pe;
+
+
+
+        }
 
     }
 }
