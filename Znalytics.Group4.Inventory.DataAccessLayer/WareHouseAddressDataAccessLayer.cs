@@ -3,7 +3,9 @@
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Group4.Inventory.DataAccessLayer;
-namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
+using Znalytics.Inventory.AddressModule.Entities;
+
+namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 {
 
     /// <summary>

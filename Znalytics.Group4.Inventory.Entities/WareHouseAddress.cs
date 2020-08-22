@@ -1,6 +1,6 @@
 ﻿//Created By Nitya
 
-namespace Znalytics.Inventory.WareHouseModule.Entities
+namespace Znalytics.Inventory.AddressModule.Entities
 {
     /// <summary>
     /// Represents Address of the WareHouse
