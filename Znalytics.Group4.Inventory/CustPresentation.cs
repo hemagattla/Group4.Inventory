@@ -13,8 +13,8 @@ class  CustPresentation
         {
             Console.WriteLine("Customer MENU");
             Console.WriteLine("1. Add customer");
-            Console.WriteLine("2. Del customer");
-            Console.WriteLine("3. Update customer");
+            Console.WriteLine("2. update customer");
+            Console.WriteLine("3. del customer");
             Console.WriteLine("4. Exit");
             Console.Write("Enter choice: ");
             choice = int.Parse(Console.ReadLine());
