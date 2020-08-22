@@ -13,8 +13,8 @@ class  CustPresentation
         {
             Console.WriteLine("Customer MENU");
             Console.WriteLine("1. Add customer");
-            Console.WriteLine("2. View customer");
-            Console.WriteLine("3. Update customer");
+            Console.WriteLine("2. update customer");
+            Console.WriteLine("3. del customer");
             Console.WriteLine("4. Exit");
             Console.Write("Enter choice: ");
             choice = int.Parse(Console.ReadLine());
@@ -45,17 +45,35 @@ class  CustPresentation
         c.Country = Console.ReadLine();
         Console.WriteLine("enter state");
         c.State = Console.ReadLine();
+        Console.WriteLine("enter city");
+        c.City = Console.ReadLine();
+        Console.WriteLine("enter pinno");
+        c.PinNo = Console.ReadLine();
+        Console.WriteLine("enter hno");
+        c.HNo = Console.ReadLine();
 
-
-        cbl.AddCustomer(c);///call's the business logic layer of AddCustomer method///
+       cbl.AddCustomer(c);///call's the business logic layer of AddCustomer method///
         Console.WriteLine("customer details are  Added.\n");
     }
     static void UpdateCustomer()
     {
+        CustBusiness cbl = new CustBusiness();
+        Customer c = new Customer();
 
+        Console.Write("Enter Existing customer ID: ");/// updating name and city by using primary key as customerid///
+        c.CustomerId = int.Parse(Console.ReadLine());
+        Console.Write("enter customer name");
+        c.CustomerName = Console.ReadLine();
+        cbl.UpdateCustomer(c);
+        Console.WriteLine("Customer  Updated");
     }
     static void DelCustomer()
     {
-
+        CustBusiness cbl = new CustBusiness();
+        Customer c = new Customer();
+        Console.Write("enter customer id");
+        c.CustomerId = int.Parse(Console.ReadLine());
+        cbl.DelCustomer(c);
+        Console.WriteLine("customer has deleted");
     }
 }

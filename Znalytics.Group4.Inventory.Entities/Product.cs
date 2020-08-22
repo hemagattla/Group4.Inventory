@@ -13,7 +13,7 @@ namespace Znalytics.Inventory.Product.Entities
     /// <summary>
     /// referes to ProductEntities class in Entities Layer
     /// </summary>
-    public class Product
+    public class ProductEntitie
     {
         //creating private feilds
         private string _productName;
