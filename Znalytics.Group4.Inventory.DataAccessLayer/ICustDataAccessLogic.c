@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Znalytics.Group4.Inventory.DataAccessLayer
+using znalytics.Group4.Inventory.Entities;
+namespace Znalytics.Group4.Inventory.IDataAccessLayer
 {
-    class ICustDataAccessLogic//creating an interface 
+   interface IcustDataAccessLayer//creating an interface 
     {
     abstract void AddCustomer(Customer c);
     abstract void DelCustomer(Customer c);
