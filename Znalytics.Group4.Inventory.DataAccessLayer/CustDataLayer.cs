@@ -5,9 +5,10 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Group4.Inventory.Entities;
+using Znalytics.Group4.Inventory.IDataAccessLayer;
 namespace Znalytics.Group4.Inventory.DataAccessLayer 
 {
-    public class CustDataLayer
+    public class CustDataLayer:IcustDataLayer
     {
         static List<Customer> _customers = new List<Customer>();/// <summary>
                                                                 /// creating list as customers///

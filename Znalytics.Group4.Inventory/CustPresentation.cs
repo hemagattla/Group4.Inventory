@@ -33,7 +33,7 @@ class  CustPresentation
         CustBusiness cbl = new CustBusiness();/// creating object for business logic layer
         Customer c = new Customer();///creating obj for customer class present in entity layer
 
-        Console.Write("Enter Emp ID: ");
+        Console.Write("Enter cust ID: ");
         c.CustomerId = int.Parse(Console.ReadLine());
         Console.Write("Enter cust id: ");
         c.CustomerName = Console.ReadLine();
