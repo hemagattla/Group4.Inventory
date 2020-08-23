@@ -8,7 +8,7 @@
         //Private fields
         private string _wareHouseID;
         private string _addressName;
-        private string _productID;
+        private int _productID;
         private string _stockID;
         private int _quantity;
 
@@ -19,15 +19,9 @@
             {
                 //if input value and WareHouseID present in database matches then the value will be assigned to the _WareHouseID
                 //else it will throw an exception
-                if ((value.Length==5)&&(value.StartsWith("WID")))
-                {
+            
                     _wareHouseID = value;
 
-                }
-                else
-                {
-                    throw new System.Exception("ur entered WareHouseID is invalid");
-                }
             }
 
             get
@@ -58,14 +52,14 @@
         }
 
         //Property of ProductID
-        public string ProductID
+        public int ProductID
         {
             set
             {
                 //if input value and ProductID present in database matches then the value will be assigned to the _ProductID
                 //else it will throw an exception
-                if ((value.Length==5)&&(value.StartsWith("PID")))
-                {
+                if(value!=0)
+                { 
                     _productID = value;
                 }
                 else

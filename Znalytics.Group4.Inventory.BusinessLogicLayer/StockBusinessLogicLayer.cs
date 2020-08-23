@@ -3,6 +3,7 @@ using Znalytics.Inventory.StockMaintain.DataAccessLayer;
 using Znalytics.Group4.Inventory.StockMain.BusinessLogicLayer;
 using Znalytics.Group4.Inventory.BusinessLogicLayer;
 using Znalytics.Inventory.Product.BusinessLogicLayer;
+using Znalytics.Group4.Inventory.BusinessLogicLayer;
 
 namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
 {
@@ -16,10 +17,11 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
 
         public void AddStock(Stock stock)
         {
-            if ((stock.WareHouseID != null) && (stock.AddressName != null) && (stock.ProductID != null) && (stock.Add != 0))
+            if ((stock.WareHouseID != null) && (stock.AddressName != null) && (stock.ProductID != 0) && (stock.Add != 0))
             {
-                IProductBusinessLogicLayer productBusinessLogicLayer = new ProductBusiness();
-                if (productBusinessLogicLayer.GetProductByProductID(stock.ProductID) != null)
+                IWareHouseBusinessLayer wareHouseBusinessLayer= new IWareHouseBusinessLayer()
+               IProductBusinessLogicLayer productBusinessLogicLayer = new ProductBusiness();
+                if (productBusinessLogicLayer.GetProductByProductID(stock.ProductID))
                 {
                     _stockDataAccesslogic.AddStock(stock);
                 }
