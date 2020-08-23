@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Znalytics.Inventory.Module.Entities;
 namespace Znalytics.Inventory.Module.DataAccessLayer 
 {
-    public class CustDataLayer:IcustDataLayer
+    public class CustDataLayer
     {
         static List<Customer> _customers = new List<Customer>();/// <summary>
                                                                 /// creating list as customers///
