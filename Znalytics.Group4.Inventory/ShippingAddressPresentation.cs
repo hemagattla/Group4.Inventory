@@ -6,7 +6,7 @@ using Znalytics.Inventory.ProductShippingAddressModule.Entities;
 
 namespace Znalytics.Group4.Inventory.PresentationLayer
 {
-    class AddressDetails
+    class ShippingAddressPresentation
     {
         static void Main()
         {
