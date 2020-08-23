@@ -180,8 +180,42 @@ class ProductPresentation
             System.Console.WriteLine("3. Update Product Price");
 
 
+            int option;
 
+            option = int.Parse("enter your Choice: "+ System.Console.ReadLine());
 
+            switch(option)
+            {
+                case 1:
+                    UpdateProductName();break;
+                case 2:
+                    UpdateProductID();break;
+                case 3:
+                    UpdateProductPrice();break;
+                   
+            }
+
+            void UpdateProductName()
+            {
+
+                System.Console.WriteLine("Enter Existing Product ID");
+                Product.ProductID = int.Parse(System.Console.ReadLine());
+                System.Console.WriteLine("Enter new name for Product");
+                Product.ProductName = System.Console.ReadLine();
+
+                pb.UpdateProductName(Product);
+            
+            }
+
+            void UpdateProductID()
+            {
+
+            }
+
+            void UpdateProductPrice()
+            {
+
+            }
 
         }
 

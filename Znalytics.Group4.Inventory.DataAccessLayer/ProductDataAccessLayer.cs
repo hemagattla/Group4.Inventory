@@ -66,5 +66,14 @@ namespace Znalytics.Inventory.Product.DataAccessLayer
 
         }
 
+        public void UpdateProductName(ProductEntitie product)// update product Name
+        {
+            ProductEntitie PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
+            if(PE!=null)
+            {
+                PE.ProductName = product.ProductName;
+            }
+        }
+
     }
 }
