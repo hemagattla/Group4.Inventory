@@ -78,7 +78,10 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
             return d.GetProductByID(productID);
         }
 
-
+        /// <summary>
+        /// update product name
+        /// </summary>
+        /// <param name="product"></param>
         public void UpdateProductName(ProductEntitie product)
         {
             if (product.ProductName != null)
