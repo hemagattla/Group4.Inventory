@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Znalytics.Inventory.Customer.DataAccessLayer;//importing dataaccesslayer by using keyword///
-using Znalytics.Inventory.Customer.Entities;
-namespace Znalytics.Inventory.Customer.BusinessLogicLayer///namespace is nothing bt collection of classes///
+using Znalytics.Inventory.Module.DataAccessLayer;//importing dataaccesslayer by using keyword///
+using Znalytics.Inventory.Module.Entities;
+namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing bt collection of classes///
 {
 
     public class CustBusiness

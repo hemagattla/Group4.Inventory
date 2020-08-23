@@ -4,8 +4,8 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
-using Znalytics.Inventory.Customer.Entities;
-namespace Znalytics.Inventory.Customer.DataAccessLayer 
+using Znalytics.Inventory.Module.Entities;
+namespace Znalytics.Inventory.Module.DataAccessLayer 
 {
     public class CustDataLayer:IcustDataLayer
     {
