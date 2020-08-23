@@ -5,6 +5,7 @@ using Znalytics.Group4.Inventory.BusinessLogicLayer;
 using Znalytics.Inventory.Product.BusinessLogicLayer;
 
 using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
+using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 
 namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
 {
@@ -26,7 +27,7 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
                 {
                     if(productBusinessLogicLayer.GetProductByProductID(stock.ProductID)!=0)
                     {
-
+                        _stockDataAccesslogic.AddStock(stock);
                     }
 
                 }
