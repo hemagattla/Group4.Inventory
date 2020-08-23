@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ICustDataAccessLogic.c" />
+    <Compile Include="IWareHouseAddressDataAccessLayer.cs" />
     <Compile Include="WareHouseAddressDataAccessLayer.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="CustDataLayer.cs" />

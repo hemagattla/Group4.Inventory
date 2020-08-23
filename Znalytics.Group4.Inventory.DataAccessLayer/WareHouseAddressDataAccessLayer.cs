@@ -3,13 +3,15 @@
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Group4.Inventory.DataAccessLayer;
-namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
+using Znalytics.Inventory.AddressModule.Entities;
+
+namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 {
 
     /// <summary>
     /// Represents the class for WareHouse Address
     /// </summary>
-    public class WareHouseAddressDataAccessLayer
+    public class WareHouseAddressDataAccessLayer: IWareHouseAddressDataAccessLayer
     {
         //Created a list for WareHouse Addresses
         public List<WareHouseAddress> AddressList
@@ -24,13 +26,13 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             AddressList = new List<WareHouseAddress>();
         }
 
-        //Method to add details to the list
+        //Method to add address details to the list
         public void AddAddress(WareHouseAddress a)
         {
             AddressList.Add(a);
         }
 
-        // Method to display the added details
+        // Method to display the added address details
         public List<WareHouseAddress> GetAddresses()
         {
             return AddressList;

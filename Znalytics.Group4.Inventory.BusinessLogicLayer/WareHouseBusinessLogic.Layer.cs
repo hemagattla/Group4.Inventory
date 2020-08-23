@@ -15,8 +15,10 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
 
         WareHouseDataAccessLayer d = new WareHouseDataAccessLayer();
 
+        
+        
         //Method to add details to the list
-        public void AddWareHouse(WareHouse n)
+         public void AddWareHouse(WareHouse n)
         {
             //WareHouse Id should not be null
             if (n.WarehouseId != null)
