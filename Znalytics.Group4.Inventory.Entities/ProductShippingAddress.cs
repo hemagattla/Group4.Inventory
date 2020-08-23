@@ -1,4 +1,5 @@
-﻿namespace Znalytics.Inventory.ProductShippingAddressModule.Entities
+﻿//Written By Dhanasri
+namespace Znalytics.Inventory.ProductShippingAddressModule.Entities
 {
     /// <summary>
     /// product shipping address module of inventory management system
