@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Znalytics.Group4.Inventory.DataAccessLayer;//importing dataaccesslayer by using keyword///
+using Znalytics.Inventory.Customer.DataAccessLayer;//importing dataaccesslayer by using keyword///
 using Znalytics.Inventory.Customer.Entities;
 namespace Znalytics.Inventory.Customer.BusinessLogicLayer///namespace is nothing bt collection of classes///
 {
@@ -11,7 +11,7 @@ namespace Znalytics.Inventory.Customer.BusinessLogicLayer///namespace is nothing
     public class CustBusiness
     {
         CustDataLayer d = new CustDataLayer();
-        public void AddCustomer(Customer c)///these method is called from presentation layer///
+        public void AddCustomer( Customer c)///these method is called from presentation layer///
         {
             if (c.CustomerName != null)///validating the condition///
             {
