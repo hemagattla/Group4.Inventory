@@ -62,7 +62,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             System.Console.WriteLine("Enter Address Name");
             stock.AddressName = System.Console.ReadLine();
             System.Console.WriteLine("Enter Product ID");
-            stock.ProductID = System.Console.ReadLine();
+            stock.ProductID = System.Convert.ToInt32(System.Console.ReadLine());
             System.Console.WriteLine("Enter no of Quantities u want to add");
             stock.Add = System.Convert.ToInt32(System.Console.ReadLine());
             stockBusinessLogicLayer.AddStock(stock);
@@ -77,7 +77,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             System.Console.WriteLine("Enter Address Name");
             stock.AddressName = System.Console.ReadLine();
             System.Console.WriteLine("Enter Product ID");
-            stock.ProductID = System.Console.ReadLine();
+            stock.ProductID =System.Convert.ToInt32( System.Console.ReadLine());
             System.Console.WriteLine("Enter no of Quantities u want to add");
             stock.Delete = System.Convert.ToInt32(System.Console.ReadLine());
             stockBusinessLogicLayer.DeleteStockByWareHouseID(stock);
@@ -92,7 +92,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             System.Console.WriteLine("Enter Address Name");
             stock.AddressName = System.Console.ReadLine();
             System.Console.WriteLine("Enter Product ID");
-            stock.ProductID = System.Console.ReadLine();
+            stock.ProductID =System.Convert.ToInt32( System.Console.ReadLine());
             int c = stockBusinessLogicLayer.ViewQuantity(stock);
             System.Console.WriteLine(c);
         }
