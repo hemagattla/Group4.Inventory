@@ -8,7 +8,7 @@ using Znalytics.Group4.Inventory.Entities;
 using Znalytics.Group4.Inventory.IDataAccessLayer;
 namespace Znalytics.Group4.Inventory.DataAccessLayer 
 {
-    public class CustDataLayer: IcustDataAccessLayer
+    public class CustDataLayer
     {
         static List<Customer> _customers = new List<Customer>();/// <summary>
                                                                 /// creating list as customers///
