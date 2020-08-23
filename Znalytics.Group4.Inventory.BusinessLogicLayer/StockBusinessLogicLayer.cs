@@ -27,7 +27,7 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
                 {
                     if(productBusinessLogicLayer.GetProductByProductID(stock.ProductID)!=0)
                     {
-
+                        _stockDataAccesslogic.AddStock(stock);
                     }
 
                 }
