@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Znalytics.Group4.Inventory.BusinessLogicLayer;
-using Znalytics.Group4.Inventory.Customer.Entities;
+using Znalytics.Inventory.Customer.Entities;
 
 class  CustPresentation
-{
+{ 
     static void Main()
     {
 

@@ -3,7 +3,7 @@ using System.CodeDom;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
-namespace Zynalitcs.Inventory.Customer.Entities///collection of classes is namespace///
+namespace Znalytics.Inventory.Customer.Entities///collection of classes is namespace///
 {
     public class Customer
     {
