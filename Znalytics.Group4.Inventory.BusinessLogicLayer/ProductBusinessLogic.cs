@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.Product.DataAccessLayer;
 using Znalytics.Inventory.Product.Entities;
-using Znalytics.Group4.Inventory.BusinessLogicLayer;
+using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 
 namespace Znalytics.Inventory.Product.BusinessLogicLayer
 {
