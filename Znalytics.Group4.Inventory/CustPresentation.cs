@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Znalytics.Group4.Inventory.BusinessLogicLayer;
-using Znalytics.Group4.Inventory.Entities;
+using Znalytics.Group4.Inventory.Customer.Entities;
 
 class  CustPresentation
 {
