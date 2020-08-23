@@ -5,9 +5,10 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.Module.Entities;
+using Znalytics.Inventory.IDataAccessLayer;
 namespace Znalytics.Inventory.Module.DataAccessLayer 
 {
-    public class CustDataLayer
+    public class CustDataLayer: IcustDataLayer
     {
         static List<Customer> _customers = new List<Customer>();/// <summary>
                                                                 /// creating list as customers///
@@ -22,7 +23,7 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
         {
             return _customers;
         }
-        public void UpdateCustomer(Customer c)
+        public void UpDateCustomer(Customer c)
         {
             ///updating deatils based on cust id///
             Customer cu = _customers.Find(temp => temp.CustomerId == c.CustomerId);

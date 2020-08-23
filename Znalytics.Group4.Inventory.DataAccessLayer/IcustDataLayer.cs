@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Znalytics.Inventory.Module.Entities;
 namespace Znalytics.Inventory.IDataAccessLayer
 {
-    class IcustDataLayer
+    interface IcustDataLayer
     {
-       abstract public void AddCustomer(Customer c);
-        abstract public  void UpDateCustomer(Customer c);
-        abstract public void DelCustomer(Customer c);
+        void AddCustomer(Customer c);
+          void UpDateCustomer(Customer c);
+      void DelCustomer(Customer c);
     }
 }
