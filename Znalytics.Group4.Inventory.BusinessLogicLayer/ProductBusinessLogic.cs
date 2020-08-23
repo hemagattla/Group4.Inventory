@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.Product.DataAccessLayer;
 using Znalytics.Inventory.Product.Entities;
+using Znalytics.Group4.Inventory.BusinessLogicLayer;
 
 namespace Znalytics.Inventory.Product.BusinessLogicLayer
 {
@@ -13,7 +14,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
     /// <summary>
     /// refers tp Product BusinessLogic
     /// </summary>
-    public class ProductBusiness
+    public class ProductBusiness: IProductBusinessLogicLayer
     {
         Productdata d;
 
@@ -73,10 +74,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
         /// <param name="productID"></param>
         /// <returns></returns>
 
-        public ProductEntitie GetProductByID(int productID)
-        {
-            return d.GetProductByID(productID);
-        }
+     
 
         /// <summary>
         /// update product name
@@ -88,6 +86,12 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
             {
                 d.UpdateProductName(product);
             }
+        }
+
+        public ProductEntitie GetProductByProductID(int ProductID)
+        {
+            return d.GetProductByID(ProductID);
+          
         }
     }
 }

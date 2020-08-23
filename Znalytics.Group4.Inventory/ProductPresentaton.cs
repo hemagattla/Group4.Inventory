@@ -165,7 +165,7 @@ class ProductPresentation
             System.Console.Write("Enter the ProductID: ");
             int productID = int.Parse(System.Console.ReadLine());
             ProductBusiness pb = new ProductBusiness();
-            ProductEntitie pe = pb.GetProductByID(productID);
+            ProductEntitie pe = pb.GetProductByProductID(productID);
             System.Console.WriteLine(pe.ProductID + "     " + pe.ProductName + "      " + pe.Price);
 
         }
