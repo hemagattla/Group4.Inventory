@@ -23,9 +23,10 @@ class ProductPresentation
         {
             System.Console.WriteLine("1. Add Product");
             System.Console.WriteLine("2.Show product");
-            System.Console.WriteLine("3. Delete Product");
-            System.Console.WriteLine("4. Upadte Prroduct");
-            System.Console.WriteLine("4.Exit");
+            System.Console.WriteLine("3.Show Product By ID");
+            System.Console.WriteLine("4. Delete Product");
+            System.Console.WriteLine("5. Upadte Prroduct");
+            System.Console.WriteLine("6.Exit");
 
             b = int.TryParse(System.Console.ReadLine(), out Choice);
 
@@ -35,16 +36,18 @@ class ProductPresentation
                 switch (Choice)
                 {
                     case 1:
-                        AddProduct();
+                        AddProduct(); // calling AddProduct Method declared Locally
                         break;
 
 
                     case 2:
-                        DisplayProducts();
+                        DisplayProducts();// calling DisplayProducts Method declared Locally
                         break;
-                    case 3: RemoveProduct(); break;
+                    case 3: GetProductByID(); break; // calling GetProductByID Method declared Locally
+                    case 4: RemoveProduct(); break;// calling RemoveProduct Method declared Locally
 
-                    case 4:
+                    case 5:
+                        UpdateProduct(); // calling update Method declared Locally
                         break;
 
 
@@ -66,7 +69,7 @@ class ProductPresentation
             }
 
 
-        } while (Choice != 4);
+        } while (Choice != 6);
 
 
 
@@ -152,6 +155,67 @@ class ProductPresentation
 
 
 
+
+        }
+
+
+        void GetProductByID()
+        {
+
+            System.Console.Write("Enter the ProductID: ");
+            int productID = int.Parse(System.Console.ReadLine());
+            ProductBusiness pb = new ProductBusiness();
+            ProductEntitie pe = pb.GetProductByProductID(productID);
+            System.Console.WriteLine(pe.ProductID + "     " + pe.ProductName + "      " + pe.Price);
+
+        }
+
+        void UpdateProduct()
+        {
+            ProductEntitie Product = new ProductEntitie();// creating the object fro ProductDeatils class
+            ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
+
+            System.Console.WriteLine("1. Update Product Name");
+            System.Console.WriteLine("2. Update Product ID");
+            System.Console.WriteLine("3. Update Product Price");
+
+
+            int option;
+
+            option = int.Parse("enter your Choice: "+ System.Console.ReadLine());
+
+            switch(option)
+            {
+                case 1:
+                    UpdateProductName();break;
+                case 2:
+                    UpdateProductID();break;
+                case 3:
+                    UpdateProductPrice();break;
+                   
+            }
+
+            void UpdateProductName()
+            {
+
+                System.Console.WriteLine("Enter Existing Product ID");
+                Product.ProductID = int.Parse(System.Console.ReadLine());
+                System.Console.WriteLine("Enter new name for Product");
+                Product.ProductName = System.Console.ReadLine();
+
+                pb.UpdateProductName(Product);
+            
+            }
+
+            void UpdateProductID()
+            {
+
+            }
+
+            void UpdateProductPrice()
+            {
+
+            }
 
         }
 

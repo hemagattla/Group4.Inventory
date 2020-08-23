@@ -8,6 +8,8 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
     {
         public static void Menu()
         {
+
+            Address a = new Address();
             int choice = -1;
             do
             {
@@ -65,9 +67,9 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             WriteLine("Enter Warehouse Id");
             n.WarehouseId = ReadLine();
             WriteLine("Enter Location Name");
-            n.LocationName = ReadLine();
+            //n.LocationName = ReadLine();
             WriteLine("Enter Pincode");
-            n.Pincode = ReadLine();
+           // n.Pincode = ReadLine();
             WriteLine("Enter Warehouse capacity");
             n.WarehouseCapacity = int.Parse(ReadLine());
 

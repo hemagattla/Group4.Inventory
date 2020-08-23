@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.Product.DataAccessLayer;
 using Znalytics.Inventory.Product.Entities;
+using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 
 namespace Znalytics.Inventory.Product.BusinessLogicLayer
 {
@@ -13,7 +14,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
     /// <summary>
     /// refers tp Product BusinessLogic
     /// </summary>
-    public class ProductBusiness
+    public class ProductBusiness: IProductBusinessLogicLayer
     {
         Productdata d;
 
@@ -45,7 +46,10 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
             return d.DisplayProducts();
         }
 
-
+        /// <summary>
+        /// removing Product By ID
+        /// </summary>
+        /// <param name="id"></param>
         public void RemoveProductByID(int id)
         {
             if (id != 0)
@@ -53,6 +57,10 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
                 d.RemoveProductByID(id);
             }
         }
+        /// <summary>
+        /// remove Product By Product name
+        /// </summary>
+        /// <param name="name"></param>
         public void RemoveProductByName(string name)
         {
             if (name != null)
@@ -60,6 +68,30 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
                 d.RemoveProductByName(name);
             }
         }
+        /// <summary>
+        /// Displaying the Product Details By using ProductID
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <returns></returns>
 
+     
+
+        /// <summary>
+        /// update product name
+        /// </summary>
+        /// <param name="product"></param>
+        public void UpdateProductName(ProductEntitie product)
+        {
+            if (product.ProductName != null)
+            {
+                d.UpdateProductName(product);
+            }
+        }
+
+        public ProductEntitie GetProductByProductID(int ProductID)
+        {
+            return d.GetProductByID(ProductID);
+          
+        }
     }
 }

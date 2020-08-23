@@ -3,219 +3,222 @@ using System.CodeDom;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
-public class Customer
+namespace Znalytics.Inventory.Module.Entities///collection of classes is namespace///
 {
-    private int _CustomerId;
-    private string _CustomerName;
-    private string _Email;
-    private string _MblNo;
-    private string _Country;
-    private string _City;
-    private string _State;
-    private string _Street;
-    private string _PinNo;
-    private string _HNo;
-    public Customer()///default constructor
+    public class Customer
     {
-
-    }
-    /// <summary>
-    /// parameterized constructor(when ever an object is created  constructed is called)
-    /// 
-    /// </summary>
-   public Customer(int cid,string cstname,string mail,string mblno, string  cntry,string ci,string state,string st,string pin,string hno)
-
+        private int _CustomerId;
+        private string _CustomerName;
+        private string _Email;
+        private string _MblNo;
+        private string _Country;
+        private string _City;
+        private string _State;
+        private string _Street;
+        private string _PinNo;
+        private string _HNo;
+        public Customer()///default constructor
         {
-        this.CustomerId = cid;///cuuurent method CoustomerId will be called and checks the conditons present in the method ant then asigns the value///
-        this.CustomerName = cstname;
-        this.Email = mail;
-        this.MblNo = mblno;
-        this.Country = cntry;
-        this.City = ci;
-        this.State = state;
-        this.Street = st;
-        this.PinNo = pin;
-        this.HNo = hno;
-
 
         }
-    public int CustomerId
-    {
-        set
+        /// <summary>
+        /// parameterized constructor(when ever an object is created  constructed is called)
+        /// 
+        /// </summary>
+        public Customer(int cid, string cstname, string mail, string mblno, string cntry, string ci, string state, string st, string pin, string hno)
+
         {
-            if (value >= 0 && value <= 9)
+            this.CustomerId = cid;///cuuurent method CoustomerId will be called and checks the conditons present in the method ant then asigns the value///
+            this.CustomerName = cstname;
+            this.Email = mail;
+            this.MblNo = mblno;
+            this.Country = cntry;
+            this.City = ci;
+            this.State = state;
+            this.Street = st;
+            this.PinNo = pin;
+            this.HNo = hno;
+        }/// <summary>
+
+         /// </summary>
+        public int CustomerId
+        {
+            set
             {
-                _CustomerId = value;
+                if (value >= 0 && value <= 9)
+                {
+                    _CustomerId = value;
+                }
+            }
+            get
+            {
+                return _CustomerId;
+
             }
         }
-        get
-        {
-            return _CustomerId;
-
-        }
-    }
 
 
-    public string CustomerName
-    {
-        set
+        public string CustomerName
         {
-            if (value.Length <30)
+            set
             {
-                _CustomerName = value;
+                if (value.Length < 30)
+                {
+                    _CustomerName = value;
+                }
+                else
+                {
+                    throw new System.Exception("enter the name having lessthan 30 charecter");
+                }
+            }
+            get
+            {
+                return _CustomerName;
             }
         }
-        get
+        public string MblNo
         {
-            return _CustomerName;
-        }
-    }
-    public string MblNo
-    {
-        set
-        {
-            if (value.Length == 10 && value[0] != 0)
+            set
             {
-                _MblNo = value;
+                if (value.Length == 10 && value[0] != 0)
+                {
+                    _MblNo = value;
+                }
+                else
+                {
+                    throw new System.Exception("phone no is must contain  10 digits ");
+                }
             }
-            else
+            get
             {
-                System.Console.WriteLine("phone no is must contain  10 digits ");
-            }
-        }
-        get
-        {
-            return _MblNo;
-        }
-    }
-    public string Email
-    {
-        set
-        {
-            Regex r = new Regex("^[a-zA-Z0-9@.]*$");
-            if (r.IsMatch(value))
-            {
-                _Email = value;
-            }
-            else
-            {
-                throw new System.Exception("enter valid email");
+                return _MblNo;
             }
         }
-        get
+        public string Email
+        {
+            set
+            {
+                Regex r = new Regex("^[a-zA-Z0-9@.]*$");
+                if (r.IsMatch(value))
+                {
+                    _Email = value;
+                }
+                else
+                {
+                    throw new System.Exception("enter valid email");
+                }
+            }
+            get
+            {
+                return _Email;
+            }
+        }
+        public string GetEmail()
         {
             return _Email;
         }
-    }
-    public string GetEmail()
-    {
-        return _Email;
-    }
 
-    public string Country
-    {
-        set
+        public string Country
         {
-            if (value.Length <= 10)
+            set
             {
-                _Country = value;
+                if (value.Length <= 10)
+                {
+                    _Country = value;
+                }
+            }
+            get
+            {
+                return _Country;
+
             }
         }
-        get
-        {
-            return _Country;
 
-        }
-    }
-
-    public string State
-    {
-        set
+        public string State
         {
-            if (value.Length <= 10)
+            set
             {
-                _State = value;
+                if (value.Length <= 10)
+                {
+                    _State = value;
+                }
+            }
+            get
+            {
+                return _State;
             }
         }
-        get
+        public string GetState()
         {
             return _State;
         }
-    }
-    public string GetState()
-    {
-        return _State;
-    }
-    public string City
-    {
-        set
+        public string City
         {
-
-
-            if (value.Length <= 10)
+            set
             {
-                _City = value;
-            }
-        }
-        get
-        {
-            return _City;
-        }
-    }
-    public string Street
-    {
-        set
-        {
-            if (value.Length <= 10)
-            {
-                this._Street = value;
-            }
-        }
-        get
-        {
-            return _Street;
-        }
-    }
 
 
-
-
-    public string PinNo
-
-    {
-        set
-        {
-            if (value.Length == 6)
-            {
-                for (int i = 0; i < 6; i++)
+                if (value.Length <= 10)
                 {
-                    if (value[i] > 0 && value[i] < 9)
+                    _City = value;
+                }
+            }
+            get
+            {
+                return _City;
+            }
+        }
+        public string Street
+        {
+            set
+            {
+                if (value.Length <= 10)
+                {
+                    this._Street = value;
+                }
+            }
+            get
+            {
+                return _Street;
+            }
+        }
+        public string PinNo
+
+        {
+            set
+            {
+                if (value.Length == 6)
+                {
+                    for (int i = 0; i < 6; i++)
                     {
-                        _PinNo = value;
+                        if (value[i] > 0 || value[i] < 9)
+                        {
+                            _PinNo = value;
+                        }
                     }
                 }
             }
-        }
 
-        get
-        {
-            return _PinNo;
-        }
-    }
-    public string HNo
-    {
-        set
-        {
-            if (value.Length <= 6)
+            get
             {
-                this._HNo = value;
+                return _PinNo;
             }
         }
-        get
+        public string HNo
         {
-            return _HNo;
-        }
+            set
+            {
+                if (value.Length <= 6)
+                {
+                    this._HNo = value;
+                }
+            }
+            get
+            {
+                return _HNo;
+            }
 
+        }
     }
 }
 

@@ -4,8 +4,10 @@
 
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Znalytics.Inventory.Product.Entities;
-using Znalytics.Inventory.Product.IDataAccessLgoic;
+using Znalytics.Group4.Inventory.IDataAccessLayer;
 
 namespace Znalytics.Inventory.Product.DataAccessLayer
 {
@@ -31,7 +33,7 @@ namespace Znalytics.Inventory.Product.DataAccessLayer
         /// adding the products into the List
         /// </summary>
         /// <param name="productDetails"></param>
-        public void AddProduct(ProductEntitie productDetails)
+        public void AddProduct(ProductEntitie productDetails)// Adding Products into the ProductsList
         {
             _ProductsList.Add(productDetails);
         }
@@ -40,22 +42,38 @@ namespace Znalytics.Inventory.Product.DataAccessLayer
         /// displaying the products in the List
         /// </summary>
 
-        public List<ProductEntitie> DisplayProducts()
+        public List<ProductEntitie> DisplayProducts() //Dispalying all Products Availabale
         {
             return _ProductsList;
         }
 
-        public void RemoveProductByID(int id)
+        public void RemoveProductByID(int id) //Removing a Product by using Product ID
         {
             _ProductsList.RemoveAll(n => n.ProductID == id);
 
         }
 
-        public void RemoveProductByName(string name)
+        public void RemoveProductByName(string name)// Removing a Product By using Product Name
         {
             _ProductsList.RemoveAll(n => n.ProductName == name);
         }
 
+        public ProductEntitie GetProductByID(int productID)//Displaying product Details using Product ID
+        {
+            ProductEntitie pe;
+            pe = _ProductsList.Find(n => n.ProductID == productID);
+            return pe;
+
+        }
+
+        public void UpdateProductName(ProductEntitie product)// update product Name
+        {
+            ProductEntitie PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
+            if(PE!=null)
+            {
+                PE.ProductName = product.ProductName;
+            }
+        }
 
     }
 }

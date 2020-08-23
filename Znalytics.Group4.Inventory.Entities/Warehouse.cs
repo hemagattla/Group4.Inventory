@@ -2,7 +2,7 @@
 
 namespace Znalytics.Inventory.WareHouseModule.Entities
 {
-    //Created by Nitya
+    
     /// <summary>
     /// Represents Inventory Warehouse
     /// </summary>
@@ -11,9 +11,9 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         //Private Fields
         private string _managerName;
         private string _warehouseId;
-        private string _locationName;
-        private string _pincode;
-        private int _warehouseCapacity;
+         private int _warehouseCapacity;
+        //private string _locationName;
+        // private string _pincode;
         //private string _warehouseStatus;
 
 
@@ -36,12 +36,12 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         /// <param name="locname"></param>
         /// <param name="pincode"></param>
         /// <param name="warecapacity"></param>
-        public WareHouse(string name, string wareId, string locName, string pincode, int wareCapacity)
+        public WareHouse(string name, string wareId, int wareCapacity)
         {
             this._managerName = name;
             this._warehouseId = wareId;
-            this._locationName = locName;
-            this._pincode = pincode;
+            //this._locationName = locName;
+            //this._pincode = pincode;
             this._warehouseCapacity = wareCapacity;
         }
         /// <summary>
@@ -90,76 +90,9 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
             }
 
         }
-        /// <summary>
-        /// Property for LocationId
-        /// </summary>
-        /* public string LocationId
-         {
-             set
-             {
-                 if (value.Length == 2)
-                 {
-                     bool isSpaceFound = false;
-                     for (int i = 0; i < value.Length; i++)
-                     {
-                         if (value[i] == ' ')
-                         {
-                             isSpaceFound = true;
-                         }
-                     }
-                     if (isSpaceFound == false)
-                     {
-                         _locationId = value;
-                     }
-                 }
-             }
-             get
-             {
-                 return _locationId;
-             }
-         }*/
+        
 
-        /// <summary>
-        /// Property for Location Name
-        /// </summary>
-        public string LocationName
-        {
-            set
-            {
-                if (value.Length <= 30)
-                {
-                    _locationName = value;
-                }
-            }
-            get
-            {
-                return _locationName;
-            }
-        }
-
-        /// <summary>
-        /// Property for Pincode
-        /// </summary>
-        public string Pincode
-        {
-            set
-            {
-                if (value.Length == 6)
-                {
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        if (value[i] < '0' || value[i] > 9)
-                        {
-                            _pincode = value;
-                        }
-                    }
-                }
-            }
-            get
-            {
-                return _pincode;
-            }
-        }
+        
         /// <summary>
         /// Property for WarehouseCapacity
         /// </summary>

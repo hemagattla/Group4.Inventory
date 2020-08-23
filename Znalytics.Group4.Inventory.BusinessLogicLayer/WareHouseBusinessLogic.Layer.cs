@@ -15,8 +15,10 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
 
         WareHouseDataAccessLayer d = new WareHouseDataAccessLayer();
 
+        
+        
         //Method to add details to the list
-        public void AddWareHouse(WareHouse n)
+         public void AddWareHouse(WareHouse n)
         {
             //WareHouse Id should not be null
             if (n.WarehouseId != null)
@@ -31,6 +33,8 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         {
             return d.WareHouseList;
         }
+        
+        //Method to display WareHouse details by WareHouseId
         public WareHouse GetWareHouseByWareHouseID(string WareHouseID)
         {
             return d.WareHouseList.Find(temp => temp.WarehouseId == WareHouseID);

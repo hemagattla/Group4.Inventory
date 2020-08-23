@@ -1,5 +1,11 @@
 ﻿using Znalytics.Inventory.StockMaintain.Entities;
 using Znalytics.Inventory.StockMaintain.DataAccessLayer;
+
+using Znalytics.Group4.Inventory.BusinessLogicLayer;
+using Znalytics.Inventory.Product.BusinessLogicLayer;
+
+using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
+
 namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
 {
     public class StockBusinessLogicLayer
@@ -12,9 +18,23 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
 
         public void AddStock(Stock stock)
         {
-            if ((stock.WareHouseID != null) && (stock.AddressName != null) && (stock.ProductID != null) && (stock.Add != 0))
+            if ((stock.WareHouseID != null) && (stock.AddressID != null) && (stock.ProductID != 0) && (stock.Add != 0))
             {
-                _stockDataAccesslogic.AddStock(stock);
+                IWareHouseBusinessLayer wareHouseBusinessLayer = new WareHouseBusinessLayer();
+                IProductBusinessLogicLayer productBusinessLogicLayer = new ProductBusiness();
+                if (wareHouseBusinessLayer.GetWareHouseByWareHouseID(stock.WareHouseID)!=null)
+                {
+                    if(productBusinessLogicLayer.GetProductByProductID(stock.ProductID)!=0)
+                    {
+
+                    }
+
+                }
+               
+                
+                
+                    _stockDataAccesslogic.AddStock(stock);
+                
             }
         }
 
@@ -37,5 +57,6 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
                 throw new System.Exception(" ");
             }
         }
+
     }
 }

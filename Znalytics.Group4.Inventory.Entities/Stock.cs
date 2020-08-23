@@ -6,10 +6,11 @@
     public class Stock
     {
         //Private fields
-        private string _WareHouseID;
-        private string _AddressName;
-        private string _ProductID;
-        private int _Quantity;
+        private string _wareHouseID;
+        private string _addressID;
+        private int _productID;
+        private string _stockID;
+        private int _quantity;
 
         //Property of WareHouseID
         public string WareHouseID
@@ -18,32 +19,26 @@
             {
                 //if input value and WareHouseID present in database matches then the value will be assigned to the _WareHouseID
                 //else it will throw an exception
-                if ("1234" == value)
-                {
-                    _WareHouseID = value;
+            
+                    _wareHouseID = value;
 
-                }
-                else
-                {
-                    throw new System.Exception("ur entered WareHouseID is invalid");
-                }
             }
 
             get
             {
-                return _WareHouseID;
+                return _wareHouseID;
             }
         }
         //Property of AddressName
-        public string AddressName
+        public string AddressID
         {
             set
             {
                 //if input value and AddressID present in database matches then the value will be assigned to the _AddressID
                 //else it will throw an exception
-                if ("2345" == value)
+                if ((value.Length==5)&&(value.StartsWith("AID")))
                 {
-                    _AddressName = value;
+                    _addressID = value;
                 }
                 else
                 {
@@ -52,20 +47,20 @@
             }
             get
             {
-                return _AddressName;
+                return _addressID;
             }
         }
 
         //Property of ProductID
-        public string ProductID
+        public int ProductID
         {
             set
             {
                 //if input value and ProductID present in database matches then the value will be assigned to the _ProductID
                 //else it will throw an exception
-                if ("3456" == value)
-                {
-                    _ProductID = value;
+                if(value!=0)
+                { 
+                    _productID = value;
                 }
                 else
                 {
@@ -74,53 +69,48 @@
             }
             get
             {
-                return _ProductID;
+                return _productID;
             }
         }
+        public string StockID
+        {
+            set
+            {
+                if (value.Length <= 2)
+                {
+                    _stockID = value;
+                }
+                else
+                {
+                    throw new System.Exception("ur entered stockID is invalid");
+                }
+            }
+            get
+            {
+                return _stockID;
+            }
 
         public int Add
         {
             set
             {
                 //it takes in put value and add to the exsisting quantity
-                _Quantity += value;
+                _quantity += value;
             }
             get
             {
-                return _Quantity;
+                return _quantity;
             }
         }
-        public int Delete
-        {
-            set
-            {
-                //it will take input value and substract from the exsisting quantity
-                //after that if the quantity is more than 0 then only it will assign the value
-                //else it makes quantity =0 and returns
-                _Quantity -= value;
-                if (_Quantity > 0)
-                {
-                    _Quantity -= value;
-                }
-                else
-                {
-                    _Quantity = 0;
-                }
-            }
-            get
-            {
-                return _Quantity;
-            }
-        }
+      
         public int Quantity
         {
             set
             {
-
             }
             get
             {
-                return _Quantity;
+                return _quantity;
             }
         }
 
