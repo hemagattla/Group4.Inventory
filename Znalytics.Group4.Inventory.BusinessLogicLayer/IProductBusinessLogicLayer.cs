@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Znalytics.Inventory.Product.Entities;
 
-namespace Znalytics.Group4.Inventory.BusinessLogicLayer
+namespace Znalytics.Inventory.Product.BusinessLogicLayer
 {
     public interface IProductBusinessLogicLayer
     {

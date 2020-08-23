@@ -1,13 +1,14 @@
 ﻿using Znalytics.Inventory.StockMaintain.Entities;
 using Znalytics.Inventory.StockMaintain.DataAccessLayer;
-using Znalytics.Group4.Inventory.StockMain.BusinessLogicLayer;
+
 using Znalytics.Group4.Inventory.BusinessLogicLayer;
 using Znalytics.Inventory.Product.BusinessLogicLayer;
-using Znalytics.Group4.Inventory.BusinessLogicLayer;
+
+using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 
 namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
 {
-    public class StockBusinessLogicLayer: IStockBusinessLogicLayer
+    public class StockBusinessLogicLayer
     {
         StockDataAccessLogic _stockDataAccesslogic;
         public StockBusinessLogicLayer()
@@ -17,14 +18,23 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
 
         public void AddStock(Stock stock)
         {
-            if ((stock.WareHouseID != null) && (stock.AddressName != null) && (stock.ProductID != 0) && (stock.Add != 0))
+            if ((stock.WareHouseID != null) && (stock.AddressID != null) && (stock.ProductID != 0) && (stock.Add != 0))
             {
-                IWareHouseBusinessLayer wareHouseBusinessLayer= new IWareHouseBusinessLayer()
-               IProductBusinessLogicLayer productBusinessLogicLayer = new ProductBusiness();
-                if (productBusinessLogicLayer.GetProductByProductID(stock.ProductID))
+                IWareHouseBusinessLayer wareHouseBusinessLayer = new WareHouseBusinessLayer();
+                IProductBusinessLogicLayer productBusinessLogicLayer = new ProductBusiness();
+                if (wareHouseBusinessLayer.GetWareHouseByWareHouseID(stock.WareHouseID)!=null)
                 {
-                    _stockDataAccesslogic.AddStock(stock);
+                    if(productBusinessLogicLayer.GetProductByProductID(stock.ProductID)!=0)
+                    {
+
+                    }
+
                 }
+               
+                
+                
+                    _stockDataAccesslogic.AddStock(stock);
+                
             }
         }
 

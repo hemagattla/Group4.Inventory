@@ -21,8 +21,8 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
         {
             _stocks = new List<Stock>()
             {
-                new Stock() { WareHouseID = "1234", AddressName = "kukatpally", ProductID = "3456", Quantity = 5 },
-                new Stock() { WareHouseID = "1234", AddressName = "kukatpally", ProductID = "5678", Quantity = 34}
+                new Stock() { WareHouseID = "1234", AddressID = "kukatpally", ProductID = 3456, Quantity = 5 },
+                new Stock() { WareHouseID = "1234", AddressID = "kukatpally", ProductID = 5678, Quantity = 34}
             };
         }
 
@@ -35,11 +35,11 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
             Stock st = _stocks.Find(temp => temp.WareHouseID == stock.WareHouseID);
             if (st != null)
             {
-                Stock a = _stocks.Find(temp => temp.AddressName == stock.AddressName);
+                Stock a = _stocks.Find(temp => temp.AddressID == stock.AddressName);
                 if (a != null)
                 {
                     Stock b = _stocks.Find(temp => temp.ProductID == stock.ProductID);
-                    if (b != null)
+                    if (b != 0)
                     {
                         b.Quantity = stock.Quantity;
                     }

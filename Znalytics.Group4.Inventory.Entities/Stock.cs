@@ -7,7 +7,7 @@
     {
         //Private fields
         private string _wareHouseID;
-        private string _addressName;
+        private string _addressID;
         private int _productID;
         private string _stockID;
         private int _quantity;
@@ -30,7 +30,7 @@
             }
         }
         //Property of AddressName
-        public string AddressName
+        public string AddressID
         {
             set
             {
@@ -38,7 +38,7 @@
                 //else it will throw an exception
                 if ((value.Length==5)&&(value.StartsWith("AID")))
                 {
-                    _addressName = value;
+                    _addressID = value;
                 }
                 else
                 {
@@ -47,7 +47,7 @@
             }
             get
             {
-                return _addressName;
+                return _addressID;
             }
         }
 
