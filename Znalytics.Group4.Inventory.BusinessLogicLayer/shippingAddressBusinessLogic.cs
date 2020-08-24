@@ -9,7 +9,11 @@ namespace Group4.Inventory.BusinessLogicLayer
 
     public class shippingAddressBusinessLogic
     {
-        ShippingAddressDataLayer dl = new ShippingAddressDataLayer();
+        ShippingAddressDataLayer dl;
+        public shippingAddressBusinessLogic()
+        {
+            dl = new ShippingAddressDataLayer();
+        }
 
         /// <summary>
         /// Adding ProductName to collections
