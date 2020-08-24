@@ -1,4 +1,5 @@
-﻿using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
+﻿using Znalytics.Inventory.AddressModule.Entities;
+using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 using Znalytics.Inventory.WareHouseModule.Entities;
 
 using static System.Console;
@@ -9,7 +10,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         public static void Menu()
         {
 
-            Address a = new Address();
+            WareHouseAddress a = new WareHouseAddress();
             int choice = -1;
             do
             {
