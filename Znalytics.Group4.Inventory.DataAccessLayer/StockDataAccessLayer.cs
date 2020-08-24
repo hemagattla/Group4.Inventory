@@ -32,40 +32,20 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
 
         public void AddStock(Stock stock)
         {
-            Stock st = _stocks.Find(temp => temp.WareHouseID == stock.WareHouseID);
-            if (st != null)
-            {
-                Stock a = _stocks.Find(temp => temp.AddressID == stock.AddressName);
-                if (a != null)
-                {
-                    Stock b = _stocks.Find(temp => temp.ProductID == stock.ProductID);
-                    if (b != 0)
-                    {
-                        b.Quantity = stock.Quantity;
-                    }
-                }
-            }
+            Stock st = _stocks.Find(temp => temp.WareHouseID == stock.WareHouseID && temp.AddressID == stock.AddressID && temp.ProductID == stock.ProductID);
+
+            st.Quantity += stock.EditStock;
         }
 
         /// <summary>
         /// Delete method with 4 parameters
         /// </summary>
 
-        public void DeleteStockByWareHouseID(Stock stock)
+        public void DeleteStock(Stock stock)
         {
-            Stock st = _stocks.Find(temp => temp.WareHouseID == stock.WareHouseID);
-            if (st != null)
-            {
-                Stock a = _stocks.Find(temp => temp.AddressName == stock.AddressName);
-                if (a != null)
-                {
-                    Stock b = _stocks.Find(temp => temp.ProductID == stock.ProductID);
-                    if (b != null)
-                    {
-                        b.Quantity = stock.Quantity;
-                    }
-                }
-            }
+            Stock st = _stocks.Find(temp => temp.WareHouseID == stock.WareHouseID && temp.AddressID == stock.AddressID && temp.ProductID == stock.ProductID);
+
+            st.Quantity -= stock.EditStock;
         }
 
         public int ViewQuantity(Stock stock)
@@ -74,9 +54,6 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
             matchingData.Quantity = stock.Quantity;
             return stock.Quantity;
         }
-        public List<Stock> GetProductID()
-        {
-
-        }
+       
     }
 }
