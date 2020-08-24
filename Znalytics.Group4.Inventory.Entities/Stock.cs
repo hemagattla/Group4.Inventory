@@ -10,6 +10,7 @@
         private string _addressID;
         private int _productID;
         private string _stockID;
+        private int _editStock;
         private int _quantity;
 
         //Property of WareHouseID
@@ -19,8 +20,15 @@
             {
                 //if input value and WareHouseID present in database matches then the value will be assigned to the _WareHouseID
                 //else it will throw an exception
-            
+                if ((value.Length == 5) && (value.StartsWith("WHID")))
+                {
                     _wareHouseID = value;
+
+                }
+                else
+                {
+                    throw new System.Exception("ur entered AddressID is invalid");
+                }
 
             }
 
@@ -72,7 +80,7 @@
                 return _productID;
             }
         }
-        public string StockID
+        /*public string StockID
         {
             set
             {
@@ -89,17 +97,20 @@
             {
                 return _stockID;
             }
-
-        public int Add
+        }*/
+        public int EditStock
         {
             set
             {
-                //it takes in put value and add to the exsisting quantity
-                _quantity += value;
+                if (value != 0)
+                {
+                    //it takes in put value and add to the exsisting quantity
+                    _editStock = value;
+                }
             }
             get
             {
-                return _quantity;
+                return _editStock;
             }
         }
       
@@ -107,6 +118,7 @@
         {
             set
             {
+
             }
             get
             {

@@ -6,8 +6,6 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
     {
         static void Main()
         {
-            StockBusinessLogicLayer stockBusinessLogicLayer;
-            Stock stock;
             /*System.Console.WriteLine("1.enter the WareHouseID");
             System.Console.WriteLine("2.enter the AddressID");
             System.Console.WriteLine("3.enter the productID");
@@ -49,8 +47,6 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                 System.Console.WriteLine("u want to add quantity to any other product (Yes/No)");
                 i = System.Console.ReadLine();
             } while (i == "Yes");
-
-
         }
         public static void AddStock()
         {
@@ -64,7 +60,8 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             System.Console.WriteLine("Enter Product ID");
             stock.ProductID = System.Convert.ToInt32(System.Console.ReadLine());
             System.Console.WriteLine("Enter no of Quantities u want to add");
-            stock.Add = System.Convert.ToInt32(System.Console.ReadLine());
+            stock.EditStock = System.Convert.ToInt32(System.Console.ReadLine());
+           
             stockBusinessLogicLayer.AddStock(stock);
         }
         public static void DeleteStockByWareHouseID()
@@ -79,7 +76,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             System.Console.WriteLine("Enter Product ID");
             stock.ProductID =System.Convert.ToInt32( System.Console.ReadLine());
             System.Console.WriteLine("Enter no of Quantities u want to add");
-            stock.Delete = System.Convert.ToInt32(System.Console.ReadLine());
+            stock.EditStock = System.Convert.ToInt32(System.Console.ReadLine());
             stockBusinessLogicLayer.DeleteStockByWareHouseID(stock);
         }
         public static void ViewQuantity()

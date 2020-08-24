@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrderManagement.cs" />
+    <Compile Include="RawMaterial.cs" />
     <Compile Include="WareHouseAddress.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Customer.cs" />
