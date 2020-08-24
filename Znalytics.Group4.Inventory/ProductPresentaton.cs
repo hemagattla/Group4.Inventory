@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using Znalytics.Inventory.Product.BusinessLogicLayer;
 using Znalytics.Inventory.Product.Entities;
+using Znalytics.Group4.Inventory.IBusinessLogicLayer;
+using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 
 class ProductPresentation
 {
@@ -14,7 +16,7 @@ class ProductPresentation
     static void Main()
     {
 
-
+        IWareHouseBusinessLayer wareHouseBusinessLayer = new WareHouseBusinessLayer();
 
 
         int Choice;
@@ -49,8 +51,8 @@ class ProductPresentation
                     case 5:
                         UpdateProduct(); // calling update Method declared Locally
                         break;
-
-
+                    case 6:
+                      getStockQuantity();break;
 
 
                     default:
@@ -219,6 +221,12 @@ class ProductPresentation
 
         }
 
+        void getStockQuantity()
+        {
+            System.Console.WriteLine("enter the product Id:");
+            int pid = int.Parse(System.Console.ReadLine());
+            System.Console.WriteLine("noof Products Available:"+ wareHouseBusinessLayer.getStockQuantity(pid));
+        }
 
 
 
