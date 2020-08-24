@@ -11,13 +11,13 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
     public class WareHouseDataAccessLayer: IWareHouseDataAccessLayer
     {
         //Created a list for WareHouse
-        public static List<WareHouse> WareHouseList
+       public  List<WareHouse> WareHouseList
         {
             set;
             get;
         }
         // Constructor 
-       static WareHouseDataAccessLayer()
+       public WareHouseDataAccessLayer()
         {
             WareHouseList = new List<WareHouse>();
         }
