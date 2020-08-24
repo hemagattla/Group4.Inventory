@@ -1,30 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-
-
-namespace Znalytics.Group4.Inventory.Entities
+using Znalytics.Inventory.AddressModule.Entities;
+using Znalytics.Inventory.Module.Entities;
+namespace Znalytics.Inventory.OrderManagementModule.Entities
 {
-    class OrderManagement
+    public class OrderManagement
     {
-        List<string> _productName;
+        List<string> _productNames;
         WareHouseAddress _wareHouseAddress;
-        CustomerAddress _customerAddress;
+        Customer _customerAddress;
         double _quantity;
         double _price;
-        OrderManagement(List<string> productName, WareHouseAddress wareHouseAddress,CustomerAddress customerAddress,double quantity,double price)
+        int _productID;
+        bool _shippingStatus=false;
+        OrderManagement(List<string> productNames, WareHouseAddress wareHouseAddress,Customer customerAddress,double quantity,double price,int productID,bool shippingStatus)
         {
-            productName = _productName;
+            productNames = _productNames;
             wareHouseAddress = _wareHouseAddress;
             customerAddress = _customerAddress;
             quantity = _quantity;
             price = _price;
+            productID = _productID;
+            shippingStatus = _shippingStatus;
         }
-       Public List<string> ProductName{
+       public List<string> ProductNames{
             set{
-                _productName = value;
+                _productNames = value;
             }
             get{
-                return _productName;
+                return _productNames;
             }
         }
         public WareHouseAddress WareHouseAddress
@@ -38,7 +42,7 @@ namespace Znalytics.Group4.Inventory.Entities
                 return _wareHouseAddress;
             }
         } 
-        public CustomerAddress CustomerAddress
+        public Customer CustomerAddress
         {
             set
             {
@@ -69,6 +73,28 @@ namespace Znalytics.Group4.Inventory.Entities
             get
             {
                 return _price;
+            }
+        }
+        public int ProductID
+        {
+            set
+            {
+                _productID = value;
+            }
+            get
+            {
+                return _productID; 
+            }
+        }
+        public bool ShippingStatus
+        {
+            set
+            {
+                _shippingStatus = value;
+            }
+            get
+            {
+                return _shippingStatus;
             }
         }
 
