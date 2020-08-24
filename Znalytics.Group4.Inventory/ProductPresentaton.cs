@@ -24,11 +24,12 @@ class ProductPresentation
         do
         {
             System.Console.WriteLine("1. Add Product");
-            System.Console.WriteLine("2.Show product");
-            System.Console.WriteLine("3.Show Product By ID");
+            System.Console.WriteLine("2. Show product");
+            System.Console.WriteLine("3. Show Product By ID");
             System.Console.WriteLine("4. Delete Product");
-            System.Console.WriteLine("5. Upadte Prroduct");
-            System.Console.WriteLine("6.Exit");
+            System.Console.WriteLine("5. Update Prroduct");
+            System.Console.WriteLine("6. Stock Available");
+            System.Console.WriteLine("7. Exit");
 
             b = int.TryParse(System.Console.ReadLine(), out Choice);
 
