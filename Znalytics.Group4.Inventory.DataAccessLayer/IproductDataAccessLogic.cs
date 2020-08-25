@@ -3,7 +3,7 @@
 
 using System;
 using System.Collections.Generic;
-using Znalytics.Inventory.Product.Entities;
+using Znalytics.Inventory.Product.Entitie;
 /// <summary>
 /// Represents Interface of IdataAcessLogic
 /// </summary>
