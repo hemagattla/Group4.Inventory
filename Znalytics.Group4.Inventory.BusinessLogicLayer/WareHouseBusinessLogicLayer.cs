@@ -31,7 +31,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         // Method to display the added details
         public List<WareHouse> GetWareHouses()
         {
-            return d.WareHouseList;
+            return d.GetWareHouses();
         }
         
         //Method to display WareHouse details by WareHouseId
