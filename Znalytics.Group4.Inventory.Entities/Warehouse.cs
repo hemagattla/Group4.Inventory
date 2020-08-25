@@ -11,6 +11,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         //Private Fields
         private string _managerName;
         private string _warehouseId;
+       // private string _wareHouseName;
          private int _warehouseCapacity;
         //private string _locationName;
         // private string _pincode;
