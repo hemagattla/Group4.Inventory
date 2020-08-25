@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
-using Znalytics.Group4.Inventory.BusinessLogicLayer;
+using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
 {
 
@@ -38,6 +38,10 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         public WareHouse GetWareHouseByWareHouseID(string WareHouseID)
         {
             return d.WareHouseList.Find(temp => temp.WarehouseId == WareHouseID);
+        }
+       public int getStockQuantity()
+        {
+            return 0;
         }
 
 

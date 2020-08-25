@@ -2,7 +2,7 @@
 
 namespace Znalytics.Group4.Inventory.RawMaterial.Entities
 {
-    public class RawMaterial
+    public class RawMaterials
     {
         private string _wareHouseID;
         private string _rawMaterialName;

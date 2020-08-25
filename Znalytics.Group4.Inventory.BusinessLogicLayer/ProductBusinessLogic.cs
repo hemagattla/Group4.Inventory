@@ -27,7 +27,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
         /// adding the products 
         /// </summary>
         /// <param name="n"> gets object of ProductDetails</param>
-        public void AddProducts(ProductEntitie n)
+        public void AddProducts(Entities.Product n)
         {
             if (n.ProductName != null)
             {
@@ -40,7 +40,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
         /// </summary>
         /// <param name="n">gets object of ProductDeatils</param>
 
-        public List<ProductEntitie> DispalyProducts()
+        public List<Entities.Product> DispalyProducts()
         {
 
             return d.DisplayProducts();
@@ -80,7 +80,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
         /// update product name
         /// </summary>
         /// <param name="product"></param>
-        public void UpdateProductName(ProductEntitie product)
+        public void UpdateProductName(Entities.Product product)
         {
             if (product.ProductName != null)
             {
@@ -88,10 +88,20 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
             }
         }
 
-        public ProductEntitie GetProductByProductID(int ProductID)
+        public void UpdateProductPrice(Entities.Product p)
+        {
+
+
+            d.UpdateProductPrice(p);
+
+        }
+
+        public Entities.Product GetProductByProductID(int ProductID)
         {
             return d.GetProductByID(ProductID);
           
         }
+
+
     }
 }

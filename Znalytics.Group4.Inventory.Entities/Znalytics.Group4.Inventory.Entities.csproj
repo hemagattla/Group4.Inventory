@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RawMaterial.cs" />
+    <Compile Include="ShippingAddressDataAccessLayer.cs" />
     <Compile Include="WareHouseAddress.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Customer.cs" />
