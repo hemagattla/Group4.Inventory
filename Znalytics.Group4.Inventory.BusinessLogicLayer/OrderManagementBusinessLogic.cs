@@ -2,17 +2,31 @@
 using System.Collections.Generic;
 using Znalytics.Inventory.OrderManagementModule.Entities;
 using Znalytics.Inventory.OrderManagementModule.DataAccessLayer;
+using Znalytics.Group4.Inventory.IBusinessLogicLayer;
+using Znalytics.Inventory.Product.BusinessLogicLayer;
+using Znalytics.Inventory.Product.Entities;
+using Znalytics.Inventory.AddressModule.DataAccessLayer;
+using
+
 namespace Znalytics.Inventory.OrderManagementModule.BusinessLogicLayer
 {
-    public class OrderManagementBusinessLogic
-    {
+    public class OrderManagementBusinessLogic { 
         OrderManagementDataLayer dl;
-       
-            
+        
+
         public OrderManagementBusinessLogic()
         {
             dl = new OrderManagementDataLayer();
         }
+
+        IProductBusinessLogicLayer i  = new ProductBusiness();
+        
+        public ProductEntitie ProductDetails(int ProductID) {
+           return i.GetProductByProductID(ProductID);
+            
+        }
+        public 
+
 
         /// <summary>
         /// Adding ProductNames to collections
@@ -33,20 +47,16 @@ namespace Znalytics.Inventory.OrderManagementModule.BusinessLogicLayer
             /// Adding ProductID to collections
             /// </summary>
             /// <param name="value"></param>
-            if (values.ProductID.Length == 10)
-            {
-                dl.AddShippingDetails(values);
-            }
-            else
-            {
-                throw new System.Exception("enter 10 digit productID");
-            }
+           
+                dl.AddOrderDetails(values);
+            
+          
             /// <summary>
             /// Adding ProductPrice to Collections
             /// </summary>
             /// <param name="value"></param>
 
-
+            
             if (values.ProductPrice > 0)
             {
                 dl.AddShippingDetails(values);
