@@ -44,7 +44,10 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             return 0;
         }
 
-
+        public int getStockQuantity(int productID)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
      /*  public string getStockStatus()
