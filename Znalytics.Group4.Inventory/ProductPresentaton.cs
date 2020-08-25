@@ -16,7 +16,7 @@ class ProductPresentation
     static void Main()
     {
         //creating object for warehouse to get stock avalibility of product in warehouse
-        IWareHouseBusinessLayer wareHouseBusinessLayer = new WareHouseBusinessLayer();
+        IWareHouseBusinessLayer wareHouseBusinessLayer = new WareHouseBusinessLogicLayer();
 
 
         int choice;

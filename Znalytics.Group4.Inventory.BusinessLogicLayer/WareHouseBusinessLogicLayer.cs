@@ -10,12 +10,12 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
     /// Represents BusinessLogic class of WareHouse
     /// </summary>
 
-    public class WareHouseBusinessLayer
+    public class WareHouseBusinessLogicLayer
     {
 
         WareHouseDataAccessLayer d;
 
-        public WareHouseBusinessLayer()
+        public WareHouseBusinessLogicLayer()
         {
             d = new WareHouseDataAccessLayer();
         }

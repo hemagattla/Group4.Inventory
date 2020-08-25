@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Znalytics.Inventory.AddressModule.BusinessLogicLayer;
 using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 using Znalytics.Inventory.WareHouseModule.Entities;
@@ -77,30 +78,183 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             n.WarehouseCapacity = int.Parse(ReadLine());*/
 
 
-            WareHouseBusinessLayer wbl = new WareHouseBusinessLayer();
+            WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
             wbl.AddWareHouse(n);
 
 
 
 
         }
-        public void GetWareHouses()
+        public static void GetWareHouses()
         {
-            WareHouseBusinessLayer wbl = new WareHouseBusinessLayer();
+            WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
             List<WareHouse> WareHouseList = wbl.GetWareHouses();
 
-            System.Console.WriteLine("===============   WareHouse Details=============");
-            System.Console.WriteLine("WareHouseID" + "   " + "ManagerName" + "  " + "WareHouseName ");
-            System.Console.WriteLine("-----------------------------------------------------------------------");
+            WriteLine("===============   WareHouse Details=============");
+            WriteLine("WareHouseID" + "   " + "WareHouseName" + "  " + "ManagerName");
+            WriteLine("-----------------------------------------------------------------------");
 
             foreach (WareHouse var in WareHouseList)
             {
-                System.Console.WriteLine(var.WarehouseId+ "    " + var.MangerName  );// Displaying the products
+                WriteLine(var.WarehouseId + "    " + var.WareHouseName + "  " + var.MangerName);// Displaying the products
             }
 
         }
+
+        public static void GetWareHouseByWareHouseID()
+        {
+            WriteLine("Enter WareHouseId");
+            string warehouseid = ReadLine();
+            WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
+            WareHouse n = wbl.GetWareHouseByWareHouseID(warehouseid);
+            WriteLine(n.WarehouseId + " " + n.MangerName);
+
+        }
+
+
+        public static void RemoveWareHouse()
+        {
+            WareHouse w = new WareHouse();// creating the object for Warehouse class
+            WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();// Creating thhe object for WareHouseBusinessLogic class
+            WriteLine("select on which type you want to remove the WareHouse");
+            WriteLine("1.on WareHouseId");
+            WriteLine("2.on WareHouseName");
+            int Option;
+            bool a;
+            a = int.TryParse(ReadLine(), out Option);
+
+            if (a == true)
+            {
+                switch (Option)
+                {
+                    case 1: RemoveWareHouseByID(); break;
+                    case 2: RemoveWareHouseByWareHouseName(); break;
+                    default: WriteLine("Please Choose enter correct Option"); break;
+
+                }
+
+            }
+            else
+            {
+                WriteLine("Please Enter Correct Option");
+            }
+            void RemoveWareHouseByID()
+            {
+                Write("Enter the WarehouseID to be Deleted:");
+                string WareHouseID = ReadLine();
+
+                wbl.RemoveWareHouseByID(WareHouseID);
+                WriteLine("Warehouse Removed");
+
+
+            }
+            void RemoveWareHouseByWareHouseName()
+            {
+                Write("Enter the Warehouse Name:");
+                string name = ReadLine();
+
+                wbl.RemoveWareHouseByName(name);
+                WriteLine("Warehouse Removed");
+            }
+        }
+        public static void UpdateWareHouse()
+        {
+            WareHouse wareHouse = new WareHouse();
+            WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
+            WriteLine("1. Update WareHouse Name");
+            WriteLine("2. Update Manager Name");
+
+
+            int Option;
+            bool a;
+
+            a = int.TryParse(ReadLine(), out Option);
+
+            if (a == true)
+            {
+                switch (Option)
+                {
+                    case 1:
+                        UpdateWareHouseName(); break;
+                    case 2:
+                        UpdateManagerName(); break;
+                    default: WriteLine("Enter correct option"); break;
+
+                }
+            }
+
+            void UpdateWareHouseName()
+            {
+
+                WriteLine("Enter Existing WareHouse ID");
+                wareHouse.WarehouseId = ReadLine();
+                WriteLine("Enter new name for WareHouse");
+                wareHouse.WareHouseName = ReadLine();
+
+                wbl.UpdateWareHouseName(wareHouse);
+                WriteLine("WareHouse Name Updated Sucessfully!!!");
+
+            }
+
+
+
+            void UpdateManagerName()
+            {
+                WriteLine("Enter Existing WareHouse ID");
+                wareHouse.WarehouseId = ReadLine();
+                WriteLine("Enter new Manager Name");
+                wareHouse.MangerName = ReadLine();
+
+                wbl.UpdateManagerName(wareHouse);
+                WriteLine("Manager Name Updated Sucessfully!!!");
+            }
+
+        }
+        public static void AddAddress()
+        {
+            WareHouseAddress a = new WareHouseAddress();
+            WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+            WriteLine("You chose to add address to the WareHouse");
+            WriteLine("Enter Existing WareHouseId");
+            a.WarehouseId = ReadLine();
+            WriteLine("Enter Address id");
+            a.AddressId = ReadLine();
+            WriteLine("Enter Door Number");
+            a.DoorNumber = ReadLine();
+            WriteLine("Enter Location Name");
+            a.LocationName = ReadLine();
+            WriteLine("Enter State");
+            a.State = ReadLine();
+            WriteLine("Enter the Pincode");
+            a.Pincode = ReadLine();
+            wabl.AddAddress(a);
+
+            WriteLine("Address added successfully");
+
+
+
+
+
+        }
+        public static void GetAddresses()
+        {
+            WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+            List<WareHouseAddress> AddressList = wabl.GetAddresses();
+
+            WriteLine("===============   WareHouse Details=============");
+            WriteLine("WareHouseID" + "   " + "AddressID" + "  " + "Door Number" + "  " + "LocationName" + "  " + "State" + "  " + "Pincode");
+            WriteLine("-----------------------------------------------------------------------");
+
+            foreach (WareHouseAddress item in AddressList)
+            {
+                WriteLine(item.WarehouseId + "    " + item.AddressId + "  " + item.DoorNumber + " " + item.LocationName + "  " + item.State + "  " + item.Pincode);// Displaying the products
+            }
+
+        }
+
     }
-}
+    }
+
 
 
 
