@@ -28,7 +28,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         // Method to display the added  address details
         public List<WareHouseAddress> GetAddresses()
         {
-            return wadl.AddressList;
+            return wadl.GetAddresses();
         }
 
         //Method to display WareHouseAddress details by AddressId
