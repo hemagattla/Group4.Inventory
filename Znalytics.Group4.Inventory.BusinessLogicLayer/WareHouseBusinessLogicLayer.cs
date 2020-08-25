@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
-using Znalytics.Group4.Inventory.IBusinessLogicLayer;
+//using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
 {
 
@@ -10,20 +10,23 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
     /// Represents BusinessLogic class of WareHouse
     /// </summary>
 
-    public class WareHouseBusinessLayer: IWareHouseBusinessLayer
+    public class WareHouseBusinessLayer
     {
 
-        WareHouseDataAccessLayer d = new WareHouseDataAccessLayer();
+        WareHouseDataAccessLayer d;
 
-        
-        
+        public WareHouseBusinessLayer()
+        {
+            d = new WareHouseDataAccessLayer();
+        }
+
         //Method to add details to the list
-         public void AddWareHouse(WareHouse n)
+        public void AddWareHouse(WareHouse n)
         {
             //WareHouse Id should not be null
             if (n.WarehouseId != null)
             {
-                
+
                 d.AddWareHouse(n);
             }
         }
@@ -33,13 +36,46 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         {
             return d.GetWareHouses();
         }
-        
+
         //Method to display WareHouse details by WareHouseId
         public WareHouse GetWareHouseByWareHouseID(string WareHouseID)
         {
-            return d.WareHouseList.Find(temp => temp.WarehouseId == WareHouseID);
+            return d.GetWareHouseByWareHouseID(WareHouseID);
         }
-       public int getStockQuantity()
+        public void RemoveWareHouseByID(string WareHouseID)
+        {
+            if (WareHouseID != null)
+            {
+                d.RemoveWareHouseByID(WareHouseID);
+            }
+        }
+        public void RemoveWareHouseByName(string wareHouseName)
+        {
+            if (wareHouseName != null)
+            {
+                d.RemoveWareHouseByName(wareHouseName);
+            }
+        }
+
+        public void UpdateWareHouseName(WareHouse wareHouse)// update product Name
+        {
+
+            if (wareHouse.WarehouseId != null)
+            {
+                d.UpdateWareHouseName(wareHouse);
+            }
+        }
+        public void UpdateManagerName(WareHouse wareHouse)// update product Name
+        {
+
+            if (wareHouse.WarehouseId != null)
+            {
+                d.UpdateManagerName(wareHouse);
+            }
+        }
+
+
+        public int getStockQuantity()
         {
             return 0;
         }
@@ -50,13 +86,3 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         }
     }
 }
-     /*  public string getStockStatus()
-        {
-            return null;
-        }
-       public int getStockQuantity()
-        {
-            return 0;
-        }
-    }*/
-

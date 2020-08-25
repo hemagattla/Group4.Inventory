@@ -20,7 +20,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         {
             if (a.AddressId != null)
             {
-                // DataAccess d = new DataAccess();
+                
                 wadl.AddAddress(a);
             }
         }
