@@ -20,7 +20,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         {
             if (a.AddressId != null)
             {
-                // DataAccess d = new DataAccess();
+                
                 wadl.AddAddress(a);
             }
         }
@@ -28,7 +28,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         // Method to display the added  address details
         public List<WareHouseAddress> GetAddresses()
         {
-            return wadl.AddressList;
+            return wadl.GetAddresses();
         }
 
         //Method to display WareHouseAddress details by AddressId

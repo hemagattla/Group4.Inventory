@@ -2,17 +2,18 @@
 
 namespace Znalytics.Inventory.WareHouseModule.Entities
 {
-    
+
     /// <summary>
     /// Represents Inventory Warehouse
     /// </summary>
     public class WareHouse
     {
         //Private Fields
-        private string _managerName;
         private string _warehouseId;
-       // private string _wareHouseName;
-         private int _warehouseCapacity;
+        private string _warehouseName;
+        private string _managerName;
+        // private string _wareHouseName;
+        private int _warehouseCapacity;
         //private string _locationName;
         // private string _pincode;
         //private string _warehouseStatus;
@@ -62,6 +63,21 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
                 return _managerName;
             }
         }
+        public string WareHouseName
+        {
+            set
+            {
+                if (value.Length <= 30)
+                {
+                    _warehouseName = value;
+                }
+            }
+            get
+            {
+                return _warehouseName;
+            }
+        }
+
 
 
         /// <summary>
@@ -91,9 +107,9 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
             }
 
         }
-        
 
-        
+
+
         /// <summary>
         /// Property for WarehouseCapacity
         /// </summary>
@@ -128,33 +144,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
 
         }
     }
+}
 
 
-        
-
-
-
-
-
-        /*
-            public void Add()
-            {
-
-            }
-            public void Display()
-            {
-
-            }
-            public void Update()
-            {
-            }
-            public void Delete()
-            {
-            }
-            public void Exit()
-            {
-            }
-        }
-        */
-    }
 
