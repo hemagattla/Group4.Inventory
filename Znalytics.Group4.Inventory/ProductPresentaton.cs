@@ -79,7 +79,7 @@ class ProductPresentation
         void AddProduct()
         {
 
-            ProductEntitie Product = new ProductEntitie();// creating the object fro ProductDeatils class
+            Product Product = new Product();// creating the object fro ProductDeatils class
             ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
 
             System.Console.WriteLine("enter the ProductName:");
@@ -97,13 +97,13 @@ class ProductPresentation
         void DisplayProducts()
         {
             ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
-            List<ProductEntitie> prodts = pb.DispalyProducts();
+            List<Product> prodts = pb.DispalyProducts();
 
             System.Console.WriteLine("===============Product Details=============");
             System.Console.WriteLine("ProductName" + "   " + "ProductID" + "  " + "Number of Products Avalilable ");
             System.Console.WriteLine("-----------------------------------------------------------------------");
 
-            foreach (ProductEntitie item in prodts)
+            foreach (Product item in prodts)
             {
                 System.Console.WriteLine(item.ProductName + "    " + item.ProductID + "     " + item.Price);// Displaying the products
             }
@@ -113,7 +113,7 @@ class ProductPresentation
 
         void RemoveProduct()
         {
-            ProductEntitie Product = new ProductEntitie();// creating the object fro ProductDeatils class
+            Product Product = new Product();// creating the object fro ProductDeatils class
             ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
             System.Console.WriteLine("select on which type you want to remove a product");
             System.Console.WriteLine("1.on ProductId");
@@ -168,14 +168,14 @@ class ProductPresentation
             System.Console.Write("Enter the ProductID: ");
             int productID = int.Parse(System.Console.ReadLine());
             ProductBusiness pb = new ProductBusiness();
-            ProductEntitie pe = pb.GetProductByProductID(productID);
+            Product pe = pb.GetProductByProductID(productID);
             System.Console.WriteLine(pe.ProductID + "     " + pe.ProductName + "      " + pe.Price);
 
         }
 
         void UpdateProduct()
         {
-            ProductEntitie Product = new ProductEntitie();// creating the object fro ProductDeatils class
+            Product Product = new Product();// creating the object fro ProductDeatils class
             ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
 
             System.Console.WriteLine("1. Update Product Name");
@@ -217,7 +217,13 @@ class ProductPresentation
 
             void UpdateProductPrice()
             {
+                System.Console.WriteLine("Enter Existing Product ID");
+                Product.ProductID = int.Parse(System.Console.ReadLine());
+                System.Console.WriteLine("Enter new Price for Product");
+                Product.Price = System.Convert.ToDouble(System.Console.ReadLine());
 
+                pb.UpdateProductPrice(Product);
+                System.Console.WriteLine("Product Price Updated Sucessfully!!!");
             }
 
         }

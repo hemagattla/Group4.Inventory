@@ -6,7 +6,7 @@ namespace Znalytics.Group4.Inventory.IBusinessLogicLayer
 {
     public interface IProductBusinessLogicLayer
     {
-        ProductEntitie GetProductByProductID(int ProductID);
+        Product GetProductByProductID(int ProductID);
     }
 }
 
