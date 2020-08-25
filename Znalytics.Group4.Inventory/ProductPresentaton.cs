@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using Znalytics.Inventory.Product.BusinessLogicLayer;
-using Znalytics.Inventory.Product.Entities;
+using Znalytics.Inventory.Product.Entitie;
+using Znalytics.Group4.Inventory.IBusinessLogicLayer;
+using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 
 class ProductPresentation
 {
@@ -13,27 +15,28 @@ class ProductPresentation
 
     static void Main()
     {
+        //creating object for warehouse to get stock avalibility of product in warehouse
+        IWareHouseBusinessLayer wareHouseBusinessLayer = new WareHouseBusinessLayer();
 
 
-
-
-        int Choice;
+        int choice;
         bool b;
         do
         {
             System.Console.WriteLine("1. Add Product");
-            System.Console.WriteLine("2.Show product");
-            System.Console.WriteLine("3.Show Product By ID");
+            System.Console.WriteLine("2. Show product");
+            System.Console.WriteLine("3. Show Product By ID");
             System.Console.WriteLine("4. Delete Product");
-            System.Console.WriteLine("5. Upadte Prroduct");
-            System.Console.WriteLine("6.Exit");
+            System.Console.WriteLine("5. Update Prroduct");
+            System.Console.WriteLine("6. Stock Available");
+            System.Console.WriteLine("7. Exit");
 
-            b = int.TryParse(System.Console.ReadLine(), out Choice);
+            b = int.TryParse(System.Console.ReadLine(), out choice);
 
             if (b == true)
             {
 
-                switch (Choice)
+                switch (choice)
                 {
                     case 1:
                         AddProduct(); // calling AddProduct Method declared Locally
@@ -49,8 +52,8 @@ class ProductPresentation
                     case 5:
                         UpdateProduct(); // calling update Method declared Locally
                         break;
-
-
+                    case 6:
+                      getStockQuantity();break;//caling getstockquantity method declared locally
 
 
                     default:
@@ -69,23 +72,23 @@ class ProductPresentation
             }
 
 
-        } while (Choice != 6);
+        } while (choice != 6);
 
 
 
         void AddProduct()
         {
 
-            ProductEntitie Product = new ProductEntitie();// creating the object fro ProductDeatils class
+            Product product = new Product();// creating the object fro ProductDeatils class
             ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
 
             System.Console.WriteLine("enter the ProductName:");
-            Product.ProductName = System.Console.ReadLine();
+            product.ProductName = System.Console.ReadLine();
             System.Console.WriteLine("enter the ProductId");
-            Product.ProductID = int.Parse(System.Console.ReadLine());
+            product.ProductID = int.Parse(System.Console.ReadLine());
             System.Console.WriteLine("enter the Productprice:");
-            Product.Price = System.Convert.ToDouble(System.Console.ReadLine());
-            pb.AddProducts(Product); //adding the products into the List
+            product.Price = System.Convert.ToDouble(System.Console.ReadLine());
+            pb.AddProducts(product); //adding the products into the List
 
             System.Console.WriteLine("Product Added Sucessfully!!!");
 
@@ -94,13 +97,13 @@ class ProductPresentation
         void DisplayProducts()
         {
             ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
-            List<ProductEntitie> prodts = pb.DispalyProducts();
+            List<Product> prodts = pb.DispalyProducts();
 
             System.Console.WriteLine("===============Product Details=============");
             System.Console.WriteLine("ProductName" + "   " + "ProductID" + "  " + "Number of Products Avalilable ");
             System.Console.WriteLine("-----------------------------------------------------------------------");
 
-            foreach (ProductEntitie item in prodts)
+            foreach (Product item in prodts)
             {
                 System.Console.WriteLine(item.ProductName + "    " + item.ProductID + "     " + item.Price);// Displaying the products
             }
@@ -110,7 +113,7 @@ class ProductPresentation
 
         void RemoveProduct()
         {
-            ProductEntitie Product = new ProductEntitie();// creating the object fro ProductDeatils class
+            Product Product = new Product();// creating the object fro ProductDeatils class
             ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
             System.Console.WriteLine("select on which type you want to remove a product");
             System.Console.WriteLine("1.on ProductId");
@@ -165,19 +168,18 @@ class ProductPresentation
             System.Console.Write("Enter the ProductID: ");
             int productID = int.Parse(System.Console.ReadLine());
             ProductBusiness pb = new ProductBusiness();
-            ProductEntitie pe = pb.GetProductByProductID(productID);
+            Product pe = pb.GetProductByProductID(productID);
             System.Console.WriteLine(pe.ProductID + "     " + pe.ProductName + "      " + pe.Price);
 
         }
 
         void UpdateProduct()
         {
-            ProductEntitie Product = new ProductEntitie();// creating the object fro ProductDeatils class
+            Product product = new Product();// creating the object fro ProductDeatils class
             ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
 
-            System.Console.WriteLine("1. Update Product Name");
-            System.Console.WriteLine("2. Update Product ID");
-            System.Console.WriteLine("3. Update Product Price");
+            System.Console.WriteLine("1. Update Product Name");c
+            System.Console.WriteLine("2. Update Product Price");
 
 
             int option;
@@ -188,9 +190,8 @@ class ProductPresentation
             {
                 case 1:
                     UpdateProductName();break;
+                
                 case 2:
-                    UpdateProductID();break;
-                case 3:
                     UpdateProductPrice();break;
                    
             }
@@ -199,26 +200,35 @@ class ProductPresentation
             {
 
                 System.Console.WriteLine("Enter Existing Product ID");
-                Product.ProductID = int.Parse(System.Console.ReadLine());
+                product.ProductID = int.Parse(System.Console.ReadLine());
                 System.Console.WriteLine("Enter new name for Product");
-                Product.ProductName = System.Console.ReadLine();
+                product.ProductName = System.Console.ReadLine();
 
-                pb.UpdateProductName(Product);
+                pb.UpdateProductName(product);
             
             }
 
-            void UpdateProductID()
-            {
-
-            }
+           
 
             void UpdateProductPrice()
             {
+                System.Console.WriteLine("Enter Existing Product ID");
+                product.ProductID = int.Parse(System.Console.ReadLine());
+                System.Console.WriteLine("Enter new Price for Product");
+                product.Price = System.Convert.ToDouble(System.Console.ReadLine());
 
+                pb.UpdateProductPrice(product);
+                System.Console.WriteLine("Product Price Updated Sucessfully!!!");
             }
 
         }
 
+        void getStockQuantity()
+        {
+            System.Console.WriteLine("enter the product Id:");
+            int pid = int.Parse(System.Console.ReadLine());
+            System.Console.WriteLine("no of Products Available:"+ wareHouseBusinessLayer.getStockQuantity(pid));
+        }
 
 
 

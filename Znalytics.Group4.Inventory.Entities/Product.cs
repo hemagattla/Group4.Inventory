@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Znalytics.Inventory.Product.Entities
+namespace Znalytics.Inventory.Product.Entitie
 {
     /// <summary>
     /// referes to ProductEntities class in Entities Layer
     /// </summary>
-    public class ProductEntitie
+    public class Product
     {
         //creating private feilds
         private string _productName;

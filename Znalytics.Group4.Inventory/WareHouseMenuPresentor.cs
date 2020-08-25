@@ -1,15 +1,17 @@
-﻿using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
+﻿using System.Collections.Generic;
+using Znalytics.Inventory.AddressModule.Entities;
+using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 using Znalytics.Inventory.WareHouseModule.Entities;
 
 using static System.Console;
 namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 {
-    class MenuPresentor
+   public class MenuPresentor
     {
         public static void Menu()
         {
 
-            Address a = new Address();
+            WareHouseAddress a = new WareHouseAddress();
             int choice = -1;
             do
             {
@@ -52,7 +54,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         case 1: AddWareHouse(); break;
                         //case 2:UpdateWareHouse(); break;
                         //case 3:DeleteWareHouse();break;
-                        // case 4:DisplayWareHouse();break;
+                        // case 4:GetWareHouses();break;
                         default: break;
                     }
                 }
@@ -61,17 +63,18 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         public static void AddWareHouse()
         {
             WareHouse n = new WareHouse();
+            WareHouseAddress whd = new WareHouseAddress();
             WriteLine("you chose to enter the warehouse details");
             WriteLine("Enter Manager Name");
             n.MangerName = ReadLine();
             WriteLine("Enter Warehouse Id");
             n.WarehouseId = ReadLine();
-            WriteLine("Enter Location Name");
-            //n.LocationName = ReadLine();
+            /*WriteLine("Enter Location Name");
+            whd.LocationName = ReadLine();
             WriteLine("Enter Pincode");
-           // n.Pincode = ReadLine();
+            whd.Pincode = ReadLine();
             WriteLine("Enter Warehouse capacity");
-            n.WarehouseCapacity = int.Parse(ReadLine());
+            n.WarehouseCapacity = int.Parse(ReadLine());*/
 
 
             WareHouseBusinessLayer wbl = new WareHouseBusinessLayer();
@@ -79,6 +82,21 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
 
 
+
+        }
+        public void GetWareHouses()
+        {
+            WareHouseBusinessLayer wbl = new WareHouseBusinessLayer();
+            List<WareHouse> WareHouseList = wbl.GetWareHouses();
+
+            System.Console.WriteLine("===============   WareHouse Details=============");
+            System.Console.WriteLine("WareHouseID" + "   " + "ManagerName" + "  " + "WareHouseName ");
+            System.Console.WriteLine("-----------------------------------------------------------------------");
+
+            foreach (WareHouse var in WareHouseList)
+            {
+                System.Console.WriteLine(var.WarehouseId+ "    " + var.MangerName  );// Displaying the products
+            }
 
         }
     }
@@ -99,103 +117,103 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
 
 
-        /*            
-                    //Created object of Menu
-                    Menu m = new Menu();
-                    int Option;
+/*            
+            //Created object of Menu
+            Menu m = new Menu();
+            int Option;
 
-                    //Created object for WareHouse
-                    WareHouse n = new WareHouse();
+            //Created object for WareHouse
+            WareHouse n = new WareHouse();
 
-                    //Created object for BusinessLogicsLayer
-                    WareHouseBusinessLayer wbl = new WareHouseBusinessLayer();
-                    wbl.AddWareHouse(n);
+            //Created object for BusinessLogicsLayer
+            WareHouseBusinessLayer wbl = new WareHouseBusinessLayer();
+            wbl.AddWareHouse(n);
 
-                    //do-while loop for menu
-                    do
-                    {
-                        Option = m.Show();
-                        switch (Option)
+            //do-while loop for menu
+            do
+            {
+                Option = m.Show();
+                switch (Option)
+                {
+                    //Add Warehouse
+                    case 1:
                         {
-                            //Add Warehouse
-                            case 1:
-                                {
-                                    System.Console.WriteLine("you chose to enter the warehouse details");
-                                    System.Console.WriteLine("Enter Manager Name");
-                                    n.MangerName = System.Console.ReadLine();
-                                    System.Console.WriteLine("Enter Warehouse Id");
-                                    n.WarehouseId = System.Console.ReadLine();
-                                    System.Console.WriteLine("Enter Location Name");
-                                    n.LocationName = System.Console.ReadLine();
-                                    System.Console.WriteLine("Enter Pincode");
-                                    n.Pincode = System.Console.ReadLine();
-                                    System.Console.WriteLine("Enter Warehouse capacity");
-                                    n.WarehouseCapacity = int.Parse(System.Console.ReadLine());
+                            System.Console.WriteLine("you chose to enter the warehouse details");
+                            System.Console.WriteLine("Enter Manager Name");
+                            n.MangerName = System.Console.ReadLine();
+                            System.Console.WriteLine("Enter Warehouse Id");
+                            n.WarehouseId = System.Console.ReadLine();
+                            System.Console.WriteLine("Enter Location Name");
+                            n.LocationName = System.Console.ReadLine();
+                            System.Console.WriteLine("Enter Pincode");
+                            n.Pincode = System.Console.ReadLine();
+                            System.Console.WriteLine("Enter Warehouse capacity");
+                            n.WarehouseCapacity = int.Parse(System.Console.ReadLine());
 
-                                    break;
-                                }
-                            //Display Warehouse Details
-                            case 2:
-                                {
-                                    System.Console.WriteLine("you chose to display the warehouse details");
-                                    System.Console.WriteLine("ManagerName :" + n.MangerName);
-                                    System.Console.WriteLine("WarehouseId :" + n.WarehouseId);
-                                    System.Console.WriteLine("LocationName: " + n.LocationName);
-                                    System.Console.WriteLine("Pincode: " + n.Pincode);
-                                    System.Console.WriteLine("WarehouseCapacity: " + n.WarehouseCapacity);
-                                    System.Console.WriteLine("WarehouseStatus: " + n.WarehouseStatus);
+                            break;
+                        }
+                    //Display Warehouse Details
+                    case 2:
+                        {
+                            System.Console.WriteLine("you chose to display the warehouse details");
+                            System.Console.WriteLine("ManagerName :" + n.MangerName);
+                            System.Console.WriteLine("WarehouseId :" + n.WarehouseId);
+                            System.Console.WriteLine("LocationName: " + n.LocationName);
+                            System.Console.WriteLine("Pincode: " + n.Pincode);
+                            System.Console.WriteLine("WarehouseCapacity: " + n.WarehouseCapacity);
+                            System.Console.WriteLine("WarehouseStatus: " + n.WarehouseStatus);
 
-                                    break;
-
-                                }
-                            //Update Warehouse Details
-                            case 3:
-                                {
-                                    System.Console.WriteLine("you chose to update the warehouse details");
-
-                                    break;
-                                }
-                            //Delete Warehouse Details
-                            case 4:
-                                {
-                                    System.Console.WriteLine("you chose to delete the warehouse details");
-
-                                    break;
-                                }
-                            case 5:
-                                {
-                                    System.Console.WriteLine("you chose to exit ");
-                                    break;
-                                }
-                            default:
-                                break;
-
+                            break;
 
                         }
+                    //Update Warehouse Details
+                    case 3:
+                        {
+                            System.Console.WriteLine("you chose to update the warehouse details");
 
-                        System.Console.ReadKey();
-                    } while (Option != 6);
+                            break;
+                        }
+                    //Delete Warehouse Details
+                    case 4:
+                        {
+                            System.Console.WriteLine("you chose to delete the warehouse details");
+
+                            break;
+                        }
+                    case 5:
+                        {
+                            System.Console.WriteLine("you chose to exit ");
+                            break;
+                        }
+                    default:
+                        break;
+
+
                 }
 
-
-                // Class for Menu
-                public class Menu
-                {
-                    public int Choice;
-                    public int Show()
-                    {
-                        //System.Console.Clear();
-                        System.Console.WriteLine("Please enter your option:\n\n 1.Add new WareHouse\n 2. Display Details\n 3.Update\n 4.Delete  ");
-
-                        Choice = int.Parse(System.Console.ReadLine());
-                        return Choice;
+                System.Console.ReadKey();
+            } while (Option != 6);
+        }
 
 
-                    }
+        // Class for Menu
+        public class Menu
+        {
+            public int Choice;
+            public int Show()
+            {
+                //System.Console.Clear();
+                System.Console.WriteLine("Please enter your option:\n\n 1.Add new WareHouse\n 2. Display Details\n 3.Update\n 4.Delete  ");
 
-    }
-    }
-        */
+                Choice = int.Parse(System.Console.ReadLine());
+                return Choice;
+
+
+            }
+
+}
+}
+*/
 
 
 
