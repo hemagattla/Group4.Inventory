@@ -7,36 +7,40 @@ using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 using Znalytics.Inventory.OrderManagementModule.Entities;
 using Znalytics.Inventory.Module.Entities;
-using Znalytics.Inventory.Product.Entitie;
-
+using Znalytics.Inventory.ProductModule.Entitie;
+using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
+using System.Linq;
+using Znalytics.Group4.Inventory.Entities;
 namespace Znalytics.Group4.Inventory.BusinessLogicLayer
-{
-    class OrderManagementBusinessLogicLayer
+{/// <summary>
+/// Represents Class in BusinessLayer and this OrderManagementBusinessLogicLayer class implements IOrderManagementBusinessLayer
+/// </summary>
+    class OrderManagementBusinessLogicLayer:IOrderManagementBusinessLayer
     {
-            OrderManagementDataLayer dl;
+        OrderManagementDataLayer dl;
 
 
-            public OrderManagementBusinessLogicLayer()
-            {
-                dl = new OrderManagementDataLayer();
-            }
+        public OrderManagementBusinessLogicLayer()
+        {
+            dl = new OrderManagementDataLayer();
+        }
 
-            IProductBusinessLogicLayer i = new ProductBusiness();
+        IProductBusinessLogicLayer i = new ProductBusiness();
         /// <summary>
         /// Get ProductDetails By product
         /// </summary>
         /// <param name="ProductID"></param>
         /// <returns></returns>
-            public Product ProductDetails(int ProductID)
-            {
-                return i.GetProductByProductID(ProductID);
+        public Product ProductDetails(int ProductID)
+        {
+            return i.GetProductByProductID(ProductID);
 
-            }
+        }
         IWareHouseAddressBusinessLogicLayer WareHouseAddress = new WareHouseAddressBusinessLogicLayer();
-       /// <summary>
-       /// Getting WarehouseAddressDetails using interface referance i.e. WareHouseAddress
-       /// </summary>
-       /// <returns></returns>
+        /// <summary>
+        /// Getting WarehouseAddressDetails using interface referance i.e. WareHouseAddress
+        /// </summary>
+        /// <returns></returns>
         public List<WareHouseAddress> GetWareHouseAddresses()
         {
             return WareHouseAddress.GetAddresses();
@@ -50,7 +54,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// Adding OrderDetails to collections
         /// </summary>
         /// <param name="value"></param>
-        public void AddOrderDetails(Znalytics.Inventory.OrderManagementModule.Entities.OrderManagement values)
+        public void AddOrderDetails(OrderManagement values)
         {
             if (values.Products != null)
             {
@@ -105,23 +109,51 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
                 dl.AddOrderDetails(values);
             }
             else throw new System.Exception("Enter either true or False");
-
-        }
-
-
-                //Delete OrderDetails
-                public void DeleteOrderDetails(OrderManagement values)
-                {
-                    dl.DeleteOrder(values);
-                }
-                public void UpdateAddressDetails()
-                {
-
-
-                }
+            OrderManagement o = new OrderManagement();
+            if (values.OrderID.Length == 10 && ! values.OrderID.Contains(o.OrderID))
+            {
+                dl.AddOrderDetails(values);
             }
 
         }
+
+
+        //Delete OrderDetails
+        public void DeleteOrderDetails(OrderManagement values)
+        {
+            dl.DeleteOrder(values);
+        }
+
+
+        //View OrderDetails
+        public List<OrderManagement> ViewOrderDetails()
+        {
+
+            List<OrderManagement> orderDetails= dl.ViewOrderDetails();
+            return orderDetails;
+        }
+        
+        //Cancel OrderDetails
+        public void CancelOrderDetails(OrderManagement value)
+        {
+            dl.CancelOrder(value);
+        }
+        //View OrderDetails by WareHouseID
+        public List<OrderManagement> GetOrderDetailsByWareHouseID(WareHouseAddress value)
+        {
+       
+            List<OrderManagement> orders= dl.GetOrderDetailsByWareHouseID(value);
+            return orders;
+        }
+        //View OrderDetails By ProductID
+        public List<OrderManagement> GetOrderDetailsByProductID(Product value)
+        {
+            List<OrderManagement> orders = dl.GetOrderDetailsByProductID(value);
+            return orders;
+        }
+    }
+
+}        
 
 
     
