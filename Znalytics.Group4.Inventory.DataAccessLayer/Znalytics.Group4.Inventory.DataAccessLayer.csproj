@@ -47,7 +47,6 @@
     <Compile Include="WareHouseAddressDataAccessLayer.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="CustDataLayer.cs" />
-    <Compile Include="IproductDataAccessLogic.cs" />
     <Compile Include="IStockDataAccessLayer.cs" />
     <Compile Include="IWareHouseDataAccessLayer.cs" />
     <Compile Include="ProductDataAccessLayer.cs" />

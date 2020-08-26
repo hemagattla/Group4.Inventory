@@ -2,7 +2,7 @@
 using Znalytics.Inventory.StockMaintain.DataAccessLayer;
 
 using Znalytics.Group4.Inventory.BusinessLogicLayer;
-using Znalytics.Inventory.Product.BusinessLogicLayer;
+using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 
 using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 using Znalytics.Group4.Inventory.IBusinessLogicLayer;

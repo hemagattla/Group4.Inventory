@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Znalytics.Inventory.Product.Entitie;
+using Znalytics.Inventory.ProductModule.Entitie;
 
-namespace Znalytics.Group4.Inventory.IBusinessLogicLayer
+namespace Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer
 {
     public interface IProductBusinessLogicLayer
     {

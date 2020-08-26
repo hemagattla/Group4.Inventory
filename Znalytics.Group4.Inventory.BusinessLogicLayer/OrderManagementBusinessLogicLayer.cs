@@ -4,7 +4,7 @@ using Znalytics.Inventory.OrderManagementModule.DataAccessLayer;
 using Znalytics.Inventory.AddressModule.BusinessLogicLayer;
 using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Group4.Inventory.IBusinessLogicLayer;
-using Znalytics.Inventory.Product.BusinessLogicLayer;
+using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 using Znalytics.Inventory.OrderManagementModule.Entities;
 using Znalytics.Inventory.Module.Entities;
 using Znalytics.Inventory.Product.Entitie;
