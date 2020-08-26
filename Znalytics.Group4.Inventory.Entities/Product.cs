@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Znalytics.Inventory.Product.Entitie
+namespace Znalytics.Inventory.ProductModule.Entitie
 {
     /// <summary>
     /// referes to ProductEntities class in Entities Layer

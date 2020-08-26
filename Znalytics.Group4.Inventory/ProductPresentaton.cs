@@ -4,8 +4,8 @@
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using Znalytics.Inventory.Product.BusinessLogicLayer;
-using Znalytics.Inventory.Product.Entitie;
+using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
+using Znalytics.Inventory.ProductModule.Entitie;
 using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 
@@ -178,7 +178,7 @@ class ProductPresentation
             Product product = new Product();// creating the object fro ProductDeatils class
             ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
 
-            System.Console.WriteLine("1. Update Product Name");c
+            System.Console.WriteLine("1. Update Product Name");
             System.Console.WriteLine("2. Update Product Price");
 
 

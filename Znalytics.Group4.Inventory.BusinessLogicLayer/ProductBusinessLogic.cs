@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Znalytics.Inventory.Product.DataAccessLayer;
-using Znalytics.Inventory.Product.Entitie;
+using Znalytics.Inventory.ProductModule.DataAccessLayer;
+using Znalytics.Inventory.ProductModule.Entitie;
 using Znalytics.Group4.Inventory.IBusinessLogicLayer;
+using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
 
-namespace Znalytics.Inventory.Product.BusinessLogicLayer
+namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
 {
 
     /// <summary>
@@ -27,7 +28,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
         /// adding products 
         /// </summary>
         /// <param name="n"> gets object of ProductDetails</param>
-        public void AddProducts(Entitie.Product n)
+        public void AddProducts(Product n)
         {
             if (n.ProductName != null)
             {
@@ -40,7 +41,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
         /// </summary>
         /// <param name="n">gets object of ProductDeatils</param>
 
-        public List<Entitie.Product> DispalyProducts()
+        public List<Product> DispalyProducts()
         {
 
             return d.DisplayProducts();
