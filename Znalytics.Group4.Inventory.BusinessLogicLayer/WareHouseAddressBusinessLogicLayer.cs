@@ -32,15 +32,71 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         }
 
         //Method to display WareHouseAddress details by AddressId
-        public WareHouseAddress GetAddressByAddressID(string AddressID)
+        public List<WareHouseAddress> GetAddressByAddressID(string addressId)
         {
-            return wadl.AddressList.Find(temp => temp.AddressId == AddressID);
+            return wadl.GetAddressByAddressID(addressId);
         }
 
         //Method to display WareHouseAddress details by WareHouseId
-        public WareHouseAddress GetAddressByWareHouseID(string WareHouseID)
+        public List<WareHouseAddress> GetAddressByWareHouseID(string wareHouseID)
         {
-            return wadl.AddressList.Find(temp => temp.WarehouseId == WareHouseID);
+            return wadl.GetAddressByWareHouseID(wareHouseID);
+        }
+
+        //Method to display WareHouseAddress details by LocationName
+        public List<WareHouseAddress> GetAddressByLocationName(string locationName)
+        {
+            return wadl.GetAddressByLocationName(locationName);
+        }
+
+        public void UpdateDoorNumber(WareHouseAddress address)// update product Name
+        {
+
+            if (address.AddressId != null)
+            {
+                wadl.UpdateDoorNumber(address);
+            }
+        }
+        public void UpdateLocationName(WareHouseAddress address)// update product Name
+        {
+
+            if (address.AddressId != null)
+            {
+                wadl.UpdateLocationName(address);
+            }
+
+        }
+        public void UpdateState(WareHouseAddress address)// update product Name
+        {
+
+            if (address.AddressId != null)
+            {
+                wadl.UpdateState(address);
+            }
+        }
+        public void UpdatePincode(WareHouseAddress address)// update product Name
+        {
+
+            if (address.AddressId != null)
+            {
+                wadl.UpdatePincode(address);
+            }
+        }
+
+        public void RemoveAddressByWareHouseID(string wareHouseID)
+        {
+            if (wareHouseID != null)
+            {
+                wadl.RemoveAddressByWareHouseID(wareHouseID);
+            }
+        }
+
+        public void RemoveAddressByAddressID(string addressID)
+        {
+            if (addressID != null)
+            {
+                wadl.RemoveAddressByAddressID(addressID);
+            }
         }
 
 

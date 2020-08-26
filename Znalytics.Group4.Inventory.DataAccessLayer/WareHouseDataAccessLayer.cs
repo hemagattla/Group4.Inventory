@@ -11,7 +11,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
     public class WareHouseDataAccessLayer
     {
         //Created a list for WareHouse
-        private static List<WareHouse> WareHouseList
+        private static List<WareHouse> _wareHouseList
         {
             set;
             get;
@@ -19,42 +19,42 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         // Constructor 
         static WareHouseDataAccessLayer()
         {
-            WareHouseList = new List<WareHouse>();
+            _wareHouseList = new List<WareHouse>();
         }
 
         //Method to add details to the list
         public void AddWareHouse(WareHouse warehouseDetails)
         {
-            WareHouseList.Add(warehouseDetails);
+            _wareHouseList.Add(warehouseDetails);
         }
 
         // Method to display the added details
         public List<WareHouse> GetWareHouses()
         {
-            return WareHouseList;
+            return _wareHouseList;
         }
 
         //Method to get the WareHouse by WareHouseID
         public WareHouse GetWareHouseByWareHouseID(string WareHouseID)
         {
             WareHouse w;
-            w = WareHouseList.Find(temp => temp.WarehouseId == WareHouseID);
+            w = _wareHouseList.Find(temp => temp.WarehouseId == WareHouseID);
             return w;
         }
 
         public void RemoveWareHouseByID(string wareHouseID) //Removing a Product by using PWareHouse ID
         {
-            WareHouseList.RemoveAll(n => n.WarehouseId == wareHouseID);
+            _wareHouseList.RemoveAll(n => n.WarehouseId == wareHouseID);
 
         }
         public void RemoveWareHouseByName(string wareHouseName)// Removing a Product By using WareHouse Name
         {
-            WareHouseList.RemoveAll(n => n.WareHouseName == wareHouseName);
+            _wareHouseList.RemoveAll(n => n.WareHouseName == wareHouseName);
         }
 
         public void UpdateWareHouseName(WareHouse wareHouse)// update WareHouse Name
         {
-            WareHouse w = WareHouseList.Find(n => n.WarehouseId == wareHouse.WarehouseId);
+            WareHouse w = _wareHouseList.Find(n => n.WarehouseId == wareHouse.WarehouseId);
             if (w != null)
             {
                 w.WareHouseName = wareHouse.WareHouseName;
@@ -66,7 +66,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 
         public void UpdateManagerName(WareHouse wareHouse)// update product Name
         {
-            WareHouse w = WareHouseList.Find(n => n.WarehouseId == wareHouse.WarehouseId);
+            WareHouse w = _wareHouseList.Find(n => n.WarehouseId == wareHouse.WarehouseId);
             if (w != null)
             {
                 w.MangerName = wareHouse.MangerName;
