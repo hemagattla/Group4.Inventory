@@ -3,6 +3,8 @@
 using System.Collections.Generic;
 
 using Znalytics.Inventory.OrderManagementModule.Entities;
+using Znalytics.Inventory.ProductModule.Entitie;
+
 namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
 {
    public class OrderManagementDataLayer
@@ -31,13 +33,13 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         {
             foreach (var order in _orders)
             {
-                foreach (var value in order.Products)
-                {
-                    if (value.ProductName == values.List<Product>.ProductName)
-                    {
+                
+                    if(values.Products==values.Products)
+                   
+                        
                         _orders.Remove(values);
-                    }
-                }
+                    
+                
             }
         }
             //Delete the Order

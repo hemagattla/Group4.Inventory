@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Znalytics.Inventory.Product.Entitie;
+using Znalytics.Inventory.ProductModule.Entitie;
 using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.Module.Entities;
 namespace Znalytics.Inventory.OrderManagementModule.Entities
