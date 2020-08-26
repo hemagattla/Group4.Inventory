@@ -25,7 +25,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 
         static ProductData() // creating a list object in constructor
         {
-            _ProductsList = new List<Entitie.Product>();
+            _ProductsList = new List<Product>();
 
         }
 
@@ -33,7 +33,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// adding the products into the List
         /// </summary>
         /// <param name="productDetails">object of Product class</param>
-        public void AddProduct(Entitie.Product productDetails)// Adding Products into the ProductsList
+        public void AddProduct(Product productDetails)// Adding Products into the ProductsList
         {
             _ProductsList.Add(productDetails);
         }
@@ -42,7 +42,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// displaying the products in the List
         /// </summary>
 
-        public List<Entitie.Product> DisplayProducts() 
+        public List<Product> DisplayProducts() 
         {
             return _ProductsList;
         }
@@ -70,7 +70,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// </summary>
         /// <param name="productID">passing Product ID</param>
         /// <returns></returns>
-        public Entitie.Product GetProductByID(int productID)//Displaying product Details using Product ID
+        public Product GetProductByID(int productID)//Displaying product Details using Product ID
         {
             Entitie.Product pe;
             pe = _ProductsList.Find(n => n.ProductID == productID);
@@ -82,9 +82,9 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// </summary>
         /// <param name="product">reference of Product</param>
 
-        public void UpdateProductName(Entitie.Product product)// update product Name
+        public void UpdateProductName(Product product)// update product Name
         {
-            Entitie.Product PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
+           Product PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
             if(PE!=null)
             {
                 PE.ProductName = product.ProductName;
@@ -96,7 +96,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// <param name="product">object of Product class</param>
         public void UpdateProductPrice(Entitie.Product product)
         {
-            Entitie.Product PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
+            Product PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
             if (PE != null)
             {
                 PE.Price = product.Price;
