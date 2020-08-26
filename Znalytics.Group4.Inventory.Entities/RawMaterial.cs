@@ -4,31 +4,14 @@ namespace Znalytics.Group4.Inventory.RawMaterial.Entities
 {
     public class RawMaterials
     {
-        private string _wareHouseID;
+        
         private string _rawMaterialName;
         private string _rawMaterialID;
         private string _quantity;
         private string _units;
         private double _price;
        
-        public string WareHouseID
-        {
-            set
-            {
-                if((value.Length==6)&&(value.StartsWith("WHID")))
-                        {
-                    _wareHouseID = value;
-                }
-                else
-                {
-                    throw new System.Exception("ur entered warehouseID is invalid");
-                }
-            }
-            get
-            {
-                return _wareHouseID;
-            }
-        }
+     
         public string RawMaterialName
         {
             set

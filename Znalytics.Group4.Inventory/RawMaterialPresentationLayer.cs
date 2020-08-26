@@ -52,8 +52,6 @@ namespace Znalytics.Group4.Inventory.RawMaterial.PresentationLayer
         {
             RawMaterials rawMaterial = new RawMaterials();
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
-            System.Console.WriteLine("Enter WareHouseID");
-            rawMaterial.WareHouseID=System.Console.ReadLine();
             System.Console.WriteLine("Enter RawMaterialName");
             rawMaterial.RawMaterialName = System.Console.ReadLine();
             System.Console.WriteLine("Enter RawMaterialID");
@@ -70,8 +68,7 @@ namespace Znalytics.Group4.Inventory.RawMaterial.PresentationLayer
         {
             RawMaterials rawMaterial = new RawMaterials();
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
-            System.Console.WriteLine("Enter WareHouseID");
-            rawMaterial.WareHouseID = System.Console.ReadLine();
+     
             System.Console.WriteLine("Enter RawMaterialName");
             rawMaterial.RawMaterialName = System.Console.ReadLine();
             System.Console.WriteLine("Enter RawMaterialID");
@@ -86,30 +83,55 @@ namespace Znalytics.Group4.Inventory.RawMaterial.PresentationLayer
         }
         public static void ViewRawMaterial()
         {
-            RawMaterials rawMaterial = new RawMaterials();
+            
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
+            List<RawMaterials> rms = rawMaterialBusinessLogicLayer.GetRawMaterial();
 
-            foreach (RawMaterialEntityLayer  rm in rms)
+            foreach (RawMaterial rm in rms)
             {
-                System.Console.WriteLine(rm.WareHouseID + " , " + rm.RawMaterialName + " , " + rm.RawMaterialID + " , " + rm.Quantity + "" + rm.Units + " , " + rm.Price);
+                System.Console.WriteLine( rm.RawMaterialName + " , " + rm.RawMaterialID + " , " + rm.Quantity + "" + rm.Units + " , " + rm.Price);
             }
         }
         public static void UpdateRawMaterial()
         {
             RawMaterials rawMaterial = new RawMaterials();
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
-            System.Console.WriteLine("Enter WareHouseID");
-            rawMaterial.WareHouseID = System.Console.ReadLine();
+     
             System.Console.WriteLine("Enter RawMaterialName");
             rawMaterial.RawMaterialName = System.Console.ReadLine();
             System.Console.WriteLine("Enter RawMaterialID");
             rawMaterial.RawMaterialID = System.Console.ReadLine();
+           
+            System.Console.WriteLine("1.want to change Quantity");
+            System.Console.WriteLine("2.want to change price");
+            System.Console.WriteLine("enter the choice of changing quantity/price");
+            int i=System.Convert.ToInt32(System.Console.ReadLine());
+            switch(i)
+            {
+                case 1:ChangePrice();
+                    break;
+                case 2:ChangeQuantity();
+                    break;
+                default:System.Console.WriteLine("entered choice is invalid");
+                    break;
+            }
+            
+          
+            
+        }
+        public static void ChangePrice()
+        {
+            RawMaterials rawMaterial = new RawMaterials();
+            RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
+            System.Console.WriteLine("Enter the new Price");
+            rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());
+        }
+        public static void ChangeQuantity()
+        {
+            RawMaterials rawMaterial = new RawMaterials();
+            RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
             System.Console.WriteLine("Enter Quantity");
             rawMaterial.Quantity = System.Console.ReadLine();
-            System.Console.WriteLine("Enter units");
-            rawMaterial.Units = System.Console.ReadLine();
-            System.Console.WriteLine("Enter Price");
-            rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());
         }
     }
     
