@@ -11,7 +11,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
     /// <summary>
     /// Represents the class for WareHouse Address
     /// </summary>
-    public class WareHouseAddressDataAccessLayer: IWareHouseAddressDataAccessLayer
+    public class WareHouseAddressDataAccessLayer//: IWareHouseAddressDataAccessLayer
     {
         //Created a list for WareHouse Addresses
         public List<WareHouseAddress> _addressList
@@ -39,17 +39,22 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         }
 
         //Method to get the Address details by AddressID
-        public WareHouseAddress GetAddressByAddressID(string AddressID)
+        public List<WareHouseAddress> GetAddressByAddressID(string AddressID)
         {
-            return _addressList.Find(temp => temp.AddressId == AddressID);
+
+            return _addressList.FindAll(temp => temp.AddressId == AddressID);
+
         }
 
         //Method to get the Address Details by WareHouseID
-        public WareHouseAddress GetAddressByWareHouseID(string WareHouseID)
+        public List<WareHouseAddress> GetAddressByWareHouseID(string WareHouseID)
         {
-            return _addressList.Find(temp => temp.WareHouseId == WareHouseID);
+
+            return _addressList.FindAll(temp => temp.WareHouseId == WareHouseID);
+
         }
 
+        //Method to display WareHouseAddress details by LocationName
         public List<WareHouseAddress> GetAddressByLocationName(string locationName)
         {
 
@@ -57,6 +62,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
         }
 
+        //Method to update Door Number of WareHouse
         public void UpdateDoorNumber(WareHouseAddress address)// update WareHouse Name
         {
             WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
@@ -68,6 +74,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             }
         }
 
+        //Method to update the Location Name of WareHouse
         public void UpdateLocationName(WareHouseAddress address)// update WareHouse Name
         {
             WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
@@ -80,6 +87,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         }
 
 
+        //Method to update the State of WareHouse
         public void UpdateState(WareHouseAddress address)// update product Name
         {
             WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
@@ -90,6 +98,8 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
             }
         }
+
+        //Method to update the Pincode of WareHouse
         public void UpdatePincode(WareHouseAddress address)
         {
             WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
@@ -100,6 +110,8 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
             }
         }
+
+        //Method to remove an address of the Warehouse by wareHouseID
         public void RemoveAddressByWareHouseID(string wareHouseID)
         {
 
@@ -107,6 +119,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
         }
 
+        //Method to remove an address of the Warehouse by addressID
         public void RemoveAddressByAddressID(string addressID) 
         {
 

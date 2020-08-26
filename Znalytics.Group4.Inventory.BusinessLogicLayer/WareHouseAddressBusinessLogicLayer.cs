@@ -32,13 +32,13 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         }
 
         //Method to display WareHouseAddress details by AddressId
-        public List<WareHouseAddress> GetAddressByAddressID(string addressId)
+        public List<WareHouseAddress>GetAddressByAddressID(string addressID)
         {
-            return wadl.GetAddressByAddressID(addressId);
+            return wadl.GetAddressByAddressID(addressID);
         }
 
         //Method to display WareHouseAddress details by WareHouseId
-        public List<WareHouseAddress> GetAddressByWareHouseID(string wareHouseID)
+        public List<WareHouseAddress>GetAddressByWareHouseID(string wareHouseID)
         {
             return wadl.GetAddressByWareHouseID(wareHouseID);
         }
@@ -49,6 +49,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             return wadl.GetAddressByLocationName(locationName);
         }
 
+        //Method to update Door Number of WareHouse
         public void UpdateDoorNumber(WareHouseAddress address)// update product Name
         {
 
@@ -57,6 +58,8 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 wadl.UpdateDoorNumber(address);
             }
         }
+
+        //Method to update the Location Name of WareHouse
         public void UpdateLocationName(WareHouseAddress address)// update product Name
         {
 
@@ -66,6 +69,8 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             }
 
         }
+
+        //Method to update the State of WareHouse
         public void UpdateState(WareHouseAddress address)// update product Name
         {
 
@@ -74,6 +79,8 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 wadl.UpdateState(address);
             }
         }
+
+        //Method to update the Pincode of WareHouse
         public void UpdatePincode(WareHouseAddress address)// update product Name
         {
 
@@ -83,6 +90,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             }
         }
 
+        //Method to remove an address of the Warehouse by wareHouseID
         public void RemoveAddressByWareHouseID(string wareHouseID)
         {
             if (wareHouseID != null)
@@ -91,6 +99,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             }
         }
 
+        //Method to remove an address of the Warehouse by addressID
         public void RemoveAddressByAddressID(string addressID)
         {
             if (addressID != null)
