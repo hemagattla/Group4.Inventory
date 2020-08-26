@@ -1,4 +1,5 @@
 ﻿
+//Written By Dhanasri
 using System.Collections.Generic;
 
 using Znalytics.Inventory.OrderManagementModule.Entities;
@@ -26,13 +27,16 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
             }
 
         //Cancel the Order
-        public void CancelOrder(OrderManagement values)
+        public void CancelOrder(Product values)
         {
             foreach (var order in _orders)
             {
-                if (order.ProductID == values.ProductID)
+                foreach (var value in order.Products)
                 {
-                    _orders.Remove(values);
+                    if (value.ProductName == values.ProductName)
+                    {
+                        _orders.Remove(values);
+                    }
                 }
             }
         }
