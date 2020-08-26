@@ -11,5 +11,6 @@ namespace Znalytics.Inventory.IDataAccessLayer
         void AddCustomer(Customer c);
           void UpdateCustomer(Customer c);
       void DelCustomer(Customer c);
+        Customer GetCustomerById(int CustomerId);
     }
 }
