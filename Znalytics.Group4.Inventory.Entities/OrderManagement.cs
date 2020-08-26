@@ -1,34 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using Znalytics.Inventory.Product.Entitie;
 using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.Module.Entities;
 namespace Znalytics.Inventory.OrderManagementModule.Entities
 {
     public class OrderManagement
     {
-        List<string> _productNames;
+        List<Product> _products;
         WareHouseAddress _wareHouseAddress;
         Customer _customerAddress;
-        double _quantity;
-        double _price;
-        int _productID;
+        
+        double _totalPrice;
+       
         bool _shippingStatus=false;
-        OrderManagement(List<string> productNames, WareHouseAddress wareHouseAddress,Customer customerAddress,double quantity,double price,int productID,bool shippingStatus)
+        OrderManagement(List<Product> products, WareHouseAddress wareHouseAddress,Customer customerAddress,double price,bool shippingStatus)
         {
-            productNames = _productNames;
+            products = _products;
             wareHouseAddress = _wareHouseAddress;
             customerAddress = _customerAddress;
-            quantity = _quantity;
-            price = _price;
-            productID = _productID;
+           
+            price = _totalPrice;
+           
             shippingStatus = _shippingStatus;
         }
-       public List<string> ProductNames{
+       public List<Product> Products{
             set{
-                _productNames = value;
+                _products = value;
             }
             get{
-                return _productNames;
+                return _products;
             }
         }
         public WareHouseAddress WareHouseAddress
@@ -53,39 +54,19 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
                 return _customerAddress;
             }
         }
-        public double Quantity
-        {
-            set
-            {
-                _quantity = value;
-            }
-            get
-            {
-                return _quantity;
-            }
-        }
+      
         public double Price
         {
             set
             {
-                _price = value;
+                _totalPrice = value;
             }
             get
             {
-                return _price;
+                return _totalPrice;
             }
         }
-        public int ProductID
-        {
-            set
-            {
-                _productID = value;
-            }
-            get
-            {
-                return _productID; 
-            }
-        }
+      
         public bool ShippingStatus
         {
             set
