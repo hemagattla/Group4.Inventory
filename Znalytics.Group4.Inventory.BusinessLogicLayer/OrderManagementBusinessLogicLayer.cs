@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Znalytics.Inventory.OrderManagementModule.DataAccessLayer;
-
+using Znalytics.Inventory.AddressModule.BusinessLogicLayer;
+using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 using Znalytics.Inventory.Product.BusinessLogicLayer;
 using Znalytics.Inventory.OrderManagementModule.Entities;
+using Znalytics.Inventory.Module.Entities;
+using Znalytics.Inventory.Product.Entitie;
 
 namespace Znalytics.Group4.Inventory.BusinessLogicLayer
 {
@@ -29,8 +32,19 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
                 return i.GetProductByProductID(ProductID);
 
             }
+        IWareHouseAddressBusinessLogicLayer WareHouseAddress = new WareHouseAddressBusinessLogicLayer();
+       /// <summary>
+       /// Getting WarehouseAddressDetails using interface referance i.e. WareHouseAddress
+       /// </summary>
+       /// <returns></returns>
+        public List<WareHouseAddress> GetWareHouseAddresses()
+        {
+            return WareHouseAddress.GetAddresses();
+        }
+        public List<Customer> GetCustomerDetails()
+        {
 
-
+        }
 
         /// <summary>
         /// Adding OrderDetails to collections
