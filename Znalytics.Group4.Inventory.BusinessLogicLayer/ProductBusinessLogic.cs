@@ -24,7 +24,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
             d = new ProductData();
         }
         /// <summary>
-        /// adding the products 
+        /// adding products 
         /// </summary>
         /// <param name="n"> gets object of ProductDetails</param>
         public void AddProducts(Entitie.Product n)
