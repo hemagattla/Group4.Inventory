@@ -7,7 +7,7 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 using static System.Console;
 namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 {
-   public class MenuPresentor
+    public class MenuPresentor
     {
         public static void Menu()
         {
@@ -216,7 +216,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
             WriteLine("You chose to add address to the WareHouse");
             WriteLine("Enter Existing WareHouseId");
-            a.WarehouseId = ReadLine();
+            a.WareHouseId = ReadLine();
             WriteLine("Enter Address id");
             a.AddressId = ReadLine();
             WriteLine("Enter Door Number");
@@ -247,13 +247,191 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
             foreach (WareHouseAddress item in AddressList)
             {
-                WriteLine(item.WarehouseId + "    " + item.AddressId + "  " + item.DoorNumber + " " + item.LocationName + "  " + item.State + "  " + item.Pincode);// Displaying the products
+                WriteLine(item.WareHouseId + "    " + item.AddressId + "  " + item.DoorNumber + " " + item.LocationName + "  " + item.State + "  " + item.Pincode);// Displaying the products
+            }
+
+        }
+        public static void GetAddressByAddressID()
+        {
+            WriteLine("Enter the existing WareHouse Address Id");
+            string addressid = ReadLine();
+            WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+            List<WareHouseAddress> addressList = wabl.GetAddressByAddressID(addressid);
+            foreach (WareHouseAddress item in addressList)
+            {
+                WriteLine(item.WareHouseId + "    " + item.AddressId + "  " + item.DoorNumber + " " + item.LocationName + "  " + item.State + "  " + item.Pincode);// Displaying the products
+            }
+
+
+
+        }
+        public static void GetAddressByWareHouseID()
+        {
+            WriteLine("Enter the existing WareHouse WareHouse Id");
+            string warehouseId = ReadLine();
+            WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+            List<WareHouseAddress> addressList = wabl.GetAddressByWareHouseID(warehouseId);
+            foreach (WareHouseAddress item in addressList)
+            {
+                WriteLine(item.WareHouseId + "    " + item.AddressId + "  " + item.DoorNumber + " " + item.LocationName + "  " + item.State + "  " + item.Pincode);// Displaying the products
             }
 
         }
 
+
+
+
+
+        public static void GetAddressByLocationName()
+        {
+            WriteLine("Enter the locationName");
+            string locationName = ReadLine();
+            WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+            List<WareHouseAddress> addressList = wabl.GetAddressByLocationName(locationName);
+            foreach (WareHouseAddress item in addressList)
+            {
+                WriteLine(item.WareHouseId + "    " + item.AddressId + "  " + item.DoorNumber + " " + item.LocationName + "  " + item.State + "  " + item.Pincode);// Displaying the products
+            }
+
+        }
+
+
+        public static void UpdateWareHouseAddress()
+        {
+            WareHouseAddress address = new WareHouseAddress();
+            WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+            WriteLine("1. Update Door Number ");
+            WriteLine("2. Update Location Name");
+            WriteLine("3. Update State");
+            WriteLine("4. Update Pincode");
+
+
+            int Option;
+            bool a;
+
+            a = int.TryParse(ReadLine(), out Option);
+
+            if (a == true)
+            {
+                switch (Option)
+                {
+                    case 1:
+                        UpdateDoorNumber(); break;
+                    case 2:
+                        UpdateLocationName(); break;
+                    case 3:
+                        UpdateState(); break;
+                    case 4:
+                        UpdatePincode(); break;
+
+                    default: WriteLine("Enter correct option"); break;
+
+                }
+            }
+
+            void UpdateDoorNumber()
+            {
+
+                WriteLine("Enter Existing Address ID");
+                address.AddressId = ReadLine();
+                WriteLine("Enter the new Door Number for the WareHouse");
+                address.DoorNumber = ReadLine();
+
+                wabl.UpdateDoorNumber(address);
+                WriteLine("Door Number Updated Sucessfully!!!");
+
+            }
+
+
+            void UpdateLocationName()
+            {
+
+                WriteLine("Enter Existing Address ID");
+                address.AddressId = ReadLine();
+                WriteLine("Enter the new Location Name for the WareHouse");
+                address.LocationName = ReadLine();
+
+                wabl.UpdateLocationName(address);
+                WriteLine("Location Name Updated Sucessfully!!!");
+
+            }
+
+
+            void UpdateState()
+            {
+
+                WriteLine("Enter Existing Address ID");
+                address.AddressId = ReadLine();
+                WriteLine("Enter the new State for the WareHouse");
+                address.State = ReadLine();
+
+                wabl.UpdateState(address);
+                WriteLine(" State Updated Sucessfully!!!");
+
+            }
+
+            void UpdatePincode()
+            {
+
+                WriteLine("Enter Existing Address ID");
+                address.AddressId = ReadLine();
+                WriteLine("Enter the new pincode for the WareHouse");
+                address.Pincode = ReadLine();
+
+                wabl.UpdatePincode(address);
+                WriteLine("Pincode Updated Sucessfully!!!");
+
+            }
+        }
+
+        public static void RemoveWareHouseAddress()
+        {
+            WareHouseAddress w = new WareHouseAddress();// creating the object for Warehouse class
+            WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();// Creating thhe object for WareHouseBusinessLogic class
+            WriteLine("select on which type you want to remove the WareHouse Address");
+            WriteLine("1.on WareHouseId");
+            WriteLine("2.on AddressId");
+            int Option;
+            bool a;
+            a = int.TryParse(ReadLine(), out Option);
+
+            if (a == true)
+            {
+                switch (Option)
+                {
+                    case 1: RemoveAddressByWareHouseID(); break;
+                    case 2: RemoveAddressByAddressID(); break;
+                    default: WriteLine("Please Choose enter correct Option"); break;
+
+                }
+
+            }
+            else
+            {
+                WriteLine("Please Enter Correct Option");
+            }
+            void RemoveAddressByWareHouseID()
+            {
+                Write("Enter the WarehouseID:");
+                string wareHouseID = ReadLine();
+
+                wabl.RemoveAddressByWareHouseID(wareHouseID);
+                WriteLine("Address Removed");
+
+
+            }
+            void RemoveAddressByAddressID()
+            {
+                Write("Enter the AddressId:");
+                string addressID = ReadLine();
+
+                wabl.RemoveAddressByAddressID(addressID);
+                WriteLine("Warehouse Removed");
+            }
+
+        }
     }
-    }
+}
 
 
 

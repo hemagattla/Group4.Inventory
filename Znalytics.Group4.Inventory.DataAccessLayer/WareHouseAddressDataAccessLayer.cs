@@ -14,7 +14,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
     public class WareHouseAddressDataAccessLayer: IWareHouseAddressDataAccessLayer
     {
         //Created a list for WareHouse Addresses
-        public List<WareHouseAddress> AddressList
+        public List<WareHouseAddress> _addressList
         {
             set;
             get;
@@ -23,31 +23,95 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         // Constructor
         public WareHouseAddressDataAccessLayer()
         {
-            AddressList = new List<WareHouseAddress>();
+            _addressList = new List<WareHouseAddress>();
         }
 
         //Method to add address details to the list
         public void AddAddress(WareHouseAddress a)
         {
-            AddressList.Add(a);
+            _addressList.Add(a);
         }
 
         // Method to display the added address details
         public List<WareHouseAddress> GetAddresses()
         {
-            return AddressList;
+            return _addressList;
         }
 
         //Method to get the Address details by AddressID
         public WareHouseAddress GetAddressByAddressID(string AddressID)
         {
-            return AddressList.Find(temp => temp.AddressId == AddressID);
+            return _addressList.Find(temp => temp.AddressId == AddressID);
         }
 
         //Method to get the Address Details by WareHouseID
         public WareHouseAddress GetAddressByWareHouseID(string WareHouseID)
         {
-            return AddressList.Find(temp => temp.WarehouseId == WareHouseID);
+            return _addressList.Find(temp => temp.WareHouseId == WareHouseID);
+        }
+
+        public List<WareHouseAddress> GetAddressByLocationName(string locationName)
+        {
+
+            return _addressList.FindAll(temp => temp.LocationName == locationName);
+
+        }
+
+        public void UpdateDoorNumber(WareHouseAddress address)// update WareHouse Name
+        {
+            WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
+            if (wha != null)
+            {
+                wha.DoorNumber = address.DoorNumber;
+
+
+            }
+        }
+
+        public void UpdateLocationName(WareHouseAddress address)// update WareHouse Name
+        {
+            WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
+            if (wha != null)
+            {
+                wha.LocationName = address.LocationName;
+
+
+            }
+        }
+
+
+        public void UpdateState(WareHouseAddress address)// update product Name
+        {
+            WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
+            if (wha != null)
+            {
+                wha.State = address.State;
+
+
+            }
+        }
+        public void UpdatePincode(WareHouseAddress address)
+        {
+            WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
+            if (wha != null)
+            {
+                wha.Pincode = address.Pincode;
+
+
+            }
+        }
+        public void RemoveAddressByWareHouseID(string wareHouseID)
+        {
+
+            _addressList.RemoveAll(n => n.WareHouseId == wareHouseID);
+
+        }
+
+        public void RemoveAddressByAddressID(string addressID) 
+        {
+
+            _addressList.RemoveAll(n => n.AddressId == addressID);
+
         }
     }
 }

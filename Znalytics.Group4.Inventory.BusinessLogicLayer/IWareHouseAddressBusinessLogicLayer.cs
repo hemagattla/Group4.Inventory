@@ -16,9 +16,9 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         List<WareHouseAddress> GetAddresses();
 
         //Method to get the Address details by AddressID
-        WareHouseAddress GetAddressByAddressID(string AddressID);
+        List<WareHouseAddress> GetAddressByAddressID(string addressID);
 
         //Method to get the Address Details by WareHouseID
-        WareHouseAddress GetAddressByWareHouseID(string WareHouseID);
+        List<WareHouseAddress> GetAddressByWareHouseID(string wareHouseID);
     }
 }
