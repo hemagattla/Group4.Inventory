@@ -4,7 +4,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
 {
 
     /// <summary>
-    /// Represents Inventory Warehouse bfefjkjkjdvk
+    /// Represents Inventory Warehouse 
     /// </summary>
     public class WareHouse
     {
