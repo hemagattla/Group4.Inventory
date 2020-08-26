@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.Module.Entities;
 using Znalytics.Inventory.IDataAccessLayer;
-namespace Znalytics.Inventory.Module.DataAccessLayer 
+namespace Znalytics.Inventory.Module.DataAccessLayer
 {
-    public class CustDataLayer: IcustDataLayer
+    public class CustDataLayer : IcustDataLayer
     {
         static List<Customer> _customers = new List<Customer>();/// <summary>
                                                                 /// creating list as customers///
@@ -38,8 +38,14 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
         }
         public void DelCustomer(Customer c)
         {
-         Customer t=  _customers.Find((temp => temp.CustomerName== c.CustomerName));
+            Customer t = _customers.Find((temp => temp.CustomerName == c.CustomerName));
             _customers.Clear();///deleting customers deatils based on given condition///
         }
+        public Customer GetCustomerById(int CustomerId)//Displaying product Details using Product ID
+        {
+            Customer e;
+            e = _customers.Find(n => n.CustomerId == CustomerId);
+            return e;
+        }
     }
-    }
+}

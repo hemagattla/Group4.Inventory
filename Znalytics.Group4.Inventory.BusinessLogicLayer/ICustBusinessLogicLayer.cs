@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.Module.Entities;
-namespace Znalytics.Inventory.IDataAccessLayer
+namespace Znalytics.Group4.Module.IBusinessLogicLayer
 {
-    interface IcustDataLayer
+    interface ICustBusinessLogicLayer
     {
         void AddCustomer(Customer c);
-          void UpdateCustomer(Customer c);
+        void UpdateCustomer(Customer c);
       void DelCustomer(Customer c);
         Customer GetCustomerById(int CustomerId);
     }
