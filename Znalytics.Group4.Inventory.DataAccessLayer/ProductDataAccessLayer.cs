@@ -6,15 +6,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Znalytics.Inventory.Product.Entitie;
-using Znalytics.Group4.Inventory.IDataAccessLayer;
+using Znalytics.Inventory.ProductModule.Entitie;
 
-namespace Znalytics.Inventory.Product.DataAccessLayer
+
+namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 {
     /// <summary>
     /// referes to ProductData class in DataAccessLayer
     /// </summary>
-    public class ProductData : IproductDataAccessLogic
+    public class ProductData
     {
 
         private static List<Entitie.Product> _ProductsList  //creating a reference varibale for List

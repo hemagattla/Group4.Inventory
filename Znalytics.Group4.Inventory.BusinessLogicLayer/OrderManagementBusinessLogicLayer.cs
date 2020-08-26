@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Znalytics.Inventory.OrderManagementModule.DataAccessLayer;
 
 using Znalytics.Group4.Inventory.IBusinessLogicLayer;
-using Znalytics.Inventory.Product.BusinessLogicLayer;
+using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 using Znalytics.Inventory.OrderManagementModule.Entities;
 
 namespace Znalytics.Group4.Inventory.BusinessLogicLayer

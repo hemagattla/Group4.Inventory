@@ -4,8 +4,8 @@
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using Znalytics.Inventory.Product.BusinessLogicLayer;
-using Znalytics.Inventory.Product.Entitie;
+using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
+using Znalytics.Inventory.ProductModule.Entitie;
 using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 
