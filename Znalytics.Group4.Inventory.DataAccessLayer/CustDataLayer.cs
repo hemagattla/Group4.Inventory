@@ -23,7 +23,7 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
         {
             return _customers;
         }
-        public void UpDateCustomer(Customer c)
+        public void UpdateCustomer(Customer c)
         {
             ///updating deatils based on cust id///
             Customer cu = _customers.Find(temp => temp.CustomerId == c.CustomerId);
