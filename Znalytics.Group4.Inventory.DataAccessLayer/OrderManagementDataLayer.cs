@@ -27,13 +27,13 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
             }
 
         //Cancel the Order
-        public void CancelOrder(Product values)
+        public void CancelOrder(OrderManagement values)
         {
             foreach (var order in _orders)
             {
                 foreach (var value in order.Products)
                 {
-                    if (value.ProductName == values.ProductName)
+                    if (value.ProductName == values.List<Product>.ProductName)
                     {
                         _orders.Remove(values);
                     }

@@ -9,7 +9,7 @@ namespace Znalytics.Inventory.IDataAccessLayer
     interface IcustDataLayer
     {
         void AddCustomer(Customer c);
-          void UpDateCustomer(Customer c);
+          void UpdateCustomer(Customer c);
       void DelCustomer(Customer c);
     }
 }
