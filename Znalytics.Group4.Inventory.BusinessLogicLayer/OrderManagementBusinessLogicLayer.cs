@@ -7,36 +7,37 @@ using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 using Znalytics.Inventory.OrderManagementModule.Entities;
 using Znalytics.Inventory.Module.Entities;
-using Znalytics.Inventory.Product.Entitie;
+using Znalytics.Inventory.ProductModule.Entitie;
+using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
 
 namespace Znalytics.Group4.Inventory.BusinessLogicLayer
 {
     class OrderManagementBusinessLogicLayer
     {
-            OrderManagementDataLayer dl;
+        OrderManagementDataLayer dl;
 
 
-            public OrderManagementBusinessLogicLayer()
-            {
-                dl = new OrderManagementDataLayer();
-            }
+        public OrderManagementBusinessLogicLayer()
+        {
+            dl = new OrderManagementDataLayer();
+        }
 
-            IProductBusinessLogicLayer i = new ProductBusiness();
+        IProductBusinessLogicLayer i = new ProductBusiness();
         /// <summary>
         /// Get ProductDetails By product
         /// </summary>
         /// <param name="ProductID"></param>
         /// <returns></returns>
-            public Product ProductDetails(int ProductID)
-            {
-                return i.GetProductByProductID(ProductID);
+        public Product ProductDetails(int ProductID)
+        {
+            return i.GetProductByProductID(ProductID);
 
-            }
+        }
         IWareHouseAddressBusinessLogicLayer WareHouseAddress = new WareHouseAddressBusinessLogicLayer();
-       /// <summary>
-       /// Getting WarehouseAddressDetails using interface referance i.e. WareHouseAddress
-       /// </summary>
-       /// <returns></returns>
+        /// <summary>
+        /// Getting WarehouseAddressDetails using interface referance i.e. WareHouseAddress
+        /// </summary>
+        /// <returns></returns>
         public List<WareHouseAddress> GetWareHouseAddresses()
         {
             return WareHouseAddress.GetAddresses();
@@ -50,7 +51,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// Adding OrderDetails to collections
         /// </summary>
         /// <param name="value"></param>
-        public void AddOrderDetails(Znalytics.Inventory.OrderManagementModule.Entities.OrderManagement values)
+        public void AddOrderDetails(OrderManagement values)
         {
             if (values.Products != null)
             {
@@ -109,19 +110,29 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         }
 
 
-                //Delete OrderDetails
-                public void DeleteOrderDetails(OrderManagement values)
-                {
-                    dl.DeleteOrder(values);
-                }
-                public void UpdateAddressDetails()
-                {
-
-
-                }
-            }
-
+        //Delete OrderDetails
+        public void DeleteOrderDetails(OrderManagement values)
+        {
+            dl.DeleteOrder(values);
         }
+
+
+        //View OrderDetails
+        public List<OrderManagement> ViewOrderDetails()
+        {
+
+            List<OrderManagement> orderDetails= dl.ViewOrderDetails();
+            return orderDetails;
+        }
+        
+        //Cancel OrderDetails
+        public void CancelOrderDetails(OrderManagement value)
+        {
+            dl.CancelOrder(value);
+        }
+    }
+
+}        
 
 
     
