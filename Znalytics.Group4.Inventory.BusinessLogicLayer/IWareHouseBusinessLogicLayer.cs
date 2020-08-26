@@ -8,6 +8,9 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 
 namespace Znalytics.Group4.Inventory.IBusinessLogicLayer
 {
+    /// <summary>
+    /// interface
+    /// </summary>
    public interface IWareHouseBusinessLogicLayer
     {
         void AddWareHouse(WareHouse warehouse);
