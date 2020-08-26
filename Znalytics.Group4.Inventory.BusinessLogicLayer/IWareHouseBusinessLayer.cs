@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.WareHouseModule.Entities;
 
-namespace Znalytics.Group4.Inventory.BusinessLogicLayer
+namespace Znalytics.Group4.Inventory.IBusinessLogicLayer
 {
    public interface IWareHouseBusinessLayer
     {
@@ -21,7 +21,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
 
 
         //string getStockStatus();
-        // int getStockQuantity();
+         int getStockQuantity(int productID);
 
     }
 }

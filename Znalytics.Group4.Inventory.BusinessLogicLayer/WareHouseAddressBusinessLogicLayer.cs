@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
 using Znalytics.Inventory.AddressModule.Entities;
-using Znalytics.Inventory.AddressModule.BusinessLogicLayer;
+using Znalytics.Inventory.AddressModule.DataAccessLayer;
 
-namespace Znalytics.Inventory.AddressModule.DataAccessLayer 
+namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
 {
 
     /// <summary>
@@ -20,7 +20,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         {
             if (a.AddressId != null)
             {
-                // DataAccess d = new DataAccess();
+                
                 wadl.AddAddress(a);
             }
         }
@@ -28,7 +28,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         // Method to display the added  address details
         public List<WareHouseAddress> GetAddresses()
         {
-            return wadl.AddressList;
+            return wadl.GetAddresses();
         }
 
         //Method to display WareHouseAddress details by AddressId

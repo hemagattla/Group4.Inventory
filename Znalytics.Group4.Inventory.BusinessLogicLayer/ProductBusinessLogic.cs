@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.Product.DataAccessLayer;
-using Znalytics.Inventory.Product.Entities;
+using Znalytics.Inventory.Product.Entitie;
 using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 
 namespace Znalytics.Inventory.Product.BusinessLogicLayer
@@ -16,18 +16,18 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
     /// </summary>
     public class ProductBusiness: IProductBusinessLogicLayer
     {
-        Productdata d;
+        ProductData d;
 
 
         public ProductBusiness()
         {
-            d = new Productdata();
+            d = new ProductData();
         }
         /// <summary>
         /// adding the products 
         /// </summary>
         /// <param name="n"> gets object of ProductDetails</param>
-        public void AddProducts(ProductEntitie n)
+        public void AddProducts(Entitie.Product n)
         {
             if (n.ProductName != null)
             {
@@ -40,7 +40,7 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
         /// </summary>
         /// <param name="n">gets object of ProductDeatils</param>
 
-        public List<ProductEntitie> DispalyProducts()
+        public List<Entitie.Product> DispalyProducts()
         {
 
             return d.DisplayProducts();
@@ -80,18 +80,36 @@ namespace Znalytics.Inventory.Product.BusinessLogicLayer
         /// update product name
         /// </summary>
         /// <param name="product"></param>
-        public void UpdateProductName(ProductEntitie product)
+        public void UpdateProductName(Entitie.Product product)
         {
             if (product.ProductName != null)
             {
                 d.UpdateProductName(product);
             }
         }
+        /// <summary>
+        /// update Product Price
+        /// </summary>
+        /// <param name="p">reference of Product class</param>
+        public void UpdateProductPrice(Entitie.Product p)
+        {
 
-        public ProductEntitie GetProductByProductID(int ProductID)
+
+            d.UpdateProductPrice(p);
+
+        }
+
+        /// <summary>
+        /// getting Products details by productID
+        /// </summary>
+        /// <param name="ProductID">productID</param>
+        /// <returns></returns>
+        public Entitie.Product GetProductByProductID(int ProductID)
         {
             return d.GetProductByID(ProductID);
           
         }
+
+
     }
 }

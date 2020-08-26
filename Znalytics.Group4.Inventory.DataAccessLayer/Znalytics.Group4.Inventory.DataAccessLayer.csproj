@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="IcustDataLayer.cs" />
     <Compile Include="IWareHouseAddressDataAccessLayer.cs" />
+    <Compile Include="OrderManagementDataLayer.cs" />
     <Compile Include="WareHouseAddressDataAccessLayer.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="CustDataLayer.cs" />
@@ -54,6 +55,12 @@
     <Compile Include="ShippingAddressDataAccessLayer.cs" />
     <Compile Include="StockDataAccessLayer.cs" />
     <Compile Include="WareHouseDataAccessLayer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Znalytics.Group4.Inventory.Entities\Znalytics.Group4.Inventory.Entities.csproj">
+      <Project>{1ed01dc5-8c6c-429f-9858-0c7cc0f0b4ff}</Project>
+      <Name>Znalytics.Group4.Inventory.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Znalytics.Group4.Inventory.Entities\Znalytics.Group4.Inventory.Entities.csproj">
