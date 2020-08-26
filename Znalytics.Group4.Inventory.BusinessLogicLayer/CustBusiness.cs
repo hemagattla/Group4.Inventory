@@ -40,7 +40,7 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
             {
             d.DelCustomer(c);
             }
-        public Customer GetCustomerById(int CustomerId)
+       public Customer GetCustomerById(int CustomerId)
         {
             return d.GetCustomerById(CustomerId);
 
