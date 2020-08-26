@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.Module.DataAccessLayer;//importing dataaccesslayer by using keyword///
 using Znalytics.Inventory.Module.Entities;
+using Znalytics.Group4.Module.IBusinessLogicLayer;
 namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing bt collection of classes///
 {
 
-    public class CustBusiness
+    public class CustBusiness:ICustBusinessLogicLayer
     {
         CustDataLayer d = new CustDataLayer();
         public void AddCustomer( Customer c)///these method is called from presentation layer///
