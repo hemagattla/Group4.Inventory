@@ -9,10 +9,13 @@ using Znalytics.Inventory.OrderManagementModule.Entities;
 using Znalytics.Inventory.Module.Entities;
 using Znalytics.Inventory.ProductModule.Entitie;
 using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
-
+using System.Linq;
+using Znalytics.Group4.Inventory.Entities;
 namespace Znalytics.Group4.Inventory.BusinessLogicLayer
-{
-    class OrderManagementBusinessLogicLayer
+{/// <summary>
+/// Represents Class in BusinessLayer and this OrderManagementBusinessLogicLayer class implements IOrderManagementBusinessLayer
+/// </summary>
+    class OrderManagementBusinessLogicLayer:IOrderManagementBusinessLayer
     {
         OrderManagementDataLayer dl;
 
@@ -106,6 +109,11 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
                 dl.AddOrderDetails(values);
             }
             else throw new System.Exception("Enter either true or False");
+            OrderManagement o = new OrderManagement();
+            if (values.OrderID.Length == 10 && ! values.OrderID.Contains(o.OrderID))
+            {
+                dl.AddOrderDetails(values);
+            }
 
         }
 
@@ -129,6 +137,19 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         public void CancelOrderDetails(OrderManagement value)
         {
             dl.CancelOrder(value);
+        }
+        //View OrderDetails by WareHouseID
+        public List<OrderManagement> GetOrderDetailsByWareHouseID(WareHouseAddress value)
+        {
+       
+            List<OrderManagement> orders= dl.GetOrderDetailsByWareHouseID(value);
+            return orders;
+        }
+        //View OrderDetails By ProductID
+        public List<OrderManagement> GetOrderDetailsByProductID(Product value)
+        {
+            List<OrderManagement> orders = dl.GetOrderDetailsByProductID(value);
+            return orders;
         }
     }
 
