@@ -11,6 +11,6 @@ namespace Znalytics.Group4.Module.IBusinessLogicLayer
         void AddCustomer(Customer c);
         void UpdateCustomer(Customer c);
       void DelCustomer(Customer c);
-
+        Customer GetCustomerById(int CustomerId);
     }
 }
