@@ -178,7 +178,7 @@ class ProductPresentation
             Product product = new Product();// creating the object fro ProductDeatils class
             ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
 
-            System.Console.WriteLine("1. Update Product Name");c
+            System.Console.WriteLine("1. Update Product Name");
             System.Console.WriteLine("2. Update Product Price");
 
 
