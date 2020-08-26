@@ -23,7 +23,7 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
         {
             if ((stock.WareHouseID != null) && (stock.AddressID != null) && (stock.ProductID != 0) && (stock.EditStock != 0))
             {
-                IWareHouseBusinessLayer wareHouseBusinessLayer = new WareHouseBusinessLogicLayer();
+                IWareHouseBusinessLogicLayer wareHouseBusinessLayer = new WareHouseBusinessLogicLayer();
                 IWareHouseAddressBusinessLogicLayer aid = new WareHouseAddressBusinessLogicLayer();
                 IProductBusinessLogicLayer productBusinessLogicLayer = new ProductBusiness();
                 if (wareHouseBusinessLayer.GetWareHouseByWareHouseID(stock.WareHouseID)!=null)
@@ -45,7 +45,7 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
             {
                 if ((stock.WareHouseID != null) && (stock.AddressID != null) && (stock.ProductID != 0) && (stock.EditStock != 0))
                 {
-                    IWareHouseBusinessLayer wareHouseBusinessLayer = new WareHouseBusinessLogicLayer();
+                    IWareHouseBusinessLogicLayer wareHouseBusinessLayer = new WareHouseBusinessLogicLayer();
                     IWareHouseAddressBusinessLogicLayer aid = new WareHouseAddressBusinessLogicLayer();
                     IProductBusinessLogicLayer productBusinessLogicLayer = new ProductBusiness();
                     if (wareHouseBusinessLayer.GetWareHouseByWareHouseID(stock.WareHouseID) != null)
