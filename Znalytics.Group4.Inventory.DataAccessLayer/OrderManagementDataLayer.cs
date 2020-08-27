@@ -5,11 +5,13 @@ using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.OrderManagementModule.Entities;
 using Znalytics.Inventory.ProductModule.Entitie;
 using System.Linq;
-namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
+using Znalytics.Inventory.Module.Entities;
+using Znalytics.Group4.Inventory.DataAccessLayer;
+ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
 {/// <summary>
 ///  Represents the OrderManagement Details in DataLayer
 /// </summary>
-    public class OrderManagementDataLayer
+    public class OrderManagementDataLayer : OrderManagmentDataLayerAbstract
     {
         private static List<OrderManagement> _orders;
         public OrderManagementDataLayer()
@@ -31,7 +33,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// ViewOrderDetails
         /// </summary>
         /// <returns></returns>
-        public List<OrderManagement> ViewOrderDetails()
+        public List<OrderManagement> GetOrderDetails()
         {
             return _orders;
         }
@@ -65,7 +67,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public List<OrderManagement> GetOrderDetailsByWareHouseID(WareHouseAddress value)
+        public override List<OrderManagement> GetOrderDetailsByWareHouseID(WareHouseAddress value)
         {
             List<OrderManagement> order = new List<OrderManagement>();
             foreach (var orders in _orders)
@@ -85,7 +87,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public List<OrderManagement> GetOrderDetailsByProductID(Product value)
+        public override List<OrderManagement> GetOrderDetailsByProductID(Product value)
         {
             List<OrderManagement> order = new List<OrderManagement>();
             foreach (var orders in _orders)
@@ -101,20 +103,41 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
             }
             return order;
         }
+        /// <summary>
+        /// Get OrderDetails By CustomerID
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public List<OrderManagement> GetOrderDetailsByCustomerID(Customer value)
+        {
+            List<OrderManagement> order = new List<OrderManagement>();
+
+
+            foreach (var orders in _orders)
+            {
+                if (orders.CustomerAddress.CustomerId == value.CustomerId)
+                {
+                    order.Add(orders);
+                }
+
+            }
+
+            return order;
+        }
 
 
     }
 }
-                   
-
-                
-
-          
-
-            
 
 
 
-    
+
+
+
+
+
+
+
+
 
 
