@@ -1,5 +1,6 @@
 ﻿// Created by Nitya
 
+//Created a namespace for Entity Layer of WareHouse Module
 namespace Znalytics.Inventory.WareHouseModule.Entities
 {
 
@@ -12,14 +13,8 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         private string _warehouseId;
         private string _warehouseName;
         private string _managerName;
-        // private string _wareHouseName;
-        private int _warehouseCapacity;
-        //private string _locationName;
-        // private string _pincode;
-        //private string _warehouseStatus;
-
-
-
+        //private int _warehouseCapacity;
+        
 
         /// <summary>
         /// Default constructor 
@@ -38,47 +33,13 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         /// <param name="locname"></param>
         /// <param name="pincode"></param>
         /// <param name="warecapacity"></param>
-        public WareHouse(string name, string wareId, int wareCapacity)
+        public WareHouse(string name, string wareId, string warName)
         {
             this._managerName = name;
             this._warehouseId = wareId;
-            //this._locationName = locName;
-            //this._pincode = pincode;
-            this._warehouseCapacity = wareCapacity;
+            this._warehouseName = warName;
+            
         }
-        /// <summary>
-        /// Property for ManagerName
-        /// </summary>
-        public string MangerName
-        {
-            set
-            {
-                if (value.Length <= 30)
-                {
-                    _managerName = value;
-                }
-            }
-            get
-            {
-                return _managerName;
-            }
-        }
-        public string WareHouseName
-        {
-            set
-            {
-                if (value.Length <= 30)
-                {
-                    _warehouseName = value;
-                }
-            }
-            get
-            {
-                return _warehouseName;
-            }
-        }
-
-
 
         /// <summary>
         /// Property for WarehouseId
@@ -105,46 +66,50 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
                 return _warehouseId;
 
             }
-
         }
-
-
-
         /// <summary>
-        /// Property for WarehouseCapacity
+        /// Property for WareHouseName
         /// </summary>
-        public int WarehouseCapacity
+        public string WareHouseName
         {
             set
             {
-                _warehouseCapacity = value;
+                if (value.Length <= 30)
+                {
+                    _warehouseName = value;
+                }
             }
             get
             {
-                return _warehouseCapacity;
-
+                return _warehouseName;
             }
         }
+
         /// <summary>
-        /// Property for Warehouse Status
+        /// Property for ManagerName
         /// </summary>
-        public string WarehouseStatus
+        public string MangerName
         {
-            get
+            set
             {
-                if (WarehouseCapacity <= 0)
+                if (value.Length <= 30)
                 {
-                    return "Empty";
-                }
-                else
-                {
-                    return "Not Empty";
+                    _managerName = value;
                 }
             }
-
+            get
+            {
+                return _managerName;
+            }
         }
+
+
+
+
+
     }
 }
+    
 
 
 

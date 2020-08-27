@@ -1,8 +1,9 @@
 ﻿// Created By Nitya
-
+//Importing statements
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
-//using Znalytics.Group4.Inventory.DataAccessLayer;
+
+//Created a namespace for DataAccess Layer of WareHouse Module
 namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 {
     /// <summary>
