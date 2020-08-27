@@ -1,36 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
+using Znalytics.Inventory.ProductModule.Entitie;
 using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.Module.Entities;
 namespace Znalytics.Inventory.OrderManagementModule.Entities
 {
+/// <summary>
+/// Class That Represents OrderManagement Module in Inventory Management System Project
+/// </summary>
     public class OrderManagement
-    {
-        List<string> _productNames;
+    {    //private Fields
+        List<Product> _products;
         WareHouseAddress _wareHouseAddress;
         Customer _customerAddress;
-        double _quantity;
-        double _price;
-        int _productID;
-        bool _shippingStatus=false;
-        OrderManagement(List<string> productNames, WareHouseAddress wareHouseAddress,Customer customerAddress,double quantity,double price,int productID,bool shippingStatus)
+        string _orderID;
+        double _totalPrice;
+      bool _shippingStatus=false;
+        
+        /// <summary>
+        /// Constructor That intializes the Fields
+        /// </summary>
+        /// <param name="products"></param>
+        /// <param name="wareHouseAddress"></param>
+        /// <param name="customerAddress"></param>
+        /// <param name="price"></param>
+        /// <param name="shippingStatus"></param>
+        /// <param name="orderID"></param>
+        public OrderManagement(List<Product> products, WareHouseAddress wareHouseAddress,Customer customerAddress,double price,bool shippingStatus,string orderID)
         {
-            productNames = _productNames;
+            products = _products;
             wareHouseAddress = _wareHouseAddress;
             customerAddress = _customerAddress;
-            quantity = _quantity;
-            price = _price;
-            productID = _productID;
+           
+            price = _totalPrice;
+            orderID = _orderID;
             shippingStatus = _shippingStatus;
         }
-       public List<string> ProductNames{
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public OrderManagement()
+        {
+
+        }
+/// <summary>
+/// Property for setting values to Products field and Getting The value of the Field 
+/// </summary>
+       public List<Product> Products{
             set{
-                _productNames = value;
+                _products = value;
             }
             get{
-                return _productNames;
+                return _products;
             }
         }
+        /// <summary>
+        /// Property for setting values to WareHouseAddress field and Getting The value of the WareHouseAddress Field 
+        /// </summary>
         public WareHouseAddress WareHouseAddress
         {
             set
@@ -41,7 +67,10 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
             {
                 return _wareHouseAddress;
             }
-        } 
+        }
+        /// <summary>
+        /// Property for setting values to CustomerAddress field and Getting The value of the CustomerAddress Field 
+        /// </summary>
         public Customer CustomerAddress
         {
             set
@@ -53,39 +82,25 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
                 return _customerAddress;
             }
         }
-        public double Quantity
-        {
-            set
-            {
-                _quantity = value;
-            }
-            get
-            {
-                return _quantity;
-            }
-        }
+        /// <summary>
+        /// Property for setting values to price field and Getting The value of the price Field 
+        /// </summary>
+
         public double Price
         {
             set
             {
-                _price = value;
+                _totalPrice = value;
             }
             get
             {
-                return _price;
+                return _totalPrice;
             }
         }
-        public int ProductID
-        {
-            set
-            {
-                _productID = value;
-            }
-            get
-            {
-                return _productID; 
-            }
-        }
+        /// <summary>
+        /// Property for setting values to ShippingStatus field and Getting The value of the ShippingStatus Field 
+        /// </summary>
+
         public bool ShippingStatus
         {
             set
@@ -95,6 +110,20 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
             get
             {
                 return _shippingStatus;
+            }
+        }
+        /// <summary>
+        /// Property for setting values to OrderID field and Getting The value of the OrderID Field 
+        /// </summary>
+        public string OrderID
+        {
+            set
+            {
+                _orderID = value;
+            }
+            get
+            {
+                return _orderID;
             }
         }
 

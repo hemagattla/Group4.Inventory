@@ -10,7 +10,7 @@ namespace Znalytics.Inventory.AddressModule.Entities
         /// <summary>
         /// Private fields
         /// </summary>
-        public  string WarehouseId;
+        public  string WareHouseId;
         private string _addressId;
         private string _doorNumber;
         private string _locationName;
