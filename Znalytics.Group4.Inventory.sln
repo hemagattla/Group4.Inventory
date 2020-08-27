@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Znalytics.Group4.Inventory.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Znalytics.Group4.Inventory.Entities", "Znalytics.Group4.Inventory.Entities\Znalytics.Group4.Inventory.Entities.csproj", "{1ED01DC5-8C6C-429F-9858-0C7CC0F0B4FF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{756452C8-1AF1-4F34-AFDF-5533681926FC}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
