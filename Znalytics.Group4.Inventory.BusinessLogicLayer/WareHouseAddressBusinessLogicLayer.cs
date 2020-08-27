@@ -32,15 +32,80 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         }
 
         //Method to display WareHouseAddress details by AddressId
-        public WareHouseAddress GetAddressByAddressID(string AddressID)
+        public List<WareHouseAddress>GetAddressByAddressID(string addressID)
         {
-            return wadl.AddressList.Find(temp => temp.AddressId == AddressID);
+            return wadl.GetAddressByAddressID(addressID);
         }
 
         //Method to display WareHouseAddress details by WareHouseId
-        public WareHouseAddress GetAddressByWareHouseID(string WareHouseID)
+        public List<WareHouseAddress>GetAddressByWareHouseID(string wareHouseID)
         {
-            return wadl.AddressList.Find(temp => temp.WarehouseId == WareHouseID);
+            return wadl.GetAddressByWareHouseID(wareHouseID);
+        }
+
+        //Method to display WareHouseAddress details by LocationName
+        public List<WareHouseAddress> GetAddressByLocationName(string locationName)
+        {
+            return wadl.GetAddressByLocationName(locationName);
+        }
+
+        //Method to update Door Number of WareHouse
+        public void UpdateDoorNumber(WareHouseAddress address)// update product Name
+        {
+
+            if (address.AddressId != null)
+            {
+                wadl.UpdateDoorNumber(address);
+            }
+        }
+
+        //Method to update the Location Name of WareHouse
+        public void UpdateLocationName(WareHouseAddress address)// update product Name
+        {
+
+            if (address.AddressId != null)
+            {
+                wadl.UpdateLocationName(address);
+            }
+
+        }
+
+        //Method to update the State of WareHouse
+        public void UpdateState(WareHouseAddress address)// update product Name
+        {
+
+            if (address.AddressId != null)
+            {
+                wadl.UpdateState(address);
+            }
+        }
+
+        //Method to update the Pincode of WareHouse
+        public void UpdatePincode(WareHouseAddress address)// update product Name
+        {
+
+            if (address.AddressId != null)
+            {
+                wadl.UpdatePincode(address);
+            }
+        }
+
+        //Method to remove an address of the Warehouse by wareHouseID
+        public void RemoveAddressByWareHouseID(string wareHouseID)
+        {
+            if (wareHouseID != null)
+            {
+                wadl.RemoveAddressByWareHouseID(wareHouseID);
+            }
+        }
+
+        //Method to remove an address of the Warehouse by addressID
+        public void RemoveAddressByAddressID(string addressID)
+        {
+            if (addressID != null)
+            {
+                wadl.RemoveAddressByAddressID(addressID);
+            }
         }
 
 

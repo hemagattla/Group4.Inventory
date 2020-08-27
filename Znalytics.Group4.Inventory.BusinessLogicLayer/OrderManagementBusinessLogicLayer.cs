@@ -9,20 +9,27 @@ using Znalytics.Inventory.OrderManagementModule.Entities;
 using Znalytics.Inventory.Module.Entities;
 using Znalytics.Inventory.ProductModule.Entitie;
 using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
-
+using System.Linq;
+using Znalytics.Group4.Inventory.Entities;
+using Znalytics.Group4.Module.IBusinessLogicLayer;
+using Znalytics.Inventory.Module.BusinessLogicLayer;
 namespace Znalytics.Group4.Inventory.BusinessLogicLayer
-{
-    class OrderManagementBusinessLogicLayer
+{/// <summary>
+/// Represents Class in BusinessLayer and this OrderManagementBusinessLogicLayer class implements IOrderManagementBusinessLayer
+/// </summary>
+    class OrderManagementBusinessLogicLayer:IOrderManagementBusinessLayer
     {
         OrderManagementDataLayer dl;
-
+        
 
         public OrderManagementBusinessLogicLayer()
-        {
+        {//Creating Object for DataManagementLayer
             dl = new OrderManagementDataLayer();
         }
-
+        
+        //Creating Reference Variable for Products in BusinessLogicLayer 
         IProductBusinessLogicLayer i = new ProductBusiness();
+        
         /// <summary>
         /// Get ProductDetails By product
         /// </summary>
@@ -42,9 +49,16 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         {
             return WareHouseAddress.GetAddresses();
         }
-        public List<Customer> GetCustomerDetails()
+        //Creating Reference Variable for CustomerBusinessLogicLayer
+        ICustBusinessLogicLayer CustomerAddress = new CustBusiness();
+        /// <summary>
+        /// Getting CustomerAddress Details By Using CustomerId
+        /// </summary>
+        /// <param name="CustomerId"></param>
+        /// <returns></returns>
+        public Customer GetCustomerDetailsByCustomerID(int CustomerId)
         {
-
+            return CustomerAddress.GetCustomerById(CustomerId);
         }
 
         /// <summary>
@@ -106,30 +120,71 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
                 dl.AddOrderDetails(values);
             }
             else throw new System.Exception("Enter either true or False");
+            OrderManagement o = new OrderManagement();
+            if (values.OrderID.Length == 10 && ! values.OrderID.Contains(o.OrderID))
+            {
+                dl.AddOrderDetails(values);
+            }
 
         }
 
 
-        //Delete OrderDetails
+        /// <summary>
+        /// Delete OrderDetails
+        /// </summary>
+        /// <param name="values"></param>
         public void DeleteOrderDetails(OrderManagement values)
         {
             dl.DeleteOrder(values);
         }
 
 
-        //View OrderDetails
+        /// <summary>
+        /// View OrderDetails
+        /// </summary>
+        /// <returns></returns>
         public List<OrderManagement> ViewOrderDetails()
         {
 
             List<OrderManagement> orderDetails= dl.ViewOrderDetails();
             return orderDetails;
         }
-        
-        //Cancel OrderDetails
+
+        /// <summary>
+        /// Cancel OrderDetails
+        /// </summary>
+        /// <param name="value"></param>
         public void CancelOrderDetails(OrderManagement value)
         {
             dl.CancelOrder(value);
         }
+        /// <summary>
+        /// Getting Product Details by WareHouseID
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public List<OrderManagement> GetOrderDetailsByWareHouseID(WareHouseAddress value)
+        {
+       
+            List<OrderManagement> orders= dl.GetOrderDetailsByWareHouseID(value);
+            return orders;
+        }
+        /// <summary>
+        /// View OrderDetails By ProductID
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public List<OrderManagement> GetOrderDetailsByProductID(Product value)
+        {
+            List<OrderManagement> orders = dl.GetOrderDetailsByProductID(value);
+            return orders;
+        }
+       public OrderManagement GetOrderDetailsByEmployeeID(Customer value)
+        {
+
+        }
+
+
     }
 
 }        
