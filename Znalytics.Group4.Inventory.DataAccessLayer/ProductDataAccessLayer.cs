@@ -17,7 +17,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
     public class ProductData
     {
 
-        private static List<Entitie.Product> _ProductsList  //creating a reference varibale for List
+        private static List<Product> _ProductsList  //creating a reference varibale for List
         {
             set;
             get;
@@ -94,7 +94,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// update method for Product Price
         /// </summary>
         /// <param name="product">object of Product class</param>
-        public void UpdateProductPrice(Entitie.Product product)
+        public void UpdateProductPrice(Product product)
         {
             Product PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
             if (PE != null)
