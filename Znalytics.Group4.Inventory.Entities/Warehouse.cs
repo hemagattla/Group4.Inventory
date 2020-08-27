@@ -44,7 +44,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         /// <summary>
         /// Property for WarehouseId
         /// </summary>
-        public string WarehouseId
+        public string WareHouseId
         {
             set
             {

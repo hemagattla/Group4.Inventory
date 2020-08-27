@@ -24,7 +24,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         public void AddWareHouse(WareHouse n)
         {
             //WareHouse Id should not be null
-            if (n.WarehouseId != null)
+            if (n.WareHouseId != null)
             {
 
                 d.AddWareHouse(n);
@@ -60,7 +60,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         public void UpdateWareHouseName(WareHouse wareHouse)// update product Name
         {
 
-            if (wareHouse.WarehouseId != null)
+            if (wareHouse.WareHouseId != null)
             {
                 d.UpdateWareHouseName(wareHouse);
             }
@@ -68,7 +68,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         public void UpdateManagerName(WareHouse wareHouse)// update product Name
         {
 
-            if (wareHouse.WarehouseId != null)
+            if (wareHouse.WareHouseId != null)
             {
                 d.UpdateManagerName(wareHouse);
             }

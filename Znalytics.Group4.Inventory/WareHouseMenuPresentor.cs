@@ -69,7 +69,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             WriteLine("Enter Manager Name");
             n.MangerName = ReadLine();
             WriteLine("Enter Warehouse Id");
-            n.WarehouseId = ReadLine();
+            n.WareHouseId = ReadLine();
             /*WriteLine("Enter Location Name");
             whd.LocationName = ReadLine();
             WriteLine("Enter Pincode");
@@ -96,7 +96,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
             foreach (WareHouse var in WareHouseList)
             {
-                WriteLine(var.WarehouseId + "    " + var.WareHouseName + "  " + var.MangerName);// Displaying the products
+                WriteLine(var.WareHouseId + "    " + var.WareHouseName + "  " + var.MangerName);// Displaying the products
             }
 
         }
@@ -107,7 +107,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             string warehouseid = ReadLine();
             WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
             WareHouse n = wbl.GetWareHouseByWareHouseID(warehouseid);
-            WriteLine(n.WarehouseId + " " + n.MangerName);
+            WriteLine(n.WareHouseId + " " + n.MangerName);
 
         }
 
@@ -187,7 +187,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             {
 
                 WriteLine("Enter Existing WareHouse ID");
-                wareHouse.WarehouseId = ReadLine();
+                wareHouse.WareHouseId = ReadLine();
                 WriteLine("Enter new name for WareHouse");
                 wareHouse.WareHouseName = ReadLine();
 
@@ -201,7 +201,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             void UpdateManagerName()
             {
                 WriteLine("Enter Existing WareHouse ID");
-                wareHouse.WarehouseId = ReadLine();
+                wareHouse.WareHouseId = ReadLine();
                 WriteLine("Enter new Manager Name");
                 wareHouse.MangerName = ReadLine();
 
