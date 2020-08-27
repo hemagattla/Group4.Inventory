@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Znalytics.Group4.Inventory.RawMaterialModule.Entities;
 
-using Znalytics.Group4.Inventory.RawMaterial.Entities;
-using Znalytics.Group4.Inventory.RawMaterial.BusinessLogicLayer;
+using Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer;
 
-namespace Znalytics.Group4.Inventory.RawMaterial.PresentationLayer
+namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
 {
     class RawMaterialPresentationLayer
     {
@@ -50,7 +49,7 @@ namespace Znalytics.Group4.Inventory.RawMaterial.PresentationLayer
         }
         public static void AddRawMaterial()
         {
-            RawMaterials rawMaterial = new RawMaterials();
+            RawMaterial rawMaterial = new RawMaterial();
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
             System.Console.WriteLine("Enter RawMaterialName");
             rawMaterial.RawMaterialName = System.Console.ReadLine();
@@ -62,11 +61,11 @@ namespace Znalytics.Group4.Inventory.RawMaterial.PresentationLayer
             rawMaterial.Units = System.Console.ReadLine();
             System.Console.WriteLine("Enter Price");
             rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());
-            rawMaterialBusinessLogicLayer.AddRawMaterial();
+            rawMaterialBusinessLogicLayer.AddRawMaterial(rawMaterial);
         }
         public static void DeleteRawMaterial()
         {
-            RawMaterials rawMaterial = new RawMaterials();
+            Entities.RawMaterial rawMaterial = new Entities.RawMaterial();
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
      
             System.Console.WriteLine("Enter RawMaterialName");
@@ -79,22 +78,22 @@ namespace Znalytics.Group4.Inventory.RawMaterial.PresentationLayer
             rawMaterial.Units = System.Console.ReadLine();
             System.Console.WriteLine("Enter Price");
             rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());
-            rawMaterialBusinessLogicLayer.DeleteRawMaterial();
+            rawMaterialBusinessLogicLayer.DeleteRawMaterial(rawMaterial);
         }
         public static void ViewRawMaterial()
         {
             
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
-            List<RawMaterials> rms = rawMaterialBusinessLogicLayer.GetRawMaterial();
+            List<Entities.RawMaterial> rms = rawMaterialBusinessLogicLayer.GetRawMaterial();
 
-            foreach (RawMaterial rm in rms)
+            foreach (Entities.RawMaterial rm in rms)
             {
                 System.Console.WriteLine( rm.RawMaterialName + " , " + rm.RawMaterialID + " , " + rm.Quantity + "" + rm.Units + " , " + rm.Price);
             }
         }
         public static void UpdateRawMaterial()
         {
-            RawMaterials rawMaterial = new RawMaterials();
+            Entities.RawMaterial rawMaterial = new Entities.RawMaterial();
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
      
             System.Console.WriteLine("Enter RawMaterialName");
@@ -121,17 +120,19 @@ namespace Znalytics.Group4.Inventory.RawMaterial.PresentationLayer
         }
         public static void ChangePrice()
         {
-            RawMaterials rawMaterial = new RawMaterials();
+            Entities.RawMaterial rawMaterial = new Entities.RawMaterial();
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
             System.Console.WriteLine("Enter the new Price");
             rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());
+            rawMaterialBusinessLogicLayer.UpdateRawMaterial(rawMaterial);
         }
         public static void ChangeQuantity()
         {
-            RawMaterials rawMaterial = new RawMaterials();
+            Entities.RawMaterial rawMaterial = new Entities.RawMaterial();
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
             System.Console.WriteLine("Enter Quantity");
             rawMaterial.Quantity = System.Console.ReadLine();
+            rawMaterialBusinessLogicLayer.UpdateRawMaterial(rawMaterial);
         }
     }
     

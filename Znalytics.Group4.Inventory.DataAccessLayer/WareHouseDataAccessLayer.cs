@@ -1,12 +1,15 @@
 ﻿// Created By Nitya
 
+//Importing statements
+using System;
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
-//using Znalytics.Group4.Inventory.DataAccessLayer;
+
+//Created a namespace for DataAccess Layer of WareHouse Module
 namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 {
     /// <summary>
-    ///     Represents the class for WareHouse Data
+    /// Represents the class for WareHouse Data
     /// </summary>
     public class WareHouseDataAccessLayer
     {
@@ -16,45 +19,67 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             set;
             get;
         }
-        // Constructor 
+        
+        //Static  Constructor 
         static WareHouseDataAccessLayer()
         {
-            _wareHouseList = new List<WareHouse>();
+            _wareHouseList = new List<WareHouse>()
+            {
+                new WareHouse(){WareHouseId="WHID01",WareHouseName="ABC",MangerName="NITYA"},
+                new WareHouse(){WareHouseId="WHID02",WareHouseName="ABCD",MangerName="HEMA"},
+                new WareHouse(){WareHouseId="WHID03",WareHouseName="ABCDE",MangerName="DHANASRI"},
+                new WareHouse(){WareHouseId="WHID04",WareHouseName="ABCDEF",MangerName="KRUSHAL"}
+
+            };
         }
 
-        //Method to add details to the list
+        //Method to ADD details to the list
         public void AddWareHouse(WareHouse warehouseDetails)
         {
-            _wareHouseList.Add(warehouseDetails);
+
+            if (_wareHouseList.Exists(temp => temp.WareHouseId == warehouseDetails.WareHouseId))
+            {
+                _wareHouseList.Add(warehouseDetails);
+            }
+            else
+            {
+                throw new Exception("Warehouse already exists");
+            }
+
+
         }
 
-        // Method to display the added details
+        // Method to GET the added details
         public List<WareHouse> GetWareHouses()
         {
             return _wareHouseList;
         }
 
-        //Method to get the WareHouse by WareHouseID
+        //Method to GET the WareHouse by WareHouseID
         public WareHouse GetWareHouseByWareHouseID(string WareHouseID)
         {
             WareHouse w;
-            w = _wareHouseList.Find(temp => temp.WarehouseId == WareHouseID);
+            w = _wareHouseList.Find(temp => temp.WareHouseId == WareHouseID);
             return w;
         }
 
-        public void RemoveWareHouseByID(string wareHouseID) //Removing a Product by using PWareHouse ID
+        //Method to REMOVE WareHouse by WareHouseID
+        public void RemoveWareHouseByID(string wareHouseID) 
         {
-            _wareHouseList.RemoveAll(n => n.WarehouseId == wareHouseID);
+            _wareHouseList.RemoveAll(n => n.WareHouseId == wareHouseID);
 
         }
-        public void RemoveWareHouseByName(string wareHouseName)// Removing a Product By using WareHouse Name
+
+        //Method to REMOVE WareHouse by WareHouse Name
+        public void RemoveWareHouseByName(string wareHouseName)
         {
             _wareHouseList.RemoveAll(n => n.WareHouseName == wareHouseName);
         }
 
-        public void UpdateWareHouseName(WareHouse wareHouse)// update WareHouse Name
+        // Method to UPDATE the WareHouse Name
+        public void UpdateWareHouseName(WareHouse wareHouse)
         {
-            WareHouse w = _wareHouseList.Find(n => n.WarehouseId == wareHouse.WarehouseId);
+            WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
             if (w != null)
             {
                 w.WareHouseName = wareHouse.WareHouseName;
@@ -63,10 +88,10 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             }
         }
 
-
-        public void UpdateManagerName(WareHouse wareHouse)// update product Name
+        // Method to UPDATE the Manager Name
+        public void UpdateManagerName(WareHouse wareHouse)
         {
-            WareHouse w = _wareHouseList.Find(n => n.WarehouseId == wareHouse.WarehouseId);
+            WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
             if (w != null)
             {
                 w.MangerName = wareHouse.MangerName;

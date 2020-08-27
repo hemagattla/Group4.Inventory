@@ -1,8 +1,8 @@
 ﻿
 
-namespace Znalytics.Group4.Inventory.RawMaterial.Entities
+namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
 {
-    public class RawMaterials
+    public class RawMaterial
     {
         
         private string _rawMaterialName;

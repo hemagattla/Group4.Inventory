@@ -82,7 +82,7 @@ class  CustPresentation
         System.Console.Write("Enter the ProductID: ");
         int CustomerId = int.Parse(System.Console.ReadLine());
         CustBusiness cbl = new CustBusiness();
-        Customer b = cbl.CustomerById(CustomerId);
+        Customer b = cbl.GetCustomerById(CustomerId);
      System.Console.WriteLine(b.CustomerId+ " " +b.CustomerName+ " " +b.MblNo+" "+b.Email+" "+b.City+" "+b.Country+" "+b.HNo+" "+b.State+" "+b.PinNo);
 
 

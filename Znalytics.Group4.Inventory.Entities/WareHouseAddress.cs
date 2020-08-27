@@ -1,4 +1,6 @@
 ﻿//Created By Nitya
+
+//Created a namespace for Entity Layer of WareHouseAddress Module
 namespace Znalytics.Inventory.AddressModule.Entities
 {
     /// <summary>
@@ -10,17 +12,19 @@ namespace Znalytics.Inventory.AddressModule.Entities
         /// <summary>
         /// Private fields
         /// </summary>
-        public  string WareHouseId;
         private string _addressId;
         private string _doorNumber;
         private string _locationName;
         private string _state;
         private string _pincode;
 
+        //WareHouseId Property
+        public string WareHouseId;
+
         /// <summary>
         /// Default constructor
         /// </summary>
-       public WareHouseAddress()
+        public WareHouseAddress()
         {
 
         }
