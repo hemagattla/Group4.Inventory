@@ -15,9 +15,9 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         List<Product> _products;
         WareHouseAddress _wareHouseAddress;
         Customer _customerAddress;
-        string _orderID;
+        int _orderID;
         double _totalPrice;
-      bool _shippingStatus=false;
+      
         
         /// <summary>
         /// Constructor That intializes the Fields
@@ -28,7 +28,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         /// <param name="price"></param>
         /// <param name="shippingStatus"></param>
         /// <param name="orderID"></param>
-        public OrderManagement(List<Product> products, WareHouseAddress wareHouseAddress,Customer customerAddress,double price,bool shippingStatus,string orderID)
+        public OrderManagement(List<Product> products, WareHouseAddress wareHouseAddress,Customer customerAddress,double price,int orderID)
         {
             products = _products;
             wareHouseAddress = _wareHouseAddress;
@@ -36,7 +36,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
            
             price = _totalPrice;
             orderID = _orderID;
-            shippingStatus = _shippingStatus;
+            
         }
         /// <summary>
         /// Default constructor
@@ -134,27 +134,12 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         /// Property for setting values to ShippingStatus field and Getting The value of the ShippingStatus Field 
         /// </summary>
 
-        public bool ShippingStatus
-        {
-            set
-            {
-
-                if (value == true || value == false)
-                {
-                    _shippingStatus = value;
-                }
-                else throw new System.Exception("Enter either true or False");
-                
-            }
-            get
-            {
-                return _shippingStatus;
-            }
-        }
+       
+           
         /// <summary>
         /// Property for setting values to OrderID field and Getting The value of the OrderID Field 
         /// </summary>
-        public string OrderID
+        public int OrderID
         {
             set
             {

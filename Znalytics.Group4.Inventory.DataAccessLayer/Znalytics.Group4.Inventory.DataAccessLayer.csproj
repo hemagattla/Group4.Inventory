@@ -44,6 +44,7 @@
     <Compile Include="IcustDataLayer.cs" />
     <Compile Include="IWareHouseAddressDataAccessLayer.cs" />
     <Compile Include="OrderManagementDataLayer.cs" />
+    <Compile Include="OrderManagmentDataLayerAbstract.cs" />
     <Compile Include="RawMaterialDataAccessLayer.cs" />
     <Compile Include="WareHouseAddressDataAccessLayer.cs" />
     <Compile Include="Class1.cs" />

@@ -6,11 +6,13 @@ using Znalytics.Inventory.OrderManagementModule.Entities;
 using Znalytics.Inventory.AddressModule.BusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.Entitie;
 using System.Xml.Serialization;
+using Znalytics.Inventory.AddressModule.Entities;
+using Znalytics.Inventory.Module.Entities;
 
 namespace Znalytics.Group4.Inventory
 {
-   
-class OrderManagementPresentationLayer
+
+    class OrderManagementPresentationLayer
     {
         static void Main()
         {
@@ -18,7 +20,7 @@ class OrderManagementPresentationLayer
             int choice = 0;
             do
             {
-                Console.WriteLine("OrdersManagement Menu");
+                Console.WriteLine(" OrdersManagement Menu");
                 Console.WriteLine("1. Add OrderDetails");
                 Console.WriteLine("2. Update OrderDetails");
                 Console.WriteLine("3. Cancel OrderDetails");
@@ -32,8 +34,8 @@ class OrderManagementPresentationLayer
                     case 1: AddOrderDetails(); break;
                     case 2: UpdateOrderDetails(); break;
                     case 3: CancelOrderDetails(); break;
-                    case 4: viewOrderDetails();break;
-                    case 5: Console.WriteLine("Exit");break;
+                    case 4: viewOrderDetails(); break;
+                    case 5: Console.WriteLine("Exit"); break;
 
                 }
             } while (choice != 5);
@@ -41,32 +43,35 @@ class OrderManagementPresentationLayer
 
         static void AddOrderDetails()
         {
-          OrderManagement order = new OrderManagement();/// creating object for business logic layer
-            OrderManagementBusinessLogicLayer orderBusiness  = new OrderManagementBusinessLogicLayer();///creating obj for customer class present in entity layer
+            OrderManagement order = new OrderManagement();/// creating object for business logic layer
+            OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();///creating obj for customer class present in entity layer
             Console.WriteLine("======ProductDetails=======");
-            List<Product> products=orderBusiness.DispalyProducts();
+            List<Product> products = orderBusiness.DispalyProducts();
             Console.WriteLine("The following Products Available :");
             foreach (var product in products)
             {
-                Console.WriteLine("ProductName:" +product.ProductName+ "ProductID:"+product.ProductID+"Price:"+product.Price);
+                Console.WriteLine("ProductName:" + product.ProductName + "ProductID:" + product.ProductID + "Price:" + product.Price);
             }
             int choice = 0;
+            order.Price = 0;
 
             do
             {
 
 
 
-                Console.WriteLine("Enter 1 if you want to select one more product otherwise enter 2");
+                Console.WriteLine("Enter 1 if you want to select products for Order otherwise enter 2");
                 Console.Write("Enter choice: ");
                 choice = int.Parse(Console.ReadLine());
 
                 switch (choice)
                 {
-                    case 1: Console.WriteLine("Enter ProductID to select Products that you want to order");
+                    case 1:
+                        Console.WriteLine("Enter ProductID to select Products that you want to order");
                         int productId = int.Parse(Console.ReadLine());
                         Product Product = orderBusiness.GetProductByProductID(productId);
                         order.Products.Add(Product);
+                        order.Price += Product.Price;
                         break;
 
 
@@ -75,14 +80,91 @@ class OrderManagementPresentationLayer
                 }
             } while (choice != 2);
             Console.WriteLine("============WareHouseDetails============");
-                
-                
-
-           
-           
+            List<WareHouseAddress> wareHouseAddresses = orderBusiness.GetAddresses();
+            foreach (var warehouseaddress in wareHouseAddresses)
+            {
+                Console.WriteLine(wareHouseAddresses);
+            }
+            Console.WriteLine("Enter AddressID That You Want choose as A warehouseAddress");
+            int AddressId = int.Parse(Console.ReadLine());
+            WareHouseAddress houseAddress = orderBusiness.GetAddressByAddressID(AddressId);
+            order.WareHouseAddress = houseAddress;
+            Console.WriteLine("==========AddressDetails================");
+            Console.WriteLine("Enter your CustomerId to Choose your Address");
+            int CustomerId = int.Parse(Console.ReadLine());
+            Customer customerAddress = orderBusiness.GetCustomerDetailsByCustomerID(CustomerId);
+            Console.WriteLine("price for Selected Products is:" + order.Price);
+            Console.WriteLine("Enter 1 if You want to conform your Order");
+            int i = int.Parse(Console.ReadLine());
+            if (i == 1)
+            {
+                order.OrderID = orderBusiness.OrderID();
+                Console.WriteLine("Your OrderID Is:" + order.OrderID);
+            }
+            else
+            {
+                Console.WriteLine(" you are not sure about orders");
+            }
+            orderBusiness.AddOrderDetails(order);
         }
-       
-           
+        static void UpdateOrderDetails()
+        {
+            OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();
+            int choice = 0;
+            do
+            {
+                Console.WriteLine(" Choose among following which details do you want to update");
+                Console.WriteLine("1. Product Details");
+                Console.WriteLine("2. WareHouse Details");
+                Console.WriteLine("3. Customer AddressDetails");
+                Console.WriteLine("4. Exit");
+                
+                Console.Write("Enter choice: ");
+                choice = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter OrderId");
+                int orderId = int.Parse(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1: 
+                        Console.WriteLine("Enter ProductID");
+                        int ProductId= int.Parse(Console.ReadLine());
+                        orderBusiness.UpdateProductDetails(orderId, ProductId);
+                        break;
+                    case 2:
+                        
+                        Console.WriteLine("Enter AddressID");
+                        int AddressID = int.Parse(Console.ReadLine());
+                        orderBusiness.UpdateWareHouseAddressDetails(orderId,AddressID);
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter CustomerID");
+                        int customerId = int.Parse(Console.ReadLine());
+                        orderBusiness.UpdateCustomerAddressDetails(orderId, customerId);
+                        break;
+                   
+                    case 4: Console.WriteLine("Exit"); break;
+
+                }
+            } while (choice != 4);
+        }
+        static void CancelOrderDetails()
+        {
+            Console.WriteLine("Enter OrderId");
+            int orderId = int.Parse(Console.ReadLine());
+            OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();
+
+            orderBusiness.CancelOrderDetails(orderId);
+        }
+        static void viewOrderDetails()
+        {
+            OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();
+            Console.WriteLine("Enter EmployeeId");
+            int orderId = int.Parse(Console.ReadLine());
+            orderBusiness.GetOrderDetailsByEmployeeID(orderId);
+        }
+
+
+
     }
 }
 

@@ -7,7 +7,9 @@ using Znalytics.Inventory.ProductModule.Entitie;
 using System.Linq;
 using Znalytics.Inventory.Module.Entities;
 using Znalytics.Group4.Inventory.DataAccessLayer;
- namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
+using System;
+
+namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
 {/// <summary>
 ///  Represents the OrderManagement Details in DataLayer
 /// </summary>
@@ -47,20 +49,7 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
           OrderManagement order= _orders.Find(temp => temp.OrderID == values.OrderID);
             _orders.Remove(order);
         }
-        /// <summary>
-        /// Delete the Order
-        /// </summary>
-        /// <param name="values"></param>
-        public void DeleteOrder(OrderManagement values)
-        {
-            foreach (var order in _orders)
-            {
-                if (order.ShippingStatus == true)
-                {
-                    _orders.Remove(values);
-                }
-            }
-        }
+        
 
         /// <summary>
         /// Get OrderDetails by WareHouseID
@@ -124,6 +113,50 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
 
             return order;
         }
+        /// <summary>
+        /// OrderID Generation
+        /// </summary>
+        /// <returns></returns>
+        public int OrderIdGeneration()
+        {
+           int orderid= _orders.Max(temp => temp.OrderID);
+            return orderid++;
+        }
+        /// <summary>
+        /// Update ProductDetails
+        /// </summary>
+        /// <param name="orderid"></param>
+        /// <param name="value"></param>
+        public void UpdateProductDetails(OrderManagement orderid,OrderManagement value)
+        {
+            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid.OrderID);
+            
+                order.WareHouseAddress = value.WareHouseAddress;
+            }
+        /// <summary>
+        /// UpdateWareHouse AddressDetails
+        /// </summary>
+        /// <param name="orderid"></param>
+        /// <param name="value"></param>
+  
+        public void UpdateWareHouseAddressDetails(OrderManagement orderid, OrderManagement value)
+        {
+            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid.OrderID);
+            order.Products = value.Products;
+
+        }
+        /// <summary>
+        /// Update CustomerAddressDetails
+        /// </summary>
+        /// <param name="orderid"></param>
+        /// <param name="value"></param>
+        public void UpdateCustomerAddressDetails(OrderManagement orderid, OrderManagement value)
+        {
+            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid.OrderID);
+            order.CustomerAddress = value.CustomerAddress;
+        }
+
+
 
 
     }

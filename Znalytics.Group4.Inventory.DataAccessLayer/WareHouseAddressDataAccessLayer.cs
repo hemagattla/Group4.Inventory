@@ -58,10 +58,10 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         }
 
         //Method to GET the Address details by AddressID
-        public List<WareHouseAddress> GetAddressByAddressID(string addressID)
+        public WareHouseAddress GetAddressByAddressID(string addressID)
         {
 
-            return _addressList.FindAll(temp => temp.AddressId == addressID);
+            return _addressList.Find(temp => temp.AddressId == addressID);
 
         }
 

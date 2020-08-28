@@ -49,7 +49,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         }
 
         //Method to GET WareHouseAddress details by AddressId
-        public List<WareHouseAddress>GetAddressByAddressID(string addressID)
+        public WareHouseAddress GetAddressByAddressID(string addressID)
         {
             return wadl.GetAddressByAddressID(addressID);
         }
