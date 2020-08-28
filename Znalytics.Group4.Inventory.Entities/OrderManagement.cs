@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Znalytics.Inventory.ProductModule.Entitie;
 using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.Module.Entities;
+using Znalytics.Group4.Inventory.Entities;
+
 namespace Znalytics.Inventory.OrderManagementModule.Entities
 {
 /// <summary>
@@ -47,10 +49,20 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
 /// Property for setting values to Products field and Getting The value of the Field 
 /// </summary>
        public List<Product> Products{
-            set{
-                _products = value;
+            set
+            {
+                if (value!= null)
+                {
+                    _products = value;
+                }
+                else
+                {
+                    throw new OrderManagementException("Select Atleast one product");
+                }
+                
             }
-            get{
+            get
+            {
                 return _products;
             }
         }
@@ -61,7 +73,15 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         {
             set
             {
-                _wareHouseAddress = value;
+                if (value != null)
+                {
+                    _wareHouseAddress = value;
+                }
+            
+                else
+                
+                    throw new OrderManagementException("Select Warehouse Address");
+                   
             }
             get
             {
@@ -75,7 +95,13 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         {
             set
             {
-                _customerAddress = value;
+                if (value != null)
+                {
+                    _customerAddress = value;
+                }
+                else throw new OrderManagementException("Select Customer Address");
+
+              
             }
             get
             {
@@ -90,7 +116,14 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         {
             set
             {
-                _totalPrice = value;
+                if (value > 0)
+                {
+                    _totalPrice = value;
+                }
+               
+                else throw new OrderManagementException("Please Caluclate the Price Correctly ");
+
+                
             }
             get
             {
@@ -105,7 +138,13 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         {
             set
             {
-                _shippingStatus = value;
+
+                if (value == true || value == false)
+                {
+                    _shippingStatus = value;
+                }
+                else throw new System.Exception("Enter either true or False");
+                
             }
             get
             {
@@ -119,6 +158,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         {
             set
             {
+                
                 _orderID = value;
             }
             get

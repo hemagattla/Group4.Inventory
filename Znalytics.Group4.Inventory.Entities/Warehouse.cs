@@ -1,5 +1,8 @@
 ﻿// Created by Nitya
 
+//Importing Statements
+using System;
+
 //Created a namespace for Entity Layer of WareHouse Module
 namespace Znalytics.Inventory.WareHouseModule.Entities
 {
@@ -24,15 +27,12 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
 
 
         }
-        /// <summary>
-        /// Parameterized constructor
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="wareid"></param>
-        /// <param name="locid"></param>
-        /// <param name="locname"></param>
-        /// <param name="pincode"></param>
-        /// <param name="warecapacity"></param>
+       /// <summary>
+       /// Parameterized constructor
+       /// </summary>
+       /// <param name="name">Represents Name of the Manager</param>
+       /// <param name="wareId">Represents id of the WareHouse</param>
+       /// <param name="warName">Represents Name of the WareHouse</param>
         public WareHouse(string name, string wareId, string warName)
         {
             this._managerName = name;
@@ -48,17 +48,19 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         {
             set
             {
-                bool isSpaceFound = false;
-                for (int i = 0; i < value.Length; i++)
+                try
                 {
-                    if (value[i] == ' ')
+                    bool spaceFound = value.Contains(" ");
+                    bool atFound = value.Contains("@");
+                    bool commaFound = value.Contains(",");
+                    if (!spaceFound && !atFound && !commaFound && value.StartsWith("WHID") && value.Length <= 6)
                     {
-                        isSpaceFound = true;
+                        _warehouseId = value;
                     }
                 }
-                if (isSpaceFound == false)
+                catch
                 {
-                    _warehouseId = value;
+                    throw new Exception("Enter valid warehouseid");
                 }
             }
             get
@@ -72,11 +74,21 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         /// </summary>
         public string WareHouseName
         {
-            set
+             set
             {
-                if (value.Length <= 30)
+                try
                 {
-                    _warehouseName = value;
+                    bool atFound = value.Contains("@");
+                    bool commaFound = value.Contains(",");
+                    if ( !atFound && !commaFound && value.Length <= 30)
+                    {
+                        _warehouseName = value;
+                    }
+
+                }
+                catch(Exception ex)
+                {
+                    throw new Exception("invalid warehouse name");
                 }
             }
             get
@@ -92,14 +104,27 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         {
             set
             {
-                if (value.Length <= 30)
+                try
                 {
-                    _managerName = value;
+                    bool spaceFound = value.Contains(" ");
+                    bool atFound = value.Contains("@");
+                    bool commaFound = value.Contains(",");
+                    if (!atFound && !commaFound && value.Length <= 30)
+                    {
+                        _managerName = value;
+                    }
+
+                }
+                catch
+                {
+                    throw new Exception("Manager name is invalid");
                 }
             }
             get
             {
+
                 return _managerName;
+            }
             }
         }
 
@@ -108,7 +133,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
 
 
     }
-}
+
     
 
 

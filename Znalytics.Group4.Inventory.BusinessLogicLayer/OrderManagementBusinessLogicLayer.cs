@@ -13,6 +13,8 @@ using System.Linq;
 using Znalytics.Group4.Inventory.Entities;
 using Znalytics.Group4.Module.IBusinessLogicLayer;
 using Znalytics.Inventory.Module.BusinessLogicLayer;
+using Znalytics.Inventory.WareHouseModule.Entities;
+
 namespace Znalytics.Group4.Inventory.BusinessLogicLayer
 {/// <summary>
 /// Represents Class in BusinessLayer and this OrderManagementBusinessLogicLayer class implements IOrderManagementBusinessLayer
@@ -30,8 +32,12 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         //Creating Reference Variable for Products in BusinessLogicLayer 
         IProductBusinessLogicLayer i = new ProductBusiness();
         
+        public List<Product> DispalyProducts()
+        {
+            return i.DispalyProducts();
+        }
         /// <summary>
-        /// Get ProductDetails By product
+        /// Get ProductDetails By productID
         /// </summary>
         /// <param name="ProductID"></param>
         /// <returns></returns>
@@ -48,6 +54,10 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         public List<WareHouseAddress> GetWareHouseAddresses()
         {
             return WareHouseAddress.GetAddresses();
+        }
+        public List<WareHouseAddress> GetWareHouseByWareHouseID(string WareHouseID)
+        {
+            return WareHouseAddress.GetAddressByWareHouseID(WareHouseID);
         }
         //Creating Reference Variable for CustomerBusinessLogicLayer
         ICustBusinessLogicLayer CustomerAddress = new CustBusiness();
@@ -67,24 +77,28 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// <param name="value"></param>
         public void AddOrderDetails(OrderManagement values)
         {
-            if (values.Products != null)
+            try
             {
-                dl.AddOrderDetails(values);
+               
+                    dl.AddOrderDetails(values);
+                
             }
-            else
+            catch(Exception e)
             {
-                throw new System.Exception("Select Atleast one product");
+                throw;
             }
             /// <summary>
             /// Add WareHouseAddress to the Collections
             /// </summary>
             /// <param name="value"></param>
-
-            if (values.WareHouseAddress != null)
-            {
+            try { 
+           
                 dl.AddOrderDetails(values);
             }
-            else { throw new System.Exception("Select Warehouse Address"); }
+           catch(Exception e)
+            {
+                throw;
+            }
 
 
             /// <summary>
@@ -92,34 +106,36 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
             /// </summary>
             /// <param name="value"></param>
 
-            if (values.CustomerAddress != null)
+            try
             {
                 dl.AddOrderDetails(values);
             }
-            else throw new System.Exception("Select Customer Address");
+            catch (Exception e) { throw; }
 
             /// <summary>
             /// Add Price to Collections
             /// </summary>
             /// <param name="value"></param>
 
-            if (values.Price > 0)
+            try
             {
                 dl.AddOrderDetails(values);
             }
-            else throw new System.Exception("Please Caluclate the Price Correctly ");
-
+            catch (Exception e) { throw; }
             /// <summary>
             /// Add Shipping Status To the Collections
             /// </summary>
             /// <param name="value"></param>
 
 
-            if (values.ShippingStatus == true || values.ShippingStatus == false)
+            try
             {
                 dl.AddOrderDetails(values);
             }
-            else throw new System.Exception("Enter either true or False");
+            catch (Exception e)
+            {
+                throw;
+            }
             OrderManagement o = new OrderManagement();
             if (values.OrderID.Length == 10 && ! values.OrderID.Contains(o.OrderID))
             {
@@ -143,10 +159,10 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// View OrderDetails
         /// </summary>
         /// <returns></returns>
-        public List<OrderManagement> ViewOrderDetails()
+        public List<OrderManagement>GetOrderDetails()
         {
 
-            List<OrderManagement> orderDetails= dl.ViewOrderDetails();
+            List<OrderManagement> orderDetails= dl.GetOrderDetails();
             return orderDetails;
         }
 
@@ -170,18 +186,22 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
             return orders;
         }
         /// <summary>
-        /// View OrderDetails By ProductID
+        /// Get OrderDetails By ProductID
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public List<OrderManagement> GetOrderDetailsByProductID(Product value)
         {
-            List<OrderManagement> orders = dl.GetOrderDetailsByProductID(value);
-            return orders;
-        }
-       public OrderManagement GetOrderDetailsByEmployeeID(Customer value)
+           return dl.GetOrderDetailsByProductID(value);
+            
+        }/// <summary>
+        /// GetOrderDetails By EmployeeId
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+       public List<OrderManagement> GetOrderDetailsByEmployeeID(Customer value)
         {
-
+            return dl.GetOrderDetailsByCustomerID(value);
         }
 
 
