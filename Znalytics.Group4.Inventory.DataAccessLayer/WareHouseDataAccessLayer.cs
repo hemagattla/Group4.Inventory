@@ -5,14 +5,16 @@ using System;
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Group4.Inventory.Entities;
+using Znalytics.Group4.Inventory.DataAccessLayer;
 
-//Created a namespace for DataAccess Layer of WareHouse Module
-namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
+
+    //Created a namespace for DataAccess Layer of WareHouse Module
+    namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 {
     /// <summary>
     /// Represents the class for WareHouse Data
     /// </summary>
-    public class WareHouseDataAccessLayer
+    public class WareHouseDataAccessLayer : IWareHouseDataAccessLayer
     {
         //Created a list for WareHouse
         private static List<WareHouse> _wareHouseList
@@ -34,8 +36,8 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             };
         }
 
-        //Method to ADD details to the list
-        public void AddWareHouse(WareHouse warehouseDetails)
+        //Method to ADD WareHouse details to the list
+        public override void AddWareHouse(WareHouse warehouseDetails)
         {
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(temp => temp.WareHouseId == warehouseDetails.WareHouseId))
@@ -51,13 +53,13 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         }
 
         // Method to GET the added details
-        public List<WareHouse> GetWareHouses()
+        public override List<WareHouse> GetWareHouses()
         {
             return _wareHouseList;
         }
 
         //Method to GET the WareHouse by WareHouseID
-        public WareHouse GetWareHouseByWareHouseID(string wareHouseID)
+        public override WareHouse GetWareHouseByWareHouseID(string wareHouseID)
         {
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
@@ -71,7 +73,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         }
 
         //Method to REMOVE WareHouse by WareHouseID
-        public void RemoveWareHouseByID(string wareHouseID) 
+        public  void RemoveWareHouseByID(string wareHouseID) 
         {
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
