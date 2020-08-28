@@ -1,5 +1,8 @@
 ﻿//Created By Nitya
 
+//Importing Statements
+using System;
+
 //Created a namespace for Entity Layer of WareHouseAddress Module
 namespace Znalytics.Inventory.AddressModule.Entities
 {
@@ -31,14 +34,14 @@ namespace Znalytics.Inventory.AddressModule.Entities
         /// <summary>
         /// Parameterized constructor
         /// </summary>
-        /// <param name="locId"></param>
-        /// <param name="doorNo"></param>
-        /// <param name="locName"></param>
-        /// <param name="state"></param>
-        /// <param name="pincode"></param>
-       public  WareHouseAddress(string locId, string doorNo, string locName, string state, string pincode)
+        /// <param name="addId">Represents the id of the address/location</param>
+        /// <param name="doorNo">Represnts the Door Number of the WareHouse</param>
+        /// <param name="locName">Represents the Name of the Location</param>
+        /// <param name="state">Represents the Name of the State</param>
+        /// <param name="pincode">Represents the Pincode of the Location</param>
+       public  WareHouseAddress(string addId, string doorNo, string locName, string state, string pincode)
         {
-            this._addressId = locId;
+            this._addressId = addId;
             this._doorNumber = doorNo;
             this._locationName = locName;
             this._state = state;
@@ -52,9 +55,19 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                if (value.Length <= 2)
+                try
                 {
-                    _addressId = value;
+                    bool spaceFound = value.Contains(" ");
+                    bool atFound = value.Contains("@");
+                    bool commaFound = value.Contains(",");
+                    if (!spaceFound && !atFound && !commaFound && value.StartsWith("W") && value.Length <= 4)
+                    {
+                        _addressId = value;
+                    }
+                }
+                catch
+                {
+                    throw new System.Exception("invalid addressid");
                 }
             }
 
@@ -70,9 +83,16 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                if (value.Length <= 30)
+                try
                 {
-                    _doorNumber = value;
+                    if (value.Length <= 30)
+                    {
+                        _doorNumber = value;
+                    }
+                }
+                catch
+                {
+                    throw new Exception("invalid door number");
                 }
             }
 
@@ -89,12 +109,22 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                if (value.Length <= 30)
+                try
                 {
-                    _locationName = value;
+
+                    bool atFound = value.Contains("@");
+                    bool commaFound = value.Contains(",");
+                    if (!atFound && !commaFound && value.Length <= 30)
+                    {
+                        _locationName = value;
+                    }
+                }
+                catch
+                {
+                    throw new System.Exception("invalid location name");
                 }
             }
-            get
+                get
             {
                 return _locationName;
             }
@@ -107,9 +137,19 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                if (value.Length <= 30)
+                try
                 {
-                    _state = value;
+
+                    bool atFound = value.Contains("@");
+                    bool commaFound = value.Contains(",");
+                    if (!atFound && !commaFound && value.Length <= 30)
+                    {
+                        _addressId = value;
+                    }
+                }
+                catch
+                {
+                    throw new Exception("invalid state");
                 }
             }
             get
@@ -125,15 +165,22 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                if (value.Length == 6)
+                try
                 {
-                    for (int i = 0; i < value.Length; i++)
+                    if (value.Length == 6)
                     {
-                        if (value[i] < '0' || value[i] > 9)
+                        for (int i = 0; i < value.Length; i++)
                         {
-                            _pincode = value;
+                            if (value[i] < '0' || value[i] > 9)
+                            {
+                                _pincode = value;
+                            }
                         }
                     }
+                }
+                catch
+                {
+                    throw new Exception("invalid pincode");
                 }
             }
             get
