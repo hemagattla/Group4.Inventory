@@ -42,20 +42,15 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// displaying the products in the List
         /// </summary>
 
-        public List<Product> DisplayProducts() 
-        {
-            return _ProductsList;
-        }
+        public List<Product> DisplayProducts() => _ProductsList;
 
         /// <summary>
         /// Removing a Product by using Product ID
         /// </summary>
         /// <param name="id">Product Id</param>
-        public void RemoveProductByID(int id) //Removing a Product by using Product ID
-        {
-            _ProductsList.RemoveAll(n => n.ProductID == id);
+        public void RemoveProductByID(string id) => _ProductsList.RemoveAll(n => n.ProductID == id);
+        //Removing a Product by using Product ID
 
-        }
         /// <summary>
         /// Removing a Product by Product By name
         /// </summary>
@@ -70,9 +65,9 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// </summary>
         /// <param name="productID">passing Product ID</param>
         /// <returns></returns>
-        public Product GetProductByID(int productID)//Displaying product Details using Product ID
+        public Product GetProductByID(string productID)//Displaying product Details using Product ID
         {
-            Entitie.Product pe;
+            Product pe;
             pe = _ProductsList.Find(n => n.ProductID == productID);
             return pe;
 
@@ -84,8 +79,8 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 
         public void UpdateProductName(Product product)// update product Name
         {
-           Product PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
-            if(PE!=null)
+            Product PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
+            if (PE != null)
             {
                 PE.ProductName = product.ProductName;
             }

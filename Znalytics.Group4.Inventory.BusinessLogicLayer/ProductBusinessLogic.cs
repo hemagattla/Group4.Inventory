@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.ProductModule.DataAccessLayer;
 using Znalytics.Inventory.ProductModule.Entitie;
-using Znalytics.Group4.Inventory.IBusinessLogicLayer;
-using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
+//using Znalytics.Group4.Inventory.IBusinessLogicLayer;
+//using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
 
 namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
 {
@@ -15,7 +15,7 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
     /// <summary>
     /// refers tp Product BusinessLogic
     /// </summary>
-    public class ProductBusiness: IProductBusinessLogicLayer
+    public class ProductBusiness// : IProductBusinessLogicLayer
     {
         ProductData d;
 
@@ -24,6 +24,7 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
         {
             d = new ProductData();
         }
+
         /// <summary>
         /// adding products 
         /// </summary>
@@ -36,6 +37,7 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
                 d.AddProduct(n);
             }
         }
+
         /// <summary>
         /// displaying the products
         /// </summary>
@@ -51,9 +53,9 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
         /// removing Product By ID
         /// </summary>
         /// <param name="id"></param>
-        public void RemoveProductByID(int id)
+        public void RemoveProductByID(string id)
         {
-            if (id != 0)
+            if (id != null)
             {
                 d.RemoveProductByID(id);
             }
@@ -75,13 +77,13 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
         /// <param name="productID"></param>
         /// <returns></returns>
 
-     
+
 
         /// <summary>
         /// update product name
         /// </summary>
         /// <param name="product"></param>
-        public void UpdateProductName(Entitie.Product product)
+        public void UpdateProductName(Product product)
         {
             if (product.ProductName != null)
             {
@@ -92,9 +94,8 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
         /// update Product Price
         /// </summary>
         /// <param name="p">reference of Product class</param>
-        public void UpdateProductPrice(Entitie.Product p)
+        public void UpdateProductPrice(Product p)
         {
-
 
             d.UpdateProductPrice(p);
 
@@ -105,11 +106,8 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
         /// </summary>
         /// <param name="ProductID">productID</param>
         /// <returns></returns>
-        public Entitie.Product GetProductByProductID(int ProductID)
-        {
-            return d.GetProductByID(ProductID);
-          
-        }
+        public Product GetProductByProductID(string ProductID) => d.GetProductByID(ProductID);
+
 
 
     }

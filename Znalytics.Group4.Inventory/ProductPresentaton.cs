@@ -3,11 +3,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Text.RegularExpressions;
 using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.Entitie;
-using Znalytics.Group4.Inventory.IBusinessLogicLayer;
-using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
+//using Znalytics.Group4.Inventory.IBusinessLogicLayer;
+//using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 
 class ProductPresentation
 {
@@ -16,7 +19,7 @@ class ProductPresentation
     static void Main()
     {
         //creating object for warehouse to get stock avalibility of product in warehouse
-        IWareHouseBusinessLayer wareHouseBusinessLayer = new WareHouseBusinessLogicLayer();
+        // IWareHouseBusinessLayer wareHouseBusinessLayer = new WareHouseBusinessLogicLayer();
 
 
         int choice;
@@ -35,33 +38,39 @@ class ProductPresentation
 
             if (b == true)
             {
-
-                switch (choice)
+                try
                 {
-                    case 1:
-                        AddProduct(); // calling AddProduct Method declared Locally
-                        break;
+                    switch (choice)
+                    {
+                        case 1:
+                            AddProduct(); // calling AddProduct Method declared Locally
+                            break;
+                        case 2:
+                            DisplayProducts();// calling DisplayProducts Method declared Locally
+                            break;
+                        case 3: GetProductByID(); break; // calling GetProductByID Method declared Locally
+                        case 4: RemoveProduct(); break;// calling RemoveProduct Method declared Locally
+
+                        case 5:
+                            UpdateProduct(); // calling update Method declared Locally
+                            break;
+                        case 6:
+                        //getStockQuantity(); break;//caling getstockquantity method declared locally
 
 
-                    case 2:
-                        DisplayProducts();// calling DisplayProducts Method declared Locally
-                        break;
-                    case 3: GetProductByID(); break; // calling GetProductByID Method declared Locally
-                    case 4: RemoveProduct(); break;// calling RemoveProduct Method declared Locally
-
-                    case 5:
-                        UpdateProduct(); // calling update Method declared Locally
-                        break;
-                    case 6:
-                      getStockQuantity();break;//caling getstockquantity method declared locally
+                        default:
+                            System.Console.WriteLine("Please Enter the Correct Option");
+                            break;
 
 
-                    default:
-                        System.Console.WriteLine("Please Enter the Correct Option");
-                        break;
-
-
+                    }
                 }
+
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
 
 
 
@@ -76,24 +85,44 @@ class ProductPresentation
 
 
 
+        //local function to add products into List
         void AddProduct()
         {
-
-            Product product = new Product();// creating the object fro ProductDeatils class
+            bool a = false;
+            Product product = new Product();// creating the object for ProductDeatils class
             ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
 
-            System.Console.WriteLine("enter the ProductName:");
-            product.ProductName = System.Console.ReadLine();
             System.Console.WriteLine("enter the ProductId");
-            product.ProductID = int.Parse(System.Console.ReadLine());
-            System.Console.WriteLine("enter the Productprice:");
-            product.Price = System.Convert.ToDouble(System.Console.ReadLine());
-            pb.AddProducts(product); //adding the products into the List
+            product.ProductID = System.Console.ReadLine();
 
-            System.Console.WriteLine("Product Added Sucessfully!!!");
+            if (product.ProductID.StartsWith("PID") == true)
+            {
+                a = true;
+                System.Console.WriteLine("enter the ProductName:");
+                product.ProductName = System.Console.ReadLine();
+                if (ValidateProductName(product.ProductName))
+                {
+                    System.Console.WriteLine("enter the Productprice:");
+                    product.Price = System.Convert.ToDouble(System.Console.ReadLine());
+                    pb.AddProducts(product); //adding the products into the List
+                    System.Console.WriteLine("Product Added Sucessfully!!!");
+                }
+                else
+                {
+                    throw new ProductException("please check Product Name!");
+
+
+                }
+            }
+            else
+            {
+                throw new ProductException("please enter Product Id Starting with PID");
+            }
+
 
         }
 
+        // Local Function to Dispaly Product Details
         void DisplayProducts()
         {
             ProductBusiness pb = new ProductBusiness();// Creating thhe object for ProductBusiness class
@@ -111,6 +140,7 @@ class ProductPresentation
 
         }
 
+        // Local function to remove a Product form List
         void RemoveProduct()
         {
             Product Product = new Product();// creating the object fro ProductDeatils class
@@ -137,16 +167,20 @@ class ProductPresentation
             {
                 System.Console.WriteLine("Please Enter Correct Option");
             }
+
+            // Inner function to remove product from List by using Product ID
             void RemoveProductByID()
             {
                 System.Console.Write("Enter the ProductID to be Deleted:");
-                int id = int.Parse(System.Console.ReadLine());
+                string id = System.Console.ReadLine();
 
                 pb.RemoveProductByID(id);
                 System.Console.WriteLine("Product Removed");
 
 
             }
+
+            //Inner Function to remove product from List by using Product name
             void RemoveProductByProductName()
             {
                 System.Console.Write("Enter the ProductName:");
@@ -161,18 +195,19 @@ class ProductPresentation
 
         }
 
-
+        // local Function to get details of Product by Id
         void GetProductByID()
         {
 
             System.Console.Write("Enter the ProductID: ");
-            int productID = int.Parse(System.Console.ReadLine());
+            string productID = System.Console.ReadLine();
             ProductBusiness pb = new ProductBusiness();
             Product pe = pb.GetProductByProductID(productID);
             System.Console.WriteLine(pe.ProductID + "     " + pe.ProductName + "      " + pe.Price);
 
         }
 
+        // local function to update product details
         void UpdateProduct()
         {
             Product product = new Product();// creating the object fro ProductDeatils class
@@ -183,37 +218,42 @@ class ProductPresentation
 
 
             int option;
+            System.Console.Write("enter your Choice: ");
+            option = int.Parse(System.Console.ReadLine());
 
-            option = int.Parse("enter your Choice: "+ System.Console.ReadLine());
-
-            switch(option)
+            switch (option)
             {
                 case 1:
-                    UpdateProductName();break;
-                
+                    UpdateProductName(); break;
+
                 case 2:
-                    UpdateProductPrice();break;
-                   
+                    UpdateProductPrice(); break;
+
             }
 
+            // inner function to update a product name by using productID
             void UpdateProductName()
             {
 
                 System.Console.WriteLine("Enter Existing Product ID");
-                product.ProductID = int.Parse(System.Console.ReadLine());
+                product.ProductID = System.Console.ReadLine();
                 System.Console.WriteLine("Enter new name for Product");
                 product.ProductName = System.Console.ReadLine();
+                if (ValidateProductName(product.ProductName))
+                {
+                    pb.UpdateProductName(product);
+                }
 
-                pb.UpdateProductName(product);
-            
+
+
             }
 
-           
 
+            // inner function to update a product price by using ProductID
             void UpdateProductPrice()
             {
                 System.Console.WriteLine("Enter Existing Product ID");
-                product.ProductID = int.Parse(System.Console.ReadLine());
+                product.ProductID = System.Console.ReadLine();
                 System.Console.WriteLine("Enter new Price for Product");
                 product.Price = System.Convert.ToDouble(System.Console.ReadLine());
 
@@ -223,12 +263,41 @@ class ProductPresentation
 
         }
 
-        void getStockQuantity()
+        /*  void getStockQuantity()
+          {
+              System.Console.WriteLine("enter the product Id:");
+              int pid = int.Parse(System.Console.ReadLine());
+              System.Console.WriteLine("no of Products Available:" + wareHouseBusinessLayer.getStockQuantity(pid));
+          }
+        */
+
+        bool ValidateProductName(string productName)
         {
-            System.Console.WriteLine("enter the product Id:");
-            int pid = int.Parse(System.Console.ReadLine());
-            System.Console.WriteLine("no of Products Available:"+ wareHouseBusinessLayer.getStockQuantity(pid));
+            bool check = false;
+            for (int i = 0; i < productName.Length; i++)
+            {
+                if (productName[i] >= 'a' && productName[i] <= 'z' || productName[i] >= 'A' && productName[i] <= 'Z' || productName[i] == ' ')
+                {
+                    check = true;
+                }
+                else
+                {
+                    check = false;
+                    break;
+                }
+
+            }
+
+
+            return check;
+
         }
+
+
+
+
+
+
 
 
 
