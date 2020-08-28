@@ -5,9 +5,11 @@ using System.Linq;
 using Znalytics.Inventory.OrderManagementModule.Entities;
 using Znalytics.Inventory.AddressModule.BusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.Entitie;
-using System.Xml.Serialization;
+
 using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.Module.Entities;
+using Znalytics.Group4.Inventory.BusinessLogicLayer;
+using Znalytics.Inventory.ProductShippingAddressModule.Entities;
 
 namespace Znalytics.Group4.Inventory
 {
@@ -69,9 +71,10 @@ namespace Znalytics.Group4.Inventory
                     case 1:
                         Console.WriteLine("Enter ProductID to select Products that you want to order");
                         int productId = int.Parse(Console.ReadLine());
-                        Product Product = orderBusiness.GetProductByProductID(productId);
-                        order.Products.Add(Product);
-                        order.Price += Product.Price;
+                        Product product = orderBusiness.ProductDetails(productId);
+                       
+                        order.Products.Add(product);
+                        order.Price += product.Price;
                         break;
 
 
@@ -80,14 +83,14 @@ namespace Znalytics.Group4.Inventory
                 }
             } while (choice != 2);
             Console.WriteLine("============WareHouseDetails============");
-            List<WareHouseAddress> wareHouseAddresses = orderBusiness.GetAddresses();
+            List<WareHouseAddress> wareHouseAddresses = orderBusiness.GetWareHouseAddresses();
             foreach (var warehouseaddress in wareHouseAddresses)
             {
                 Console.WriteLine(wareHouseAddresses);
             }
             Console.WriteLine("Enter AddressID That You Want choose as A warehouseAddress");
-            int AddressId = int.Parse(Console.ReadLine());
-            WareHouseAddress houseAddress = orderBusiness.GetAddressByAddressID(AddressId);
+            string AddressId = Console.ReadLine();
+            WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressId);
             order.WareHouseAddress = houseAddress;
             Console.WriteLine("==========AddressDetails================");
             Console.WriteLine("Enter your CustomerId to Choose your Address");
@@ -125,21 +128,37 @@ namespace Znalytics.Group4.Inventory
                 int orderId = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
-                    case 1: 
-                        Console.WriteLine("Enter ProductID");
-                        int ProductId= int.Parse(Console.ReadLine());
-                        orderBusiness.UpdateProductDetails(orderId, ProductId);
+                    case 1:
+                        List<Product> products = new List<Product>();
+                        do
+                        {
+                            Console.WriteLine("Enter ProductID");
+                            int ProductId = int.Parse(Console.ReadLine());
+                            Product p = orderBusiness.ProductDetails(ProductId);
+                            
+                            products.Add(p);
+
+                            Console.WriteLine("Enter 1 if you want to Update one more product otherwise enter 2");
+                            Console.Write("Enter choice: ");
+                            choice = int.Parse(Console.ReadLine());
+
+                           
+                        } while (choice== 1);
+                       
+                        orderBusiness.UpdateProductDetails(orderId, products);
                         break;
                     case 2:
                         
                         Console.WriteLine("Enter AddressID");
                         int AddressID = int.Parse(Console.ReadLine());
+
                         orderBusiness.UpdateWareHouseAddressDetails(orderId,AddressID);
                         break;
                     case 3:
                         Console.WriteLine("Enter CustomerID");
                         int customerId = int.Parse(Console.ReadLine());
-                        orderBusiness.UpdateCustomerAddressDetails(orderId, customerId);
+                        Customer customerAddress = orderBusiness.GetCustomerDetailsByCustomerID(customerId);
+                        orderBusiness.UpdateCustomerAddressDetails(orderId, customerAddress);
                         break;
                    
                     case 4: Console.WriteLine("Exit"); break;
