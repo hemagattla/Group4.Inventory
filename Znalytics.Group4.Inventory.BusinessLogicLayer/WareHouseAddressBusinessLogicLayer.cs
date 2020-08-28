@@ -7,6 +7,7 @@ using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
 using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.AddressModule.DataAccessLayer;
 using System;
+using Znalytics.Group4.Inventory.Entities;
 
 //Created a namespace for BusinessLayer of WareHouseAddress module
 namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
@@ -15,7 +16,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
     /// <summary>
     /// Represents BusinessLogic class of AddressWareHouse
     /// </summary>
-    public class WareHouseAddressBusinessLogicLayer: IWareHouseAddressBusinessLogicLayer
+    public class WareHouseAddressBusinessLogicLayer//: IWareHouseAddressBusinessLogicLayer
     {
 
         //Created an object for datalayer and stored it in reference variable
@@ -36,7 +37,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 }
 
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -63,7 +64,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                     return null;
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -71,7 +72,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         }
 
         //Method to GET WareHouseAddress details by WareHouseId
-        public List<WareHouseAddress>GetAddressByWareHouseID(string wareHouseId)
+        public WareHouseAddress GetAddressByWareHouseID(string wareHouseId)
         {
             try
             {
@@ -85,7 +86,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                     return null;
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -106,7 +107,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                     return null;
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -124,7 +125,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                     wadl.UpdateDoorNumber(address);
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -142,7 +143,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                         wadl.UpdateLocationName(address);
                     }
                 }
-                catch (Exception ex)
+                catch (WareHouseException ex)
                 {
                     throw;
                 }
@@ -161,7 +162,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                         wadl.UpdateState(address);
                     }
                 }
-                catch (Exception ex)
+                catch (WareHouseException ex)
                 {
                     throw;
                 }
@@ -179,7 +180,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                     wadl.UpdatePincode(address);
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -196,7 +197,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                     wadl.RemoveAddressByWareHouseID(wareHouseID);
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -213,7 +214,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                     wadl.RemoveAddressByAddressID(addressID);
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }

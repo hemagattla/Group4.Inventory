@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
+using Znalytics.Group4.Inventory.Entities;
 
 //Created a namespace for DataAccess Layer of WareHouse Module
 namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
@@ -36,14 +37,14 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         //Method to ADD details to the list
         public void AddWareHouse(WareHouse warehouseDetails)
         {
-
+            //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(temp => temp.WareHouseId == warehouseDetails.WareHouseId))
             {
                 _wareHouseList.Add(warehouseDetails);
             }
             else
             {
-                throw new Exception("Warehouse already exists");
+                throw new WareHouseException("Warehouse already exists");
             }
 
 
@@ -56,45 +57,83 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         }
 
         //Method to GET the WareHouse by WareHouseID
-        public WareHouse GetWareHouseByWareHouseID(string WareHouseID)
+        public WareHouse GetWareHouseByWareHouseID(string wareHouseID)
         {
-            WareHouse w;
-            w = _wareHouseList.Find(temp => temp.WareHouseId == WareHouseID);
-            return w;
+            //Condition to check whether the WareHouseId exists or not
+            if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
+            {
+                return _wareHouseList.Find(temp => temp.WareHouseId == wareHouseID);
+            }
+            else
+            {
+                throw new WareHouseException("WareHouse doesn't exist");
+            }
         }
 
         //Method to REMOVE WareHouse by WareHouseID
         public void RemoveWareHouseByID(string wareHouseID) 
         {
-            _wareHouseList.RemoveAll(n => n.WareHouseId == wareHouseID);
+            //Condition to check whether the WareHouseId exists or not
+            if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
+            {
+                _wareHouseList.RemoveAll(n => n.WareHouseId == wareHouseID);
+            }
+            else
+            {
+                throw new WareHouseException("Warehouse doesn't exist");
+            }
 
         }
 
         //Method to REMOVE WareHouse by WareHouse Name
         public void RemoveWareHouseByName(string wareHouseName)
         {
-            _wareHouseList.RemoveAll(n => n.WareHouseName == wareHouseName);
+            //Condition to check whether the WareHouseName exists or not
+            if (_wareHouseList.Exists(n => n.WareHouseName == wareHouseName))
+            {
+                _wareHouseList.RemoveAll(n => n.WareHouseName == wareHouseName);
+            }
+            else
+            {
+                throw new WareHouseException("Warehouse doesn't exists by this name");
+            }
         }
 
         // Method to UPDATE the WareHouse Name
         public void UpdateWareHouseName(WareHouse wareHouse)
         {
-            WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
-            if (w != null)
+            //Condition to check whether the WareHouseId exists or not
+            if (_wareHouseList.Exists(n => n.WareHouseId == wareHouse.WareHouseId))
             {
-                w.WareHouseName = wareHouse.WareHouseName;
+                WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
+                if (w != null)
+                {
+                    w.WareHouseName = wareHouse.WareHouseName;
 
 
+                }
+            }
+            else
+            {
+                throw new WareHouseException("Warehouse doesn't exist");
             }
         }
 
         // Method to UPDATE the Manager Name
         public void UpdateManagerName(WareHouse wareHouse)
         {
-            WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
-            if (w != null)
+            //Condition to check whether the WareHouseId exists or not
+            if (_wareHouseList.Exists(temp => temp.WareHouseId == wareHouse.WareHouseId))
             {
-                w.MangerName = wareHouse.MangerName;
+                WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
+                if (w != null)
+                {
+                    w.MangerName = wareHouse.MangerName;
+                }
+            }
+            else
+            {
+                throw new WareHouseException("Warehouse doesn't exist");
             }
         }
     }

@@ -6,6 +6,7 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
 using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 using System;
+using Znalytics.Group4.Inventory.Entities;
 
 //Created a namespace for BusinessLayer of WareHouse module
 namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
@@ -40,7 +41,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
                     d.AddWareHouse(n);
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -67,7 +68,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
                     return null;
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -84,7 +85,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
                     d.RemoveWareHouseByID(wareHouseID);
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -102,7 +103,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
                     d.RemoveWareHouseByName(wareHouseName);
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -120,7 +121,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
                     d.UpdateWareHouseName(wareHouse);
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -138,7 +139,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
                     d.UpdateManagerName(wareHouse);
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
