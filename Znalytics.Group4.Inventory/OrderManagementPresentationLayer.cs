@@ -88,7 +88,7 @@ namespace Znalytics.Group4.Inventory
             {
                 Console.WriteLine(wareHouseAddresses);
             }
-            Console.WriteLine("Enter AddressID That You Want choose as A warehouseAddress");
+            Console.WriteLine("Enter AddressID That You Want choose as a warehouseAddress");
             string AddressId = Console.ReadLine();
             WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressId);
             order.WareHouseAddress = houseAddress;
@@ -150,9 +150,9 @@ namespace Znalytics.Group4.Inventory
                     case 2:
                         
                         Console.WriteLine("Enter AddressID");
-                        int AddressID = int.Parse(Console.ReadLine());
-
-                        orderBusiness.UpdateWareHouseAddressDetails(orderId,AddressID);
+                        string AddressID = (Console.ReadLine());
+                        WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressID);
+                        orderBusiness.UpdateWareHouseAddressDetails(orderId,houseAddress);
                         break;
                     case 3:
                         Console.WriteLine("Enter CustomerID");
