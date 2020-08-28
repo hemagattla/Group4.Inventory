@@ -27,6 +27,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         {
             _ProductsList = new List<Product>();
 
+
         }
 
         /// <summary>
@@ -42,41 +43,30 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// displaying the products in the List
         /// </summary>
 
-        public List<Product> DisplayProducts() 
-        {
-            return _ProductsList;
-        }
+        public List<Product> DisplayProducts() => _ProductsList;
 
         /// <summary>
         /// Removing a Product by using Product ID
         /// </summary>
         /// <param name="id">Product Id</param>
-        public void RemoveProductByID(int id) //Removing a Product by using Product ID
-        {
-            _ProductsList.RemoveAll(n => n.ProductID == id);
+        public void RemoveProduct(string id) => _ProductsList.RemoveAll(n => n.ProductID == id);
+        //Removing a Product by using Product ID
 
-        }
-        /// <summary>
-        /// Removing a Product by Product By name
-        /// </summary>
-        /// <param name="name">Product name</param>
-        public void RemoveProductByName(string name)// Removing a Product By using Product Name
-        {
-            _ProductsList.RemoveAll(n => n.ProductName == name);
-        }
 
         /// <summary>
         /// Displaying product Details using Product ID
         /// </summary>
         /// <param name="productID">passing Product ID</param>
         /// <returns></returns>
-        public Product GetProductByID(int productID)//Displaying product Details using Product ID
+        public Product GetProductByID(string productID)//Displaying product Details using Product ID
         {
-            Entitie.Product pe;
+            Product pe;
             pe = _ProductsList.Find(n => n.ProductID == productID);
             return pe;
 
         }
+
+
         /// <summary>
         /// update product Name
         /// </summary>
@@ -84,12 +74,14 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 
         public void UpdateProductName(Product product)// update product Name
         {
-           Product PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
-            if(PE!=null)
+            Product PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
+            if (PE != null)
             {
                 PE.ProductName = product.ProductName;
             }
         }
+
+
         /// <summary>
         /// update method for Product Price
         /// </summary>
@@ -103,5 +95,17 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// checking the product exits or not in the List
+        /// </summary>
+        /// <param name="productID">based on this parameter the product gets checked</param>
+        /// <returns></returns>
+        public bool CheckProductID(string productID)
+        {
+            return _ProductsList.Exists(n => n.ProductID == productID);
+
+
+
+        }
     }
 }

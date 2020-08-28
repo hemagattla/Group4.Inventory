@@ -5,8 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
+using Znalytics.Inventory.ProductModule.CustomException;
 
 namespace Znalytics.Inventory.ProductModule.Entitie
 {
@@ -17,7 +18,7 @@ namespace Znalytics.Inventory.ProductModule.Entitie
     {
         //creating private feilds
         private string _productName;
-        private int _productId;
+        private string _productId;
 
 
 
@@ -28,8 +29,20 @@ namespace Znalytics.Inventory.ProductModule.Entitie
         {
             set
             {
-                if (value != " ")
+
+
+                if (!string.IsNullOrEmpty(value))
+                {
                     _productName = value;
+
+                }
+                else
+                {
+                    throw new ProductException("do not enter empty values");
+                }
+
+
+
             }
             get
             {
@@ -40,11 +53,18 @@ namespace Znalytics.Inventory.ProductModule.Entitie
         /// <summary>
         /// Property for ProductID
         /// </summary>
-        public int ProductID
+        public string ProductID
         {
             set
             {
-                _productId = value;
+                if (value != "")
+                {
+                    _productId = value;
+                }
+                else
+                {
+                    throw new ProductException("Product ID Should not NULL");
+                }
             }
             get
             {

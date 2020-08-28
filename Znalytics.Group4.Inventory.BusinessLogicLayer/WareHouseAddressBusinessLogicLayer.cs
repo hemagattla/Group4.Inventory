@@ -7,6 +7,7 @@ using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
 using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.AddressModule.DataAccessLayer;
 using System;
+using Znalytics.Group4.Inventory.Entities;
 
 //Created a namespace for BusinessLayer of WareHouseAddress module
 namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
@@ -15,7 +16,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
     /// <summary>
     /// Represents BusinessLogic class of AddressWareHouse
     /// </summary>
-    public class WareHouseAddressBusinessLogicLayer: IWareHouseAddressBusinessLogicLayer
+    public class WareHouseAddressBusinessLogicLayer//: IWareHouseAddressBusinessLogicLayer
     {
 
         //Created an object for datalayer and stored it in reference variable
@@ -36,7 +37,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 }
 
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
                 throw;
             }
@@ -49,79 +50,173 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         }
 
         //Method to GET WareHouseAddress details by AddressId
-        public WareHouseAddress GetAddressByAddressID(string addressID)
+        public WareHouseAddress GetAddressByAddressID(string addressId)
         {
-            return wadl.GetAddressByAddressID(addressID);
+            try
+            {
+                //AddressId should not be null
+                if (addressId != null)
+                {
+                    return wadl.GetAddressByAddressID(addressId);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (WareHouseException ex)
+            {
+                throw;
+            }
+
         }
 
         //Method to GET WareHouseAddress details by WareHouseId
-        public List<WareHouseAddress>GetAddressByWareHouseID(string wareHouseID)
+        public WareHouseAddress GetAddressByWareHouseID(string wareHouseId)
         {
-            return wadl.GetAddressByWareHouseID(wareHouseID);
+            try
+            {
+                //WareHouseId should not be null
+                if (wareHouseId != null)
+                {
+                    return wadl.GetAddressByWareHouseID(wareHouseId);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (WareHouseException ex)
+            {
+                throw;
+            }
         }
 
         //Method to GET WareHouseAddress details by LocationName
         public List<WareHouseAddress> GetAddressByLocationName(string locationName)
         {
-            return wadl.GetAddressByLocationName(locationName);
+            try
+            {
+                //Location Name should not be null
+                if (locationName != null)
+                {
+                    return wadl.GetAddressByLocationName(locationName);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (WareHouseException ex)
+            {
+                throw;
+            }
         }
 
         //Method to UPDATE Door Number of WareHouse
         public void UpdateDoorNumber(WareHouseAddress address)
         {
 
-            if (address.AddressId != null)
+            try
             {
-                wadl.UpdateDoorNumber(address);
+                //AddressId should not be null
+                if (address.AddressId != null)
+                {
+                    wadl.UpdateDoorNumber(address);
+                }
+            }
+            catch (WareHouseException ex)
+            {
+                throw;
             }
         }
 
         //Method to UPDATE the Location Name of WareHouse
         public void UpdateLocationName(WareHouseAddress address)
         {
+                try
+                {
+                    //AddressId should not be null
 
-            if (address.AddressId != null)
-            {
-                wadl.UpdateLocationName(address);
-            }
+                    if (address.AddressId != null)
+                    {
+                        wadl.UpdateLocationName(address);
+                    }
+                }
+                catch (WareHouseException ex)
+                {
+                    throw;
+                }
+            
 
         }
 
         //Method to UPDATE the State of WareHouse
         public void UpdateState(WareHouseAddress address)
         {
-
-            if (address.AddressId != null)
-            {
-                wadl.UpdateState(address);
-            }
+                try
+                {
+                //AddressId should not be null
+                if (address.AddressId != null)
+                    {
+                        wadl.UpdateState(address);
+                    }
+                }
+                catch (WareHouseException ex)
+                {
+                    throw;
+                }
+            
         }
 
         //Method to UPDATE the Pincode of WareHouse
         public void UpdatePincode(WareHouseAddress address)
         {
-
-            if (address.AddressId != null)
+            try
             {
-                wadl.UpdatePincode(address);
+                //AddressId should not be null
+                if (address.AddressId != null)
+                {
+                    wadl.UpdatePincode(address);
+                }
+            }
+            catch (WareHouseException ex)
+            {
+                throw;
             }
         }
 
         //Method to REMOVE an address of the Warehouse by wareHouseID
         public void RemoveAddressByWareHouseID(string wareHouseID)
         {
-            if (wareHouseID != null)
+            try
             {
-                wadl.RemoveAddressByWareHouseID(wareHouseID);
+                //WareHouseId should not be null
+                if (wareHouseID != null)
+                {
+                    wadl.RemoveAddressByWareHouseID(wareHouseID);
+                }
+            }
+            catch (WareHouseException ex)
+            {
+                throw;
             }
         }
 
         //Method to REMOVE an address of the Warehouse by addressID
         public void RemoveAddressByAddressID(string addressID)
         {
-            if (addressID != null)
+            try
             {
-                wadl.RemoveAddressByAddressID(addressID);
+                //AddressId should not be null
+                if (addressID != null)
+                {
+                    wadl.RemoveAddressByAddressID(addressID);
+                }
+            }
+            catch (WareHouseException ex)
+            {
+                throw;
             }
         }
 
