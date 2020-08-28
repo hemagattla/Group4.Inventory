@@ -33,7 +33,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
 
             try
             {
-                //WareHouse Id should not be null and should not be duplicate
+                //WareHouse Id should not be null 
                 if (n.WareHouseId != null)
                 {
 
@@ -55,24 +55,56 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         //Method to GET WareHouse details by WareHouseId
         public WareHouse GetWareHouseByWareHouseID(string wareHouseID)
         {
-            return d.GetWareHouseByWareHouseID(wareHouseID);
+            try
+            {
+                //WareHouse Id should not be null
+                if (wareHouseID != null)
+                {
+                    return d.GetWareHouseByWareHouseID(wareHouseID);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         //Method to REMOVE WareHouse  by WareHouseId
         public void RemoveWareHouseByID(string wareHouseID)
         {
-            if (wareHouseID != null)
+            try
             {
-                d.RemoveWareHouseByID(wareHouseID);
+                //WareHouse Id should not be null
+                if (wareHouseID != null)
+                {
+                    d.RemoveWareHouseByID(wareHouseID);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
         //Method to REMOVE WareHouse  by WareHouseName
         public void RemoveWareHouseByName(string wareHouseName)
         {
-            if (wareHouseName != null)
+
+            try
             {
-                d.RemoveWareHouseByName(wareHouseName);
+                //WareHouse Name should not be null
+                if (wareHouseName != null)
+                {
+                    d.RemoveWareHouseByName(wareHouseName);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
@@ -80,9 +112,17 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         public void UpdateWareHouseName(WareHouse wareHouse)// update product Name
         {
 
-            if (wareHouse.WareHouseId != null)
+            try
             {
-                d.UpdateWareHouseName(wareHouse);
+                //WareHouse Id should not be null
+                if (wareHouse.WareHouseId != null)
+                {
+                    d.UpdateWareHouseName(wareHouse);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
@@ -90,9 +130,17 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         public void UpdateManagerName(WareHouse wareHouse)// update product Name
         {
 
-            if (wareHouse.WareHouseId != null)
+            try
+            //WareHouse Id should not be null
             {
-                d.UpdateManagerName(wareHouse);
+                if (wareHouse.WareHouseId != null)
+                {
+                    d.UpdateManagerName(wareHouse);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
