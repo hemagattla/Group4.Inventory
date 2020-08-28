@@ -19,7 +19,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
 {/// <summary>
 /// Represents Class in BusinessLayer and this OrderManagementBusinessLogicLayer class implements IOrderManagementBusinessLayer
 /// </summary>
-    class OrderManagementBusinessLogicLayer:IOrderManagementBusinessLayer
+    public class OrderManagementBusinessLogicLayer:IOrderManagementBusinessLayer
     {
         OrderManagementDataLayer dl;
         
@@ -95,7 +95,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         
 
         /// <summary>
-        /// View OrderDetails
+        /// Get OrderDetails
         /// </summary>
         /// <returns></returns>
         public List<OrderManagement>GetOrderDetails()
@@ -109,7 +109,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// Cancel OrderDetails
         /// </summary>
         /// <param name="value"></param>
-        public void CancelOrderDetails(OrderManagement value)
+        public void CancelOrderDetails(int value)
         {
             dl.CancelOrder(value);
         }
@@ -118,7 +118,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public List<OrderManagement> GetOrderDetailsByWareHouseID(WareHouseAddress value)
+        public List<OrderManagement> GetOrderDetailsByWareHouseID(string value)
         {
        
             List<OrderManagement> orders= dl.GetOrderDetailsByWareHouseID(value);
@@ -129,7 +129,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public List<OrderManagement> GetOrderDetailsByProductID(Product value)
+        public List<OrderManagement> GetOrderDetailsByProductID(int value)
         {
            return dl.GetOrderDetailsByProductID(value);
             
@@ -138,7 +138,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-       public List<OrderManagement> GetOrderDetailsByEmployeeID(Customer value)
+       public List<OrderManagement> GetOrderDetailsByEmployeeID(int value)
         {
             return dl.GetOrderDetailsByCustomerID(value);
         }
@@ -151,7 +151,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// </summary>
         /// <param name="orderid"></param>
         /// <param name="value"></param>
-        public void UpdateProductDetails(OrderManagement orderid, OrderManagement value)
+        public void UpdateProductDetails(int orderid, List<Product> value)
         {
 
             dl.UpdateProductDetails(orderid,value);
@@ -164,7 +164,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// <param name="orderid"></param>
         /// <param name="value"></param>
 
-        public void UpdateWareHouseAddressDetails(OrderManagement orderid, OrderManagement value)
+        public void UpdateWareHouseAddressDetails(int orderid, WareHouseAddress value)
         {
             dl.UpdateWareHouseAddressDetails(orderid, value);
 
@@ -174,7 +174,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// </summary>
         /// <param name="orderid"></param>
         /// <param name="value"></param>
-        public void UpdateCustomerAddressDetails(OrderManagement orderid, OrderManagement value)
+        public void UpdateCustomerAddressDetails(int orderid, Customer value)
         {
             dl.UpdateCustomerAddressDetails(orderid, value);
         }

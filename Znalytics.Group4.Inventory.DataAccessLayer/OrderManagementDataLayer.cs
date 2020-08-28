@@ -44,9 +44,9 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
        /// Cancel OrderDetails By OrderID
        /// </summary>
        /// <param name="values"></param>
-        public void CancelOrder(OrderManagement values)
+        public void CancelOrder(int value)
         {
-          OrderManagement order= _orders.Find(temp => temp.OrderID == values.OrderID);
+          OrderManagement order= _orders.Find(temp => temp.OrderID == value);
             _orders.Remove(order);
         }
         
@@ -56,12 +56,12 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public override List<OrderManagement> GetOrderDetailsByWareHouseID(WareHouseAddress value)
+        public override List<OrderManagement> GetOrderDetailsByWareHouseID(string value)
         {
             List<OrderManagement> order = new List<OrderManagement>();
             foreach (var orders in _orders)
             {
-                if (orders.WareHouseAddress.AddressId == value.AddressId)
+                if (orders.WareHouseAddress.AddressId == value)
                 {
 
                     order.Add(orders);
@@ -76,14 +76,14 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public override List<OrderManagement> GetOrderDetailsByProductID(Product value)
+        public override List<OrderManagement> GetOrderDetailsByProductID(int value)
         {
             List<OrderManagement> order = new List<OrderManagement>();
             foreach (var orders in _orders)
             {
                 foreach (var products in orders.Products)
                 {
-                    if (products.ProductID == value.ProductID)
+                    if (products.ProductID == value)
                     {
                         order.Add(orders);
                     }
@@ -97,14 +97,14 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public List<OrderManagement> GetOrderDetailsByCustomerID(Customer value)
+        public List<OrderManagement> GetOrderDetailsByCustomerID(int value)
         {
             List<OrderManagement> order = new List<OrderManagement>();
 
 
             foreach (var orders in _orders)
             {
-                if (orders.CustomerAddress.CustomerId == value.CustomerId)
+                if (orders.CustomerAddress.CustomerId == value)
                 {
                     order.Add(orders);
                 }
@@ -127,11 +127,12 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// </summary>
         /// <param name="orderid"></param>
         /// <param name="value"></param>
-        public void UpdateProductDetails(OrderManagement orderid,OrderManagement value)
+        public void UpdateProductDetails(int orderid,List<Product> value)
         {
-            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid.OrderID);
-            
-                order.WareHouseAddress = value.WareHouseAddress;
+            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid);
+           
+
+            order.Products = value;
             }
         /// <summary>
         /// UpdateWareHouse AddressDetails
@@ -139,10 +140,10 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// <param name="orderid"></param>
         /// <param name="value"></param>
   
-        public void UpdateWareHouseAddressDetails(OrderManagement orderid, OrderManagement value)
+        public void UpdateWareHouseAddressDetails(int orderid, WareHouseAddress value)
         {
-            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid.OrderID);
-            order.Products = value.Products;
+            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid);
+            order.WareHouseAddress = value;
 
         }
         /// <summary>
@@ -150,10 +151,11 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// </summary>
         /// <param name="orderid"></param>
         /// <param name="value"></param>
-        public void UpdateCustomerAddressDetails(OrderManagement orderid, OrderManagement value)
+        public void UpdateCustomerAddressDetails(int orderid, Customer value)
         {
-            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid.OrderID);
-            order.CustomerAddress = value.CustomerAddress;
+            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid);
+            
+            order.CustomerAddress = value;
         }
 
 
