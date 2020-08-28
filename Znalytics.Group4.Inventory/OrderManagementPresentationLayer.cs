@@ -13,8 +13,10 @@ using Znalytics.Inventory.ProductShippingAddressModule.Entities;
 
 namespace Znalytics.Group4.Inventory
 {
-
-    class OrderManagementPresentationLayer
+    /// <summary>
+    /// Represents PresentationLayer of OrderManagement
+    /// </summary>
+    static class OrderManagementPresentationLayer
     {
         static void Main()
         {
@@ -42,74 +44,86 @@ namespace Znalytics.Group4.Inventory
                 }
             } while (choice != 5);
         }
-
+        /// <summary>
+        /// Method for Adding OrderDetails to List
+        /// </summary>
         static void AddOrderDetails()
         {
-            OrderManagement order = new OrderManagement();/// creating object for business logic layer
-            OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();///creating obj for customer class present in entity layer
-            Console.WriteLine("======ProductDetails=======");
-            List<Product> products = orderBusiness.DispalyProducts();
-            Console.WriteLine("The following Products Available :");
-            foreach (var product in products)
+            try
             {
-                Console.WriteLine("ProductName:" + product.ProductName + "ProductID:" + product.ProductID + "Price:" + product.Price);
-            }
-            int choice = 0;
-            order.Price = 0;
-
-            do
-            {
-
-
-
-                Console.WriteLine("Enter 1 if you want to select products for Order otherwise enter 2");
-                Console.Write("Enter choice: ");
-                choice = int.Parse(Console.ReadLine());
-
-                switch (choice)
+                OrderManagement order = new OrderManagement();
+                OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();///creating obj for customer class present in entity layer
+                Console.WriteLine("======ProductDetails=======");
+                List<Product> products = orderBusiness.DispalyProducts();
+                Console.WriteLine("The following Products Available :");
+                foreach (var product in products)
                 {
-                    case 1:
-                        Console.WriteLine("Enter ProductID to select Products that you want to order");
-                        int productId = int.Parse(Console.ReadLine());
-                        Product product = orderBusiness.ProductDetails(productId);
-                       
-                        order.Products.Add(product);
-                        order.Price += product.Price;
-                        break;
-
-
-                    case 2: Console.WriteLine("Exit"); break;
-
+                    Console.WriteLine("ProductName:" + product.ProductName + "ProductID:" + product.ProductID + "Price:" + product.Price);
                 }
-            } while (choice != 2);
-            Console.WriteLine("============WareHouseDetails============");
-            List<WareHouseAddress> wareHouseAddresses = orderBusiness.GetWareHouseAddresses();
-            foreach (var warehouseaddress in wareHouseAddresses)
-            {
-                Console.WriteLine(wareHouseAddresses);
+                int choice = 0;
+                order.Price = 0;
+
+                do
+                {
+
+
+
+                    Console.WriteLine("Enter 1 if you want to select products for Order otherwise enter 2");
+                    Console.Write("Enter choice: ");
+                    choice = int.Parse(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine("Enter ProductID to select Products that you want to order");
+                            int productId = int.Parse(Console.ReadLine());
+                            Product product = orderBusiness.ProductDetails(productId);
+
+                            order.Products.Add(product);
+                            order.Price += product.Price;
+                            break;
+
+
+                        case 2: Console.WriteLine("Exit"); break;
+
+                    }
+                } while (choice != 2);
+                Console.WriteLine("============WareHouseDetails============");
+                List<WareHouseAddress> wareHouseAddresses = orderBusiness.GetWareHouseAddresses();
+                foreach (var warehouseaddress in wareHouseAddresses)
+                {
+                    Console.WriteLine(wareHouseAddresses);
+                }
+                Console.WriteLine("Enter AddressID That You Want choose as a warehouseAddress");
+                string AddressId = Console.ReadLine();
+                WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressId);
+                order.WareHouseAddress = houseAddress;
+                Console.WriteLine("==========AddressDetails================");
+                Console.WriteLine("Enter your CustomerId to Choose your Address");
+                int CustomerId = int.Parse(Console.ReadLine());
+                Customer customerAddress = orderBusiness.GetCustomerDetailsByCustomerID(CustomerId);
+                Console.WriteLine("price for Selected Products is:" + order.Price);
+                Console.WriteLine("Enter 1 if You want to conform your Order");
+                int i = int.Parse(Console.ReadLine());
+                if (i == 1)
+                {
+                    order.OrderID = orderBusiness.OrderID();
+                    Console.WriteLine("Your OrderID Is:" + order.OrderID);
+                }
+                else
+                {
+                    Console.WriteLine(" you are not sure about orders");
+                }
+                orderBusiness.AddOrderDetails(order);
             }
-            Console.WriteLine("Enter AddressID That You Want choose as a warehouseAddress");
-            string AddressId = Console.ReadLine();
-            WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressId);
-            order.WareHouseAddress = houseAddress;
-            Console.WriteLine("==========AddressDetails================");
-            Console.WriteLine("Enter your CustomerId to Choose your Address");
-            int CustomerId = int.Parse(Console.ReadLine());
-            Customer customerAddress = orderBusiness.GetCustomerDetailsByCustomerID(CustomerId);
-            Console.WriteLine("price for Selected Products is:" + order.Price);
-            Console.WriteLine("Enter 1 if You want to conform your Order");
-            int i = int.Parse(Console.ReadLine());
-            if (i == 1)
+            catch (Exception ex)
             {
-                order.OrderID = orderBusiness.OrderID();
-                Console.WriteLine("Your OrderID Is:" + order.OrderID);
+                Console.WriteLine(ex.Message);
             }
-            else
-            {
-                Console.WriteLine(" you are not sure about orders");
-            }
-            orderBusiness.AddOrderDetails(order);
         }
+        /// <summary>
+        /// Represents a staticmethod for updating orderDetails
+        /// </summary>
         static void UpdateOrderDetails()
         {
             OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();
@@ -166,6 +180,9 @@ namespace Znalytics.Group4.Inventory
                 }
             } while (choice != 4);
         }
+        /// <summary>
+        /// Represents a Static Method for cancel order Details
+        /// </summary>
         static void CancelOrderDetails()
         {
             Console.WriteLine("Enter OrderId");
@@ -174,6 +191,9 @@ namespace Znalytics.Group4.Inventory
 
             orderBusiness.CancelOrderDetails(orderId);
         }
+        /// <summary>
+        /// Represents a Method for view OrderDetails
+        /// </summary>
         static void viewOrderDetails()
         {
             OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();

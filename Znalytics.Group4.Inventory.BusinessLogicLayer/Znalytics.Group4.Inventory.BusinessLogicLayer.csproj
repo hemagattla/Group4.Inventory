@@ -52,7 +52,7 @@
     <Compile Include="IProductBusinessLogicLayer.cs" />
     <Compile Include="IStockBusinessLogicLayer.cs" />
     <Compile Include="IWareHouseBusinessLogicLayer.cs" />
-    <Compile Include="ProductBusinessLogic.cs" />
+    <Compile Include="ProductBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="shippingAddressBusinessLogic.cs" />
     <Compile Include="StockBusinessLogicLayer.cs" />
