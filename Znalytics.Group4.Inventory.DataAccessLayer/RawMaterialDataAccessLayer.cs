@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Znalytics.Group4.Inventory.RawMaterialModule.Entities;
+using Newtonsoft.Json.Serialization;
+
 
 namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
 {
