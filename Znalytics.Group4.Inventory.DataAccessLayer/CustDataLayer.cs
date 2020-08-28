@@ -32,10 +32,6 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
                 cu.Country = c.Country;
             }
         }
-        public List<Customer> GetCust()
-        {
-            return _customers;
-        }
         public void DelCustomer(Customer c)
         {
             Customer t = _customers.Find((temp => temp.CustomerName == c.CustomerName));
