@@ -53,30 +53,13 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
         /// removing Product By ID
         /// </summary>
         /// <param name="id"></param>
-        public void RemoveProductByID(string id)
+        public void RemoveProduct(string id)
         {
             if (id != null)
             {
-                d.RemoveProductByID(id);
+                d.RemoveProduct(id);
             }
         }
-        /// <summary>
-        /// remove Product By Product name
-        /// </summary>
-        /// <param name="name"></param>
-        public void RemoveProductByName(string name)
-        {
-            if (name != null)
-            {
-                d.RemoveProductByName(name);
-            }
-        }
-        /// <summary>
-        /// Displaying the Product Details By using ProductID
-        /// </summary>
-        /// <param name="productID"></param>
-        /// <returns></returns>
-
 
 
         /// <summary>
@@ -108,6 +91,16 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
         /// <returns></returns>
         public Product GetProductByProductID(string ProductID) => d.GetProductByID(ProductID);
 
+        /// <summary>
+        /// checking whether Product is present in the list and return bool value
+        /// </summary>
+        /// <param name="productID"> gets product id from user</param>
+        /// <returns></returns>
+        public bool CheckProductID(string productID)
+        {
+            return d.CheckProductID(productID);
+
+        }
 
 
     }
