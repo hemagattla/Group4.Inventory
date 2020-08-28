@@ -5,11 +5,15 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 
 namespace Znalytics.Group4.Inventory.DataAccessLayer
 {
-    interface IWareHouseDataAccessLayer
+   public abstract class IWareHouseDataAccessLayer
     {
-        void AddWareHouse(WareHouse warehouse);
-        List<WareHouse> GetWareHouses();
+        //Method to ADD WareHouse details to the list
+        public abstract void AddWareHouse(WareHouse warehouse);
 
-        WareHouse GetWareHouseByWareHouseID(string WareHouseID);
+        // Method to GET the added details
+        public abstract List<WareHouse> GetWareHouses();
+
+        //Method to GET the WareHouse by WareHouseID
+        public abstract WareHouse GetWareHouseByWareHouseID(string WareHouseID);
     }
 }

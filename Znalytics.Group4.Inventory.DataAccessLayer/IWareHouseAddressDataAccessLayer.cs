@@ -8,18 +8,21 @@ using Znalytics.Inventory.AddressModule.Entities;
 
 namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 {
-    interface IWareHouseAddressDataAccessLayer
+    public abstract class IWareHouseAddressDataAccessLayer
     {
         //Method to add address details to the list
-        void AddAddress(WareHouseAddress a);
+       public abstract void AddAddress(WareHouseAddress addressDetails);
 
        // Method to display the added address details
-        List<WareHouseAddress> GetAddresses();
+      public abstract List<WareHouseAddress> GetAddresses();
 
-        //Method to get the Address details by AddressID
-        WareHouseAddress GetAddressByAddressID(string AddressID);
+    //Method to get the Address details by AddressID
+    public abstract WareHouseAddress GetAddressByAddressID(string AddressID);
 
-        //Method to get the Address Details by WareHouseID
-        WareHouseAddress GetAddressByWareHouseID(string WareHouseID);
+    //Method to get the Address Details by WareHouseID
+    public abstract WareHouseAddress GetAddressByWareHouseID(string WareHouseID);
+
+        //Method to GET WareHouseAddress details by LocationName
+        public abstract List<WareHouseAddress> GetAddressByLocationName(string locationName);
     }
 }
