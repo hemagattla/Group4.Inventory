@@ -23,8 +23,6 @@ namespace Znalytics.Group4.Inventory.IBusinessLogicLayer
 
 
 
-        //string getStockStatus();
-         int getStockQuantity(int productID);
 
     }
 }

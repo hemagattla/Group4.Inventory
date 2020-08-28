@@ -19,13 +19,16 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
     public class WareHouseBusinessLogicLayer : IWareHouseBusinessLogicLayer
     {
 
-        WareHouseDataAccessLayer d;
+     
 
-        //Constructor
+       
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public WareHouseBusinessLogicLayer()
         {
-            //Creating object for DataAcessLayer and storing  in reference variable
-            d = new WareHouseDataAccessLayer();
+            
+           // d = new WareHouseDataAccessLayer();
         }
 
         //Method to ADD WareHouse details to the list
@@ -38,7 +41,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
                 if (n.WareHouseId != null)
                 {
 
-                    d.AddWareHouse(n);
+                    WareHouseDataAccessLayer.AddWareHouse(n);
                 }
             }
             catch (WareHouseException ex)
@@ -50,7 +53,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         // Method to GET the added details
         public List<WareHouse> GetWareHouses()
         {
-            return d.GetWareHouses();
+            return WareHouseDataAccessLayer.GetWareHouses();
         }
 
         //Method to GET WareHouse details by WareHouseId
@@ -61,7 +64,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
                 //WareHouse Id should not be null
                 if (wareHouseID != null)
                 {
-                    return d.GetWareHouseByWareHouseID(wareHouseID);
+                    return WareHouseDataAccessLayer.GetWareHouseByWareHouseID(wareHouseID);
                 }
                 else
                 {
@@ -82,7 +85,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
                 //WareHouse Id should not be null
                 if (wareHouseID != null)
                 {
-                    d.RemoveWareHouseByID(wareHouseID);
+                    WareHouseDataAccessLayer.RemoveWareHouseByID(wareHouseID);
                 }
             }
             catch (WareHouseException ex)
@@ -100,7 +103,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
                 //WareHouse Name should not be null
                 if (wareHouseName != null)
                 {
-                    d.RemoveWareHouseByName(wareHouseName);
+                    WareHouseDataAccessLayer.RemoveWareHouseByName(wareHouseName);
                 }
             }
             catch (WareHouseException ex)
@@ -118,7 +121,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
                 //WareHouse Id should not be null
                 if (wareHouse.WareHouseId != null)
                 {
-                    d.UpdateWareHouseName(wareHouse);
+                    WareHouseDataAccessLayer.UpdateWareHouseName(wareHouse);
                 }
             }
             catch (WareHouseException ex)
@@ -136,7 +139,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             {
                 if (wareHouse.WareHouseId != null)
                 {
-                    d.UpdateManagerName(wareHouse);
+                    WareHouseDataAccessLayer.UpdateManagerName(wareHouse);
                 }
             }
             catch (WareHouseException ex)
@@ -146,14 +149,6 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         }
 
 
-        public int getStockQuantity()
-        {
-            return 0;
-        }
-
-        public int getStockQuantity(int productID)
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }
