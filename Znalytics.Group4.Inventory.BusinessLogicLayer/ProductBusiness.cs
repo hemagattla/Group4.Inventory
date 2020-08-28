@@ -15,7 +15,7 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
     /// <summary>
     /// refers tp Product BusinessLogic
     /// </summary>
-    public class ProductBusiness// : IProductBusinessLogicLayer
+    public class ProductBusiness : IProductBusinessLogicLayer
     {
         ProductData d;
 

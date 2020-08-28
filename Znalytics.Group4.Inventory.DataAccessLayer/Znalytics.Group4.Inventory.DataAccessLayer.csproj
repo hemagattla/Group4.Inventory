@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IcustDataLayer.cs" />
-    <Compile Include="IWareHouseAddressDataAccessLayer.cs" />
+    <Compile Include="WareHouseAddressAbstractDAL.cs" />
     <Compile Include="OrderManagementDataLayer.cs" />
     <Compile Include="OrderManagmentDataLayerAbstract.cs" />
     <Compile Include="RawMaterialDataAccessLayer.cs" />

@@ -80,7 +80,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
             
                 else
                 
-                    throw new OrderManagementException("Select Warehouse Address");
+                    throw new OrderManagementException("Please Select Warehouse Address");
                    
             }
             get
@@ -130,10 +130,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
                 return _totalPrice;
             }
         }
-        /// <summary>
-        /// Property for setting values to ShippingStatus field and Getting The value of the ShippingStatus Field 
-        /// </summary>
-
+        
        
            
         /// <summary>

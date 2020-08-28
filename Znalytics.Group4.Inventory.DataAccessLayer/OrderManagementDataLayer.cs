@@ -76,17 +76,19 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public override List<OrderManagement> GetOrderDetailsByProductID(int value)
+        public override OrderManagement GetOrderDetailsByProductID(string value)
         {
-            List<OrderManagement> order = new List<OrderManagement>();
+            OrderManagement order = new OrderManagement();
+
+
             foreach (var orders in _orders)
             {
                 foreach (var products in orders.Products)
                 {
                     if (products.ProductID == value)
-                    {
-                        order.Add(orders);
-                    }
+                    
+                       order= orders;
+                    
                 }
 
             }
