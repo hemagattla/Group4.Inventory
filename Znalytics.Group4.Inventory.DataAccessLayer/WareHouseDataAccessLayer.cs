@@ -14,7 +14,7 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
     /// <summary>
     /// Represents the class for WareHouse Data
     /// </summary>
-    public class WareHouseDataAccessLayer : IWareHouseDataAccessLayer
+    public static class WareHouseDataAccessLayer 
     {
         //Created a list for WareHouse
         private static List<WareHouse> _wareHouseList
@@ -37,7 +37,7 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
         }
 
         //Method to ADD WareHouse details to the list
-        public override void AddWareHouse(WareHouse warehouseDetails)
+        public static void AddWareHouse(WareHouse warehouseDetails)
         {
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(temp => temp.WareHouseId == warehouseDetails.WareHouseId))
@@ -53,13 +53,13 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
         }
 
         // Method to GET the added details
-        public override List<WareHouse> GetWareHouses()
+        public static List<WareHouse> GetWareHouses()
         {
             return _wareHouseList;
         }
 
         //Method to GET the WareHouse by WareHouseID
-        public override WareHouse GetWareHouseByWareHouseID(string wareHouseID)
+        public static WareHouse GetWareHouseByWareHouseID(string wareHouseID)
         {
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
@@ -73,7 +73,7 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
         }
 
         //Method to REMOVE WareHouse by WareHouseID
-        public  void RemoveWareHouseByID(string wareHouseID) 
+        public static void RemoveWareHouseByID(string wareHouseID) 
         {
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
@@ -88,7 +88,7 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
         }
 
         //Method to REMOVE WareHouse by WareHouse Name
-        public void RemoveWareHouseByName(string wareHouseName)
+        public static void RemoveWareHouseByName(string wareHouseName)
         {
             //Condition to check whether the WareHouseName exists or not
             if (_wareHouseList.Exists(n => n.WareHouseName == wareHouseName))
@@ -102,7 +102,7 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
         }
 
         // Method to UPDATE the WareHouse Name
-        public void UpdateWareHouseName(WareHouse wareHouse)
+        public static void UpdateWareHouseName(WareHouse wareHouse)
         {
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouse.WareHouseId))
@@ -122,7 +122,7 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
         }
 
         // Method to UPDATE the Manager Name
-        public void UpdateManagerName(WareHouse wareHouse)
+        public static void UpdateManagerName(WareHouse wareHouse)
         {
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(temp => temp.WareHouseId == wareHouse.WareHouseId))

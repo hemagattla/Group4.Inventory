@@ -8,7 +8,7 @@ using Znalytics.Inventory.AddressModule.Entities;
 
 namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 {
-    public abstract class IWareHouseAddressDataAccessLayer
+    public abstract class WareHouseAddressAbstractDAL
     {
         //Method to add address details to the list
        public abstract void AddAddress(WareHouseAddress addressDetails);
