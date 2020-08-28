@@ -26,7 +26,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         /// <param name="wareHouseAddress"></param>
         /// <param name="customerAddress"></param>
         /// <param name="price"></param>
-        /// <param name="shippingStatus"></param>
+        
         /// <param name="orderID"></param>
         public OrderManagement(List<Product> products, WareHouseAddress wareHouseAddress,Customer customerAddress,double price,int orderID)
         {

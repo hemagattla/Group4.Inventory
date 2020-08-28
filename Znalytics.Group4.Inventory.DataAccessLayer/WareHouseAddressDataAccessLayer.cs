@@ -6,6 +6,8 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Group4.Inventory.DataAccessLayer;
 using Znalytics.Inventory.AddressModule.Entities;
 using System;
+using Znalytics.Group4.Inventory.Entities;
+
 
 //Created a namespace for DataAccessLayer of WareHouseAddress Module
 namespace Znalytics.Inventory.AddressModule.DataAccessLayer
@@ -14,7 +16,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
     /// <summary>
     /// Represents the class for WareHouse Address
     /// </summary>
-    public class WareHouseAddressDataAccessLayer//: IWareHouseAddressDataAccessLayer
+    public class WareHouseAddressDataAccessLayer : IWareHouseAddressDataAccessLayer
     {
         //Created a list for WareHouse Addresses
         private static List<WareHouseAddress> _addressList
@@ -38,7 +40,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         }
 
         //Method to ADD address details to the list
-        public void AddAddress(WareHouseAddress addressDetails)
+        public override void AddAddress(WareHouseAddress addressDetails)
         {
             //Condition to check whether the WareHouseId exists or not
             if (_addressList.Exists(temp => temp.WareHouseId == addressDetails.WareHouseId))
@@ -47,61 +49,95 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             }
             else
             {
-                throw new Exception("Warehouse id doesnot exist");
+                throw new WareHouseException("Warehouse id doesnot exist");
             }
         }
 
         // Method to GET the added address details
-        public List<WareHouseAddress> GetAddresses()
+        public override List<WareHouseAddress> GetAddresses()
         {
             return _addressList;
         }
 
         //Method to GET the Address details by AddressID
-        public WareHouseAddress GetAddressByAddressID(string addressID)
+        public override WareHouseAddress GetAddressByAddressID(string addressID)
         {
-
-            return _addressList.Find(temp => temp.AddressId == addressID);
+            //Condition to check whether the AddressId exists or not
+            if (_addressList.Exists(temp => temp.AddressId == addressID))
+            {
+                return _addressList.Find(temp => temp.AddressId == addressID);
+            }
+            else
+            {
+                throw new WareHouseException("WareHouse id doesn't exist");
+            }
 
         }
 
         //Method to GET the Address Details by WareHouseID
-        public List<WareHouseAddress> GetAddressByWareHouseID(string wareHouseID)
+        public override WareHouseAddress GetAddressByWareHouseID(string wareHouseID)
         {
-
-            return _addressList.FindAll(temp => temp.WareHouseId == wareHouseID);
+            //Condition to check whether the WareHouseId exists or not
+            if (_addressList.Exists(temp => temp.WareHouseId == wareHouseID))
+            {
+                return _addressList.Find(temp => temp.WareHouseId == wareHouseID);
+            }
+            else
+            {
+                throw new WareHouseException("WareHouse id doesn't exist");
+            }
 
         }
 
         //Method to GET WareHouseAddress details by LocationName
-        public List<WareHouseAddress> GetAddressByLocationName(string locationName)
+        public override List<WareHouseAddress> GetAddressByLocationName(string locationName)
         {
-
-            return _addressList.FindAll(temp => temp.LocationName == locationName);
+            //Condition to check whether the LocationName exists or not
+            if (_addressList.Exists(temp => temp.LocationName == locationName))
+            {
+                return _addressList.FindAll(temp => temp.LocationName == locationName);
+            }
+            else
+            {
+                throw new WareHouseException("location name doesn't exist");
+            }
 
         }
 
         //Method to UPDATE Door Number of WareHouse
         public void UpdateDoorNumber(WareHouseAddress address)// update WareHouse Name
         {
-            WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
-            if (wha != null)
+            //Condition to check whether the AddressId exists or not
+            if (_addressList.Exists(temp => temp.AddressId == address.AddressId))
             {
-                wha.DoorNumber = address.DoorNumber;
+                WareHouseAddress wha = _addressList.Find(temp => temp.AddressId == address.AddressId);
+                if (wha != null)
+                {
+                    wha.DoorNumber = address.DoorNumber;
 
 
+                }
+            }
+            else
+            {
+                throw new WareHouseException("Address Id doesn't exist");
             }
         }
 
         //Method to UPDATE the Location Name of WareHouse
-        public void UpdateLocationName(WareHouseAddress address)// update WareHouse Name
+        public void UpdateLocationName(WareHouseAddress address)
         {
-            WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
+            //Condition to check whether the AddressId exists or not
+            WareHouseAddress wha = _addressList.Find(temp => temp.AddressId == address.AddressId);
             if (wha != null)
             {
                 wha.LocationName = address.LocationName;
 
 
+            }
+            else
+            {
+                throw new WareHouseException("Address Id doesn't exist");
             }
         }
 
@@ -109,6 +145,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         //Method to UPDATE the State of WareHouse
         public void UpdateState(WareHouseAddress address)// update product Name
         {
+            //Condition to check whether the AddressId exists or not
             WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
             if (wha != null)
             {
@@ -116,11 +153,16 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
 
             }
+            else
+            {
+                throw new WareHouseException("Address Id doesn't exist");
+            }
         }
 
         //Method to UPDATE the Pincode of WareHouse
         public void UpdatePincode(WareHouseAddress address)
         {
+            //Condition to check whether the AddressId exists or not
             WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
             if (wha != null)
             {
@@ -128,23 +170,45 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
 
             }
+            else
+            {
+                throw new WareHouseException("Address Id doesn't exist");
+            }
         }
 
         //Method to REMOVE an address of the Warehouse by wareHouseID
         public void RemoveAddressByWareHouseID(string wareHouseID)
         {
+            //Condition to check whether the WareHouseId exists or not
+            if (_addressList.Exists(n => n.WareHouseId == wareHouseID))
+            {
 
-            _addressList.RemoveAll(n => n.WareHouseId == wareHouseID);
+                _addressList.RemoveAll(n => n.WareHouseId == wareHouseID);
+            }
+            else
+            {
+                throw new WareHouseException("Warehouse id doesn't exist");
+            }
 
         }
 
         //Method to REMOVE an address of the Warehouse by addressID
-        public void RemoveAddressByAddressID(string addressID) 
+        public void RemoveAddressByAddressID(string addressID)
         {
-
-            _addressList.RemoveAll(n => n.AddressId == addressID);
+            //Condition to check whether the AddressId exists or not
+            if (_addressList.Exists(n => n.AddressId == addressID))
+            {
+                _addressList.RemoveAll(n => n.AddressId == addressID);
+            }
+            else
+            {
+                throw new WareHouseException("Address id doesn't exist");
+            }
 
         }
     }
 }
+
+
+
     
