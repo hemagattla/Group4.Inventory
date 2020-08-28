@@ -14,8 +14,8 @@ namespace Znalytics.Group4.Inventory.DataAccessLayer
     {
        
         
-        public abstract List<OrderManagement> GetOrderDetailsByWareHouseID(WareHouseAddress value);
-        public abstract List<OrderManagement> GetOrderDetailsByProductID(Product value);
+        public abstract List<OrderManagement> GetOrderDetailsByWareHouseID(string value);
+        public abstract List<OrderManagement> GetOrderDetailsByProductID(int value);
 
     }
 }

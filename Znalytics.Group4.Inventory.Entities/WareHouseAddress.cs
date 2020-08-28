@@ -2,6 +2,7 @@
 
 //Importing Statements
 using System;
+using Znalytics.Group4.Inventory.Entities;
 
 //Created a namespace for Entity Layer of WareHouseAddress Module
 namespace Znalytics.Inventory.AddressModule.Entities
@@ -55,19 +56,19 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                try
+                if (!string.IsNullOrEmpty(value))
                 {
                     bool spaceFound = value.Contains(" ");
                     bool atFound = value.Contains("@");
                     bool commaFound = value.Contains(",");
-                    if (!spaceFound && !atFound && !commaFound && value.StartsWith("W") && value.Length <= 4)
+                    if (!spaceFound && !atFound && !commaFound && value.StartsWith("W") && value.Length == 4)
                     {
                         _addressId = value;
                     }
                 }
-                catch
+                else
                 {
-                    throw new System.Exception("invalid addressid");
+                    throw new WareHouseException("Invalid addressid. It should not contain spaces and length should be exactly 4");
                 }
             }
 
@@ -83,16 +84,16 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                try
+                if (!string.IsNullOrEmpty(value))
                 {
                     if (value.Length <= 30)
                     {
                         _doorNumber = value;
                     }
                 }
-                catch
+                else
                 {
-                    throw new Exception("invalid door number");
+                    throw new WareHouseException("Door Number shouldn't be null or empty");
                 }
             }
 
@@ -109,9 +110,9 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                try
-                {
 
+                if (!string.IsNullOrEmpty(value))
+                {
                     bool atFound = value.Contains("@");
                     bool commaFound = value.Contains(",");
                     if (!atFound && !commaFound && value.Length <= 30)
@@ -119,12 +120,13 @@ namespace Znalytics.Inventory.AddressModule.Entities
                         _locationName = value;
                     }
                 }
-                catch
+
+                else
                 {
-                    throw new System.Exception("invalid location name");
+                    throw new WareHouseException("Location Name shouldn't be null and shouldn't contain special characters");
                 }
             }
-                get
+            get
             {
                 return _locationName;
             }
@@ -137,19 +139,19 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                try
-                {
 
+                if (!string.IsNullOrEmpty(value))
+                {
                     bool atFound = value.Contains("@");
                     bool commaFound = value.Contains(",");
                     if (!atFound && !commaFound && value.Length <= 30)
                     {
-                        _addressId = value;
+                        _state = value;
                     }
                 }
-                catch
+                else
                 {
-                    throw new Exception("invalid state");
+                    throw new WareHouseException("State shouldn't be null and shouldn't contain special characters");
                 }
             }
             get
@@ -165,7 +167,7 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                try
+                if (!string.IsNullOrEmpty(value))
                 {
                     if (value.Length == 6)
                     {
@@ -178,9 +180,9 @@ namespace Znalytics.Inventory.AddressModule.Entities
                         }
                     }
                 }
-                catch
+                else
                 {
-                    throw new Exception("invalid pincode");
+                    throw new WareHouseException("Pincode should contain exactly 6 digits");
                 }
             }
             get
