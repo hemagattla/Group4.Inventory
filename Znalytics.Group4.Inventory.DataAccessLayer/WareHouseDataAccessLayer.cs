@@ -13,9 +13,9 @@ using System.IO;
 namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 {
     /// <summary>
-    /// Represents the class for WareHouse Data
+    /// Represents the class for WareHouse Data and it is a static 
     /// </summary>
-    public static class WareHouseDataAccessLayer
+    public static class WareHouseDataAccessLayer//Can be accessed with ClassName only
     {
         //Created a list for WareHouse
         private static List<WareHouse> _wareHouseList
@@ -24,7 +24,9 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             get;
         }
 
-        //Static  Constructor 
+        /// <summary>
+        /// Static  Constructor 
+        /// </summary>
         static WareHouseDataAccessLayer()
         {
             _wareHouseList = new List<WareHouse>();
@@ -35,7 +37,10 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             }
         }
 
-        //Method to ADD WareHouse details to the list
+        /// <summary>
+        ///Method to ADD WareHouse details to the list
+        /// </summary>
+        /// <param name="warehouseDetails">Represents warehouse object</param>
         public static void AddWareHouse(WareHouse warehouseDetails)
         {
             //Condition to check whether the WareHouseId exists or not
@@ -69,7 +74,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// <summary>
         /// reading the data from Json file and return the data in the file in List format
         /// </summary>
-        /// <returns>return List of warehouses avaliable int WareHouse.Txt</returns>
+        /// <returns>Returns List of warehouses avaliable int WareHouseData.Txt</returns>
         public static List<WareHouse> GetFiledata()
         {
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseData.txt");
@@ -80,13 +85,20 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 
         }
 
-        // Method to GET the added details
+        /// <summary>
+        ///  Method to GET the added details
+        /// </summary>
+        /// <returns>It returns the list of WareHouses</returns>
         public static List<WareHouse> GetWareHouses()
         {
             return _wareHouseList;
         }
 
-        //Method to GET the WareHouse by WareHouseID
+        /// <summary>
+        /// Method to GET the WareHouse by WareHouseID
+        /// </summary>
+        /// <param name="wareHouseID">Reprents WareHouse id</param>
+        /// <returns></returns>
         public static WareHouse GetWareHouseByWareHouseID(string wareHouseID)
         {
             //Condition to check whether the WareHouseId exists or not
@@ -100,7 +112,10 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             }
         }
 
-        //Method to REMOVE WareHouse by WareHouseID
+        /// <summary>
+        /// Method to REMOVE WareHouse by WareHouseID
+        /// </summary>
+        /// <param name="wareHouseID">Reprents WareHouse id</param>
         public static void RemoveWareHouseByID(string wareHouseID)
         {
             //Condition to check whether the WareHouseId exists or not
@@ -116,7 +131,10 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 
         }
 
-        //Method to REMOVE WareHouse by WareHouse Name
+        /// <summary>
+        /// Method to REMOVE WareHouse by WareHouse Name
+        /// </summary>
+        /// <param name="wareHouseName">Represents WareHouse Name</param>
         public static void RemoveWareHouseByName(string wareHouseName)
         {
             //Condition to check whether the WareHouseName exists or not
@@ -131,7 +149,10 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             }
         }
 
-        // Method to UPDATE the WareHouse Name
+        /// <summary>
+        /// Method to UPDATE the WareHouse Name
+        /// </summary>
+        /// <param name="wareHouse">Represents the WareHouse object</param>
         public static void UpdateWareHouseName(WareHouse wareHouse)
         {
             //Condition to check whether the WareHouseId exists or not
@@ -150,7 +171,10 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             }
         }
 
-        // Method to UPDATE the Manager Name
+        /// <summary>
+        /// Method to UPDATE the Manager Name
+        /// </summary>
+        /// <param name="wareHouse">Represents of WareHouse object</param>
         public static void UpdateManagerName(WareHouse wareHouse)
         {
             //Condition to check whether the WareHouseId exists or not

@@ -55,7 +55,7 @@
     <Compile Include="CustDataLayer.cs" />
     <Compile Include="IStockDataAccessLayer.cs" />
     <Compile Include="IWareHouseDataAccessLayer.cs" />
-    <Compile Include="ProductDataAccessLayer.cs" />
+    <Compile Include="ProductData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShippingAddressDataAccessLayer.cs" />
     <Compile Include="StockDataAccessLayer.cs" />

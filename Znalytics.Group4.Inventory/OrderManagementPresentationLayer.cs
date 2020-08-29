@@ -33,6 +33,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 Console.Write("Enter choice: ");
                 choice = int.Parse(Console.ReadLine());
 
+                
                 switch (choice)
                 {
                     case 1: AddOrderDetails(); break;
@@ -47,12 +48,11 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
         /// <summary>
         /// Method for Adding OrderDetails to List
         /// </summary>
-        static void AddOrderDetails()
+        public void AddOrderDetails()
         {
-            try
-            {
+         
                 OrderManagement order = new OrderManagement();
-                OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();///creating obj for customer class present in entity layer
+                OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();
                 Console.WriteLine("======ProductDetails=======");
                 List<Product> products = orderBusiness.DispalyProducts();
                 Console.WriteLine("The following Products Available :");
@@ -115,14 +115,12 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                     Console.WriteLine(" you are not sure about orders");
                 }
                 orderBusiness.AddOrderDetails(order);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            
+            
+          
         }
         /// <summary>
-        /// Represents a staticmethod for updating orderDetails
+        /// Represents method for updating orderDetails
         /// </summary>
         static void UpdateOrderDetails()
         {
@@ -181,7 +179,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
             } while (choice != 4);
         }
         /// <summary>
-        /// Represents a Static Method for cancel order Details
+        /// Represents a  Method for cancel order Details
         /// </summary>
         static void CancelOrderDetails()
         {
@@ -196,6 +194,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
         /// </summary>
         static void viewOrderDetails()
         {
+            
             OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();
             Console.WriteLine("Enter EmployeeId");
             int orderId = int.Parse(Console.ReadLine());
