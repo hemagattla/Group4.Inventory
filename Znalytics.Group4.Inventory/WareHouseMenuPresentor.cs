@@ -326,6 +326,8 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             }
 
         }
+
+        //Method to ADD Address details to the list
         public static void AddAddress()
         {
             try
@@ -385,6 +387,8 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
              WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
              return wabl.CheckWareHouseID(addressDetails);
          }*/
+
+        // Method to GET the added  address details
         public static void GetAddresses()
         {
             WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
@@ -400,6 +404,8 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             }
 
         }
+
+        //Method to GET WareHouseAddress details by AddressId
         public static void GetAddressByAddressID()
         {
             try
@@ -423,6 +429,8 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             }
 
         }
+
+        //Method to GET WareHouseAddress details by WareHouseId
         public static void GetAddressByWareHouseID()
         {
 
@@ -451,7 +459,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
 
 
-
+        //Method to GET WareHouseAddress details by LocationName
         public static void GetAddressByLocationName()
         {
             try
@@ -475,7 +483,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
         }
 
-
+        // //Method to UPDATE the details of WareHouse
         public static void UpdateWareHouseAddress()
         {
             WareHouseAddress address = new WareHouseAddress();
@@ -509,6 +517,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 }
             }
 
+            //Method to UPDATE Door Number of WareHouse
             void UpdateDoorNumber()
             {
 
@@ -537,7 +546,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 }
             }
 
-
+            //Method to UPDATE the Location Name of WareHouse
             void UpdateLocationName()
             {
 
@@ -568,7 +577,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
             }
 
-
+            //Method to UPDATE the State of WareHouse
             void UpdateState()
             {
 
@@ -599,6 +608,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
             }
 
+            //Method to UPDATE the Pincode of WareHouse
             void UpdatePincode()
             {
 
@@ -630,6 +640,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             }
         }
 
+        //Method to REMOVE an address of the Warehouse
         public static void RemoveWareHouseAddress()
         {
             WareHouseAddress w = new WareHouseAddress();// creating the object for Warehouse class
@@ -656,6 +667,8 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             {
                 WriteLine("Please Enter Correct Option");
             }
+
+            //Method to REMOVE an address of the Warehouse by wareHouseID
             void RemoveAddressByWareHouseID()
             {
                 Write("Enter the WarehouseID of the Address to be Deleted:");
@@ -678,7 +691,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
 
 
-
+            //Method to REMOVE an address of the Warehouse by addressID
             void RemoveAddressByAddressID()
             {
                 Write("Enter the AddressId to be Deleted:");
