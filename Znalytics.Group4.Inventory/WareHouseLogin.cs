@@ -2,7 +2,8 @@
 using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 using Znalytics.Inventory.WareHouseModule.Entities;
 
-namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
+
+namespace Znalytic.Inventory.WareHouseModule.PresentationLayerLogin
 {
     class WareHouseLogin
     {
@@ -18,7 +19,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
             if (userName == "system" && password == "manager")
             {
-                MenuPresenter.Menu();
+                MenuPresenter.WareHouseMenu();
             }
 
             ReadKey();

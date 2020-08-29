@@ -1,4 +1,6 @@
 ﻿// Created By Nitya
+
+//Importing Statements
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +11,27 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 namespace Znalytics.Group4.Inventory.IBusinessLogicLayer
 {
     /// <summary>
-    /// interface
+    /// Represents an interface of BusinessLogicLayer
     /// </summary>
    public interface IWareHouseBusinessLogicLayer
     {
+        /// <summary>
+        /// Method to Add details of WareHouse
+        /// </summary>
+        /// <param name="warehouse">Represents the object of WareHouse</param>
         void AddWareHouse(WareHouse warehouse);
-         List<WareHouse> GetWareHouses();
+        
+        /// <summary>
+        /// Method to Get the list of Warehouses
+        /// </summary>
+        /// <returns></returns>
+        List<WareHouse> GetWareHouses();
 
+        /// <summary>
+        /// Method to GetWareHouseByWareHouseID
+        /// </summary>
+        /// <param name="WareHouseID">Represents WareHouseId</param>
+        /// <returns></returns>
         WareHouse GetWareHouseByWareHouseID(string WareHouseID);
 
 
@@ -23,8 +39,6 @@ namespace Znalytics.Group4.Inventory.IBusinessLogicLayer
 
 
 
-        //string getStockStatus();
-         int getStockQuantity(int productID);
 
     }
 }

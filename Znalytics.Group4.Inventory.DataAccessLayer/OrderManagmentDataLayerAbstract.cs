@@ -10,12 +10,13 @@ using Znalytics.Inventory.ProductModule.Entitie;
 
 namespace Znalytics.Group4.Inventory.DataAccessLayer
 {
-  abstract class OrderManagmentDataLayerAbstract
+  public abstract class OrderManagmentDataLayerAbstract
     {
        
-        
-        public abstract List<OrderManagement> GetOrderDetailsByWareHouseID(WareHouseAddress value);
-        public abstract List<OrderManagement> GetOrderDetailsByProductID(Product value);
+        //abstract metod for gettingProductDetails by WarehouseId
+        public abstract List<OrderManagement> GetOrderDetailsByAddressID(string value);
+        //abstactMethod for getting ProductDetails by ProductId
+        public abstract List<OrderManagement> GetOrderDetailsByProductID(string value);
 
     }
 }

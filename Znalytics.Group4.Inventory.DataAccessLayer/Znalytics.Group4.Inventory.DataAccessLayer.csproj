@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,15 +45,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IcustDataLayer.cs" />
-    <Compile Include="IWareHouseAddressDataAccessLayer.cs" />
+    <Compile Include="WareHouseAddressAbstractDAL.cs" />
     <Compile Include="OrderManagementDataLayer.cs" />
+    <Compile Include="OrderManagmentDataLayerAbstract.cs" />
     <Compile Include="RawMaterialDataAccessLayer.cs" />
     <Compile Include="WareHouseAddressDataAccessLayer.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="CustDataLayer.cs" />
     <Compile Include="IStockDataAccessLayer.cs" />
     <Compile Include="IWareHouseDataAccessLayer.cs" />
-    <Compile Include="ProductDataAccessLayer.cs" />
+    <Compile Include="ProductData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShippingAddressDataAccessLayer.cs" />
     <Compile Include="StockDataAccessLayer.cs" />
@@ -67,6 +71,9 @@
       <Project>{1ed01dc5-8c6c-429f-9858-0c7cc0f0b4ff}</Project>
       <Name>Znalytics.Group4.Inventory.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

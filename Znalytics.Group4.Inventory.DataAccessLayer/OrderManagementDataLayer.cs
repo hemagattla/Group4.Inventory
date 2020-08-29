@@ -7,7 +7,11 @@ using Znalytics.Inventory.ProductModule.Entitie;
 using System.Linq;
 using Znalytics.Inventory.Module.Entities;
 using Znalytics.Group4.Inventory.DataAccessLayer;
- namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
+using System;
+using Newtonsoft.Json;
+using System.IO;
+
+namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
 {/// <summary>
 ///  Represents the OrderManagement Details in DataLayer
 /// </summary>
@@ -18,6 +22,31 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
         {
             _orders = new List<OrderManagement>();
         }
+        /// <summary>
+        /// Method For Saving FileInformation
+        /// </summary>
+        public void SaveIntoFile()
+        {
+
+            string s = JsonConvert.SerializeObject(_orders);
+
+            //write data into file
+            StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Documents.OrderManagementJson.txt");
+            streamWriter.Write(s);
+            streamWriter.Close();
+        }
+        /// <summary>
+        /// Method For Getting Data From File
+        /// </summary>
+        /// <returns></returns>
+        public  List<OrderManagement> GetFiledata()
+        {
+            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Documents.OrderManagementJson.txt");
+            string s1 = streamReader.ReadToEnd();
+            List<OrderManagement> orders = JsonConvert.DeserializeObject<List<OrderManagement>>(s1);
+            return orders;
+
+        }
 
         /// <summary>
         /// Add OrderDetails
@@ -27,52 +56,42 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
         public void AddOrderDetails(OrderManagement values)
         {
             _orders.Add(values);
+            SaveIntoFile();
         }
 
         /// <summary>
-        /// ViewOrderDetails
+        /// GetOrderDetails
         /// </summary>
         /// <returns></returns>
         public List<OrderManagement> GetOrderDetails()
         {
+            GetFiledata();
             return _orders;
+           
         }
 
        /// <summary>
        /// Cancel OrderDetails By OrderID
        /// </summary>
        /// <param name="values"></param>
-        public void CancelOrder(OrderManagement values)
+        public void CancelOrder(int value)
         {
-          OrderManagement order= _orders.Find(temp => temp.OrderID == values.OrderID);
+          OrderManagement order= _orders.Find(temp => temp.OrderID == value);
             _orders.Remove(order);
         }
-        /// <summary>
-        /// Delete the Order
-        /// </summary>
-        /// <param name="values"></param>
-        public void DeleteOrder(OrderManagement values)
-        {
-            foreach (var order in _orders)
-            {
-                if (order.ShippingStatus == true)
-                {
-                    _orders.Remove(values);
-                }
-            }
-        }
+        
 
         /// <summary>
         /// Get OrderDetails by WareHouseID
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public override List<OrderManagement> GetOrderDetailsByWareHouseID(WareHouseAddress value)
+        public override List<OrderManagement> GetOrderDetailsByAddressID(string value)
         {
             List<OrderManagement> order = new List<OrderManagement>();
             foreach (var orders in _orders)
             {
-                if (orders.WareHouseAddress.AddressId == value.AddressId)
+                if (orders.WareHouseAddress.AddressId == value)
                 {
 
                     order.Add(orders);
@@ -87,17 +106,19 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public override List<OrderManagement> GetOrderDetailsByProductID(Product value)
+        public override List<OrderManagement> GetOrderDetailsByProductID(string value)
         {
             List<OrderManagement> order = new List<OrderManagement>();
+
+
             foreach (var orders in _orders)
             {
                 foreach (var products in orders.Products)
                 {
-                    if (products.ProductID == value.ProductID)
-                    {
+                    if (products.ProductID == value)
+
                         order.Add(orders);
-                    }
+                    
                 }
 
             }
@@ -108,14 +129,14 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public List<OrderManagement> GetOrderDetailsByCustomerID(Customer value)
+        public List<OrderManagement> GetOrderDetailsByCustomerID(int value)
         {
             List<OrderManagement> order = new List<OrderManagement>();
 
 
             foreach (var orders in _orders)
             {
-                if (orders.CustomerAddress.CustomerId == value.CustomerId)
+                if (orders.CustomerAddress.CustomerId == value)
                 {
                     order.Add(orders);
                 }
@@ -124,6 +145,54 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
 
             return order;
         }
+        /// <summary>
+        /// OrderID Generation
+        /// </summary>
+        /// <returns></returns>
+        public int OrderIdGeneration()
+        {
+           int orderid= _orders.Max(temp => temp.OrderID);
+            return orderid++;
+        }
+        /// <summary>
+        /// Update ProductDetails
+        /// </summary>
+        /// <param name="orderid"></param>
+        /// <param name="value"></param>
+        public void UpdateProductDetails(int orderid,List<Product> value)
+        {
+            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid);
+           
+
+            order.Products = value;
+            SaveIntoFile();
+            }
+        /// <summary>
+        /// UpdateWareHouse AddressDetails
+        /// </summary>
+        /// <param name="orderid"></param>
+        /// <param name="value"></param>
+  
+        public void UpdateWareHouseAddressDetails(int orderid, WareHouseAddress value)
+        {
+            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid);
+            order.WareHouseAddress = value;
+            SaveIntoFile();
+        }
+        /// <summary>
+        /// Update CustomerAddressDetails
+        /// </summary>
+        /// <param name="orderid"></param>
+        /// <param name="value"></param>
+        public void UpdateCustomerAddressDetails(int orderid, Customer value)
+        {
+            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid);
+            
+            order.CustomerAddress = value;
+            SaveIntoFile();
+        }
+
+
 
 
     }

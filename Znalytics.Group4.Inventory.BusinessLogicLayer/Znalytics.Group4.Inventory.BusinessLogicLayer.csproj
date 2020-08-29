@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,8 +46,10 @@
   <ItemGroup>
     <Compile Include="ICustBusinessLogicLayer.cs" />
     <Compile Include="IOrderManagementBusinessLayer.cs" />
+    <Compile Include="IRawMaterialBusinessLogicLayer.cs" />
     <Compile Include="IWareHouseAddressBusinessLogicLayer.cs" />
     <Compile Include="OrderManagementBusinessLogicLayer.cs" />
+    <Compile Include="ProductRawMaterialBusinessLogicLayer.cs" />
     <Compile Include="RawMaterialBusinessLogicLayer.cs" />
     <Compile Include="WareHouseAddressBusinessLogicLayer.cs" />
     <Compile Include="Class1.cs" />
@@ -52,7 +57,7 @@
     <Compile Include="IProductBusinessLogicLayer.cs" />
     <Compile Include="IStockBusinessLogicLayer.cs" />
     <Compile Include="IWareHouseBusinessLogicLayer.cs" />
-    <Compile Include="ProductBusinessLogic.cs" />
+    <Compile Include="ProductBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="shippingAddressBusinessLogic.cs" />
     <Compile Include="StockBusinessLogicLayer.cs" />
@@ -67,6 +72,9 @@
       <Project>{1ed01dc5-8c6c-429f-9858-0c7cc0f0b4ff}</Project>
       <Name>Znalytics.Group4.Inventory.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

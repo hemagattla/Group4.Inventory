@@ -6,6 +6,7 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
 using Znalytics.Group4.Inventory.IBusinessLogicLayer;
 using System;
+using Znalytics.Group4.Inventory.Entities;
 
 //Created a namespace for BusinessLayer of WareHouse module
 namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
@@ -17,94 +18,161 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
 
     public class WareHouseBusinessLogicLayer : IWareHouseBusinessLogicLayer
     {
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public WareHouseBusinessLogicLayer() { }
 
-        WareHouseDataAccessLayer d;
 
-        //Constructor
-        public WareHouseBusinessLogicLayer()
-        {
-            //Creating object for DataAcessLayer and storing  in reference variable
-            d = new WareHouseDataAccessLayer();
-        }
-
-        //Method to ADD WareHouse details to the list
-        public void AddWareHouse(WareHouse n)
+        /// <summary>
+        /// Method to ADD WareHouse details to the list
+        /// </summary>
+        /// <param name="ware">Represents warehouse object</param>
+        public void AddWareHouse(WareHouse ware)
         {
 
             try
             {
-                //WareHouse Id should not be null and should not be duplicate
-                if (n.WareHouseId != null)
+                //WareHouse Id should not be null 
+                if (ware.WareHouseId != null)
                 {
 
-                    d.AddWareHouse(n);
+                    WareHouseDataAccessLayer.AddWareHouse(ware);
                 }
             }
-            catch (Exception ex)
+            catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message); 
             }
         }
 
-        // Method to GET the added details
+        /// <summary>
+        /// Method to GET the added details
+        /// </summary>
+        /// <returns>It returns the list of WareHouses</returns>
         public List<WareHouse> GetWareHouses()
         {
-            return d.GetWareHouses();
+            return WareHouseDataAccessLayer.GetWareHouses();
         }
 
-        //Method to GET WareHouse details by WareHouseId
+        /// <summary>
+        /// Method to GET WareHouse details by WareHouseId
+        /// </summary>
+        /// <param name="wareHouseID">Reprents WareHouse id</param>
+        /// <returns></returns>
         public WareHouse GetWareHouseByWareHouseID(string wareHouseID)
         {
-            return d.GetWareHouseByWareHouseID(wareHouseID);
+            try
+            {
+                //WareHouse Id should not be null
+                if (wareHouseID != null)
+                {
+                    return WareHouseDataAccessLayer.GetWareHouseByWareHouseID(wareHouseID);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (WareHouseException ex)
+            {
+                throw new WareHouseException(ex.Message);
+            }
         }
 
-        //Method to REMOVE WareHouse  by WareHouseId
+        /// <summary>
+        /// Method to REMOVE WareHouse by WareHouseID
+        /// </summary>
+        /// <param name="wareHouseID">Reprents WareHouse id</param>
         public void RemoveWareHouseByID(string wareHouseID)
         {
-            if (wareHouseID != null)
+            try
             {
-                d.RemoveWareHouseByID(wareHouseID);
+                //WareHouse Id should not be null
+                if (wareHouseID != null)
+                {
+                    WareHouseDataAccessLayer.RemoveWareHouseByID(wareHouseID);
+                }
+            }
+            catch (WareHouseException ex)
+            {
+                throw new WareHouseException(ex.Message);
             }
         }
 
-        //Method to REMOVE WareHouse  by WareHouseName
+        /// <summary>
+        /// Method to REMOVE WareHouse by WareHouse Name
+        /// </summary>
+        /// <param name="wareHouseName">Represents WareHouse Name</param>
         public void RemoveWareHouseByName(string wareHouseName)
         {
-            if (wareHouseName != null)
+
+            try
             {
-                d.RemoveWareHouseByName(wareHouseName);
+                //WareHouse Name should not be null
+                if (wareHouseName != null)
+                {
+                    WareHouseDataAccessLayer.RemoveWareHouseByName(wareHouseName);
+                }
+            }
+            catch (WareHouseException ex)
+            {
+                throw new WareHouseException(ex.Message); 
             }
         }
 
-        //Method to UPDATE WareHouseName
-        public void UpdateWareHouseName(WareHouse wareHouse)// update product Name
+        /// <summary>
+        /// Method to UPDATE the WareHouse Name
+        /// </summary>
+        /// <param name="wareHouse">Represents the WareHouse object</param>
+        public void UpdateWareHouseName(WareHouse wareHouse)
         {
 
-            if (wareHouse.WareHouseId != null)
+            try
             {
-                d.UpdateWareHouseName(wareHouse);
+                //WareHouse Id should not be null
+                if (wareHouse.WareHouseId != null)
+                {
+                    WareHouseDataAccessLayer.UpdateWareHouseName(wareHouse);
+                }
+            }
+            catch (WareHouseException ex)
+            {
+                throw new WareHouseException(ex.Message);
             }
         }
 
-        //Method to UPDATE ManagerName
-        public void UpdateManagerName(WareHouse wareHouse)// update product Name
+        /// <summary>
+        ///Method to UPDATE ManagerName
+        /// </summary>
+        /// <param name="wareHouse">Represents the WareHouse object</param>
+        public void UpdateManagerName(WareHouse wareHouse)
         {
 
-            if (wareHouse.WareHouseId != null)
+            try
+            //WareHouse Id should not be null
             {
-                d.UpdateManagerName(wareHouse);
+                if (wareHouse.WareHouseId != null)
+                {
+                    WareHouseDataAccessLayer.UpdateManagerName(wareHouse);
+                }
+            }
+            catch (WareHouseException ex)
+            {
+                throw new WareHouseException(ex.Message); 
             }
         }
-
-
-        public int getStockQuantity()
+        /// <summary>
+        /// Method to check whether WareHouseId exists or not
+        /// </summary>
+        /// <param name="id">Represents WareHouse id</param>
+        /// <returns></returns>
+        public bool CheckWareHouseId(string id)
         {
-            return 0;
+            return WareHouseDataAccessLayer.CheckWareHouseId(id);
         }
 
-        public int getStockQuantity(int productID)
-        {
-            throw new System.NotImplementedException();
-        }
+
+
     }
 }

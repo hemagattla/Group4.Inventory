@@ -1,17 +1,21 @@
 ﻿// Created By Nitya
 
 //Importing statements
-using System;
+
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
+using Znalytics.Group4.Inventory.Entities;
+using Newtonsoft.Json;
+using System.IO;
+
 
 //Created a namespace for DataAccess Layer of WareHouse Module
 namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 {
     /// <summary>
-    /// Represents the class for WareHouse Data
+    /// Represents the class for WareHouse Data and it is a static 
     /// </summary>
-    public class WareHouseDataAccessLayer
+    public static class WareHouseDataAccessLayer//Can be accessed with ClassName only
     {
         //Created a list for WareHouse
         private static List<WareHouse> _wareHouseList
@@ -19,83 +23,185 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             set;
             get;
         }
-        
-        //Static  Constructor 
+
+        /// <summary>
+        /// Static  Constructor 
+        /// </summary>
         static WareHouseDataAccessLayer()
         {
-            _wareHouseList = new List<WareHouse>()
-            {
-                new WareHouse(){WareHouseId="WHID01",WareHouseName="ABC",MangerName="NITYA"},
-                new WareHouse(){WareHouseId="WHID02",WareHouseName="ABCD",MangerName="HEMA"},
-                new WareHouse(){WareHouseId="WHID03",WareHouseName="ABCDE",MangerName="DHANASRI"},
-                new WareHouse(){WareHouseId="WHID04",WareHouseName="ABCDEF",MangerName="KRUSHAL"}
+            _wareHouseList = new List<WareHouse>();
 
-            };
+            if (_wareHouseList.Count == 0)
+            {
+                _wareHouseList = GetFiledata();
+            }
         }
 
-        //Method to ADD details to the list
-        public void AddWareHouse(WareHouse warehouseDetails)
+        /// <summary>
+        ///Method to ADD WareHouse details to the list
+        /// </summary>
+        /// <param name="warehouseDetails">Represents warehouse object</param>
+        public static void AddWareHouse(WareHouse warehouseDetails)
         {
-
-            if (_wareHouseList.Exists(temp => temp.WareHouseId == warehouseDetails.WareHouseId))
+            //Condition to check whether the WareHouseId exists or not
+            if (warehouseDetails.WareHouseId != null)
             {
                 _wareHouseList.Add(warehouseDetails);
+                SaveIntoFile();
             }
             else
             {
-                throw new Exception("Warehouse already exists");
+                throw new WareHouseException("Warehouse already exists");
             }
 
 
         }
 
-        // Method to GET the added details
-        public List<WareHouse> GetWareHouses()
+        /// <summary>
+        /// Saving the data into Json file
+        /// </summary>
+        private static void SaveIntoFile()
+        {
+
+            string s = JsonConvert.SerializeObject(_wareHouseList);
+
+            //write data into file
+            StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\WareHouseData.txt");
+            streamWriter.Write(s);
+            streamWriter.Close();
+        }
+
+        /// <summary>
+        /// reading the data from Json file and return the data in the file in List format
+        /// </summary>
+        /// <returns>Returns List of warehouses avaliable int WareHouseData.Txt</returns>
+        public static List<WareHouse> GetFiledata()
+        {
+            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseData.txt");
+            string s1 = streamReader.ReadToEnd();
+            List<WareHouse> ware = JsonConvert.DeserializeObject<List<WareHouse>>(s1);
+            streamReader.Close();
+            return ware;
+
+        }
+
+        /// <summary>
+        ///  Method to GET the added details
+        /// </summary>
+        /// <returns>It returns the list of WareHouses</returns>
+        public static List<WareHouse> GetWareHouses()
         {
             return _wareHouseList;
         }
 
-        //Method to GET the WareHouse by WareHouseID
-        public WareHouse GetWareHouseByWareHouseID(string WareHouseID)
+        /// <summary>
+        /// Method to GET the WareHouse by WareHouseID
+        /// </summary>
+        /// <param name="wareHouseID">Reprents WareHouse id</param>
+        /// <returns></returns>
+        public static WareHouse GetWareHouseByWareHouseID(string wareHouseID)
         {
-            WareHouse w;
-            w = _wareHouseList.Find(temp => temp.WareHouseId == WareHouseID);
-            return w;
-        }
-
-        //Method to REMOVE WareHouse by WareHouseID
-        public void RemoveWareHouseByID(string wareHouseID) 
-        {
-            _wareHouseList.RemoveAll(n => n.WareHouseId == wareHouseID);
-
-        }
-
-        //Method to REMOVE WareHouse by WareHouse Name
-        public void RemoveWareHouseByName(string wareHouseName)
-        {
-            _wareHouseList.RemoveAll(n => n.WareHouseName == wareHouseName);
-        }
-
-        // Method to UPDATE the WareHouse Name
-        public void UpdateWareHouseName(WareHouse wareHouse)
-        {
-            WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
-            if (w != null)
+            //Condition to check whether the WareHouseId exists or not
+            if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
             {
-                w.WareHouseName = wareHouse.WareHouseName;
-
-
+                return _wareHouseList.Find(temp => temp.WareHouseId == wareHouseID);
+            }
+            else
+            {
+                throw new WareHouseException("WareHouse doesn't exist");
             }
         }
 
-        // Method to UPDATE the Manager Name
-        public void UpdateManagerName(WareHouse wareHouse)
+        /// <summary>
+        /// Method to REMOVE WareHouse by WareHouseID
+        /// </summary>
+        /// <param name="wareHouseID">Reprents WareHouse id</param>
+        public static void RemoveWareHouseByID(string wareHouseID)
         {
-            WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
-            if (w != null)
+            //Condition to check whether the WareHouseId exists or not
+            if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
             {
-                w.MangerName = wareHouse.MangerName;
+                _wareHouseList.RemoveAll(n => n.WareHouseId == wareHouseID);
+                SaveIntoFile();
             }
+            else
+            {
+                throw new WareHouseException("Warehouse doesn't exist");
+            }
+
+        }
+
+        /// <summary>
+        /// Method to REMOVE WareHouse by WareHouse Name
+        /// </summary>
+        /// <param name="wareHouseName">Represents WareHouse Name</param>
+        public static void RemoveWareHouseByName(string wareHouseName)
+        {
+            //Condition to check whether the WareHouseName exists or not
+            if (_wareHouseList.Exists(n => n.WareHouseName == wareHouseName))
+            {
+                _wareHouseList.RemoveAll(n => n.WareHouseName == wareHouseName);
+                SaveIntoFile();
+            }
+            else
+            {
+                throw new WareHouseException("Warehouse doesn't exists by this name");
+            }
+        }
+
+        /// <summary>
+        /// Method to UPDATE the WareHouse Name
+        /// </summary>
+        /// <param name="wareHouse">Represents the WareHouse object</param>
+        public static void UpdateWareHouseName(WareHouse wareHouse)
+        {
+            //Condition to check whether the WareHouseId exists or not
+            if (_wareHouseList.Exists(n => n.WareHouseId == wareHouse.WareHouseId))
+            {
+                WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
+                if (w != null)
+                {
+                    w.WareHouseName = wareHouse.WareHouseName;
+                    SaveIntoFile();
+                }
+            }
+            else
+            {
+                throw new WareHouseException("Warehouse doesn't exist");
+            }
+        }
+
+        /// <summary>
+        /// Method to UPDATE the Manager Name
+        /// </summary>
+        /// <param name="wareHouse">Represents of WareHouse object</param>
+        public static void UpdateManagerName(WareHouse wareHouse)
+        {
+            //Condition to check whether the WareHouseId exists or not
+            if (_wareHouseList.Exists(temp => temp.WareHouseId == wareHouse.WareHouseId))
+            {
+                WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
+                if (w != null)
+                {
+                    w.MangerName = wareHouse.MangerName;
+                    SaveIntoFile();
+                }
+            }
+            else
+            {
+                throw new WareHouseException("Warehouse doesn't exist");
+            }
+        }
+
+        /// <summary>
+        /// Method to check whether WareHouseId exists or not
+        /// </summary>
+        /// <param name="id">Represents warehouse id</param>
+        /// <returns></returns>
+        public static bool CheckWareHouseId(string id)
+        {
+            bool result = _wareHouseList.Exists(temp => temp.WareHouseId == id);
+            return result;
         }
     }
 }

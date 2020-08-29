@@ -1,31 +1,37 @@
-﻿//Created By Hema
-//Raw Materials Module of Inventory Management System
-//EntityLayer
-using System;
-using Znalytics.Group4.Inventory.RawMaterialModule.EntityLayer;
-//NameSpace of EntityLayer
-namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Znalytics.Group4.Inventory.ProductRawMaterial.Entities
 {
-    /// <summary>
-    /// RawMaterial is a public class we can access out side the class also
-    /// </summary>
-    /// <param name="rawmaterialname ">Represents Name Of the RawMaterial</param>
-    /// /// <param name="rawmaterialID ">Represents ID Of the RawMaterial</param>
-    /// /// <param name="quantity ">Represents Quantity Of the RawMaterial</param>
-    /// /// <param name="units ">Represents units Of the RawMaterial</param>
-    /// /// <param name="price ">Represents Price Of the RawMaterial</param>
-    public class RawMaterial
+    public class ProductRawMaterial
     {
-        //private fileds
+        private string _productId;
         private string _rawMaterialName;
         private string _rawMaterialID;
         private double _quantity;
         private string _units;
-        private double _price;
 
-
-
-
+        public string ProductID
+        {
+            set
+            {
+                if (value != "")
+                {
+                    _productId = value;
+                }
+                else
+                {
+                    throw new Exception("Product ID Should not NULL");
+                }
+            }
+            get
+            {
+                return _productId;
+            }
+        }
         /// <summary>
         /// write and read Property of string data type
         /// </summary>
@@ -47,14 +53,14 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                             }
                             else
                             {
-                                throw new RawMaterialException("******ur entered input contain other than Alphabets.pls enter the input which contains only Alphabets**********");
+                                throw new Exception("******ur entered input contain other than Alphabets.pls enter the input which contains only Alphabets**********");
                             }
                         }
                     }
 
                     else
                     {
-                        throw new RawMaterialException("************ur entered rawmaterialname null**************");
+                        throw new Exception("************ur entered rawmaterialname null**************");
                     }
                 }
                 catch
@@ -84,12 +90,12 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                         }
                         else
                         {
-                            throw new RawMaterialException("************ur entered RawMaterialID is invalid*************");
+                            throw new Exception("************ur entered RawMaterialID is invalid*************");
                         }
                     }
                     else
                     {
-                        throw new RawMaterialException("************ur entered RawMaterialID is contains space/Null.pls try again*************");
+                        throw new Exception("************ur entered RawMaterialID is contains space/Null.pls try again*************");
                     }
                 }
                 catch
@@ -118,7 +124,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                     }
                     else
                     {
-                        throw new RawMaterialException("***********ur entered quantity is invalid***********");
+                        throw new Exception("***********ur entered quantity is invalid***********");
                     }
                 }
                 catch
@@ -131,34 +137,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                 return _quantity;
             }
         }
-        /// <summary>
-        /// property for price of double data type
-        /// </summary>
-        public double Price
-        {
-            set
-            {
-                try
-                {
-                    if (value != 0D)//value should not be default
-                    {
-                        _price = value;
-                    }
-                    else
-                    {
-                        throw new RawMaterialException("***********ur entered price is invalid*************");
-                    }
-                }
-                catch
-                {
-                    throw;
-                }
-            }
-            get
-            {
-                return _price;
-            }
-        }
+       
         /// <summary>
         /// Property for units of string data type
         /// </summary>
@@ -177,12 +156,12 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                         }
                         else
                         {
-                            throw new RawMaterialException("************* ur entered units are must contains only Alphabets and it should be like *kgs/liters/nos/pices*   ************* ");
+                            throw new Exception("************* ur entered units are must contains only Alphabets and it should be like *kgs/liters/nos/pices*   ************* ");
                         }
                     }
                     else
                     {
-                        throw new RawMaterialException("************* ur entered units are invalid. must contains only Alphabets and it should be like *kgs/liters/nos/pices*   ************ ");
+                        throw new Exception("************* ur entered units are invalid. must contains only Alphabets and it should be like *kgs/liters/nos/pices*   ************ ");
                     }
                 }
                 catch
@@ -195,6 +174,5 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                 return _units;
             }
         }
-
     }
 }
