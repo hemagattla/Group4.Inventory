@@ -49,6 +49,7 @@
     <Compile Include="IRawMaterialBusinessLogicLayer.cs" />
     <Compile Include="IWareHouseAddressBusinessLogicLayer.cs" />
     <Compile Include="OrderManagementBusinessLogicLayer.cs" />
+    <Compile Include="ProductRawMaterialBusinessLogicLayer.cs" />
     <Compile Include="RawMaterialBusinessLogicLayer.cs" />
     <Compile Include="WareHouseAddressBusinessLogicLayer.cs" />
     <Compile Include="Class1.cs" />

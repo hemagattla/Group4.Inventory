@@ -45,6 +45,7 @@
     <Compile Include="OrderManagement.cs" />
     <Compile Include="OrderManagementException.cs" />
     <Compile Include="ProductException.cs" />
+    <Compile Include="ProductRawMaterial.cs" />
     <Compile Include="RawMaterial.cs" />
     <Compile Include="RawMaterialException.cs" />
     <Compile Include="WareHouseAddress.cs" />

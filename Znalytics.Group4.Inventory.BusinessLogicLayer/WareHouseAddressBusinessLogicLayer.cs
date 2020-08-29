@@ -11,7 +11,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
 {
 
     /// <summary>
-    /// Represents BusinessLogic class of WareHouseAddress
+    /// Represents BusinessLogic class of WareHouseAddress.It implements an Interface
     /// </summary>
     public class WareHouseAddressBusinessLogicLayer: IWareHouseAddressBusinessLogicLayer
     {
@@ -19,18 +19,21 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         //Created an object for datalayer and stored it in reference variable
        WareHouseAddressDataAccessLayer wadl = new WareHouseAddressDataAccessLayer();
 
-        //Method to ADD Address details to the list
-        public void AddAddress(WareHouseAddress adressDetails)
+        /// <summary>
+        /// Method to ADD Address details to the list
+        /// </summary>
+        /// <param name="address">Represents the object of WareHouse Address</param>
+        public void AddAddress(WareHouseAddress address)
         {
 
             try
             {
                 //AddressId should not be null
-                if (adressDetails.AddressId != null)
+                if (address.AddressId != null)
                 {
 
 
-                    wadl.AddAddress(adressDetails);
+                    wadl.AddAddress(address);
                 }
 
             }
@@ -40,13 +43,20 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             }
         }
 
-        // Method to GET the added  address details
+        /// <summary>
+        /// Method to GET the added  address details
+        /// </summary>
+        /// <returns>Returns the address list</returns>
         public List<WareHouseAddress> GetAddresses()
         {
             return wadl.GetAddresses();
         }
 
-        //Method to GET WareHouseAddress details by AddressId
+        /// <summary>
+        /// Method to GET WareHouseAddress details by AddressId
+        /// </summary>
+        /// <param name="addressId">Represents AddressId</param>
+        /// <returns></returns>
         public WareHouseAddress GetAddressByAddressID(string addressId)
         {
             try
@@ -68,7 +78,11 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
 
         }
 
-        //Method to GET WareHouseAddress details by WareHouseId
+        /// <summary>
+        /// Method to GET WareHouseAddress details by AddressId
+        /// </summary>
+        /// <param name="wareHouseId">Represents WareHouseId</param>
+        /// <returns></returns>
         public WareHouseAddress GetAddressByWareHouseID(string wareHouseId)
         {
             try
@@ -89,7 +103,11 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             }
         }
 
-        //Method to GET WareHouseAddress details by LocationName
+        /// <summary>
+        /// Method to GET WareHouseAddress details by LocationName
+        /// </summary>
+        /// <param name="locationName">Represents Location Name</param>
+        /// <returns></returns>
         public List<WareHouseAddress> GetAddressByLocationName(string locationName)
         {
             try
@@ -110,7 +128,10 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             }
         }
 
-        //Method to UPDATE Door Number of WareHouse
+        /// <summary>
+        /// Method to UPDATE Door Number of WareHouse
+        /// </summary>
+        /// <param name="address">Represents object of WareHouseAddress</param>
         public void UpdateDoorNumber(WareHouseAddress address)
         {
 
@@ -128,7 +149,10 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             }
         }
 
-        //Method to UPDATE the Location Name of WareHouse
+        /// <summary>
+        /// Method to UPDATE the Location Name of WareHouse
+        /// </summary>
+        /// <param name="address">Represents object of WareHouseAddress</param>
         public void UpdateLocationName(WareHouseAddress address)
         {
                 try
@@ -147,8 +171,11 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             
 
         }
+        /// <summary>
+        /// Method to UPDATE the State of WareHouse
+        /// </summary>
+        /// <param name="address">Represents object of WareHouseAddress</param>
 
-        //Method to UPDATE the State of WareHouse
         public void UpdateState(WareHouseAddress address)
         {
                 try
@@ -166,7 +193,11 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             
         }
 
-        //Method to UPDATE the Pincode of WareHouse
+
+        /// <summary>
+        /// Method to UPDATE the Pincode of WareHouse
+        /// </summary>
+        /// <param name="address">Represents object of WareHouseAddress</param>
         public void UpdatePincode(WareHouseAddress address)
         {
             try
@@ -183,7 +214,10 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             }
         }
 
-        //Method to REMOVE an address of the Warehouse by wareHouseID
+        /// <summary>
+        /// Method to REMOVE an address of the Warehouse by wareHouseID
+        /// </summary>
+        /// <param name="wareHouseID">Represents WareHouseId</param>
         public void RemoveAddressByWareHouseID(string wareHouseID)
         {
             try
@@ -200,7 +234,10 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             }
         }
 
-        //Method to REMOVE an address of the Warehouse by addressID
+        /// <summary>
+        /// Method to REMOVE an address of the Warehouse by addressID
+        /// </summary>
+        /// <param name="addressID">Represents Address Id</param>
         public void RemoveAddressByAddressID(string addressID)
         {
             try
@@ -216,6 +253,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 throw;
             }
         }
+
         /// <summary>
         /// Method to check whether the AddressId exists or not
         /// </summary>
