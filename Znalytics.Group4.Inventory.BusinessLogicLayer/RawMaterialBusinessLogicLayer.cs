@@ -139,11 +139,6 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer
             return _rawMaterialDataAccessLayer.GetRawMaterialByRawMaterialID(RawMaterialID);
 
         }
-        //represents whethere the RawMaterial exists or not based on RawMaterialID
-       /* public RawMaterial GetRawMaterialNameByRawMaterialID(string RawMaterialID)
-        {
-            return _rawMaterialDataAccessLayer.GetRawMaterialNameByRawMaterialID(RawMaterialID);
-
-        }*/
+       
     }
 }

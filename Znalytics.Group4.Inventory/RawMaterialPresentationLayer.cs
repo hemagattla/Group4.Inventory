@@ -172,14 +172,14 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
             System.Console.WriteLine("**********************************************************************************");
             foreach (RawMaterial rm in rms)//to print the list
             {
-                System.Console.WriteLine("RawMaterialName:-" + rm.RawMaterialName + "      RawMaterialID:-" + rm.RawMaterialID + "       Quantity:-" + rm.Quantity + "" + rm.Units + "    Price:-" + rm.Price);
+                System.Console.WriteLine("RawMaterialID:-" + rm.RawMaterialID+"            RawMaterialName:-" + rm.RawMaterialName + "          Quantity:-" + rm.Quantity + "" + rm.Units + "    Price:-" + rm.Price);
             }
             System.Console.WriteLine("**********************************************************************************");
         }
 
-        //display the RawMaterial details of Corresponding RawMaterialID
+
         /// <summary>
-        ///GetRawMaterialByRawMaterialID is a static method
+        ///GetRawMaterialByRawMaterialID is a static method used to display the RawMaterial details of Corresponding RawMaterialID
         /// </summary>
         /// <param name="RawMaterialID">Repesents ID of the RawMaterial</param>
         public static void GetRawMaterialByRawMaterialID(string RawMaterialID)
