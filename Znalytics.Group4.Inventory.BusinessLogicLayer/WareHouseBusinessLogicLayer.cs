@@ -21,23 +21,23 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public WareHouseBusinessLogicLayer()
-        {
-            
-           // d = new WareHouseDataAccessLayer();
-        }
+        public WareHouseBusinessLogicLayer() { }
 
-        //Method to ADD WareHouse details to the list
-        public void AddWareHouse(WareHouse n)
+
+        /// <summary>
+        /// Method to ADD WareHouse details to the list
+        /// </summary>
+        /// <param name="ware">Represents warehouse object</param>
+        public void AddWareHouse(WareHouse ware)
         {
 
             try
             {
                 //WareHouse Id should not be null 
-                if (n.WareHouseId != null)
+                if (ware.WareHouseId != null)
                 {
 
-                    WareHouseDataAccessLayer.AddWareHouse(n);
+                    WareHouseDataAccessLayer.AddWareHouse(ware);
                 }
             }
             catch (WareHouseException ex)
@@ -46,13 +46,20 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             }
         }
 
-        // Method to GET the added details
+        /// <summary>
+        /// Method to GET the added details
+        /// </summary>
+        /// <returns>It returns the list of WareHouses</returns>
         public List<WareHouse> GetWareHouses()
         {
             return WareHouseDataAccessLayer.GetWareHouses();
         }
 
-        //Method to GET WareHouse details by WareHouseId
+        /// <summary>
+        /// Method to GET WareHouse details by WareHouseId
+        /// </summary>
+        /// <param name="wareHouseID">Reprents WareHouse id</param>
+        /// <returns></returns>
         public WareHouse GetWareHouseByWareHouseID(string wareHouseID)
         {
             try
@@ -73,7 +80,10 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             }
         }
 
-        //Method to REMOVE WareHouse  by WareHouseId
+        /// <summary>
+        /// Method to REMOVE WareHouse by WareHouseID
+        /// </summary>
+        /// <param name="wareHouseID">Reprents WareHouse id</param>
         public void RemoveWareHouseByID(string wareHouseID)
         {
             try
@@ -90,7 +100,10 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             }
         }
 
-        //Method to REMOVE WareHouse  by WareHouseName
+        /// <summary>
+        /// Method to REMOVE WareHouse by WareHouse Name
+        /// </summary>
+        /// <param name="wareHouseName">Represents WareHouse Name</param>
         public void RemoveWareHouseByName(string wareHouseName)
         {
 
@@ -108,8 +121,11 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             }
         }
 
-        //Method to UPDATE WareHouseName
-        public void UpdateWareHouseName(WareHouse wareHouse)// update product Name
+        /// <summary>
+        /// Method to UPDATE the WareHouse Name
+        /// </summary>
+        /// <param name="wareHouse">Represents the WareHouse object</param>
+        public void UpdateWareHouseName(WareHouse wareHouse)
         {
 
             try
@@ -126,8 +142,11 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             }
         }
 
-        //Method to UPDATE ManagerName
-        public void UpdateManagerName(WareHouse wareHouse)// update product Name
+        /// <summary>
+        ///Method to UPDATE ManagerName
+        /// </summary>
+        /// <param name="wareHouse">Represents the WareHouse object</param>
+        public void UpdateManagerName(WareHouse wareHouse)
         {
 
             try
@@ -146,7 +165,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         /// <summary>
         /// Method to check whether WareHouseId exists or not
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Represents WareHouse id</param>
         /// <returns></returns>
         public bool CheckWareHouseId(string id)
         {
