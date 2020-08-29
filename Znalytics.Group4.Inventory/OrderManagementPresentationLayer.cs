@@ -18,7 +18,7 @@ namespace Znalytics.Group4.Inventory
     /// </summary>
     static class OrderManagementPresentationLayer
     {
-        static void Main()
+        static void Menu()
         {
 
             int choice = 0;
