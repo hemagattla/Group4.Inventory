@@ -1,5 +1,5 @@
 ﻿
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using Znalytics.Inventory.StockMaintain.Entities;
 using Znalytics.Group4.Inventory.StockMaintain.DataAccessLayer;
 
@@ -56,3 +56,4 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
        
     }
 }
+*/

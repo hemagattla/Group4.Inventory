@@ -1,4 +1,4 @@
-﻿namespace Znalytics.Inventory.StockMaintain.Entities
+﻿/*namespace Znalytics.Inventory.StockMaintain.Entities
 {
     /// <summary>
     /// Stock Details
@@ -97,7 +97,7 @@
             {
                 return _stockID;
             }
-        }*/
+        }
         public int EditStock
         {
             set
@@ -127,4 +127,4 @@
         }
 
     }
-}
+}*/
