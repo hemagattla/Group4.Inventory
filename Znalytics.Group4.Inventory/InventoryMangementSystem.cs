@@ -88,7 +88,7 @@ namespace Znalytics.Group4.Inventory
                             switch (option)
                             {
                                 case 1:
-                                    wareHousePresntation.menu();
+                                    wareHousePresntation.Menu();
                                     break;
                                 case 2:
                                     productPresentation.menu();
