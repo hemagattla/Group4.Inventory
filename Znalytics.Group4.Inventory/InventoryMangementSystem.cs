@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.WareHouseModule.Entities;
+using Znalytic.Inventory.WareHouseModule.PresentationLayer;
+using Znalytics.Inventory.ProductModule.ProductPresentation;
 
 namespace Znalytics.Group4.Inventory
 {
@@ -64,13 +66,17 @@ namespace Znalytics.Group4.Inventory
 
             if(userName=="Admin"&&passWord=="Admin123")
             {
+                MenuPrensentor wareHousePresntation= new MenuPrensentor;
+                ProductPresentation productPresentation = new ProductPresentation();
                 int option;
                 do
                 {
                     System.Console.WriteLine("1. WareHouse");
-                    System.Console.WriteLine("2. add Products");
+                    System.Console.WriteLine("2. Add Product");
+                    System.Console.WriteLine("3. RawMaterialsDetails");
                     System.Console.WriteLine("3. add stock");
                     System.Console.WriteLine("4. show stock");
+                    
                     System.Console.WriteLine("3. Exit");
 
                     bool b = int.TryParse(System.Console.ReadLine(), out option);
@@ -82,14 +88,14 @@ namespace Znalytics.Group4.Inventory
                             switch (option)
                             {
                                 case 1:
-                                   WareHouse();
+                                    wareHousePresntation.menu();
                                     break;
                                 case 2:
-                                   productPresentation();
+                                    productPresentation.menu();
                                     break;
                                 case 3: break;
                                 case 4: break;
-                                 I                                default:
+                                default:
                                     System.Console.WriteLine("Please Enter the Correct Option");
                                     break;
 

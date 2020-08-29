@@ -24,11 +24,13 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         /// <summary>
         /// Starting point of the program
         /// </summary>
-        static void Main()
+        public void menu()
         {
+
             WareHouseMenu();
-            ReadKey();
+            
         }
+        
 
         public static void WareHouseMenu()
         {
