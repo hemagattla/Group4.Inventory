@@ -43,5 +43,7 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
             e = _customers.Find(n => n.CustomerId == CustomerId);
             return e;
         }
+        
+      
     }
 }

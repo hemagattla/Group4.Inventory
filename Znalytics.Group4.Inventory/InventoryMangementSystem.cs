@@ -119,6 +119,10 @@ namespace Znalytics.Group4.Inventory
                 } while (option != 3);
 
             }
+            else
+            {
+                System.Console.WriteLine("Entered UserName/password is invalid (Username contains only Alphabets,password is combination of alphabets & digits and starting letter should be uppercase)");
+            }
         }
 
         public static void Customer()

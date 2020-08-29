@@ -5,7 +5,7 @@ using Znalytics.Inventory.Module.Entities;
 
 class  CustPresentation
 { 
-    static void Main()
+    public void menu()
     {
 
         int choice = 0;

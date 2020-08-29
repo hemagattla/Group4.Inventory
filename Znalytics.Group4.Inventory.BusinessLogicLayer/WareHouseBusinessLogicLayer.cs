@@ -18,10 +18,6 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
 
     public class WareHouseBusinessLogicLayer : IWareHouseBusinessLogicLayer
     {
-
-     
-
-       
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -147,8 +143,17 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
                 throw new WareHouseException(ex.Message); 
             }
         }
+        /// <summary>
+        /// Method to check whether WareHouseId exists or not
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool CheckWareHouseId(string id)
+        {
+            return WareHouseDataAccessLayer.CheckWareHouseId(id);
+        }
 
 
-        
+
     }
 }

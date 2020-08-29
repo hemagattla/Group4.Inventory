@@ -86,8 +86,9 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
                 WriteLine("you chose to enter the warehouse details");
                 WriteLine("Enter Warehouse Id that starts with WHID and length of 6");
+
                 n.WareHouseId = ReadLine();
-                if (wbl.GetWareHouseByWareHouseID(n.WareHouseId) == null)
+                if (wbl.CheckWareHouseId(n.WareHouseId) == false)
                 {
 
                     WriteLine("Enter Warehouse Name");
@@ -97,11 +98,6 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     n.MangerName = ReadLine();
                     wbl.AddWareHouse(n);
                     WriteLine("WareHouse added successfully");
-                }
-
-                else
-                {
-                    WriteLine(" warehouse id exists already or you've entered invalid fields");
                 }
             }
 
@@ -340,12 +336,11 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
                 WriteLine("You chose to add address to the WareHouse");
                 WriteLine("Enter Existing WareHouseId");
-                List<WareHouseAddress> addresses = wabl.GetAddresses();
                 a.WareHouseId = ReadLine();
-                foreach (var ad in addresses)
+                if (CheckWareHouseId(a.WareHouseId) == true)
                 {
 
-                    if (ad.WareHouseId == a.WareHouseId)
+                    if (CheckAddressId(a.AddressId) == false)
                     {
                         WriteLine("Enter Address id");
                         a.AddressId = ReadLine();
@@ -361,16 +356,9 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
 
                         WriteLine("Address added successfully");
-
-                    }
-
-
-                    else
-                    {
-                        WriteLine("warehouseid doesnot exist");
-                        break;
                     }
                 }
+
 
             }
             catch (WareHouseException ex)
@@ -381,16 +369,8 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
 
 
-
-
-
         }
-        /* public static bool CheckWareHouseID(WareHouseAddress addressDetails)
-         {
-             WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
-             return wabl.CheckWareHouseID(addressDetails);
-         }*/
-
+        
         // Method to GET the added  address details
         public static void GetAddresses()
         {
@@ -712,6 +692,31 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     WriteLine(ex.Message);
                 }
             }
+
+
+        }
+        public static bool CheckWareHouseId(string id)
+        {
+            WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
+            bool result = wbl.CheckWareHouseId(id);
+            if (result == true)
+            {
+                WriteLine("WareHouse Exists");
+                return result;
+            }
+            return result;
+        }
+
+        public static bool CheckAddressId(string id)
+        {
+            WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+            bool result = wabl.CheckAddressId(id);
+            if (result == true)
+            {
+                WriteLine("Address Exists");
+                return result;
+            }
+            return result;
         }
 
 

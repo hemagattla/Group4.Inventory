@@ -15,7 +15,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
     /// <summary>
     /// Represents the class for WareHouse Data
     /// </summary>
-    public static class WareHouseDataAccessLayer 
+    public static class WareHouseDataAccessLayer
     {
         //Created a list for WareHouse
         private static List<WareHouse> _wareHouseList
@@ -23,25 +23,23 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             set;
             get;
         }
-        
+
         //Static  Constructor 
         static WareHouseDataAccessLayer()
         {
-            _wareHouseList = new List<WareHouse>()
-            {
-                new WareHouse(){WareHouseId="WHID01",WareHouseName="ABC",MangerName="NITYA"},
-                new WareHouse(){WareHouseId="WHID02",WareHouseName="ABCD",MangerName="HEMA"},
-                new WareHouse(){WareHouseId="WHID03",WareHouseName="ABCDE",MangerName="DHANASRI"},
-                new WareHouse(){WareHouseId="WHID04",WareHouseName="ABCDEF",MangerName="KRUSHAL"}
+            _wareHouseList = new List<WareHouse>();
 
-            };
+            if (_wareHouseList.Count == 0)
+            {
+                _wareHouseList = GetFiledata();
+            }
         }
 
         //Method to ADD WareHouse details to the list
         public static void AddWareHouse(WareHouse warehouseDetails)
         {
             //Condition to check whether the WareHouseId exists or not
-            if (_wareHouseList.Exists(temp => temp.WareHouseId == warehouseDetails.WareHouseId))
+            if (warehouseDetails.WareHouseId != null)
             {
                 _wareHouseList.Add(warehouseDetails);
                 SaveIntoFile();
@@ -54,6 +52,9 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 
         }
 
+        /// <summary>
+        /// Saving the data into Json file
+        /// </summary>
         private static void SaveIntoFile()
         {
 
@@ -65,11 +66,16 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             streamWriter.Close();
         }
 
+        /// <summary>
+        /// reading the data from Json file and return the data in the file in List format
+        /// </summary>
+        /// <returns>return List of warehouses avaliable int WareHouse.Txt</returns>
         public static List<WareHouse> GetFiledata()
         {
-            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseJson.txt");
+            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseData.txt");
             string s1 = streamReader.ReadToEnd();
             List<WareHouse> ware = JsonConvert.DeserializeObject<List<WareHouse>>(s1);
+            streamReader.Close();
             return ware;
 
         }
@@ -95,12 +101,13 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         }
 
         //Method to REMOVE WareHouse by WareHouseID
-        public static void RemoveWareHouseByID(string wareHouseID) 
+        public static void RemoveWareHouseByID(string wareHouseID)
         {
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
             {
                 _wareHouseList.RemoveAll(n => n.WareHouseId == wareHouseID);
+                SaveIntoFile();
             }
             else
             {
@@ -116,6 +123,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             if (_wareHouseList.Exists(n => n.WareHouseName == wareHouseName))
             {
                 _wareHouseList.RemoveAll(n => n.WareHouseName == wareHouseName);
+                SaveIntoFile();
             }
             else
             {
@@ -159,6 +167,17 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             {
                 throw new WareHouseException("Warehouse doesn't exist");
             }
+        }
+
+        /// <summary>
+        /// Method to check whether WareHouseId exists or not
+        /// </summary>
+        /// <param name="id">Represents warehouse id</param>
+        /// <returns></returns>
+        public static bool CheckWareHouseId(string id)
+        {
+            bool result = _wareHouseList.Exists(temp => temp.WareHouseId == id);
+            return result;
         }
     }
 }
