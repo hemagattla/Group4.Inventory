@@ -43,10 +43,7 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
             e = _customers.Find(n => n.CustomerId == CustomerId);
             return e;
         }
-        //i have changed this is it correct or not (hema)
-        public List<Customer> GetCust()
-        {
-            return _customers;
-        }
+        
+      
     }
 }
