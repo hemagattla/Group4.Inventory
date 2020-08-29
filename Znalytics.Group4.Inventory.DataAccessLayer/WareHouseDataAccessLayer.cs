@@ -35,6 +35,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
                 new WareHouse(){WareHouseId="WHID04",WareHouseName="ABCDEF",MangerName="KRUSHAL"}
 
             };
+            GetFiledata();
         }
 
         //Method to ADD WareHouse details to the list
@@ -54,6 +55,9 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 
         }
 
+        /// <summary>
+        /// Saving the data into Json file
+        /// </summary>
         private static void SaveIntoFile()
         {
 
@@ -65,9 +69,13 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             streamWriter.Close();
         }
 
+        /// <summary>
+        /// reading the data from Json file and return the data in the file in List format
+        /// </summary>
+        /// <returns>return List of warehouses avaliable int WareHouse.Txt</returns>
         public static List<WareHouse> GetFiledata()
         {
-            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseJson.txt");
+            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseData.txt");
             string s1 = streamReader.ReadToEnd();
             List<WareHouse> ware = JsonConvert.DeserializeObject<List<WareHouse>>(s1);
             return ware;
