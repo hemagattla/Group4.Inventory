@@ -186,7 +186,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
         {
             RawMaterial rawMaterial = new RawMaterial();
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
-
+            
             rawMaterial.RawMaterialID = RawMaterialID;
             RawMaterial a = rawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID);
             System.Console.WriteLine("RawMaterialID:-" + a.RawMaterialID + "            RawMaterialName:-" + a.RawMaterialName + "        Quantity:-" + a.Quantity + a.Units + "        Price:-" + a.Price);
