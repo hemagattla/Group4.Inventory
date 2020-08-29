@@ -18,18 +18,26 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
     /// </summary>
     public class ProductData
     {
-
+        /// <summary>
+        /// creating a private List of Product class
+        /// </summary>
         private static List<Product> _ProductsList  //creating a reference varibale for List
         {
             set;
             get;
 
         }
-
+        /// <summary>
+        /// static Constructor to initialize
+        /// </summary>
         static ProductData() // creating a list object in constructor
         {
 
             _ProductsList = new List<Product>();
+            if (_ProductsList.Count == 0)
+            {
+                _ProductsList = GetFiledata();
+            }
 
 
         }
@@ -40,15 +48,11 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// <param name="productDetails">object of Product class</param>
         public void AddProduct(Product productDetails)// Adding Products into the ProductsList
         {
-            if (_ProductsList.Count == 0)
-            {
-                _ProductsList = GetFiledata();
-            }
-            else
-            {
+           
+            
                 _ProductsList.Add(productDetails);
                 SaveIntoFile();
-            }
+            
         }
 
         /// <summary>
@@ -125,7 +129,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         public void SaveIntoFile()
         {
 
-            string s = JsonConvert.SerializeObject(_ProductsList);
+            string s = JsonConvert.SerializeObject( _ProductsList);
 
             //write data into file
             StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\ProcuctData.txt");
@@ -135,10 +139,10 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// <summary>
         /// reading the data from Json file and return the data in the file in List format
         /// </summary>
-        /// <returns></returns>
-        public List<Product> GetFiledata()
+        /// <returns>return List of products avaliable int ProductData.Txt</returns>
+        public static List<Product> GetFiledata()
         {
-            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\CustomerJson.txt");
+            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\ProcuctData.txt");
             string s2 = streamReader.ReadToEnd();
             List<Product> customers2 = JsonConvert.DeserializeObject<List<Product>>(s2);
             return customers2;
