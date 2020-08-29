@@ -7,12 +7,16 @@ using Newtonsoft.Json;
 using System.IO;
 namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
 {
+    /// <summary>
+    /// RawMaterialDataAccessLayer
+    /// </summary>
     public class RawMaterialDataAccessLayer
     {
         //creating list
         private static List<RawMaterial> _rawMaterials;
         //static constructor
         static RawMaterialDataAccessLayer()
+           
         {
             /*StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\RawMaterial\RawMaterials.txt");
             string s2 = streamReader.ReadToEnd();
@@ -28,6 +32,10 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
 
         }
         //Add RawMaterial to the List
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rawMaterial"></param>
         public void AddRawMaterial(RawMaterial rawMaterial)
         {
 
@@ -97,6 +105,15 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
             RawMaterial asd = _rawMaterials.Find(temp => temp.RawMaterialID == RawMaterialID);
 
             return asd;
+        }
+        public RawMaterial GetRawMaterialNameByRawMaterialID(string RawMaterialID)
+        {
+
+            RawMaterial asd = _rawMaterials.Find(temp => temp.RawMaterialID == RawMaterialID);
+            //if (asd != null)
+            //{
+                return asd.RawMaterialName;
+            //}
         }
         //used to Write data into the file
         public void ListOfRawMaterials()

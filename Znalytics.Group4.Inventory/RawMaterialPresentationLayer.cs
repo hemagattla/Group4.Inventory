@@ -10,7 +10,9 @@ using System.IO;
 //NameSpace of PresentationLayer
 namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
 {
-    //internal class
+    /// <summary>
+    /// RawMaterialPresentationLayer is a Internal class
+    /// </summary>
     class RawMaterialPresentationLayer
     {
         //Execution starts from MainMethod
@@ -113,8 +115,10 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
 
         }
 
-        //Static method
-        //add the RawMaterial details to the list if RawMaterialID doesn't matches
+        /// <summary>
+        /// AddRawMaterial is a static method
+        /// </summary>
+        /// <param name="RawMaterialID">Repesents ID of the RawMaterial</param>
         public static void AddRawMaterial(string RawMaterialID)
         {
             RawMaterial rawMaterial = new RawMaterial();//creating object of entity class
@@ -133,8 +137,12 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
 
         }
 
-        //static method
+       
         //deletes the rawmaterial from the list if RawMaterialID matches
+        /// <summary>
+        /// DeleteRawMaterialByRawMaterialID is a Static Method
+        /// </summary>
+        /// <param name="RawMaterialID">Repesents ID of the RawMaterial</param>
         public static void DeleteRawMaterialByRawMaterialID(string RawMaterialID)
         {
             RawMaterial rawMaterial = new RawMaterial();
@@ -149,11 +157,14 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
             rawMaterial.Units = System.Console.ReadLine();
             System.Console.WriteLine("Enter Price");
             rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());
-            rawMaterialBusinessLogicLayer.DeleteRawMaterial(rawMaterial);
+            rawMaterialBusinessLogicLayer.DeleteRawMaterial(rawMaterial);//calling the DeleteRawMaterial method prsent in businessLogicLayer by using Reference variable
         }
 
-        //static method
+        
         //Display the details of RawMaterial present in the list
+        /// <summary>
+        /// GetRawMaterial is a static Method
+        /// </summary>
         public static void GetRawMaterial()
         {
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
@@ -167,6 +178,10 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
         }
 
         //display the RawMaterial details of Corresponding RawMaterialID
+        /// <summary>
+        ///GetRawMaterialByRawMaterialID is a static method
+        /// </summary>
+        /// <param name="RawMaterialID">Repesents ID of the RawMaterial</param>
         public static void GetRawMaterialByRawMaterialID(string RawMaterialID)
         {
             RawMaterial rawMaterial = new RawMaterial();
@@ -177,8 +192,11 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
             System.Console.WriteLine("RawMaterialID:-" + a.RawMaterialID + "            RawMaterialName:-" + a.RawMaterialName + "        Quantity:-" + a.Quantity + a.Units + "        Price:-" + a.Price);
         }
 
-        //static method
         //we can change the details based on RawMaterialID
+        /// <summary>
+        /// UpdateRawMaterial is a static Method
+        /// </summary>
+        /// <param name="RawMaterialID">Repesents ID of the RawMaterial</param>
         public static void UpdateRawMaterial(string RawMaterialID)
         {
             RawMaterial rawMaterial = new RawMaterial();
@@ -208,14 +226,14 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
             {
                 System.Console.WriteLine("Enter the new Price");
                 rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());
-                rawMaterialBusinessLogicLayer.UpdateRawMaterialPrice(rawMaterial);
+                rawMaterialBusinessLogicLayer.UpdateRawMaterialPrice(rawMaterial);//calling the UpdateRawMaterialPrice method prsent in businessLogicLayer by using Reference variable
             }
             //Local function (it can access variables and parameters of the method)
             void ChangeQuantity()
             {
                 System.Console.WriteLine("Enter new Quantity");
                 rawMaterial.Quantity = System.Convert.ToDouble(System.Console.ReadLine());
-                rawMaterialBusinessLogicLayer.UpdateRawMaterialQuantity(rawMaterial);
+                rawMaterialBusinessLogicLayer.UpdateRawMaterialQuantity(rawMaterial);//calling the UpdateRawMaterialQuantity method prsent in businessLogicLayer by using Reference variable
             }
         }
     }
