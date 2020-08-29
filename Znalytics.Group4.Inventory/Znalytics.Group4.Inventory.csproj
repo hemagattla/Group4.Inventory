@@ -56,7 +56,6 @@
     <Compile Include="RawMaterialPresentationLayer.cs" />
     <Compile Include="ShippingAddressPresentation.cs" />
     <Compile Include="StockPresentationLayer.cs" />
-    <Compile Include="WareHouseLogin.cs" />
     <Compile Include="WareHouseMenuPresentor.cs" />
   </ItemGroup>
   <ItemGroup>
