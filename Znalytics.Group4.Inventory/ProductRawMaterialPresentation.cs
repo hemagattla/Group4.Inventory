@@ -11,7 +11,7 @@ namespace Znalytics.Group4.Inventory.IRawMaterialModule.PresentationLayer
     {
         static void Main()
         {
-            do
+            //do
             {
                 System.Console.WriteLine("========================Product Raw Material==========================");
                 int select;//local varialbe
@@ -24,7 +24,13 @@ namespace Znalytics.Group4.Inventory.IRawMaterialModule.PresentationLayer
                         System.Console.WriteLine("2.Delete Raw Material");
                         System.Console.WriteLine("3.view Raw Material");
                         System.Console.WriteLine("4.Update Raw Material");
-                    }
+                    } while (true);
+                }
+                catch
+                {
+
+                }
+            }
         }
     }
 }
