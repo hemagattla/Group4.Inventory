@@ -8,13 +8,19 @@ using System.IO;
 namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
 {
     /// <summary>
-    /// RawMaterialDataAccessLayer
+    /// RawMaterialDataAccessLayer is a Public used to maintain the list
     /// </summary>
     public class RawMaterialDataAccessLayer
     {
-        //creating list
+
+        /// <summary>
+        /// creating list for RawMaterial Details
+        /// </summary>
         private static List<RawMaterial> _rawMaterials;
-        //static constructor
+
+        /// <summary>
+        /// static constructor used to creating object for the list and add details to the list
+        /// </summary>
         static RawMaterialDataAccessLayer()
            
         {
@@ -31,29 +37,41 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
 
 
         }
-        //Add RawMaterial to the List
+
         /// <summary>
-        /// 
+        /// AddRawMaterial is a static Method used to Add RawMaterial to the List
         /// </summary>
-        /// <param name="rawMaterial"></param>
+        /// <param name="rawMaterial">Represents the Reference variable of RawMarial class</param>
         public void AddRawMaterial(RawMaterial rawMaterial)
         {
 
             _rawMaterials.Add(rawMaterial);//Addess RawMaterial details to List
             ListOfRawMaterials();
         }
-        //Delete RawMaterial from the List
+
+        /// <summary>
+        /// DeleteRawMaterial is a instance Method used to Delete RawMaterial from the List
+        /// </summary>
+        /// <param name="rawMaterial">is a variable of RawMaterial type</param>
         public void DeleteRawMaterial(RawMaterial rawMaterial)
         {
             _rawMaterials.RemoveAll(temp => temp.RawMaterialID == rawMaterial.RawMaterialID && temp.RawMaterialName == rawMaterial.RawMaterialName);
             ListOfRawMaterials();
         }
-        //Return the List of RawMaterial Details
+        
+        /// <summary>
+        /// Return the List of RawMaterial Details
+        /// </summary>
+        /// <returns>Returns the list</returns>
         public List<RawMaterial> GetRawMaterial()
         {
             return _rawMaterials;
         }
-        //Update the RawMaterial Price Based on RawMaterialName and RawMaterialID
+
+        /// <summary>
+        /// UpdateRawMaterialPrice is a instane method used to Update the RawMaterial Price Based on RawMaterialName and RawMaterialID
+        /// </summary>
+        /// <param name="rawMaterial">is a variable of RawMaterial type</param>
         public void UpdateRawMaterialPrice(RawMaterial rawMaterial)
         {
             RawMaterial abc = _rawMaterials.Find(temp => temp.RawMaterialID == rawMaterial.RawMaterialID && temp.RawMaterialName == rawMaterial.RawMaterialName);
@@ -74,7 +92,11 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
                 throw;
             }
         }
-        //Update the RawMaterial Quantity Based on RawMaterialName and RawMaterialID
+
+        /// <summary>
+        /// UpdateRawMaterialQuantity is a instance method used to Update the RawMaterial Quantity Based on RawMaterialName and RawMaterialID
+        /// </summary>
+        /// <param name="rawMaterial">is a variable of RawMaterial type</param>
         public void UpdateRawMaterialQuantity(RawMaterial rawMaterial)
         {
             RawMaterial ab = _rawMaterials.Find(temp => temp.RawMaterialID == rawMaterial.RawMaterialID && temp.RawMaterialName == rawMaterial.RawMaterialName);
@@ -98,7 +120,12 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
 
 
         }
-        //Return the Corresponding RawMaterial Details based on RawMaterialID
+
+        /// <summary>
+        /// GetRawMaterialByRawMaterialID is a instance method used to Return the Corresponding RawMaterial Details based on RawMaterialID
+        /// </summary>
+        /// <param name="RawMaterialID">Represents the ID of RawMaterial</param>
+        /// <returns>Returns the list of RawMaterial details</returns>
         public RawMaterial GetRawMaterialByRawMaterialID(string RawMaterialID)
         {
 
@@ -106,16 +133,19 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
 
             return asd;
         }
-        public RawMaterial GetRawMaterialNameByRawMaterialID(string RawMaterialID)
-        {
+        /* public RawMaterial GetRawMaterialNameByRawMaterialID(string RawMaterialID)
+         {
 
-            RawMaterial asd = _rawMaterials.Find(temp => temp.RawMaterialID == RawMaterialID);
-            //if (asd != null)
-            //{
-                return asd.RawMaterialName;
-            //}
-        }
-        //used to Write data into the file
+             RawMaterial asd = _rawMaterials.Find(temp => temp.RawMaterialID == RawMaterialID);
+             if (asd != null)
+             {
+                 return asd.RawMaterialName;
+             }
+         }*/
+
+        /// <summary>
+        /// ListOfRawMaterials is a instance method used to used to Write data into the file
+        /// </summary>
         public void ListOfRawMaterials()
         {
             string s = JsonConvert.SerializeObject(_rawMaterials);

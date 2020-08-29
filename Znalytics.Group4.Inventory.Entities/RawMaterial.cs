@@ -25,7 +25,10 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
 
 
 
-        //write and read Property of string data type
+
+        /// <summary>
+        /// write and read Property of string data type
+        /// </summary>
         public string RawMaterialName
         {
             set
@@ -64,7 +67,9 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                 return _rawMaterialName;
             }
         }
-        //property for RawMaterialID of string data type
+        /// <summary>
+        /// property for RawMaterialID of string data type
+        /// </summary>
         public string RawMaterialID
         {
             set
@@ -97,7 +102,9 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                 return _rawMaterialID;
             }
         }
-        //Property for Quantity of double data type
+        /// <summary>
+        /// Property for Quantity of double data type
+        /// </summary>
         public double Quantity
         {
             set
@@ -124,7 +131,9 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                 return _quantity;
             }
         }
-        //property for price of double data type
+        /// <summary>
+        /// property for price of double data type
+        /// </summary>
         public double Price
         {
             set
@@ -150,7 +159,9 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                 return _price;
             }
         }
-        //Property for units of string data type
+        /// <summary>
+        /// Property for units of string data type
+        /// </summary>
         public string Units
         {
             set

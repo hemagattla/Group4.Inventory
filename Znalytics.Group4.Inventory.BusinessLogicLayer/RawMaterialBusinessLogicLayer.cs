@@ -9,18 +9,24 @@ using Znalytics.Group4.Inventory.RawMaterialModule.EntityLayer;
 namespace Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer
 {
     /// <summary>
-    ///Public class RawMaterialBusinessLogicLayer 
+    ///RawMaterialBusinessLogicLayer is a Public Class child class of IRawMaterialBusinessLogicLayer Interface
     /// </summary>
     public class RawMaterialBusinessLogicLayer : IRawMaterialBusinessLogicLayer//Interface Name
     {
         //creating reference variable of RawMaterialDataAccessLayer class
         RawMaterialDataAccessLayer _rawMaterialDataAccessLayer;
-        //public Constructor
+
+        /// <summary>
+        /// RawMaterialBusinessLogicLayer is a public Constructor
+        /// </summary>
         public RawMaterialBusinessLogicLayer()
         {
             _rawMaterialDataAccessLayer = new RawMaterialDataAccessLayer();//creating object of RawMaterialDataAccessLayer class
         }
-        //AddRawMaterial Method
+        /// <summary>
+        /// AddRawMaterial Method is a instance method used to Add RawMaterial Details to list
+        /// </summary>
+        /// <param name="rawMaterial">Represents the Reference variable of RawMaterial class</param>
         public void AddRawMaterial(RawMaterial rawMaterial)
         {
             try
@@ -39,7 +45,11 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer
                 throw;
             }
         }
-        //Deletes the RawMaterial details
+
+        /// <summary>
+        /// DeleteRawmaterial is instance method used to delete RawMaterial details from the List
+        /// </summary>
+        /// <param name="rawMaterial">Represents the Reference variable of RawMaterial class</param>
         public void DeleteRawMaterial(RawMaterial rawMaterial)
         {
             try
@@ -58,14 +68,23 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer
                 throw;
             }
         }
-        //returns the list of RawMaterial details
+
+        /// <summary>
+        /// GetRawMaterial is a instance method used to return the list
+        /// </summary>
+        /// <returns>Returns the list of RawMaterial details</returns>
         public List<RawMaterial> GetRawMaterial()
         {
 
             return _rawMaterialDataAccessLayer.GetRawMaterial();
 
         }
-        //used to update price of the RawMaterial
+
+
+        /// <summary>
+        /// UpdateRawMaterialPrice is a instance method used to update price of the RawMaterial
+        /// </summary>
+        /// <param name="rawMaterial">Represents the Reference variable of RawMaterial class</param>
         public void UpdateRawMaterialPrice(RawMaterial rawMaterial)
         {
             try
@@ -85,7 +104,11 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer
             }
 
         }
-        //Updates the Quantity of RawMaterial
+       
+        /// <summary>
+        /// UpdateRawMaterialQuantity is a instance method used to Updates the Quantity of RawMaterial
+        /// </summary>
+        /// <param name="rawMaterial">Represents the Reference variable of RawMaterial class</param>
         public void UpdateRawMaterialQuantity(RawMaterial rawMaterial)
         {
 
@@ -105,17 +128,22 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer
                 throw;
             }
         }
-        //represents whethere the RawMaterial exists or not based on RawMaterialID
+
+        /// <summary>
+        /// GetRawMaterialByRawMaterialID is a instance method used to represent whethere the RawMaterial exists or not based on RawMaterialID
+        /// </summary>
+        /// <param name="RawMaterialID">Represents the ID of RawMaterial</param>
+        /// <returns> Used to Represent the Details of Corresponding RawMaterialID</returns>
         public RawMaterial GetRawMaterialByRawMaterialID(string RawMaterialID)
         {
             return _rawMaterialDataAccessLayer.GetRawMaterialByRawMaterialID(RawMaterialID);
 
         }
         //represents whethere the RawMaterial exists or not based on RawMaterialID
-        public RawMaterial GetRawMaterialNameByRawMaterialID(string RawMaterialID)
+       /* public RawMaterial GetRawMaterialNameByRawMaterialID(string RawMaterialID)
         {
             return _rawMaterialDataAccessLayer.GetRawMaterialNameByRawMaterialID(RawMaterialID);
 
-        }
+        }*/
     }
 }
