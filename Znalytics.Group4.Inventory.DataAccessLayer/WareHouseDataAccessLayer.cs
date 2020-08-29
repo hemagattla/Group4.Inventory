@@ -74,7 +74,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// <summary>
         /// reading the data from Json file and return the data in the file in List format
         /// </summary>
-        /// <returns>Returns List of warehouses avaliable int WareHouse.Txt</returns>
+        /// <returns>Returns List of warehouses avaliable int WareHouseData.Txt</returns>
         public static List<WareHouse> GetFiledata()
         {
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseData.txt");
