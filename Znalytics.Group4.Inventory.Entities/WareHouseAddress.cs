@@ -61,7 +61,7 @@ namespace Znalytics.Inventory.AddressModule.Entities
                     bool spaceFound = value.Contains(" ");
                     bool atFound = value.Contains("@");
                     bool commaFound = value.Contains(",");
-                    if (!spaceFound && !atFound && !commaFound && value.StartsWith("W") && value.Length == 4)
+                    if (!spaceFound && !atFound && !commaFound && value.StartsWith("W") )
                     {
                         _addressId = value;
                     }
@@ -167,10 +167,9 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(value)&&value.Length == 6)
                 {
-                    if (value.Length == 6)
-                    {
+                    
                         for (int i = 0; i < value.Length; i++)
                         {
                             if (value[i] < '0' || value[i] > 9)
@@ -178,7 +177,7 @@ namespace Znalytics.Inventory.AddressModule.Entities
                                 _pincode = value;
                             }
                         }
-                    }
+                    
                 }
                 else
                 {

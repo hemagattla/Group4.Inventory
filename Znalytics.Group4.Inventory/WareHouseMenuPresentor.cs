@@ -99,6 +99,10 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     wbl.AddWareHouse(n);
                     WriteLine("WareHouse added successfully");
                 }
+                else
+                {
+                    WriteLine("WareHouse Exists!");
+                }
             }
 
 
@@ -357,6 +361,11 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
                         WriteLine("Address added successfully");
                     }
+                    else
+                    {
+                        WriteLine("Address id exists already");
+                    }
+                    
                 }
 
 
