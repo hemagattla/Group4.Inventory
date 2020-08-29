@@ -3,7 +3,9 @@ using Znalytics.Inventory.StockMaintain.BusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.ProductPresentation;
 using Znalytic.Inventory.WareHouseModule.PresentationLayer;
 using System.Xml.Serialization;
+using Znalytics.Inventory.ProductModule.CustomException;
 using System;
+using System.Collections.Generic;
 
 namespace Znalytics.Inventory.StockMaintain.PresentationLayer
 {
@@ -31,11 +33,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                             case 1:
                                 AddStock();
                                 break;
-                            case 2:
-                                System.Console.WriteLine("enter StockID");
-                                string stockID = System.Console.ReadLine();
-                                System.Console.WriteLine(TotalQuantity(stockID));
-
+                            case 2: DisplayStock();
                                 break;
 
                             default:
@@ -55,7 +53,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
 
                 } while (choice != 6);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 System.Console.WriteLine(e.Message);
             }
@@ -70,32 +68,50 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
         {
             ProductPresentation productPresentation = new ProductPresentation();
             MenuPrensentor wareHousePresentation = new MenuPrensentor();
-           StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer(); // creation stockBusinessLogic object
+            StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer(); // creation stockBusinessLogic object
             Stock stock = new Stock();//creation of stock object of entite Layer
-            if(wareHousePresentation.)
+
             System.Console.WriteLine("Enter StockID");
             stock.StockID = System.Console.ReadLine();
+
             System.Console.WriteLine("Enter WareHouseID");
             stock.WareHouseID = System.Console.ReadLine();
-            System.Console.WriteLine("Enter Address Name");
-            stock.AddressID = System.Console.ReadLine();
-            System.Console.WriteLine("Enter Product ID");
-            stock.ProductID = System.Console.ReadLine();
+            if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID) == true)
+            {
+                System.Console.WriteLine("Enter Address Name");
+                stock.AddressID = System.Console.ReadLine();
+                if (wareHousePresentation.CheckWareHouseId(stock.AddressID))
+                {
+                    System.Console.WriteLine("Enter Product ID");
+                    stock.ProductID = System.Console.ReadLine();
+                    if (productPresentation.CheckProductID(stock.ProductID))
+                    {
 
-            System.Console.WriteLine("Enter no of Quantities u want to add");
-            stock.quantity = System.Convert.ToInt32(System.Console.ReadLine());
-            stockBusinessLogicLayer.AddStock(stock);
+                        System.Console.WriteLine("Enter no of Quantities u want to add");
+                        stock.quantity = System.Convert.ToInt32(System.Console.ReadLine());
+                        stockBusinessLogicLayer.AddStock(stock);
+                        Console.WriteLine("Stock Added Sucessfully!!");
+                    }
+                }
+                else
+                {
+                    throw new StockException("Ware address Does not Exits");
+                }
 
-
-
-            Console.WriteLine("Stock Added Sucessfully!!");
-
+            }
+            else
+            {
+                throw new StockException("Warehouse ID Does not exist");
+            }
         }
         public static void DeleteStockByWareHouseID()
         {
 
             StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
+            ProductPresentation productPresentation = new ProductPresentation();
+            MenuPrensentor wareHousePresentation = new MenuPrensentor();
             Stock stock = new Stock();
+
             System.Console.WriteLine("Enter WareHouseID");
             stock.WareHouseID = System.Console.ReadLine();
             System.Console.WriteLine("Enter Address Name");
@@ -111,8 +127,17 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
 
             StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
             return stockBusinessLogicLayer.TotalQuantity(stockID);
+        }
 
-
+        public static void DisplayStock()
+        {
+            StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
+            Stock stock = new Stock();
+            System.Console.WriteLine("Enter WareHouseID");
+            stock.WareHouseID = System.Console.ReadLine();
+            System.Console.WriteLine("Enter Address Name");
+            stock.AddressID = System.Console.ReadLine();
+            List<Stock> stocks = stockBusinessLogicLayer.DisplayStock(stock);
 
         }
     }
