@@ -16,7 +16,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
     /// <summary>
     /// Represents BusinessLogic class of AddressWareHouse
     /// </summary>
-    public class WareHouseAddressBusinessLogicLayer//: IWareHouseAddressBusinessLogicLayer
+    public class WareHouseAddressBusinessLogicLayer: IWareHouseAddressBusinessLogicLayer
     {
 
         //Created an object for datalayer and stored it in reference variable
