@@ -7,7 +7,7 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytic.Inventory.WareHouseModule.PresentationLayer;
 using Znalytics.Inventory.ProductModule.ProductPresentation;
 using Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer;
-
+using Znalytics.Group4.Inventory.PresentationLayer;
 namespace Znalytics.Group4.Inventory
 {
     class InventoryMangementSystem
@@ -119,6 +119,10 @@ namespace Znalytics.Group4.Inventory
                 } while (option != 3);
 
             }
+            else
+            {
+                System.Console.WriteLine("Entered UserName/password is invalid (Username contains only Alphabets,password is combination of alphabets & digits and starting letter should be uppercase)");
+            }
         }
 
         public static void Customer()
@@ -126,6 +130,7 @@ namespace Znalytics.Group4.Inventory
             int option;
             do
             {
+                OrderManagementPresentationLayer orderManagement = new OrderManagementPresentationLayer();
                 System.Console.WriteLine("1. Display warehouse Details");
                 System.Console.WriteLine("2. Display Products");
                 System.Console.WriteLine("3. show stock");
@@ -147,8 +152,9 @@ namespace Znalytics.Group4.Inventory
                                
                                 break;
                             case 3: break;
-                            case 4:
-                                break;
+                            case 4: orderManagement.Menu();
+                              
+                                     break;
                              default:
                                 System.Console.WriteLine("Please Enter the Correct Option");
                                 break;

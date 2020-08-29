@@ -11,14 +11,14 @@ using Znalytics.Inventory.Module.Entities;
 using Znalytics.Group4.Inventory.BusinessLogicLayer;
 using Znalytics.Inventory.ProductShippingAddressModule.Entities;
 
-namespace Znalytics.Group4.Inventory
+namespace Znalytics.Group4.Inventory.PresentationLayer
 {
     /// <summary>
     /// Represents PresentationLayer of OrderManagement
     /// </summary>
      class OrderManagementPresentationLayer
     {
-        static void Menu()
+        public void Menu()
         {
 
             int choice = 0;
