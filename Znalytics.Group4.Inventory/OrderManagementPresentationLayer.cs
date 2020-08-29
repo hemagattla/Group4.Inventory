@@ -16,7 +16,7 @@ namespace Znalytics.Group4.Inventory
     /// <summary>
     /// Represents PresentationLayer of OrderManagement
     /// </summary>
-    static class OrderManagementPresentationLayer
+     class OrderManagementPresentationLayer
     {
         static void Menu()
         {

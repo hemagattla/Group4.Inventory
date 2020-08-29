@@ -13,7 +13,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
          List<OrderManagement> GetOrderDetails();
         //Get OrderDetails by ProductID
           List<OrderManagement> GetOrderDetailsByProductID(string value);
-        //Get OrderDetails by WareHouseID
+        //Get OrderDetails byAddressID
          List<OrderManagement> GetOrderDetailsByAdddressID(string value);
         //Get OrderDetails By EmployeeID
          List<OrderManagement> GetOrderDetailsByEmployeeID(int value);

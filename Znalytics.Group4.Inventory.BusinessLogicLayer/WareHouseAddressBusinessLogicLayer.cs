@@ -216,6 +216,16 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 throw;
             }
         }
+        /// <summary>
+        /// Method to check whether the AddressId exists or not
+        /// </summary>
+        /// <param name="id">Represents the Address id</param>
+        /// <returns></returns>
+        public bool CheckAddressId(string id)
+        {
+            return WareHouseAddressDataAccessLayer.CheckAddressId(id);
+        }
+
 
 
     }
