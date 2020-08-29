@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Znalytics.Group4.Inventory.RawMaterialModule.EntityLayer;
 
-namespace Znalytics.Group4.Inventory.IRawMaterialModule.PresentationLayer
+namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
 {
     class ProductRawMaterialPresentation
     {
@@ -22,13 +22,13 @@ namespace Znalytics.Group4.Inventory.IRawMaterialModule.PresentationLayer
                         System.Console.WriteLine("3.view Raw Material Details of Product");
                         System.Console.WriteLine("4.Update Raw Material of the product");
                         System.Console.WriteLine("5.GetProductRawmaterial Details By ProductID");
-                    System.Console.WriteLine("6.Exit");
-                    System.Console.WriteLine("enter the choice");
-                    System.Console.WriteLine("=======================================================");
-                    q = int.TryParse(System.Console.ReadLine(), out select);//Trypase:- we are converting string to int
+                        System.Console.WriteLine("6.Exit");
+                        System.Console.WriteLine("enter the choice");
+                        System.Console.WriteLine("=======================================================");
+                        q = int.TryParse(System.Console.ReadLine(), out select);//Trypase:- we are converting string to int
 
-                    if (q == true)
-                    {
+                       if (q == true)
+                       {
                         RawMaterial rawMaterial = new RawMaterial();//creating object of entity class
                         RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
                         switch (select)
