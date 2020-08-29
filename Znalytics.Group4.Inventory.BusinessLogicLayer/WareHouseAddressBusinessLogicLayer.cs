@@ -3,7 +3,7 @@
 //Importing statements
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
-using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
+//using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
 using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.AddressModule.DataAccessLayer;
 using System;
