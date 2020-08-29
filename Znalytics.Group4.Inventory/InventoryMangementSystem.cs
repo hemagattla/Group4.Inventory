@@ -7,6 +7,7 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytic.Inventory.WareHouseModule.PresentationLayer;
 using Znalytics.Inventory.ProductModule.ProductPresentation;
 using Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer;
+using Znalytics.Inventory.StockMaintain.PresentationLayer;
 
 namespace Znalytics.Group4.Inventory
 {
@@ -91,7 +92,7 @@ namespace Znalytics.Group4.Inventory
                             switch (option)
                             {
                                 case 1:
-                                    wareHousePresntation.Menu();
+                                    wareHousePresntation.WareHouseMenu();
                                     break;
                                 case 2:
                                     productPresentation.menu();

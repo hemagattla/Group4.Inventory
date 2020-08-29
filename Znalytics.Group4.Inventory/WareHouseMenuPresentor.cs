@@ -21,18 +21,10 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
     class MenuPrensentor
     {
 
-        /// <summary>
-        /// Starting point of the program
-        /// </summary>
-        public void Menu()
-        {
-
-            WareHouseMenu();
-            
-        }
+       
         
 
-        public static void WareHouseMenu()
+        public void WareHouseMenu()
         {
             int choice = -1;
 
@@ -78,7 +70,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         }
 
         //Method to ADD WareHouse details to the list
-        public static void AddWareHouse()
+        public  void AddWareHouse()
         {
             try
             {
@@ -116,7 +108,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
         }
         // Method to GET the added details
-        public static void GetWareHouses()
+        public void GetWareHouses()
         {
             WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
             List<WareHouse> wareHouseList = wbl.GetWareHouses();
@@ -133,7 +125,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         }
 
         //Method to GET WareHouse details by WareHouseId
-        public static void GetWareHouseByWareHouseID()
+        public void GetWareHouseByWareHouseID()
         {
             try
             {
@@ -167,7 +159,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
 
         //Method to REMOVE WareHouses
-        public static void RemoveWareHouse()
+        public  void RemoveWareHouse()
         {
             WareHouse w = new WareHouse();// creating the object for Warehouse class
             WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();// Creating thhe object for WareHouseBusinessLogic class
@@ -239,7 +231,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         }
 
         //Method to UPDATE WareHouseName
-        public static void UpdateWareHouse()
+        public void UpdateWareHouse()
         {
 
             WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
@@ -331,7 +323,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         }
 
         //Method to ADD Address details to the list
-        public static void AddAddress()
+        public void AddAddress()
         {
             try
             {
@@ -381,7 +373,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         }
         
         // Method to GET the added  address details
-        public static void GetAddresses()
+        public void GetAddresses()
         {
             WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
             List<WareHouseAddress> addressList = wabl.GetAddresses();
@@ -398,7 +390,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         }
 
         //Method to GET WareHouseAddress details by AddressId
-        public static void GetAddressByAddressID()
+        public void GetAddressByAddressID()
         {
             try
             {
@@ -423,7 +415,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         }
 
         //Method to GET WareHouseAddress details by WareHouseId
-        public static void GetAddressByWareHouseID()
+        public void GetAddressByWareHouseID()
         {
 
             try
@@ -452,7 +444,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
 
         //Method to GET WareHouseAddress details by LocationName
-        public static void GetAddressByLocationName()
+        public void GetAddressByLocationName()
         {
             try
             {
@@ -476,7 +468,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         }
 
         // //Method to UPDATE the details of WareHouse
-        public static void UpdateWareHouseAddress()
+        public void UpdateWareHouseAddress()
         {
             WareHouseAddress address = new WareHouseAddress();
             WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
@@ -633,7 +625,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         }
 
         //Method to REMOVE an address of the Warehouse
-        public static void RemoveWareHouseAddress()
+        public  void RemoveWareHouseAddress()
         {
             WareHouseAddress w = new WareHouseAddress();// creating the object for Warehouse class
             WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();// Creating thhe object for WareHouseBusinessLogic class
@@ -704,7 +696,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
 
         }
-        public static bool CheckWareHouseId(string id)
+        public bool CheckWareHouseId(string id)
         {
             WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
             bool result = wbl.CheckWareHouseId(id);
@@ -716,7 +708,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             return result;
         }
 
-        public static bool CheckAddressId(string id)
+        public bool CheckAddressId(string id)
         {
             WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
             bool result = wabl.CheckAddressId(id);
