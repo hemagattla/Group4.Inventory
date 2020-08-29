@@ -8,6 +8,8 @@ using System.Linq;
 using Znalytics.Inventory.Module.Entities;
 using Znalytics.Group4.Inventory.DataAccessLayer;
 using System;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
 {/// <summary>
@@ -19,6 +21,31 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         public OrderManagementDataLayer()
         {
             _orders = new List<OrderManagement>();
+        }
+        /// <summary>
+        /// Method For Saving FileInformation
+        /// </summary>
+        public void SaveIntoFile()
+        {
+
+            string s = JsonConvert.SerializeObject(_orders);
+
+            //write data into file
+            StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Documents.OrderManagementJson.txt");
+            streamWriter.Write(s);
+            streamWriter.Close();
+        }
+        /// <summary>
+        /// Method For Getting Data From File
+        /// </summary>
+        /// <returns></returns>
+        public  List<OrderManagement> GetFiledata()
+        {
+            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Documents.OrderManagementJson.txt");
+            string s1 = streamReader.ReadToEnd();
+            List<OrderManagement> orders = JsonConvert.DeserializeObject<List<OrderManagement>>(s1);
+            return orders;
+
         }
 
         /// <summary>
@@ -32,7 +59,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         }
 
         /// <summary>
-        /// ViewOrderDetails
+        /// GetOrderDetails
         /// </summary>
         /// <returns></returns>
         public List<OrderManagement> GetOrderDetails()
