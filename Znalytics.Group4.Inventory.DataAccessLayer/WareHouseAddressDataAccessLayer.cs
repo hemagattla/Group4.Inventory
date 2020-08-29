@@ -45,10 +45,9 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         public override void AddAddress(WareHouseAddress addressDetails)
         {
             //Condition to check whether the WareHouseId exists or not
-            if (_addressList.Exists(temp => temp.WareHouseId == addressDetails.WareHouseId))
+            if (addressDetails.AddressId != null)
             {
                 _addressList.Add(addressDetails);
-                SaveIntoFile();
             }
             else
             {
@@ -66,7 +65,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         }
         public static List<WareHouseAddress> GetFiledata()
         {
-            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseJson.txt");
+            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseAddress.txt");
             string s2 = streamReader.ReadToEnd();
             List<WareHouseAddress> addr = JsonConvert.DeserializeObject<List<WareHouseAddress>>(s2);
             return addr;
@@ -231,6 +230,17 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             }
 
         }
+        /// <summary>
+        /// Method to check whether the AddressId exists or not
+        /// </summary>
+        /// <param name="id">Represents the Address id</param>
+        /// <returns></returns>
+        public static bool CheckAddressId(string id)
+        {
+            bool result = _addressList.Exists(temp => temp.AddressId == id);
+            return result;
+        }
+
     }
 }
 
