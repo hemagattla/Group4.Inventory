@@ -7,6 +7,7 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytic.Inventory.WareHouseModule.PresentationLayer;
 using Znalytics.Inventory.ProductModule.ProductPresentation;
 using Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer;
+using Znalytics.Inventory.StockMaintain.PresentationLayer;
 
 namespace Znalytics.Group4.Inventory
 {
@@ -70,16 +71,17 @@ namespace Znalytics.Group4.Inventory
                 MenuPrensentor wareHousePresntation= new MenuPrensentor();
                 ProductPresentation productPresentation = new ProductPresentation();
                 RawMaterialPresentationLayer rawMaterialPresentation = new RawMaterialPresentationLayer();
+                StockPresentationLayer stockPresentationLayer = new StockPresentationLayer();
                 int option;
                 do
                 {
                     System.Console.WriteLine("1. WareHouse");
                     System.Console.WriteLine("2. Add Product");
                     System.Console.WriteLine("3. RawMaterialsDetails");
-                    System.Console.WriteLine("3. add stock");
-                    System.Console.WriteLine("4. show stock");
+                    System.Console.WriteLine("4. Stock");
+                   // System.Console.WriteLine("4. ");
                     
-                    System.Console.WriteLine("3. Exit");
+                    System.Console.WriteLine("5. Exit");
 
                     bool b = int.TryParse(System.Console.ReadLine(), out option);
 
@@ -98,7 +100,8 @@ namespace Znalytics.Group4.Inventory
                                 case 3:
                                     rawMaterialPresentation.RawMaterialMenu();
                                         break;
-                                case 4: break;
+                                case 4: stockPresentationLayer.menu();
+                                        break;
                                 default:
                                     System.Console.WriteLine("Please Enter the Correct Option");
                                     break;

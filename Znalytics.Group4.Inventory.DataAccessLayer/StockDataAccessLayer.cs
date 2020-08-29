@@ -1,7 +1,7 @@
 ﻿
-/*using System.Collections.Generic;
+using System.Collections.Generic;
 using Znalytics.Inventory.StockMaintain.Entities;
-using Znalytics.Group4.Inventory.StockMaintain.DataAccessLayer;
+using Znalytics.Group4.Inventory.StockMaintain.IDataAccessLayer;
 
 namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
 {
@@ -11,7 +11,11 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
     public class StockDataAccessLogic : IStockDataAccessLayer
     {
         //private field
-        private static List<Stock> _stocks;
+        private static List<Stock> _stocks
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Constructor Stock Data Access Logic that initializes collection
@@ -20,40 +24,34 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
         {
             _stocks = new List<Stock>()
             {
-                new Stock() { WareHouseID = "1234", AddressID = "kukatpally", ProductID = 3456, Quantity = 5 },
-                new Stock() { WareHouseID = "1234", AddressID = "kukatpally", ProductID = 5678, Quantity = 34}
+                new Stock() { WareHouseID = "1234", AddressID = "kukatpally", ProductID = "3456", Quantity = 5 },
+                new Stock() { WareHouseID = "1234", AddressID = "kukatpally", ProductID = "5678", Quantity = 34}
             };
         }
 
+    
+        public  void StockID(Stock stock)
+        {
+            _stocks.Add(stock);
 
-        /// <summary>
-        /// Add method with 4 parameters 
+        }
+        public void GetProductID()
+        {
+
+        }
+        public void GetWareHouseID()
+        {
+
+        }
 
         public void AddStock(Stock stock)
         {
-            Stock st = _stocks.Find(temp => temp.WareHouseID == stock.WareHouseID && temp.AddressID == stock.AddressID && temp.ProductID == stock.ProductID);
-
-            st.Quantity += stock.EditStock;
-        }
-
-        /// <summary>
-        /// Delete method with 4 parameters
-        /// </summary>
-
-        public void DeleteStock(Stock stock)
-        {
-            Stock st = _stocks.Find(temp => temp.WareHouseID == stock.WareHouseID && temp.AddressID == stock.AddressID && temp.ProductID == stock.ProductID);
-
-            st.Quantity -= stock.EditStock;
+            throw new System.NotImplementedException();
         }
 
         public int ViewQuantity(Stock stock)
         {
-            Stock matchingData = _stocks.Find(temp => temp.WareHouseID == stock.WareHouseID && temp.AddressName == stock.AddressName && temp.ProductID == stock.ProductID);
-            matchingData.Quantity = stock.Quantity;
-            return stock.Quantity;
+            throw new System.NotImplementedException();
         }
-       
     }
 }
-*/
