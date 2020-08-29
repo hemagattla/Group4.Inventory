@@ -103,7 +103,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public override OrderManagement GetOrderDetailsByProductID(string value)
+        public override List<OrderManagement> GetOrderDetailsByProductID(string value)
         {
             OrderManagement order = new OrderManagement();
 
