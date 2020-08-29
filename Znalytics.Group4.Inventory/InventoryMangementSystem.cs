@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytic.Inventory.WareHouseModule.PresentationLayer;
 using Znalytics.Inventory.ProductModule.ProductPresentation;
+using Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer;
 
 namespace Znalytics.Group4.Inventory
 {
@@ -68,6 +69,7 @@ namespace Znalytics.Group4.Inventory
             {
                 MenuPrensentor wareHousePresntation= new MenuPrensentor();
                 ProductPresentation productPresentation = new ProductPresentation();
+                RawMaterialPresentationLayer rawMaterialPresentation = new RawMaterialPresentationLayer();
                 int option;
                 do
                 {
@@ -93,7 +95,9 @@ namespace Znalytics.Group4.Inventory
                                 case 2:
                                     productPresentation.menu();
                                     break;
-                                case 3: break;
+                                case 3:
+                                    rawMaterialPresentation.RawMaterialMenu();
+                                        break;
                                 case 4: break;
                                 default:
                                     System.Console.WriteLine("Please Enter the Correct Option");
