@@ -1,139 +1,222 @@
-﻿using System.Collections.Generic;
-using Znalytics.Group4.Inventory.RawMaterialModule.Entities;
-
-using Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer;
-
+﻿//Created By Hema
+//Raw Materials Module of Inventory Management System
+//PresentationLayer
+using System.Collections.Generic;//NameSpace of Collections
+using Znalytics.Group4.Inventory.RawMaterialModule.Entities;//NameSpace of EntityLayer
+using Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer;//NameSpace of BussinessLogicLayer
+using Znalytics.Group4.Inventory.RawMaterialModule.EntityLayer;
+using Newtonsoft.Json;
+using System.IO;
+//NameSpace of PresentationLayer
 namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
 {
+    //internal class
     class RawMaterialPresentationLayer
     {
+        //Execution starts from MainMethod
         static void Main()
         {
             System.Console.WriteLine("========================Raw Material==========================");
-            int select;
-            bool q;
-            string i;
-            do
+            int select;//local varialbe
+            bool q;//local variable
+            try
             {
-                System.Console.WriteLine("1.Add Raw Material");
-                System.Console.WriteLine("2.Delete Raw Material");
-                System.Console.WriteLine("3.view Raw Material");
-                System.Console.WriteLine("4.Update Raw Material");
-                q = int.TryParse(System.Console.ReadLine(), out select);
-                if (q == true)
+                do
                 {
-                    switch (select)
+                    System.Console.WriteLine("1.Add Raw Material");
+                    System.Console.WriteLine("2.Delete Raw Material");
+                    System.Console.WriteLine("3.view Raw Material");
+                    System.Console.WriteLine("4.Update Raw Material");
+                    System.Console.WriteLine("5.GetRawmaterial By RawMaterialID");
+                    System.Console.WriteLine("6.Exit");
+                    System.Console.WriteLine("enter the choice");
+                    System.Console.WriteLine("=======================================================");
+                    q = int.TryParse(System.Console.ReadLine(), out select);//Trypase:- we are converting string to int
+
+                    if (q == true)
                     {
-                        case 1:
-                            AddRawMaterial();
-                            break;
-                        case 2:
-                            DeleteRawMaterial();
-                            break;
-                        case 3:
-                            ViewRawMaterial();
-                            break;
-                        case 4:
-                            UpdateRawMaterial();
-                            break;
+                        RawMaterial rawMaterial = new RawMaterial();//creating object of entity class
+                        RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
+                        switch (select)
+                        {
+                            case 1:
+                                System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
+                                rawMaterial.RawMaterialID = System.Console.ReadLine();
+                                if (rawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID) == null)//Checks wheather entered RawMaterialID exists in list or not
+                                {
+                                    AddRawMaterial(rawMaterial.RawMaterialID);//Static method we can call directly
+                                    System.Console.WriteLine("******************* Successfully added RawMaterial Details of ID" + rawMaterial.RawMaterialID + " ************** ");
+                                }
+                                else
+                                {
+                                    System.Console.WriteLine("**************entered RawMaterialID" + rawMaterial.RawMaterialID + "already exists. Pls Try again*************");
+                                }
+                                break;
+                            case 2:
+                                System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
+                                rawMaterial.RawMaterialID = System.Console.ReadLine();
+                                if (rawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID) != null)//Checks wheather entered RawMaterialID exists in list or not
+                                {
+                                    DeleteRawMaterialByRawMaterialID(rawMaterial.RawMaterialID);//Static method we can call directly
+                                    System.Console.WriteLine("******************* Successfully Deleted RawMaterialID" + rawMaterial.RawMaterialID + " * ************** ");
+                                }
+                                else
+                                {
+                                    System.Console.WriteLine("**************entered RawMaterialID " + rawMaterial.RawMaterialID + " does not exists. Pls Try again*************");
+                                }
+                                break;
+                            case 3:
+                                GetRawMaterial();//Static method we can call directly
+                                break;
+                            case 4:
+                                System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
+                                rawMaterial.RawMaterialID = System.Console.ReadLine();
+                                if (rawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID) != null)//Checks wheather entered RawMaterialID exists in list or not
+                                {
+                                    UpdateRawMaterial(rawMaterial.RawMaterialID);//Static method we can call directly
+                                    System.Console.WriteLine("******************* Updated successfully *************** ");
+                                }
+                                else
+                                {
+                                    System.Console.WriteLine("**************entered RawMaterialID " + rawMaterial.RawMaterialID + " does not exists. Pls Try again*************");
+                                }
+                                break;
+                            case 5:
+                                System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
+                                rawMaterial.RawMaterialID = System.Console.ReadLine();
+                                if (rawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID) != null)//Checks wheather entered RawMaterialID exists in list or not
+                                {
+                                    GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID);//Static method we can call directly
+                                    System.Console.WriteLine("******************* U can see the details now *************** ");
+                                }
+                                else
+                                {
+                                    System.Console.WriteLine("**************entered RawMaterialID " + rawMaterial.RawMaterialID + " does not exists. Pls Try again*************");
+                                }
+                                break;
+                        }
+
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("Please Enter the only digits");
                     }
 
-                }
-                else
-                {
-                    System.Console.WriteLine("Please Enter the only digits");
-                }
-                System.Console.WriteLine("u want to add Raw Material (Yes/No)");
-                i = System.Console.ReadLine();
-            } while (i == "Yes");
+                } while (select != 6);
+            }
+            catch (RawMaterialException ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+
+            System.Console.Read();
+
         }
-        public static void AddRawMaterial()
+
+        //Static method
+        //add the RawMaterial details to the list if RawMaterialID doesn't matches
+        public static void AddRawMaterial(string RawMaterialID)
         {
-            RawMaterial rawMaterial = new RawMaterial();
-            RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
+            RawMaterial rawMaterial = new RawMaterial();//creating object of entity class
+            RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
+
+            rawMaterial.RawMaterialID = RawMaterialID;
             System.Console.WriteLine("Enter RawMaterialName");
             rawMaterial.RawMaterialName = System.Console.ReadLine();
-            System.Console.WriteLine("Enter RawMaterialID");
-            rawMaterial.RawMaterialID = System.Console.ReadLine();
             System.Console.WriteLine("Enter Quantity");
-            rawMaterial.Quantity = System.Console.ReadLine();
+            rawMaterial.Quantity = System.Convert.ToDouble(System.Console.ReadLine());
             System.Console.WriteLine("Enter units");
             rawMaterial.Units = System.Console.ReadLine();
             System.Console.WriteLine("Enter Price");
             rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());
-            rawMaterialBusinessLogicLayer.AddRawMaterial(rawMaterial);
+            rawMaterialBusinessLogicLayer.AddRawMaterial(rawMaterial);//calling the AddRawMaterial method prsent in businessLogicLayer by using Reference variable
+
         }
-        public static void DeleteRawMaterial()
+
+        //static method
+        //deletes the rawmaterial from the list if RawMaterialID matches
+        public static void DeleteRawMaterialByRawMaterialID(string RawMaterialID)
         {
-            Entities.RawMaterial rawMaterial = new Entities.RawMaterial();
+            RawMaterial rawMaterial = new RawMaterial();
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
-     
+
+            rawMaterial.RawMaterialID = RawMaterialID;
             System.Console.WriteLine("Enter RawMaterialName");
             rawMaterial.RawMaterialName = System.Console.ReadLine();
-            System.Console.WriteLine("Enter RawMaterialID");
-            rawMaterial.RawMaterialID = System.Console.ReadLine();
             System.Console.WriteLine("Enter Quantity");
-            rawMaterial.Quantity = System.Console.ReadLine();
+            rawMaterial.Quantity = System.Convert.ToDouble(System.Console.ReadLine());
             System.Console.WriteLine("Enter units");
             rawMaterial.Units = System.Console.ReadLine();
             System.Console.WriteLine("Enter Price");
             rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());
             rawMaterialBusinessLogicLayer.DeleteRawMaterial(rawMaterial);
         }
-        public static void ViewRawMaterial()
-        {
-            
-            RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
-            List<Entities.RawMaterial> rms = rawMaterialBusinessLogicLayer.GetRawMaterial();
 
-            foreach (Entities.RawMaterial rm in rms)
-            {
-                System.Console.WriteLine( rm.RawMaterialName + " , " + rm.RawMaterialID + " , " + rm.Quantity + "" + rm.Units + " , " + rm.Price);
-            }
-        }
-        public static void UpdateRawMaterial()
+        //static method
+        //Display the details of RawMaterial present in the list
+        public static void GetRawMaterial()
         {
-            Entities.RawMaterial rawMaterial = new Entities.RawMaterial();
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
-     
+            List<RawMaterial> rms = rawMaterialBusinessLogicLayer.GetRawMaterial();// call the GetRawMaterial method with no arguments in the BusinessLogicLayer by using Refernce Variable
+            System.Console.WriteLine("**********************************************************************************");
+            foreach (RawMaterial rm in rms)//to print the list
+            {
+                System.Console.WriteLine("RawMaterialName:-" + rm.RawMaterialName + "      RawMaterialID:-" + rm.RawMaterialID + "       Quantity:-" + rm.Quantity + "" + rm.Units + "    Price:-" + rm.Price);
+            }
+            System.Console.WriteLine("**********************************************************************************");
+        }
+
+        //display the RawMaterial details of Corresponding RawMaterialID
+        public static void GetRawMaterialByRawMaterialID(string RawMaterialID)
+        {
+            RawMaterial rawMaterial = new RawMaterial();
+            RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
+
+            rawMaterial.RawMaterialID = RawMaterialID;
+            RawMaterial a = rawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID);
+            System.Console.WriteLine("RawMaterialID:-" + a.RawMaterialID + "            RawMaterialName:-" + a.RawMaterialName + "        Quantity:-" + a.Quantity + a.Units + "        Price:-" + a.Price);
+        }
+
+        //static method
+        //we can change the details based on RawMaterialID
+        public static void UpdateRawMaterial(string RawMaterialID)
+        {
+            RawMaterial rawMaterial = new RawMaterial();
+            RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
+            
+            rawMaterial.RawMaterialID = RawMaterialID;
             System.Console.WriteLine("Enter RawMaterialName");
             rawMaterial.RawMaterialName = System.Console.ReadLine();
-            System.Console.WriteLine("Enter RawMaterialID");
-            rawMaterial.RawMaterialID = System.Console.ReadLine();
-           
-            System.Console.WriteLine("1.want to change Quantity");
-            System.Console.WriteLine("2.want to change price");
+            System.Console.WriteLine("1.want to change price");
+            System.Console.WriteLine("2.want to change Quantity");
             System.Console.WriteLine("enter the choice of changing quantity/price");
-            int i=System.Convert.ToInt32(System.Console.ReadLine());
-            switch(i)
+            int i = System.Convert.ToInt32(System.Console.ReadLine());
+            switch (i)
             {
-                case 1:ChangePrice();
+                case 1:
+                    ChangePrice();
                     break;
-                case 2:ChangeQuantity();
+                case 2:
+                    ChangeQuantity();
                     break;
-                default:System.Console.WriteLine("entered choice is invalid");
+                default:
+                    System.Console.WriteLine("entered choice is invalid");
                     break;
             }
-            
-          
-            
-        }
-        public static void ChangePrice()
-        {
-            Entities.RawMaterial rawMaterial = new Entities.RawMaterial();
-            RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
-            System.Console.WriteLine("Enter the new Price");
-            rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());
-            rawMaterialBusinessLogicLayer.UpdateRawMaterial(rawMaterial);
-        }
-        public static void ChangeQuantity()
-        {
-            Entities.RawMaterial rawMaterial = new Entities.RawMaterial();
-            RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
-            System.Console.WriteLine("Enter Quantity");
-            rawMaterial.Quantity = System.Console.ReadLine();
-            rawMaterialBusinessLogicLayer.UpdateRawMaterial(rawMaterial);
+            //Local function (it can access variables and parameters of the method)
+            void ChangePrice()
+            {
+                System.Console.WriteLine("Enter the new Price");
+                rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());
+                rawMaterialBusinessLogicLayer.UpdateRawMaterialPrice(rawMaterial);
+            }
+            //Local function (it can access variables and parameters of the method)
+            void ChangeQuantity()
+            {
+                System.Console.WriteLine("Enter new Quantity");
+                rawMaterial.Quantity = System.Convert.ToDouble(System.Console.ReadLine());
+                rawMaterialBusinessLogicLayer.UpdateRawMaterialQuantity(rawMaterial);
+            }
         }
     }
-    
 }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ICustBusinessLogicLayer.cs" />
     <Compile Include="IOrderManagementBusinessLayer.cs" />
+    <Compile Include="IRawMaterialBusinessLogicLayer.cs" />
     <Compile Include="IWareHouseAddressBusinessLogicLayer.cs" />
     <Compile Include="OrderManagementBusinessLogicLayer.cs" />
     <Compile Include="RawMaterialBusinessLogicLayer.cs" />
