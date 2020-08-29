@@ -2,11 +2,8 @@
 
 //Importing statements
 using System.Collections.Generic;
-using Znalytics.Inventory.WareHouseModule.Entities;
-//using Znalytics.Inventory.WareHouseModule.DataAccessLayer;
 using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.AddressModule.DataAccessLayer;
-using System;
 using Znalytics.Group4.Inventory.Entities;
 
 //Created a namespace for BusinessLayer of WareHouseAddress module
@@ -14,7 +11,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
 {
 
     /// <summary>
-    /// Represents BusinessLogic class of AddressWareHouse
+    /// Represents BusinessLogic class of WareHouseAddress
     /// </summary>
     public class WareHouseAddressBusinessLogicLayer: IWareHouseAddressBusinessLogicLayer
     {

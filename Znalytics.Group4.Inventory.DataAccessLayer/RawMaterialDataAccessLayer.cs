@@ -133,15 +133,13 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
 
             return asd;
         }
-         public RawMaterial GetRawMaterialNameByRawMaterialID(string RawMaterialID)
+         public string GetRawMaterialNameByRawMaterialID(string RawMaterialID)
          {
 
              RawMaterial asd = _rawMaterials.Find(temp => temp.RawMaterialID == RawMaterialID);
-             if (asd != null)
-             {
-                 return asd;
-             }
-            return null;
+            
+                 return asd.RawMaterialName;
+             
          }
 
         /// <summary>
