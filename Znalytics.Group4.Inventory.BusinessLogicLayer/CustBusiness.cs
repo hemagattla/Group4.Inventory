@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,7 +35,7 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
             }
         public List<Customer> GetCust()
         {
-            return d.GetCust();
+            return null;// d.GetCust();
         }
         public void DelCustomer(Customer c)
             {
@@ -48,5 +48,5 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
         }
 
     }
-}*/
+}
 
