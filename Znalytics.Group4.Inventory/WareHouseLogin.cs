@@ -1,4 +1,4 @@
-﻿using static System.Console;
+﻿/*using static System.Console;
 using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 using Znalytics.Inventory.WareHouseModule.Entities;
 
@@ -24,4 +24,4 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             ReadKey();
         }
     }
-}
+}*/

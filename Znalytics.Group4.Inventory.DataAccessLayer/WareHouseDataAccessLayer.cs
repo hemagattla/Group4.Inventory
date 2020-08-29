@@ -68,8 +68,8 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         public static List<WareHouse> GetFiledata()
         {
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseJson.txt");
-            string s2 = streamReader.ReadToEnd();
-            List<WareHouse> ware = JsonConvert.DeserializeObject<List<WareHouse>>(s2);
+            string s1 = streamReader.ReadToEnd();
+            List<WareHouse> ware = JsonConvert.DeserializeObject<List<WareHouse>>(s1);
             return ware;
 
         }
