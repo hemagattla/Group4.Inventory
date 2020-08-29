@@ -24,7 +24,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         /// <summary>
         /// Starting point of the program
         /// </summary>
-        public void menu()
+        static void Main()
         {
 
             WareHouseMenu();
@@ -40,15 +40,15 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             {
                 WriteLine("WareHouse Menu:");
                 WriteLine("1. Add WareHouse");
-                WriteLine("2. Display WareHouse");
-                WriteLine("3. Display WareHouse by WareHouseId");
+                WriteLine("2. Get WareHouses");
+                WriteLine("3. Get WareHouse by WareHouseId");
                 WriteLine("4. Delete WareHouse");
                 WriteLine("5. Update WareHouse");
                 WriteLine("6. Add Address");
-                WriteLine("7. Display Address");
-                WriteLine("8. GetAddressbyAddressid");
-                WriteLine("9. GetAddressbywarehouseid");
-                WriteLine("10. GetAddressbyLocationName");
+                WriteLine("7. Get WareHouse Addresses");
+                WriteLine("8. Get Address by AddressId");
+                WriteLine("9. Get Address by WarehouseId");
+                WriteLine("10. Get Address by LocationName");
                 WriteLine("11. Update WareHouse Address");
                 WriteLine("12. Remove WareHouse Address");
                 WriteLine("13. Exit");
