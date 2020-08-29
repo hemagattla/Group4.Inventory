@@ -41,7 +41,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// </summary>
         /// <param name="ProductID"></param>
         /// <returns></returns>
-        public Product ProductDetails(int ProductID)
+        public Product ProductDetails(string ProductID)
         {
             return i.GetProductByProductID(ProductID);
 
@@ -129,7 +129,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public List<OrderManagement> GetOrderDetailsByProductID(int value)
+        public List<OrderManagement> GetOrderDetailsByProductID(string value)
         {
            return dl.GetOrderDetailsByProductID(value);
             

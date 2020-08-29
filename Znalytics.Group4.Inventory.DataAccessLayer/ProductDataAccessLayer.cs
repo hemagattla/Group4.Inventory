@@ -7,7 +7,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Znalytics.Inventory.ProductModule.Entitie;
-
+using Newtonsoft.Json;
+using System.IO;
+using System.Xml.Linq;
 
 namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 {
@@ -21,10 +23,12 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         {
             set;
             get;
+
         }
 
         static ProductData() // creating a list object in constructor
         {
+
             _ProductsList = new List<Product>();
 
 
@@ -37,6 +41,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         public void AddProduct(Product productDetails)// Adding Products into the ProductsList
         {
             _ProductsList.Add(productDetails);
+            SaveIntoFile();
         }
 
         /// <summary>
@@ -78,6 +83,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
             if (PE != null)
             {
                 PE.ProductName = product.ProductName;
+                SaveIntoFile();
             }
         }
 
@@ -104,8 +110,18 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         {
             return _ProductsList.Exists(n => n.ProductID == productID);
 
-
-
         }
+
+        public void SaveIntoFile()
+        {
+
+            string s = JsonConvert.SerializeObject(_ProductsList);
+
+            //write data into file
+            StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\ProcuctData.txt");
+            streamWriter.Write(s);
+            streamWriter.Close();
+        }
+
     }
 }
