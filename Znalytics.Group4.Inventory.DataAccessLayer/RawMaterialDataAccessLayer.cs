@@ -29,7 +29,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
             {
                 new RawMaterial{RawMaterialID="RMID12", RawMaterialName="MILK",Quantity=3,Units="kgs",Price=23}
             };
-            _rawMaterials = GetFiledata();
+            _rawMaterials = LoadDetailsToList();
 
 
 
@@ -151,7 +151,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
             streamWriter.Write(s);
             streamWriter.Close();
         }
-        public static List<RawMaterial> GetFiledata()
+        public static List<RawMaterial> LoadDetailsToList()
         {
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\RawMaterial\RawMaterials.txt");
             string s2 = streamReader.ReadToEnd();
