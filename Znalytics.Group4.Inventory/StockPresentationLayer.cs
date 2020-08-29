@@ -1,4 +1,4 @@
-﻿using Znalytics.Inventory.StockMaintain.Entities;
+﻿/*using Znalytics.Inventory.StockMaintain.Entities;
 using Znalytics.Inventory.StockMaintain.BusinessLogicLayer;
 namespace Znalytics.Inventory.StockMaintain.PresentationLayer
 {
@@ -89,4 +89,4 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             System.Console.WriteLine(c);
         }
     }
-}
+}*/

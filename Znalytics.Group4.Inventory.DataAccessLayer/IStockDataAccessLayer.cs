@@ -1,4 +1,4 @@
-﻿using Znalytics.Inventory.StockMaintain.Entities;
+﻿/*using Znalytics.Inventory.StockMaintain.Entities;
 namespace Znalytics.Group4.Inventory.StockMaintain.DataAccessLayer
 {
     interface IStockDataAccessLayer
@@ -8,3 +8,4 @@ namespace Znalytics.Group4.Inventory.StockMaintain.DataAccessLayer
         int ViewQuantity(Stock stock);
     }
 }
+*/
