@@ -1,13 +1,16 @@
-﻿/*using System;
-using System.Collections.Generic;
-using System.Linq;
-using Znalytics.Group4.Inventory.RawMaterialModule.EntityLayer;
+﻿using System.Collections.Generic;//NameSpace of Collections
+using Znalytics.Group4.Inventory.RawMaterialModule.Entities;//NameSpace of  rawmaterial EntityLayer
+using Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer;//NameSpace of rawmaterial BussinessLogicLayer
+using Znalytics.Group4.Inventory.RawMaterialModule.EntityLayer;// exception of rawmaterial
+using Znalytics.Inventory.ProductModule.Entitie;//namespace of product entitylayer
+using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
+using Znalytics.Group4.Inventory.ProductRawMaterial.BusinessLogicLayer;
 
-namespace Znalytics.Group4.Inventory.IRawMaterialModule.PresentationLayer
+namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
 {
     class ProductRawMaterialPresentation
     {
-        static void Main()
+        public void ProductRawMaterial()
         {
            
                 System.Console.WriteLine("========================Product Raw Material==========================");
@@ -22,15 +25,21 @@ namespace Znalytics.Group4.Inventory.IRawMaterialModule.PresentationLayer
                         System.Console.WriteLine("3.view Raw Material Details of Product");
                         System.Console.WriteLine("4.Update Raw Material of the product");
                         System.Console.WriteLine("5.GetProductRawmaterial Details By ProductID");
-                    System.Console.WriteLine("6.Exit");
-                    System.Console.WriteLine("enter the choice");
-                    System.Console.WriteLine("=======================================================");
-                    q = int.TryParse(System.Console.ReadLine(), out select);//Trypase:- we are converting string to int
+                        System.Console.WriteLine("6.Exit");
+                        System.Console.WriteLine("enter the choice");
+                        System.Console.WriteLine("=======================================================");
+                        q = int.TryParse(System.Console.ReadLine(), out select);//Trypase:- we are converting string to int
 
-                    if (q == true)
-                    {
+                       if (q == true)
+                       {
+                        Product p = new Product();//product entity name 
+                        ProductBusiness productBusiness = new ProductBusiness();
                         RawMaterial rawMaterial = new RawMaterial();//creating object of entity class
-                        RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
+                        RawMaterialBusinessLogicLayer pb = new RawMaterialBusinessLogicLayer();
+
+                        ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
+                        System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
+                        rawMaterial.RawMaterialID = System.Console.ReadLine();
                         switch (select)
                         {
                             case 1:
@@ -111,4 +120,3 @@ namespace Znalytics.Group4.Inventory.IRawMaterialModule.PresentationLayer
         }
     }
 }
-*/

@@ -16,7 +16,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 {
 
     /// <summary>
-    /// Represents the class for WareHouse Address
+    /// Represents the class for WareHouse Address.It inherits the Abstract class
     /// </summary>
     public class WareHouseAddressDataAccessLayer : WareHouseAddressAbstractDAL
     {
@@ -27,7 +27,9 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             get;
         }
 
-        //Static Constructor
+        /// <summary>
+        /// Static Constructor
+        /// </summary>
         static WareHouseAddressDataAccessLayer()
         {
             _addressList = new List<WareHouseAddress>()
@@ -45,13 +47,16 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
         }
 
-        //Method to ADD address details to the list
-        public override void AddAddress(WareHouseAddress addressDetails)
+        /// <summary>
+        /// Method to ADD address details to the list
+        /// </summary>
+        /// <param name="addressDetails">Represents the </param>
+        public override void AddAddress(WareHouseAddress address)
         {
             //Condition to check whether the WareHouseId exists or not
-            if (addressDetails.AddressId != null)
+            if (address.AddressId != null)
             {
-                _addressList.Add(addressDetails);
+                _addressList.Add(address);
                 SaveIntoFile();
 
             }
@@ -61,6 +66,9 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// Saving the data into Json file
+        /// </summary>
         private void SaveIntoFile()
         {
             string s = JsonConvert.SerializeObject(_addressList);
@@ -70,6 +78,11 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             streamWriter.Write(s);
             streamWriter.Close();
         }
+
+        /// <summary>
+        /// reading the data from Json file and return the data in the file in List format
+        /// </summary>
+        /// <returns>Returns List of warehouses avaliable int WareHouseAddress.Txt</returns>
         public static List<WareHouseAddress> GetFiledata()
         {
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseAddress.txt");
@@ -81,13 +94,20 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         }
 
 
-        // Method to GET the added address details
+        /// <summary>
+        ///Method to GET the added address details
+        /// </summary>
+        /// <returns>Returns the address list</returns>
         public override List<WareHouseAddress> GetAddresses()
         {
             return _addressList;
         }
 
-        //Method to GET the Address details by AddressID
+        /// <summary>
+        /// Method to GET the added address details
+        /// </summary>
+        /// <param name="addressID">Represents AddressId</param>
+        /// <returns></returns>
         public override WareHouseAddress GetAddressByAddressID(string addressID)
         {
             //Condition to check whether the AddressId exists or not
@@ -102,7 +122,11 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
         }
 
-        //Method to GET the Address Details by WareHouseID
+        /// <summary>
+        /// Method to GET the Address Details by WareHouseID
+        /// </summary>
+        /// <param name="wareHouseID">Represents warehouse id</param>
+        /// <returns></returns>
         public override WareHouseAddress GetAddressByWareHouseID(string wareHouseID)
         {
             //Condition to check whether the WareHouseId exists or not
@@ -117,7 +141,11 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
         }
 
-        //Method to GET WareHouseAddress details by LocationName
+        /// <summary>
+        /// Method to GET WareHouseAddress details by LocationName
+        /// </summary>
+        /// <param name="locationName">Represents Location Name</param>
+        /// <returns></returns>
         public override List<WareHouseAddress> GetAddressByLocationName(string locationName)
         {
             //Condition to check whether the LocationName exists or not
@@ -132,7 +160,10 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
         }
 
-        //Method to UPDATE Door Number of WareHouse
+        /// <summary>
+        /// Method to UPDATE Door Number of WareHouse
+        /// </summary>
+        /// <param name="address">Represents the object of WareHouseAddress</param>
         public void UpdateDoorNumber(WareHouseAddress address)// update WareHouse Name
         {
             //Condition to check whether the AddressId exists or not
@@ -153,7 +184,10 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             }
         }
 
-        //Method to UPDATE the Location Name of WareHouse
+        /// <summary>
+        /// Method to UPDATE the Location Name of WareHouse
+        /// </summary>
+        /// <param name="address">Represents the object of WareHouseAddress</param>
         public void UpdateLocationName(WareHouseAddress address)
         {
             //Condition to check whether the AddressId exists or not
@@ -172,8 +206,11 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         }
 
 
-        //Method to UPDATE the State of WareHouse
-        public void UpdateState(WareHouseAddress address)// update product Name
+        /// <summary>
+        /// Method to UPDATE the State of WareHouse
+        /// </summary>
+        /// <param name="address">Represents the object of WareHouseAddress</param>
+        public void UpdateState(WareHouseAddress address)
         {
             //Condition to check whether the AddressId exists or not
             WareHouseAddress wha = _addressList.Find(n => n.AddressId == address.AddressId);
@@ -190,7 +227,10 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             }
         }
 
-        //Method to UPDATE the Pincode of WareHouse
+        /// <summary>
+        ///Method to UPDATE the Pincode of WareHouse
+        /// </summary>
+        /// <param name="address">Represents the object of WareHouseAddress</param>
         public void UpdatePincode(WareHouseAddress address)
         {
             //Condition to check whether the AddressId exists or not
@@ -208,7 +248,10 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             }
         }
 
-        //Method to REMOVE an address of the Warehouse by wareHouseID
+        /// <summary>
+        ///Method to REMOVE an address of the Warehouse by wareHouseID
+        /// </summary>
+        /// <param name="wareHouseID">Represents WareHouseid</param>
         public void RemoveAddressByWareHouseID(string wareHouseID)
         {
             //Condition to check whether the WareHouseId exists or not
@@ -225,7 +268,10 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
         }
 
-        //Method to REMOVE an address of the Warehouse by addressID
+        /// <summary>
+        ///Method to REMOVE an address of the Warehouse by addressID
+        /// </summary>
+        /// <param name="addressID">Represents Addressid</param>
         public void RemoveAddressByAddressID(string addressID)
         {
             //Condition to check whether the AddressId exists or not

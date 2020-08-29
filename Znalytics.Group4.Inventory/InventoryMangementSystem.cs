@@ -7,8 +7,7 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytic.Inventory.WareHouseModule.PresentationLayer;
 using Znalytics.Inventory.ProductModule.ProductPresentation;
 using Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer;
-using Znalytics.Inventory.StockMaintain.PresentationLayer;
-
+using Znalytics.Group4.Inventory.PresentationLayer;
 namespace Znalytics.Group4.Inventory
 {
     class InventoryMangementSystem
@@ -71,17 +70,16 @@ namespace Znalytics.Group4.Inventory
                 MenuPrensentor wareHousePresntation= new MenuPrensentor();
                 ProductPresentation productPresentation = new ProductPresentation();
                 RawMaterialPresentationLayer rawMaterialPresentation = new RawMaterialPresentationLayer();
-                StockPresentationLayer stockPresentationLayer = new StockPresentationLayer();
                 int option;
                 do
                 {
                     System.Console.WriteLine("1. WareHouse");
                     System.Console.WriteLine("2. Add Product");
                     System.Console.WriteLine("3. RawMaterialsDetails");
-                    System.Console.WriteLine("4. Stock");
-                   // System.Console.WriteLine("4. ");
+                    System.Console.WriteLine("3. add stock");
+                    System.Console.WriteLine("4. show stock");
                     
-                    System.Console.WriteLine("5. Exit");
+                    System.Console.WriteLine("3. Exit");
 
                     bool b = int.TryParse(System.Console.ReadLine(), out option);
 
@@ -100,8 +98,7 @@ namespace Znalytics.Group4.Inventory
                                 case 3:
                                     rawMaterialPresentation.RawMaterialMenu();
                                         break;
-                                case 4: stockPresentationLayer.menu();
-                                        break;
+                                case 4: break;
                                 default:
                                     System.Console.WriteLine("Please Enter the Correct Option");
                                     break;
@@ -122,6 +119,10 @@ namespace Znalytics.Group4.Inventory
                 } while (option != 3);
 
             }
+            else
+            {
+                System.Console.WriteLine("Entered UserName/password is invalid (Username contains only Alphabets,password is combination of alphabets & digits and starting letter should be uppercase)");
+            }
         }
 
         public static void Customer()
@@ -129,6 +130,7 @@ namespace Znalytics.Group4.Inventory
             int option;
             do
             {
+                OrderManagementPresentationLayer orderManagement = new OrderManagementPresentationLayer();
                 System.Console.WriteLine("1. Display warehouse Details");
                 System.Console.WriteLine("2. Display Products");
                 System.Console.WriteLine("3. show stock");
@@ -150,8 +152,9 @@ namespace Znalytics.Group4.Inventory
                                
                                 break;
                             case 3: break;
-                            case 4:
-                                break;
+                            case 4: orderManagement.Menu();
+                              
+                                     break;
                              default:
                                 System.Console.WriteLine("Please Enter the Correct Option");
                                 break;
