@@ -40,8 +40,15 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// <param name="productDetails">object of Product class</param>
         public void AddProduct(Product productDetails)// Adding Products into the ProductsList
         {
-            _ProductsList.Add(productDetails);
-            SaveIntoFile();
+            if (_ProductsList.Count == 0)
+            {
+                _ProductsList = GetFiledata();
+            }
+            else
+            {
+                _ProductsList.Add(productDetails);
+                SaveIntoFile();
+            }
         }
 
         /// <summary>
@@ -112,6 +119,9 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 
         }
 
+        /// <summary>
+        /// Saving the data into Json file
+        /// </summary>
         public void SaveIntoFile()
         {
 
@@ -121,6 +131,18 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
             StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\ProcuctData.txt");
             streamWriter.Write(s);
             streamWriter.Close();
+        }
+        /// <summary>
+        /// reading the data from Json file and return the data in the file in List format
+        /// </summary>
+        /// <returns></returns>
+        public List<Product> GetFiledata()
+        {
+            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\CustomerJson.txt");
+            string s2 = streamReader.ReadToEnd();
+            List<Product> customers2 = JsonConvert.DeserializeObject<List<Product>>(s2);
+            return customers2;
+
         }
 
     }
