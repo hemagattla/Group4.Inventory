@@ -129,7 +129,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         public void SaveIntoFile()
         {
 
-            string s = JsonConvert.SerializeObject( _ProductsList);
+            string s = JsonConvert.SerializeObject(_ProductsList);
 
             //write data into file
             StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\ProcuctData.txt");
