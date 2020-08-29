@@ -38,6 +38,10 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
                 new WareHouseAddress(){WareHouseId="WHID02",AddressId="W2A1",DoorNumber="2-1-1",LocationName="KARIMNAGAR",Pincode="506002"},
                 new WareHouseAddress(){WareHouseId="WHID02",AddressId="W2A2",DoorNumber="2-2-2",LocationName="VIZA",Pincode="506009"},
             };
+            if (_addressList.Count == 0)
+            {
+                _addressList = GetFiledata();
+            }
 
         }
 
@@ -48,6 +52,8 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             if (addressDetails.AddressId != null)
             {
                 _addressList.Add(addressDetails);
+                SaveIntoFile();
+
             }
             else
             {
@@ -62,12 +68,14 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             //write data into file
             StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\WareHouseDataAddress.txt");
             streamWriter.Write(s);
+            streamWriter.Close();
         }
         public static List<WareHouseAddress> GetFiledata()
         {
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseAddress.txt");
             string s2 = streamReader.ReadToEnd();
             List<WareHouseAddress> addr = JsonConvert.DeserializeObject<List<WareHouseAddress>>(s2);
+            streamReader.Close();
             return addr;
 
         }
@@ -208,6 +216,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             {
 
                 _addressList.RemoveAll(n => n.WareHouseId == wareHouseID);
+                SaveIntoFile();
             }
             else
             {
@@ -223,6 +232,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             if (_addressList.Exists(n => n.AddressId == addressID))
             {
                 _addressList.RemoveAll(n => n.AddressId == addressID);
+                SaveIntoFile();
             }
             else
             {
