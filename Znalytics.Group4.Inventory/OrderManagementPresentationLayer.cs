@@ -76,7 +76,7 @@ namespace Znalytics.Group4.Inventory
                     {
                         case 1:
                             Console.WriteLine("Enter ProductID to select Products that you want to order");
-                            int productId = int.Parse(Console.ReadLine());
+                            string productId = (Console.ReadLine());
                             Product product = orderBusiness.ProductDetails(productId);
 
                             order.Products.Add(product);
@@ -147,7 +147,7 @@ namespace Znalytics.Group4.Inventory
                         do
                         {
                             Console.WriteLine("Enter ProductID");
-                            int ProductId = int.Parse(Console.ReadLine());
+                            string ProductId = (Console.ReadLine());
                             Product p = orderBusiness.ProductDetails(ProductId);
                             
                             products.Add(p);

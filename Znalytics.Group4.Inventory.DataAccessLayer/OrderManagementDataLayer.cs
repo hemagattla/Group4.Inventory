@@ -56,6 +56,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         public void AddOrderDetails(OrderManagement values)
         {
             _orders.Add(values);
+            SaveIntoFile();
         }
 
         /// <summary>
@@ -64,7 +65,9 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// <returns></returns>
         public List<OrderManagement> GetOrderDetails()
         {
+            GetFiledata();
             return _orders;
+           
         }
 
        /// <summary>
@@ -83,7 +86,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public override List<OrderManagement> GetOrderDetailsByWareHouseID(string value)
+        public override List<OrderManagement> GetOrderDetailsByAddressID(string value)
         {
             List<OrderManagement> order = new List<OrderManagement>();
             foreach (var orders in _orders)
@@ -103,9 +106,9 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public override OrderManagement GetOrderDetailsByProductID(string value)
+        public override List<OrderManagement> GetOrderDetailsByProductID(string value)
         {
-            OrderManagement order = new OrderManagement();
+            List<OrderManagement> order = new List<OrderManagement>();
 
 
             foreach (var orders in _orders)
@@ -113,8 +116,8 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
                 foreach (var products in orders.Products)
                 {
                     if (products.ProductID == value)
-                    
-                       order= orders;
+
+                        order.Add(orders);
                     
                 }
 
@@ -162,6 +165,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
            
 
             order.Products = value;
+            SaveIntoFile();
             }
         /// <summary>
         /// UpdateWareHouse AddressDetails
@@ -173,7 +177,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         {
             OrderManagement order = _orders.Find(temp => temp.OrderID == orderid);
             order.WareHouseAddress = value;
-
+            SaveIntoFile();
         }
         /// <summary>
         /// Update CustomerAddressDetails
@@ -185,6 +189,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
             OrderManagement order = _orders.Find(temp => temp.OrderID == orderid);
             
             order.CustomerAddress = value;
+            SaveIntoFile();
         }
 
 
