@@ -16,7 +16,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
     class RawMaterialPresentationLayer
     {
         //Execution starts from MainMethod
-        static void Main()
+        public void RawMaterialMenu()
         {
             System.Console.WriteLine("========================Raw Material==========================");
             int select;//local varialbe
@@ -111,7 +111,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
                 System.Console.WriteLine(ex.Message);
             }
 
-            System.Console.Read();
+            
 
         }
 

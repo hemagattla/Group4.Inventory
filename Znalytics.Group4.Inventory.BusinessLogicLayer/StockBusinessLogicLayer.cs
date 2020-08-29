@@ -1,4 +1,4 @@
-﻿using Znalytics.Inventory.StockMaintain.Entities;
+﻿/*using Znalytics.Inventory.StockMaintain.Entities;
 using Znalytics.Inventory.StockMaintain.DataAccessLayer;
 
 using Znalytics.Group4.Inventory.BusinessLogicLayer;
@@ -75,4 +75,4 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
         }
 
     }
-}
+}*/
