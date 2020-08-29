@@ -24,7 +24,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         /// <summary>
         /// Starting point of the program
         /// </summary>
-        static void Main()
+        public void Menu()
         {
 
             WareHouseMenu();

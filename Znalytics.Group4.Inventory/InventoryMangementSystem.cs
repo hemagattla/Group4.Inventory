@@ -66,7 +66,7 @@ namespace Znalytics.Group4.Inventory
 
             if(userName=="Admin"&&passWord=="Admin123")
             {
-                MenuPrensentor wareHousePresntation= new MenuPrensentor;
+                MenuPrensentor wareHousePresntation= new MenuPrensentor();
                 ProductPresentation productPresentation = new ProductPresentation();
                 int option;
                 do
@@ -88,7 +88,7 @@ namespace Znalytics.Group4.Inventory
                             switch (option)
                             {
                                 case 1:
-                                    wareHousePresntation.menu();
+                                    wareHousePresntation.Menu();
                                     break;
                                 case 2:
                                     productPresentation.menu();
