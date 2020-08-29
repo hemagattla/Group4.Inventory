@@ -46,7 +46,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message); 
             }
         }
 
@@ -73,7 +73,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message);
             }
         }
 
@@ -90,7 +90,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message);
             }
         }
 
@@ -108,7 +108,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message); 
             }
         }
 
@@ -126,7 +126,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message);
             }
         }
 
@@ -144,7 +144,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message); 
             }
         }
 
