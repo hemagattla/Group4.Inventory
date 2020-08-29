@@ -14,7 +14,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
     public class WareHouse
     {
         //Private Fields
-        private string _warehouseId;
+        private string _warehouseId; 
         private string _warehouseName;
         private string _managerName;
 
