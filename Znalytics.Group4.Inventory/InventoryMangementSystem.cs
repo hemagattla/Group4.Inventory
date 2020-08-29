@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Znalytics.Inventory.WareHouseModule.Entities;
 
 namespace Znalytics.Group4.Inventory
 {
@@ -31,7 +32,7 @@ namespace Znalytics.Group4.Inventory
                                 Admin();
                                 break;
                             case 2:
-                                Customer();
+                               Customer();
                                 break;
                             default:
                                 System.Console.WriteLine("Please Enter the Correct Option");
@@ -67,7 +68,9 @@ namespace Znalytics.Group4.Inventory
                 do
                 {
                     System.Console.WriteLine("1. WareHouse");
-                    System.Console.WriteLine("2. Customer");
+                    System.Console.WriteLine("2. add Products");
+                    System.Console.WriteLine("3. add stock");
+                    System.Console.WriteLine("4. show stock");
                     System.Console.WriteLine("3. Exit");
 
                     bool b = int.TryParse(System.Console.ReadLine(), out option);
@@ -79,12 +82,14 @@ namespace Znalytics.Group4.Inventory
                             switch (option)
                             {
                                 case 1:
-                                    Admin();
+                                   WareHouse();
                                     break;
                                 case 2:
-                                    Customer();
+                                   productPresentation();
                                     break;
-                                default:
+                                case 3: break;
+                                case 4: break;
+                                 I                                default:
                                     System.Console.WriteLine("Please Enter the Correct Option");
                                     break;
 
@@ -104,9 +109,55 @@ namespace Znalytics.Group4.Inventory
                 } while (option != 3);
 
             }
+        }
 
-          
-        
+        public static void Customer()
+        {
+            int option;
+            do
+            {
+                System.Console.WriteLine("1. Display warehouse Details");
+                System.Console.WriteLine("2. Display Products");
+                System.Console.WriteLine("3. show stock");
+                System.Console.WriteLine("4. order");
+                System.Console.WriteLine("5. Exit");
+
+                bool b = int.TryParse(System.Console.ReadLine(), out option);
+
+                if (b == true)
+                {
+                    try
+                    {
+                        switch (option)
+                        {
+                            case 1:
+                               
+                                break;
+                            case 2:
+                               
+                                break;
+                            case 3: break;
+                            case 4:
+                                break;
+                             default:
+                                System.Console.WriteLine("Please Enter the Correct Option");
+                                break;
+
+
+                        }
+                    }
+
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+                else
+                {
+                    System.Console.WriteLine("Please Enter the only digits");
+                }
+            } while (option != 3);
+
         }
 
     }

@@ -145,6 +145,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\ProcuctData.txt");
             string s2 = streamReader.ReadToEnd();
             List<Product> customers2 = JsonConvert.DeserializeObject<List<Product>>(s2);
+            streamReader.Close();
             return customers2;
 
         }
