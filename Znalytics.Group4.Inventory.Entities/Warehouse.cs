@@ -49,12 +49,12 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         {
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(value) && value.Length == 6)
                 {
                     bool spaceFound = value.Contains(" ");
                     bool atFound = value.Contains("@");
                     bool commaFound = value.Contains(",");
-                    if (!spaceFound && !atFound && !commaFound && value.StartsWith("WHID") && value.Length <= 6)
+                    if (!spaceFound && !atFound && !commaFound && value.StartsWith("WHID"))
                     {
                         _warehouseId = value;
                     }
