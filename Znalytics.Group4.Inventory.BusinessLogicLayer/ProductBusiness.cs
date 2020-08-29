@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Znalytics.Inventory.ProductModule.DataAccessLayer;
 using Znalytics.Inventory.ProductModule.Entitie;
 //using Znalytics.Group4.Inventory.IBusinessLogicLayer;
-//using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
+using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
 
 namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
 {
@@ -89,7 +89,7 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
         /// </summary>
         /// <param name="ProductID">productID</param>
         /// <returns></returns>
-        public Product GetProductByProductID(string ProductID) => d.GetProductByID(ProductID);
+        public Product GetProductByProductID(string ProductID) { return d.GetProductByID(ProductID); }
 
         /// <summary>
         /// checking whether Product is present in the list and return bool value

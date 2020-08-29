@@ -1,15 +1,16 @@
 ﻿// Created By Nitya
 
 //Importing statements
-using System;
+
 using System.Collections.Generic;
 using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Group4.Inventory.Entities;
-using Znalytics.Group4.Inventory.DataAccessLayer;
+using Newtonsoft.Json;
+using System.IO;
 
 
-    //Created a namespace for DataAccess Layer of WareHouse Module
-    namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
+//Created a namespace for DataAccess Layer of WareHouse Module
+namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 {
     /// <summary>
     /// Represents the class for WareHouse Data
@@ -43,12 +44,33 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
             if (_wareHouseList.Exists(temp => temp.WareHouseId == warehouseDetails.WareHouseId))
             {
                 _wareHouseList.Add(warehouseDetails);
+                SaveIntoFile();
             }
             else
             {
                 throw new WareHouseException("Warehouse already exists");
             }
 
+
+        }
+
+        private static void SaveIntoFile()
+        {
+
+            string s = JsonConvert.SerializeObject(_wareHouseList);
+
+            //write data into file
+            StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\WareHouseData.txt");
+            streamWriter.Write(s);
+            streamWriter.Close();
+        }
+
+        public static List<WareHouse> GetFiledata()
+        {
+            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseJson.txt");
+            string s2 = streamReader.ReadToEnd();
+            List<WareHouse> ware = JsonConvert.DeserializeObject<List<WareHouse>>(s2);
+            return ware;
 
         }
 
@@ -111,8 +133,7 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
                 if (w != null)
                 {
                     w.WareHouseName = wareHouse.WareHouseName;
-
-
+                    SaveIntoFile();
                 }
             }
             else
@@ -131,6 +152,7 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
                 if (w != null)
                 {
                     w.MangerName = wareHouse.MangerName;
+                    SaveIntoFile();
                 }
             }
             else
