@@ -7,6 +7,8 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
 using Znalytics.Inventory.AddressModule.Entities;
 using System;
 using Znalytics.Group4.Inventory.Entities;
+using Newtonsoft.Json;
+using System.IO;
 
 
 //Created a namespace for DataAccessLayer of WareHouseAddress Module
@@ -46,12 +48,31 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             if (_addressList.Exists(temp => temp.WareHouseId == addressDetails.WareHouseId))
             {
                 _addressList.Add(addressDetails);
+                SaveIntoFile();
             }
             else
             {
                 throw new WareHouseException("Warehouse id doesnot exist");
             }
         }
+
+        private void SaveIntoFile()
+        {
+            string s = JsonConvert.SerializeObject(_addressList);
+
+            //write data into file
+            StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\WareHouseDataAddress.txt");
+            streamWriter.Write(s);
+        }
+        public static List<WareHouseAddress> GetFiledata()
+        {
+            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseJson.txt");
+            string s2 = streamReader.ReadToEnd();
+            List<WareHouseAddress> addr = JsonConvert.DeserializeObject<List<WareHouseAddress>>(s2);
+            return addr;
+
+        }
+
 
         // Method to GET the added address details
         public override List<WareHouseAddress> GetAddresses()
@@ -114,6 +135,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
                 if (wha != null)
                 {
                     wha.DoorNumber = address.DoorNumber;
+                    SaveIntoFile();
 
 
                 }
@@ -132,6 +154,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             if (wha != null)
             {
                 wha.LocationName = address.LocationName;
+                SaveIntoFile();
 
 
             }
@@ -150,6 +173,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             if (wha != null)
             {
                 wha.State = address.State;
+                SaveIntoFile();
 
 
             }
@@ -167,6 +191,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             if (wha != null)
             {
                 wha.Pincode = address.Pincode;
+                SaveIntoFile();
 
 
             }
