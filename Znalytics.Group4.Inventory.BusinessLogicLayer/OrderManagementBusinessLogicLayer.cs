@@ -118,7 +118,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public List<OrderManagement> GetOrderDetailsByAddressID(string value)
+        public List<OrderManagement> GetOrderDetailsByAdddressID(string value)
         {
        
             List<OrderManagement> orders= dl.GetOrderDetailsByAddressID(value);
