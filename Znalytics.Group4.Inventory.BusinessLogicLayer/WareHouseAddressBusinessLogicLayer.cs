@@ -11,7 +11,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
 {
 
     /// <summary>
-    /// Represents BusinessLogic class of WareHouseAddress
+    /// Represents BusinessLogic class of WareHouseAddress.It implements an Interface
     /// </summary>
     public class WareHouseAddressBusinessLogicLayer: IWareHouseAddressBusinessLogicLayer
     {

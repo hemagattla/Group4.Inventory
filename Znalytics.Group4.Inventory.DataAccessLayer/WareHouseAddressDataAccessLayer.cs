@@ -16,7 +16,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 {
 
     /// <summary>
-    /// Represents the class for WareHouse Address
+    /// Represents the class for WareHouse Address.It inherits the Abstract class
     /// </summary>
     public class WareHouseAddressDataAccessLayer : WareHouseAddressAbstractDAL
     {
