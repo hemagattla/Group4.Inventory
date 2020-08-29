@@ -41,6 +41,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 
 
         }
+        public ProductData() { }
 
         /// <summary>
         /// adding the products into the List
