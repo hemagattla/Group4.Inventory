@@ -79,7 +79,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
 
             set
             {
-                Regex r = new Regex("^[a-zA-Z\0-9-_s]$");
+                Regex r = new Regex("[a-zA-Z\0-9-_s]$");
                 if (!string.IsNullOrEmpty(value)&&r.IsMatch(value))
                 {
                     bool atFound = value.Contains("@");
