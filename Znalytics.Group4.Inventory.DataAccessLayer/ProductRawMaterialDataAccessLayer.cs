@@ -68,80 +68,18 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
             abc.Quantity = productRawMaterial.Quantity;
             // ListOfRawMaterials();
         }
-
-        /// <summary>
-        /// UpdateRawMaterialQuantity is a instance method used to Update the RawMaterial Quantity Based on RawMaterialName and RawMaterialID
-        /// </summary>
-        /// <param name="rawMaterial">is a variable of RawMaterial type</param>
-        /*public void UpdateRawMaterialQuantity(ProductRawMaterial productRawMaterial)
+        public List<ProductRawMaterial> GetDetailsByProductID(ProductRawMaterial productRawMaterial)
         {
-            ProductRawMaterial ab = _productRawMaterials.Find(temp => temp.RawMaterialID == productRawMaterial.RawMaterialID && temp.RawMaterialName == productRawMaterial.RawMaterialName);
-
-            try
-            {
-                if (ab != null)
-                {
-                    ab.Quantity = productRawMaterial.Quantity;
-                    // ListOfRawMaterials();
-                }
-                else
-                {
-                    throw new Exception("entered RawMaterialName is invalid");
-                }
-            }
-            catch
-            {
-                throw;
-            }
-
-
-        }*/
+            List<ProductRawMaterial> ab= _productRawMaterials.Where(temp => temp.ProductID == productRawMaterial.ProductID)/*.Select(temp=>new AddRawMaterial() { RawMaterialID, RawMaterialName }*/.ToList();
+            return ab;
+        }
+        public List<ProductRawMaterial> GetDetailsUsingOriderBy()
+        {
+            List<ProductRawMaterial> ab = _productRawMaterials.OrderBy(temp => temp.ProductID)
+                .ThenBy(temp=> temp.RawMaterialID)
+                .ThenBy(temp=>temp.RawMaterialName).ToList();
+            return ab;
+        }
     }
 }
-
-        /// <summary>
-        /// GetRawMaterialByRawMaterialID is a instance method used to Return the Corresponding RawMaterial Details based on RawMaterialID
-        /// </summary>
-        /// <param name="RawMaterialID">Represents the ID of RawMaterial</param>
-        /// <returns>Returns the list of RawMaterial details</returns>
-       /* public RawMaterial GetRawMaterialByRawMaterialID(string RawMaterialID)
-        {
-
-            RawMaterial asd = _rawMaterials.Find(temp => temp.RawMaterialID == RawMaterialID);
-
-            return asd;
-        }
-        public string GetRawMaterialNameByRawMaterialID(string RawMaterialID)
-        {
-
-            RawMaterial asd = _rawMaterials.Find(temp => temp.RawMaterialID == RawMaterialID);
-
-            return asd.RawMaterialName;
-
-        }*/
-
-        /// <summary>
-        /// ListOfRawMaterials is a instance method used to used to Write data into the file
-        /// </summary>
-       /* public void ListOfRawMaterials()
-        {
-            string s = JsonConvert.SerializeObject(_rawMaterials);
-
-            //write data into file
-            StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\RawMaterial\RawMaterials.txt");
-            streamWriter.Write(s);
-            streamWriter.Close();
-        }
-        public static List<RawMaterial> GetFiledata()
-        {
-            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\RawMaterial\RawMaterials.txt");
-            string s2 = streamReader.ReadToEnd();
-            List<RawMaterial> customers2 = JsonConvert.DeserializeObject<List<RawMaterial>>(s2);
-            streamReader.Close();
-            return customers2;
-
-        }
-    }
-}*/
-    
 
