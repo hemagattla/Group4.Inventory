@@ -46,12 +46,12 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
                                 rawMaterial.RawMaterialID = System.Console.ReadLine();
                                 if (rawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID) == null)//Checks wheather entered RawMaterialID exists in list or not
                                 {
-                                    AddRawMaterial(rawMaterial.RawMaterialID);//Static method we can call directly
-                                    System.Console.WriteLine("******************* Successfully added RawMaterial Details of ID" + rawMaterial.RawMaterialID + " ************** ");
+                                    AddRawMaterial(rawMaterial.RawMaterialID);//Static method we can call directly 
+                                    System.Console.WriteLine("******************* Successfully added RawMaterial Details of ID  " + rawMaterial.RawMaterialID + "  ************** ");
                                 }
                                 else
                                 {
-                                    System.Console.WriteLine("**************entered RawMaterialID" + rawMaterial.RawMaterialID + "already exists. Pls Try again*************");
+                                    System.Console.WriteLine("**************entered RawMaterialID  " + rawMaterial.RawMaterialID + "  already exists. Pls Try again*************");
                                 }
                                 break;
                             case 2:
@@ -60,7 +60,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
                                 if (rawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID) != null)//Checks wheather entered RawMaterialID exists in list or not
                                 {
                                     DeleteRawMaterialByRawMaterialID(rawMaterial.RawMaterialID);//Static method we can call directly
-                                    System.Console.WriteLine("******************* Successfully Deleted RawMaterialID" + rawMaterial.RawMaterialID + " * ************** ");
+                                    System.Console.WriteLine("******************* Successfully Deleted RawMaterialID  " + rawMaterial.RawMaterialID + "  * ************** ");
                                 }
                                 else
                                 {
@@ -76,11 +76,11 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
                                 if (rawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID) != null)//Checks wheather entered RawMaterialID exists in list or not
                                 {
                                     UpdateRawMaterial(rawMaterial.RawMaterialID);//Static method we can call directly
-                                    System.Console.WriteLine("******************* Updated successfully *************** ");
+                                    System.Console.WriteLine("******************* Updated successfully RawMaterialID  " + rawMaterial.RawMaterialID + " *************** ");
                                 }
                                 else
                                 {
-                                    System.Console.WriteLine("**************entered RawMaterialID " + rawMaterial.RawMaterialID + " does not exists. Pls Try again*************");
+                                    System.Console.WriteLine("**************entered RawMaterialID  " + rawMaterial.RawMaterialID + "  does not exists. Pls Try again*************");
                                 }
                                 break;
                             case 5:
@@ -89,11 +89,11 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
                                 if (rawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID) != null)//Checks wheather entered RawMaterialID exists in list or not
                                 {
                                     GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID);//Static method we can call directly
-                                    System.Console.WriteLine("******************* U can see the details now *************** ");
+                                    System.Console.WriteLine("******************* U can see the details now RawMaterialID  " + rawMaterial.RawMaterialID + " *************** ");
                                 }
                                 else
                                 {
-                                    System.Console.WriteLine("**************entered RawMaterialID " + rawMaterial.RawMaterialID + " does not exists. Pls Try again*************");
+                                    System.Console.WriteLine("**************entered RawMaterialID  " + rawMaterial.RawMaterialID + "  does not exists. Pls Try again*************");
                                 }
                                 break;
                         }
