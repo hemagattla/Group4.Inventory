@@ -20,7 +20,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
     /// </summary>
     public class WareHouseAddressDataAccessLayer : WareHouseAddressAbstractDAL
     {
-        //Created a list for WareHouse Addresses
+        //Created a list for WareHouse Addresses.It is made static so that it doesn't override the previous data
         private static List<WareHouseAddress> _addressList
         {
             set;
@@ -32,6 +32,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         /// </summary>
         static WareHouseAddressDataAccessLayer()
         {
+            //The object of List class is stored in the reference variable
             _addressList = new List<WareHouseAddress>()
             {
                 //Mock Data
@@ -71,6 +72,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         /// </summary>
         private void SaveIntoFile()
         {
+
             string s = JsonConvert.SerializeObject(_addressList);
 
             //write data into file
@@ -113,6 +115,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             //Condition to check whether the AddressId exists or not
             if (_addressList.Exists(temp => temp.AddressId == addressID))
             {
+
                 return _addressList.Find(temp => temp.AddressId == addressID);
             }
             else
@@ -257,7 +260,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             //Condition to check whether the WareHouseId exists or not
             if (_addressList.Exists(n => n.WareHouseId == wareHouseID))
             {
-
+                //It removes all the condition matching elements
                 _addressList.RemoveAll(n => n.WareHouseId == wareHouseID);
                 SaveIntoFile();
             }
@@ -277,6 +280,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             //Condition to check whether the AddressId exists or not
             if (_addressList.Exists(n => n.AddressId == addressID))
             {
+                //It removes all the condition matching elements
                 _addressList.RemoveAll(n => n.AddressId == addressID);
                 
                 SaveIntoFile();
@@ -294,6 +298,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         /// <returns></returns>
         public static bool CheckAddressId(string id)
         {
+            //Condition to check whether the WareHouseId exists or not
             bool result = _addressList.Exists(temp => temp.AddressId == id);
             return result;
         }

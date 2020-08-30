@@ -15,11 +15,11 @@ using Znalytics.Inventory.AddressModule.DataAccessLayer;
 namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 {
     /// <summary>
-    /// Represents the class for WareHouse Data and it is a static 
+    /// Represents the static class for WareHouse Data 
     /// </summary>
     public static class WareHouseDataAccessLayer//Can be accessed with ClassName only
     {
-        //Created a list for WareHouse
+        //Created a list for WareHouse. It is made static so that it doesn't override the previous data
         private static List<WareHouse> _wareHouseList
         {
             set;
@@ -27,10 +27,11 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         }
 
         /// <summary>
-        /// Static  Constructor 
+        /// Static  Constructor. It is executed when the class is accessed for the first time
         /// </summary>
         static WareHouseDataAccessLayer()
         {
+            //The object of List class is stored in the reference variable
             _wareHouseList = new List<WareHouse>()
             {
                 //MOCK DATA
@@ -41,7 +42,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
                 new WareHouse(){WareHouseId="WHID05",WareHouseName="ABCDE",MangerName="RAMYA"},
             };
 
-
+            //If WarehouseList is empty, then it returns the data present in the file
             if (_wareHouseList.Count == 0)
             {
                 _wareHouseList = GetFiledata();
@@ -73,7 +74,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// </summary>
         private static void SaveIntoFile()
         {
-
+            
             string s = JsonConvert.SerializeObject(_wareHouseList);
 
             //write data into file
@@ -100,7 +101,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         ///  Method to GET the added details
         /// </summary>
         /// <returns>It returns the list of WareHouses</returns>
-        public static List<WareHouse> GetWareHouses() => _wareHouseList;
+        public static List<WareHouse> GetWareHouses() => _wareHouseList;//Used Linq
         
 
         /// <summary>
@@ -113,6 +114,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
             {
+                //Linq returns an object of conditional data 
                 return (WareHouse)_wareHouseList.Where(temp => temp.WareHouseId == wareHouseID);
             }
             else
@@ -130,8 +132,13 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
             {
+                //It removes all the condition matching elements
                 _wareHouseList.RemoveAll(n => n.WareHouseId == wareHouseID);
+
+                //Created an object and is stored in a reference variable
                 WareHouseAddressDataAccessLayer wa = new WareHouseAddressDataAccessLayer();
+
+                //When a WareHouse is deleted, the corresponding addresses are also removed
                 wa.RemoveAddressByWareHouseID(wareHouseID);
                 SaveIntoFile();
             }
@@ -151,6 +158,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             //Condition to check whether the WareHouseName exists or not
             if (_wareHouseList.Exists(n => n.WareHouseName == wareHouseName))
             {
+                //It removes all the condition matching elements
                 _wareHouseList.RemoveAll(n => n.WareHouseName == wareHouseName);
                 SaveIntoFile();
             }
@@ -169,6 +177,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouse.WareHouseId))
             {
+                //Finds the matching element.The returned bool value is stored in a reference variable
                 WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
                 if (w != null)
                 {
@@ -191,6 +200,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(temp => temp.WareHouseId == wareHouse.WareHouseId))
             {
+                //Finds the matching element.The returned bool value is stored in a reference variable
                 WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
                 if (w != null)
                 {
@@ -211,6 +221,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// <returns></returns>
         public static bool CheckWareHouseId(string id)
         {
+            //Condition to check whether the WareHouseId exists or not
             bool result = _wareHouseList.Exists(temp => temp.WareHouseId == id);
             return result;
         }

@@ -57,7 +57,9 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
+                //Regular Expression for AlphaNumeric values
                 Regex r = new Regex("[A-Z0-9]$");
+                //AddressId should not be null or empty
                 if (!string.IsNullOrEmpty(value)&&value.StartsWith("W")&&value.Length==4&&r.IsMatch(value) )
                 {
                     
@@ -81,7 +83,8 @@ namespace Znalytics.Inventory.AddressModule.Entities
         public string DoorNumber
         {
             set
-            {
+            {   
+                //Door number should not be null or empty
                 if (!string.IsNullOrEmpty(value)&&value.Length<=30)
                 {
                     
@@ -107,7 +110,9 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                Regex r = new Regex("[a-zA-Z0-9_]+$");
+                //Regular Expression for Alphabets(Capital&small letters)
+                Regex r = new Regex("[a-zA-Z_]+$");
+                //LocationName should not be null or empty
                 if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
                 {
                     
@@ -133,7 +138,9 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
+                //Regular Expression for Alphabets(Capital&small letters)
                 Regex r = new Regex("[a-zA-Z_]+$");
+                //State should not be null or empty
                 if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
                 {
                     bool atFound = value.Contains("@");
@@ -161,7 +168,9 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
+                //Regular Expression for numeric values
                 Regex r = new Regex("[0-9]+$");
+                //Pincode should not be null or empty
                 if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length == 6)    
                 {
                     _pincode = value;
