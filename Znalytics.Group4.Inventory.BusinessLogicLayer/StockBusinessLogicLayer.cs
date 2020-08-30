@@ -46,7 +46,10 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
         {
             return stockDataAccesslogic.DisplayStock(stock);
         }
-
+        /// <summary>
+        /// used to Update the quntity of Stock of Product of Particular WarehouseID and warehouse AddressId
+        /// </summary>
+        /// <param name="stock">contains user entered information like Warehouseid,warehouse addreesid and Productid</param>
         public  void UpdateStockQuantity(Stock stock)
         {
             stockDataAccesslogic.UpdateStockQuantity(stock);
