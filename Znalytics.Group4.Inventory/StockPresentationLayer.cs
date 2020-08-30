@@ -20,7 +20,9 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                 do
                 {
                     System.Console.WriteLine("1. Add Stock");
+                    System.Console.Write("2. DisplayStock");
                     System.Console.Write("Enter Your Choice");
+                    
 
 
                     b = int.TryParse(System.Console.ReadLine(), out choice);
@@ -92,7 +94,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                         
                         stockBusinessLogicLayer.AddStock(stock);
                         Console.WriteLine("Stock Added Sucessfully!!");
-                        stock.TotalQuantity = TotalQuantity(stock.StockID);
+                        
                     }
                 }
                 else
@@ -129,6 +131,23 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                 System.Console.WriteLine(item.ProductID + "  " + item.TotalQuantity);
             }
            
+        }
+        /// <summary>
+        /// local function to check no dupliacte stock id to be entered into the list
+        /// </summary>
+        /// <param name="stockID"></param>
+        /// <returns></returns>
+        public bool CheckStockID(string stockID)
+        {
+            StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
+            bool result = stockBusinessLogicLayer.CheckProductID(stockID);
+            if (result == true)
+            {
+
+                System.Console.WriteLine("StockID Exits");
+                return result;
+            }
+            return result;
         }
     }
 }
