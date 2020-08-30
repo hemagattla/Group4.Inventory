@@ -17,7 +17,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         Customer _customerAddress;
         int _orderID;
         double _totalPrice;
-      
+        int _quantity;
         
         /// <summary>
         /// Constructor That intializes the Fields
@@ -28,7 +28,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         /// <param name="price"></param>
         
         /// <param name="orderID"></param>
-        public OrderManagement(List<Product> products, WareHouseAddress wareHouseAddress,Customer customerAddress,double price,int orderID)
+        public OrderManagement(List<Product> products, WareHouseAddress wareHouseAddress,Customer customerAddress,double price,int orderID,int quantity)
         {
             products = _products;
             wareHouseAddress = _wareHouseAddress;
@@ -36,7 +36,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
            
             price = _totalPrice;
             orderID = _orderID;
-            
+            quantity = _quantity;
         }
         /// <summary>
         /// Default constructor
@@ -112,7 +112,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         /// Property for setting values to price field and Getting The value of the price Field 
         /// </summary>
 
-        public double Price
+        public double TotalPrice
         {
             set
             {
@@ -146,6 +146,24 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
             get
             {
                 return _orderID;
+            }
+        }
+        /// <summary>
+        /// Property for assigning Values to Quantity Field and Getting the value of Quantity
+        /// </summary>
+        public int TotalQuantity 
+        {
+            set
+            {
+                if (value > 0 && value != ' ')
+                {
+                    _quantity = value;
+                }
+                else throw new OrderManagementException("Quantity should be Greater than 0 and It Should not be null");
+            }
+            get
+            {
+                return _quantity;
             }
         }
 
