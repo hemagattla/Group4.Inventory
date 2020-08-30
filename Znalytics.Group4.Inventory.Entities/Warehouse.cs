@@ -50,7 +50,9 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         {
             set
             {
+                //Regular Expression for AlphaNumeric values
                 Regex r = new Regex("[A-Z0-9]$");
+                //WareHouseId should not be null or empty
                 if (!string.IsNullOrEmpty(value) && value.Length == 6&&value.StartsWith("WHID")&&r.IsMatch(value))
                 {
                    
@@ -79,7 +81,9 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
 
             set
             {
-                Regex r = new Regex("[a-zA-Z0-9_]$");
+                //Regular Expression for Alphabets(Capital&small letters)
+                Regex r = new Regex("[a-zA-Z_]$");
+                //WareHouseName should not be null or empty
                 if (!string.IsNullOrEmpty(value)&&r.IsMatch(value) && value.Length <= 30)
                 {
                     _warehouseName = value;
@@ -105,8 +109,9 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         {
             set
             {
+                //Regular Expression for Alphabets(Capital&small letters)
                 Regex r = new Regex("[a-zA-Z_]$");
-
+                //MangerName should not be null or empty
                 if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
                 {
                         _managerName = value;
