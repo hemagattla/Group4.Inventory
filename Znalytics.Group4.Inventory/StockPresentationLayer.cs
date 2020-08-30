@@ -127,7 +127,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             Stock stock = new Stock();
             System.Console.WriteLine("Enter WareHouseID");
             stock.WareHouseID = System.Console.ReadLine();
-            System.Console.WriteLine("Enter Address Name");
+            System.Console.WriteLine("Enter AddressID");
             stock.AddressID = System.Console.ReadLine();
             List<Stock> stocks = stockBusinessLogicLayer.DisplayStock(stock);
             foreach (Stock item in stocks)
