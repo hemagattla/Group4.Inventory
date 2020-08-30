@@ -12,6 +12,7 @@ using Znalytics.Group4.Inventory.BusinessLogicLayer;
 using Znalytics.Inventory.ProductShippingAddressModule.Entities;
 using Znalytics.Inventory.ProductModule.ProductPresentation;
 using Znalytics.Inventory.WareHouseModule.Entities;
+using Znalytics.Inventory.StockMaintain.PresentationLayer;
 
 namespace Znalytics.Group4.Inventory.PresentationLayer
 {
@@ -53,29 +54,42 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
         public void AddOrderDetails()
         {
            try {
-                
+               
                 OrderManagement order = new OrderManagement();
                 OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();
+                
+                //Displaying WreHouse Details
                 Console.WriteLine("==========WareHouseDetails=======");
                 List<WareHouse> wareHouses = orderBusiness.GetWareHouses();
                 foreach (WareHouse var in wareHouses)
                 {
                     Console.WriteLine( "WareHouseId:" +var.WareHouseId + "    " + "WareHouseName"+ var.WareHouseName + "ManagerName"+"  " + var.MangerName);
                 }
+             
+                //Displaying WreHouseAddress Details
+                
+                Console.WriteLine("============WareHouseAddressDetails============");
+                List<WareHouseAddress> wareHouseAddresses = orderBusiness.GetWareHouseAddresses();
+                foreach (var warehouseaddress in wareHouseAddresses)
+                {
+                    Console.WriteLine(wareHouseAddresses);
+                }
+
+                Console.WriteLine("Enter AddressID That You Want choose as a warehouseAddress");
+                string AddressId = Console.ReadLine();
+                WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressId);
+                order.WareHouseAddress = houseAddress;
+               
+                //Calling the Method from StockPresentationLyer to Display the Details of Products and quatity of Products
+                StockPresentationLayer.DisplayStock();
 
                 Console.WriteLine("======ProductDetails=======");
-                List<Product> products = orderBusiness.DispalyProducts();
-                Console.WriteLine("The following Products Available :");
-                foreach (var product in products)
-                {
-                    Console.WriteLine("ProductName:" + product.ProductName + "ProductID:" + product.ProductID + "Price:" + product.Price);
-                }
-               
+                
                 int choice = 0;
                 order.Price = 0;
 
             
-            {
+              do{
 
             
 
@@ -99,16 +113,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
 
                     }
                 } while (choice != 2) ;
-                Console.WriteLine("============WareHouseDetails============");
-                List<WareHouseAddress> wareHouseAddresses = orderBusiness.GetWareHouseAddresses();
-                foreach (var warehouseaddress in wareHouseAddresses)
-                {
-                    Console.WriteLine(wareHouseAddresses);
-                }
-                Console.WriteLine("Enter AddressID That You Want choose as a warehouseAddress");
-                string AddressId = Console.ReadLine();
-                WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressId);
-                order.WareHouseAddress = houseAddress;
+                
                 
                 Console.WriteLine("==========AddressDetails Of Customer================");
                 Console.WriteLine("Enter your CustomerId to Choose your Address");
