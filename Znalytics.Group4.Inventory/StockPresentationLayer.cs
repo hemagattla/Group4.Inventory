@@ -21,7 +21,9 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                 {
                     System.Console.WriteLine("1. Add Stock");
                     System.Console.Write("2. DisplayStock");
-                    System.Console.Write("Enter Your Choice");
+                    System.Console.WriteLine("3. Update Stock");
+                    System.Console.WriteLine("4. Exit");
+                    System.Console.Write("Enter Your Choice: ");
                     
 
 
@@ -36,6 +38,9 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                                 AddStock();
                                 break;
                             case 2: DisplayStock();
+                                break;
+                            case 3:
+                                UpdateStockQuantity();
                                 break;
 
                             default:
@@ -53,7 +58,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                     }
 
 
-                } while (choice != 6);
+                } while (choice != 4);
             }
             catch (Exception e)
             {
@@ -132,22 +137,25 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             }
            
         }
-        /// <summary>
-        /// local function to check no dupliacte stock id to be entered into the list
-        /// </summary>
-        /// <param name="stockID"></param>
-        /// <returns></returns>
-        public bool CheckStockID(string stockID)
+       
+
+
+        public void UpdateStockQuantity()
         {
             StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
-            bool result = stockBusinessLogicLayer.CheckProductID(stockID);
-            if (result == true)
-            {
+            Stock stock = new Stock();
+            System.Console.WriteLine("enter to which WarehouseId you want to update the quantity:");
+            stock.WareHouseID = System.Console.ReadLine();
+            System.Console.WriteLine("enter to which WarehouseAddress you want to update the quantity:");
+            stock.AddressID = System.Console.ReadLine();
+            System.Console.WriteLine("enter the quantity to be updated:");
+            stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
 
-                System.Console.WriteLine("StockID Exits");
-                return result;
-            }
-            return result;
+            stockBusinessLogicLayer.UpdateStockQuantity(stock);
+            System.Console.WriteLine("Stock quntity Updated Sucessfully");
+
+
+
         }
     }
 }
