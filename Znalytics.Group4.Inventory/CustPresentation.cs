@@ -13,19 +13,24 @@ class  CustPresentation
         {
             Console.WriteLine("Customer MENU");
             Console.WriteLine("1. Add customer");
-            Console.WriteLine("2. update customer");
-            Console.WriteLine("3. del customer");
-            Console.WriteLine("4. Exit");
+            Console.WriteLine("2. GetCustomer");
+            Console.WriteLine("3. logincustomer");
+            Console.WriteLine("4.update customer");
+            Console.WriteLine("5. del customer");
+            Console.WriteLine("6. Exit");
             Console.Write("Enter choice: ");
-            choice = int.Parse(Console.ReadLine());
+            bool b = int.TryParse(Console.ReadLine(),out choice);
 
             switch (choice)
             {
                 case 1: AddCustomer(); break;
-                case 2: DelCustomer(); break;
-                case 3: UpdateCustomer(); break;
+                case 2: GetCustomers(); break;
+                case 3: LoginCustomer(); break;
+                case 4: UpdateCustomer();break;
+                case 5: DelCustomer();
+                          break;
             }
-        } while (choice != 4);
+        } while (choice != 6);
     }
 
     static void AddCustomer()
@@ -69,6 +74,16 @@ class  CustPresentation
            Console. WriteLine(item.CustomerId + "    " + item.CustomerName + "  " + item.Email);// Displaying the products
         }
 
+    }
+    static void LoginCustomer()
+    {
+        Console.WriteLine("  =======login form=======");
+        Console.WriteLine("===========");
+        string CustomerName = System.Console.ReadLine();
+        string PassWord = System.Console.ReadLine();
+        CustBusiness cbl = new CustBusiness();
+        List<Customer> cus = cbl.LoginCustomer( CustomerName,  PassWord);
+        Console.WriteLine("valid user");
     }
     static void UpdateCustomer()
     {
