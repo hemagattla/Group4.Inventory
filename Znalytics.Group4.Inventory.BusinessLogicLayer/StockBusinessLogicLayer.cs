@@ -43,6 +43,10 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
         {
             return stockDataAccesslogic.DisplayStock(stock);
         }
+        public bool CheckStockID(string stockID)
+        {
+            return stockDataAccesslogic.CheckStockID(stockID);
+        }
 
     }
 }

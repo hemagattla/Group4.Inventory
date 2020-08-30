@@ -17,12 +17,12 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
     /// </summary>
     public class ProductBusiness : IProductBusinessLogicLayer
     {
-        ProductData d;
+        ProductDataAccessLogic d;
 
 
         public ProductBusiness()
         {
-            d = new ProductData();
+            d = new ProductDataAccessLogic();
         }
 
         /// <summary>
