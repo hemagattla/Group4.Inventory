@@ -147,7 +147,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
                     if (!string.IsNullOrEmpty(value))//value should not be null or empty
                     {
                         //value should match below condition
-                        if (value.Equals("Kgs", StringComparison.OrdinalIgnoreCase) || value.Equals("Liters", StringComparison.OrdinalIgnoreCase) || value.Equals("Nos", StringComparison.OrdinalIgnoreCase) || value.Equals("Pices", StringComparison.OrdinalIgnoreCase))
+                        if (value.Equals("Kgs", StringComparison.OrdinalIgnoreCase) || value.Equals("Liters", StringComparison.OrdinalIgnoreCase) || value.Equals("Nos", StringComparison.OrdinalIgnoreCase) || value.Equals("Pices", StringComparison.OrdinalIgnoreCase) || value.Equals("ml", StringComparison.OrdinalIgnoreCase) || value.Equals("gms", StringComparison.OrdinalIgnoreCase))
                         {
                             _units = value;
                         }
