@@ -3,7 +3,7 @@
 
 namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
 {
-    public class ProductRawMaterials
+    public class ProductRawMaterial
     {
         private string _productId;
         private string _rawMaterialName;

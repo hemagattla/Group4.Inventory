@@ -116,7 +116,12 @@
             }
         }
 
-        public int quantity
+        public int Quantity
+        {
+            set;
+            get;
+        }
+        public int TotalQuantity
         {
             set;
             get;

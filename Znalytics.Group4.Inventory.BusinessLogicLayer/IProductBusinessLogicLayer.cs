@@ -6,19 +6,17 @@ namespace Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer
 {
     public interface IProductBusinessLogicLayer
     {
-        //void AddProducts(Product n);
+        void AddProducts(Product n);
 
-        //void RemoveProductByID(int id);
+        void RemoveProduct(string id);
 
-       // void RemoveProductByName(string name);
+        void UpdateProductName(Product product);
 
-        //void UpdateProductName(Product product);
-
-        //void UpdateProductPrice(Product p);
+        void UpdateProductPrice(Product p);
 
         Product GetProductByProductID(string ProductID);
         
-        //List<Product> DispalyProducts();
+        List<Product> DispalyProducts();
     }
 }
 

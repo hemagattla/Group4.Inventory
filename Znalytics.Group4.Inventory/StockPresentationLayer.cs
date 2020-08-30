@@ -88,7 +88,8 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                     {
 
                         System.Console.WriteLine("Enter no of Quantities u want to add");
-                        stock.quantity = System.Convert.ToInt32(System.Console.ReadLine());
+                        stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
+                        stock.TotalQuantity = TotalQuantity(stock.StockID);
                         stockBusinessLogicLayer.AddStock(stock);
                         Console.WriteLine("Stock Added Sucessfully!!");
                     }
@@ -104,24 +105,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                 throw new StockException("Warehouse ID Does not exist");
             }
         }
-        public static void DeleteStockByWareHouseID()
-        {
-
-            StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
-            ProductPresentation productPresentation = new ProductPresentation();
-            MenuPrensentor wareHousePresentation = new MenuPrensentor();
-            Stock stock = new Stock();
-
-            System.Console.WriteLine("Enter WareHouseID");
-            stock.WareHouseID = System.Console.ReadLine();
-            System.Console.WriteLine("Enter Address Name");
-            stock.AddressID = System.Console.ReadLine();
-            System.Console.WriteLine("Enter Product ID");
-            stock.ProductID = System.Console.ReadLine();
-            System.Console.WriteLine("Enter no of Quantities u want to add");
-            stock.EditStock = System.Convert.ToInt32(System.Console.ReadLine());
-            stockBusinessLogicLayer.DeleteStockByWareHouseID(stock);
-        }
+       
         public static int TotalQuantity(string stockID)
         {
 
@@ -138,7 +122,8 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             System.Console.WriteLine("Enter Address Name");
             stock.AddressID = System.Console.ReadLine();
             List<Stock> stocks = stockBusinessLogicLayer.DisplayStock(stock);
-
+            System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
+            System.Console.WriteLine(stock.ProductID + "  " + stock.TotalQuantity);
         }
     }
 }

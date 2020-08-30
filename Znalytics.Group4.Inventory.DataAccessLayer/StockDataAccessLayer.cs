@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Znalytics.Inventory.StockMaintain.Entities;
 //using Znalytics.Group4.Inventory.StockMaintain.IDataAccessLayer;
+using Znalytics.Inventory.StockMaintain.CustomException;
+using System.CodeDom;
 
 namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
 {
@@ -33,14 +35,6 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
             _stocks.Add(stock);
 
         }
-        public void GetProductID()
-        {
-
-        }
-        public void GetWareHouseID()
-        {
-
-        }
 
 
         public int TotalQuantity(string stockID)
@@ -49,13 +43,30 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
 
             if (result == true)
             {
-                return _stocks.Select(x => x.quantity).Sum();
+                return _stocks.Select(x => x.Quantity).Sum();
             }
             else
             {
-                throw new System.Exception("no stock id");
+                throw new StockException("no stock id");
             }
 
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stock"></param>
+        /// <returns></returns>
+        public List<Stock> DisplayStock(Stock stock)
+        {
+            bool result = _stocks.Exists(temp => temp.WareHouseID == stock.WareHouseID && temp.AddressID == stock.AddressID);
+            if (result == true)
+            {
+                return _stocks;
+            }
+            else
+            {
+                throw new StockException("invlaid WarehouseID or AdressID");
+            }
         }
 
     }
