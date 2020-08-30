@@ -60,7 +60,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 List<WareHouse> wareHouses = orderBusiness.GetWareHouses();
                 foreach (WareHouse var in wareHouses)
                 {
-                    Console.WriteLine(var.WareHouseId + "    " + var.WareHouseName + "  " + var.MangerName);
+                    Console.WriteLine( "WareHouseId:" +var.WareHouseId + "    " + "WareHouseName"+ var.WareHouseName + "ManagerName"+"  " + var.MangerName);
                 }
 
                 Console.WriteLine("======ProductDetails=======");
