@@ -2,6 +2,7 @@
 
 //Importing Statements
 using System;
+using System.Text.RegularExpressions;
 using Znalytics.Group4.Inventory.Entities;
 
 //Created a namespace for Entity Layer of WareHouse Module
@@ -49,20 +50,18 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         {
             set
             {
-                if (!string.IsNullOrEmpty(value) && value.Length == 6)
+                Regex r = new Regex("[A-Z0-9]$");
+                if (!string.IsNullOrEmpty(value) && value.Length == 6&&value.StartsWith("WHID")&&r.IsMatch(value))
                 {
-                    bool spaceFound = value.Contains(" ");
-                    bool atFound = value.Contains("@");
-                    bool commaFound = value.Contains(",");
-                    if (!spaceFound && !atFound && !commaFound && value.StartsWith("WHID"))
-                    {
+                   
+                    
                         _warehouseId = value;
-                    }
+                    
                 }
 
                 else
                 {
-                    throw new WareHouseException("Enter valid warehouseidshould not contain spaces and length be exactly 6");
+                    throw new WareHouseException("Enter valid warehouseid.It should not contain spaces and length be exactly 6");
                 }
             }
             get
@@ -80,7 +79,8 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
 
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                Regex r = new Regex("^[a-zA-Z\0-9-_s]$");
+                if (!string.IsNullOrEmpty(value)&&r.IsMatch(value))
                 {
                     bool atFound = value.Contains("@");
                     bool commaFound = value.Contains(",");
