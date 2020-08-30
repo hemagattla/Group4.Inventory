@@ -234,7 +234,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
             productRawMaterial.ProductID = ProductID;
             System.Console.WriteLine("ProductID:-" + ProductID);
             ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
-            List<ProductRawMaterial> prm= productRawMaterialBusinessLogicLayer.GetDetailsByProductID(productRawMaterial);
+           List<ProductRawMaterial> prm= productRawMaterialBusinessLogicLayer.GetDetailsByProductID(productRawMaterial);
             
             foreach (ProductRawMaterial rm in prm)//to print the list
             {
