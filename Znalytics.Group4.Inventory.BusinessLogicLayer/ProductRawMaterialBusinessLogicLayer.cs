@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
-using Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer;
+using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
+using Znalytics.Group4.Inventory.IRawMaterialModule.BusinessLogicLayer;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities;
+using Znalytics.Group4.Inventory.RawMaterialModule.Entities;
+using Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities;
+using Znalytics.Inventory.ProductModule.Entitie;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer;
 
 namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
 {
-    public class ProductRawMaterialBusinessLogicLayer
+    public class ProductRawMaterialBusinessLogicLayer: IProductBusinessLogicLayer, IRawMaterialBusinessLogicLayer
     {
-        ProductBusiness pb = new ProductBusiness();
-        RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
+        //ProductBusiness pb = new ProductBusiness();
+        //RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
+        ProductRawMaterialDataAccessLayer prda;
         public ProductRawMaterialBusinessLogicLayer()
         {
-             ProductRawMaterialDataAccessLayer prda = new ProductRawMaterialDataAccessLayer();
+              prda = new ProductRawMaterialDataAccessLayer();
         }
         public void AddRawMaterialToProduct(ProductRawMaterials productRawMaterial)
         {
@@ -55,5 +57,12 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
                 System.Console.WriteLine("Entered Values contail null values");
             }
         }
+        public Product GetProductByProductID(string ProductID) { return prda.GetProductByID(ProductID); }
+        public RawMaterial GetRawMaterialByRawMaterialID(string RawMaterialID)
+        {
+            return prda.GetRawMaterialByRawMaterialID(RawMaterialID);
+
+        }
+
     }
 }

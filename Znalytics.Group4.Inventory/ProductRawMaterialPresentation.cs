@@ -55,7 +55,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                                         productRawMaterial.RawMaterialID = prm.RawMaterialID;
                                         productRawMaterial.RawMaterialName = prm.RawMaterialName;
                                         AddRawMaterialToProduct(productRawMaterial.ProductID, productRawMaterial.RawMaterialID, productRawMaterial.RawMaterialName);
-                                        System.Console.WriteLine("******************* Successfully added RawMaterial Details to ProductID" + productRawMaterial.ProductID + " ************** ");
+                                        System.Console.WriteLine("******************* Successfully added RawMaterial Details to ProductID  " + productRawMaterial.ProductID + " ************** ");
                                     }
                                     else
                                     {
@@ -65,7 +65,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
 
                                 else
                                 {
-                                    System.Console.WriteLine("**************entered ProductID" + productRawMaterial.ProductID + "doesn't exists. Pls Try again*************");
+                                    System.Console.WriteLine("**************entered ProductID  " + productRawMaterial.ProductID + "  doesn't exists. Pls Try again*************");
                                 }
                                 break;
                             case 2:
@@ -78,17 +78,17 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                                         productRawMaterial.RawMaterialID = prm.RawMaterialID;
                                         productRawMaterial.RawMaterialID = prm.RawMaterialName;
                                         DeleteRawMaterialOfProduct(productRawMaterial.ProductID, productRawMaterial.RawMaterialID, productRawMaterial.RawMaterialName);
-                                        System.Console.WriteLine("******************* Successfully deleted RawMaterial Details from ProductID" + productRawMaterial.ProductID + " ************** ");
+                                        System.Console.WriteLine("******************* Successfully deleted RawMaterial Details from ProductID  " + productRawMaterial.ProductID + "  ************** ");
                                     }
                                     else
                                     {
-                                        System.Console.WriteLine("**************entered RawMaterialID " + rawMaterial.RawMaterialID + " does not exists. Pls Try again*************");
+                                        System.Console.WriteLine("**************entered RawMaterialID  " + rawMaterial.RawMaterialID + "  does not exists. Pls Try again*************");
                                     }
                                 }
 
                                 else
                                 {
-                                    System.Console.WriteLine("**************entered ProductID" + productRawMaterial.ProductID + "doesn't exists. Pls Try again*************");
+                                    System.Console.WriteLine("**************entered ProductID  " + productRawMaterial.ProductID + "  doesn't exists. Pls Try again*************");
                                 }
                                 break;
 
@@ -126,11 +126,11 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                                         productRawMaterial.RawMaterialID = prm.RawMaterialID;
                                         productRawMaterial.RawMaterialID = prm.RawMaterialName;
                                         UpdateRawMaterialOfProduct(productRawMaterial.ProductID, productRawMaterial.RawMaterialID, productRawMaterial.RawMaterialName);
-                                        System.Console.WriteLine("******************* Successfully deleted RawMaterial Details from ProductID" + productRawMaterial.ProductID + " ************** ");
+                                        System.Console.WriteLine("******************* U Can see the of Product  ************** ");
                                     }
                                     else
                                     {
-                                        System.Console.WriteLine("**************entered RawMaterialID " + rawMaterial.RawMaterialID + " does not exists. Pls Try again*************");
+                                        System.Console.WriteLine("**************entered RawMaterialID  " + rawMaterial.RawMaterialID + "  does not exists. Pls Try again*************");
                                     }
                                 }
 
