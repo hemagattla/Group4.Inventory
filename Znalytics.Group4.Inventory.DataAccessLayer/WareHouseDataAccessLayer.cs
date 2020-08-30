@@ -37,7 +37,6 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
                 new WareHouse(){WareHouseId="WHID03",WareHouseName="ABC",MangerName="DHANASRI"},
                 new WareHouse(){WareHouseId="WHID04",WareHouseName="ABCD",MangerName="KRUSHAL"},
                 new WareHouse(){WareHouseId="WHID05",WareHouseName="ABCDE",MangerName="RAMYA"},
-
             };
 
 
