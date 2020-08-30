@@ -278,6 +278,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             if (_addressList.Exists(n => n.AddressId == addressID))
             {
                 _addressList.RemoveAll(n => n.AddressId == addressID);
+                
                 SaveIntoFile();
             }
             else

@@ -7,6 +7,7 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Group4.Inventory.Entities;
 using Newtonsoft.Json;
 using System.IO;
+using Znalytics.Inventory.AddressModule.DataAccessLayer;
 
 
 //Created a namespace for DataAccess Layer of WareHouse Module
@@ -37,7 +38,6 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
                 new WareHouse(){WareHouseId="WHID03",WareHouseName="ABC",MangerName="DHANASRI"},
                 new WareHouse(){WareHouseId="WHID04",WareHouseName="ABCD",MangerName="KRUSHAL"},
                 new WareHouse(){WareHouseId="WHID05",WareHouseName="ABCDE",MangerName="RAMYA"},
-
             };
 
 
@@ -132,6 +132,8 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
             {
                 _wareHouseList.RemoveAll(n => n.WareHouseId == wareHouseID);
+                WareHouseAddressDataAccessLayer wa = new WareHouseAddressDataAccessLayer();
+                wa.RemoveAddressByWareHouseID(wareHouseID);
                 SaveIntoFile();
             }
             else
