@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.CodeDom;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
@@ -10,6 +11,7 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
         private int _CustomerId;
         private string _CustomerName;
         private string _Email;
+        private string _Password;
         private string _MblNo;
         private string _Country;
         private string _City;
@@ -25,12 +27,13 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
         /// parameterized constructor(when ever an object is created  constructed is called)
         /// 
         /// </summary>
-        public Customer(int cid, string cstname, string mail, string mblno, string cntry, string ci, string state, string st, string pin, string hno)
+        public Customer(int cid, string cstname, string mail, string password,string mblno, string cntry, string ci, string state, string st, string pin, string hno)
 
         {
             this.CustomerId = cid;///cuuurent method CoustomerId will be called and checks the conditons present in the method ant then asigns the value///
             this.CustomerName = cstname;
             this.Email = mail;
+            this.Password = password;
             this.MblNo = mblno;
             this.Country = cntry;
             this.City = ci;
@@ -94,29 +97,50 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
                 return _MblNo;
             }
         }
-        public string Email
+      
+           public string Email
         {
             set
-            {
-                Regex r = new Regex("^[a-zA-Z0-9@.]*$");
-                if (r.IsMatch(value))
+               {
+                Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+                if (regex.IsMatch(value) == true)
                 {
                     _Email = value;
                 }
                 else
                 {
-                    throw new System.Exception("enter valid email");
+                    throw new Exception("Email should not contain spaces and should include @ symbol.");
                 }
-            }
+                }
+
             get
             {
                 return _Email;
             }
-        }
-        public string GetEmail()
+        
+          }
+    public string Password
         {
-            return _Email;
+            set
+            
+            {
+                    if (value.Length == 6)
+                    {
+                        for (int i = 0; i < 6; i++)
+                        {
+                            if (value[i] > 0 || value[i] < 9)
+                            {
+                                _PinNo = value;
+                            }
+                        }
+                    }
+                }
+            get
+            {
+                return _Password;
+            }
         }
+           
 
         public string Country
         {
