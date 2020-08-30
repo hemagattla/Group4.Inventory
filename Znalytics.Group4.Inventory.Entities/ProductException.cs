@@ -5,22 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Znalytics.Inventory.ProductModule.CustomException
-
 {
-    class ProductException : ApplicationException
+    public class ProductException:ApplicationException
     {
-
-        public ProductException() : base()
+        public ProductException():base()
         {
 
         }
 
-        public ProductException(string message) : base(message)
+        public ProductException(string message):base(message)
         {
 
         }
-
-
-
     }
 }

@@ -49,7 +49,6 @@
     <Compile Include="CustPresentation.cs" />
     <Compile Include="InventoryMangementSystem.cs" />
     <Compile Include="OrderManagementPresentationLayer.cs" />
-    <Compile Include="ProductException.cs" />
     <Compile Include="ProductPresentaton.cs" />
     <Compile Include="ProductRawMaterialPresentation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
