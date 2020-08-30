@@ -338,7 +338,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
                     if (CheckAddressId(a.AddressId) == false)
                     {
-                        WriteLine("Enter Address id");
+                        WriteLine("Enter Address id");//hi
                         a.AddressId = ReadLine();
                         WriteLine("Enter Door Number");
                         a.DoorNumber = ReadLine();
