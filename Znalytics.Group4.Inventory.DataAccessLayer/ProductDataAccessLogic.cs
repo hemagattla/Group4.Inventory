@@ -45,7 +45,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 
 
         }
-       
+
 
         /// <summary>
         /// adding the products into the List
@@ -53,11 +53,11 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// <param name="productDetails">object of Product class</param>
         public void AddProduct(Product productDetails)// Adding Products into the ProductsList
         {
-           
-            
-                _productsList.Add(productDetails);
-                SaveIntoFile();
-            
+
+
+            _productsList.Add(productDetails);
+            SaveIntoFile();
+
         }
 
         /// <summary>

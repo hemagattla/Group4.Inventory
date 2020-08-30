@@ -7,6 +7,7 @@ using Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.Entitie;
 using System;
 
+
 namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
 {
     class ProductRawMaterialPresentation
@@ -33,25 +34,28 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
 
                     if (q == true)
                     {
-                        RawMaterial rawMaterial = new RawMaterial();
-                        Product product = new Product();
-                        ProductBusiness productBusiness = new ProductBusiness();
-                        RawMaterialBusinessLogicLayer pb = new RawMaterialBusinessLogicLayer();
+                        //RawMaterial rawMaterial = new RawMaterial();
+                        //Product product = new Product();
+                        //ProductBusiness productBusiness = new ProductBusiness();
+                        //RawMaterialBusinessLogicLayer pb = new RawMaterialBusinessLogicLayer();
                         ProductRawMaterial productRawMaterial = new ProductRawMaterial();
-                        ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
-                        System.Console.WriteLine("enter ProductID (ProductID must Starts With *PID*)");
-                        productRawMaterial.RawMaterialID = System.Console.ReadLine();
-                        System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
-                        productRawMaterial.RawMaterialID = System.Console.ReadLine();
+                        ProductRawMaterialBusinessLogicLayer prbl = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
+                        
                         switch (select)
                         {
                             case 1:
-                                if (productBusiness.GetProductByProductID(product.ProductID) != null)
+                                System.Console.WriteLine("enter ProductID (ProductID must Starts With *PID*)");
+                                productRawMaterial.ProductID = System.Console.ReadLine();
+                               
+                                if (prbl.GetProductByProductID(productRawMaterial.ProductID) != null)
                                 {
-                                    productRawMaterial.ProductID = product.ProductID;
-                                    if (pb.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID) != null)
+                                    Product a = prbl.GetProductByProductID(productRawMaterial.ProductID);
+                                    productRawMaterial.ProductID = a.ProductID;
+                                    System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
+                                    productRawMaterial.RawMaterialID = System.Console.ReadLine();
+                                    if (prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID) != null)
                                     {
-                                        RawMaterial prm = pb.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID);
+                                        RawMaterial prm = prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID);
                                         productRawMaterial.RawMaterialID = prm.RawMaterialID;
                                         productRawMaterial.RawMaterialName = prm.RawMaterialName;
                                         AddRawMaterialToProduct(productRawMaterial.ProductID, productRawMaterial.RawMaterialID, productRawMaterial.RawMaterialName);
@@ -59,7 +63,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                                     }
                                     else
                                     {
-                                        System.Console.WriteLine("**************entered RawMaterialID " + rawMaterial.RawMaterialID + " does not exists. Pls Try again*************");
+                                        System.Console.WriteLine("**************entered RawMaterialID " + productRawMaterial.RawMaterialID + " does not exists. Pls Try again*************");
                                     }
                                 }
 
@@ -69,12 +73,17 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                                 }
                                 break;
                             case 2:
-                                if (productBusiness.GetProductByProductID(product.ProductID) != null)
+                                System.Console.WriteLine("enter ProductID (ProductID must Starts With *PID*)");
+                                productRawMaterial.ProductID = System.Console.ReadLine();
+                                
+                                if (prbl.GetProductByProductID(productRawMaterial.ProductID) != null)
                                 {
-                                    productRawMaterial.ProductID = product.ProductID;
-                                    if (pb.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID) != null)
+                                    productRawMaterial.ProductID = productRawMaterial.ProductID;
+                                    System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
+                                    productRawMaterial.RawMaterialID = System.Console.ReadLine();
+                                    if (prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID) != null)
                                     {
-                                        RawMaterial prm = pb.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID);
+                                        RawMaterial prm = (prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID));
                                         productRawMaterial.RawMaterialID = prm.RawMaterialID;
                                         productRawMaterial.RawMaterialID = prm.RawMaterialName;
                                         DeleteRawMaterialOfProduct(productRawMaterial.ProductID, productRawMaterial.RawMaterialID, productRawMaterial.RawMaterialName);
@@ -82,7 +91,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                                     }
                                     else
                                     {
-                                        System.Console.WriteLine("**************entered RawMaterialID  " + rawMaterial.RawMaterialID + "  does not exists. Pls Try again*************");
+                                        System.Console.WriteLine("**************entered RawMaterialID  " + productRawMaterial.RawMaterialID + "  does not exists. Pls Try again*************");
                                     }
                                 }
 
@@ -117,12 +126,17 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                                 }*/
                                 break;
                             case 4:
-                                if (productBusiness.GetProductByProductID(product.ProductID) != null)
+                                System.Console.WriteLine("enter ProductID (ProductID must Starts With *PID*)");
+                                productRawMaterial.ProductID = System.Console.ReadLine();
+                                
+                                if (prbl.GetProductByProductID(productRawMaterial.ProductID) != null)
                                 {
-                                    productRawMaterial.ProductID = product.ProductID;
-                                    if (pb.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID) != null)
+                                    productRawMaterial.ProductID = productRawMaterial.ProductID;
+                                    System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
+                                    productRawMaterial.RawMaterialID = System.Console.ReadLine();
+                                    if (prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID) != null)
                                     {
-                                        RawMaterial prm = pb.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID);
+                                        RawMaterial prm =(prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID));
                                         productRawMaterial.RawMaterialID = prm.RawMaterialID;
                                         productRawMaterial.RawMaterialID = prm.RawMaterialName;
                                         UpdateRawMaterialOfProduct(productRawMaterial.ProductID, productRawMaterial.RawMaterialID, productRawMaterial.RawMaterialName);
@@ -130,7 +144,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                                     }
                                     else
                                     {
-                                        System.Console.WriteLine("**************entered RawMaterialID  " + rawMaterial.RawMaterialID + "  does not exists. Pls Try again*************");
+                                        System.Console.WriteLine("**************entered RawMaterialID  " + productRawMaterial.RawMaterialID + "  does not exists. Pls Try again*************");
                                     }
                                 }
 
@@ -140,9 +154,11 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                                 }
                                 break;
                             case 5:
-                                if (productBusiness.GetProductByProductID(product.ProductID) != null)
+                                System.Console.WriteLine("enter ProductID (ProductID must Starts With *PID*)");
+                                productRawMaterial.ProductID = System.Console.ReadLine();
+                                if (prbl.GetProductByProductID(productRawMaterial.ProductID) != null)
                                 {
-                                    productRawMaterial.ProductID = product.ProductID;
+                                    productRawMaterial.ProductID = productRawMaterial.ProductID;
                                     GetDetailsByProductID(productRawMaterial.ProductID);
                                     System.Console.WriteLine("******************* U Can see the of Product  ************** ");
                                 }
@@ -234,7 +250,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
             productRawMaterial.ProductID = ProductID;
             System.Console.WriteLine("ProductID:-" + ProductID);
             ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
-            List<ProductRawMaterial> prm= productRawMaterialBusinessLogicLayer.GetDetailsByProductID(productRawMaterial);
+           List<ProductRawMaterial> prm= productRawMaterialBusinessLogicLayer.GetDetailsByProductID(productRawMaterial);
             
             foreach (ProductRawMaterial rm in prm)//to print the list
             {
