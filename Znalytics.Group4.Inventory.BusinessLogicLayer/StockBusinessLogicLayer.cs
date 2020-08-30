@@ -1,4 +1,7 @@
-﻿using Znalytics.Inventory.StockMaintain.Entities;
+﻿//created by R.Kruushal
+
+
+using Znalytics.Inventory.StockMaintain.Entities;
 
 using Znalytics.Inventory.StockMaintain.DataAccessLayer;
 using System.Collections.Generic;
@@ -30,9 +33,9 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
             }
         }
 
-        public int TotalQuantity(string stockID)
+        public int TotalQuantity(string warehouseID, string addressID)
         {
-            return stockDataAccesslogic.TotalQuantity(stockID);
+            return stockDataAccesslogic.TotalQuantity(warehouseID, addressID);
         }
         /// <summary>
         /// Displaying the Stock details of products in particular warehouse and warehouse Address
@@ -43,7 +46,7 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
         {
             return stockDataAccesslogic.DisplayStock(stock);
         }
-       
+
         public  void UpdateStockQuantity(Stock stock)
         {
             stockDataAccesslogic.UpdateStockQuantity(stock);
