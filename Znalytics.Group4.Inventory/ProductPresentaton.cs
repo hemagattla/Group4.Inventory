@@ -29,7 +29,7 @@ namespace Znalytics.Inventory.ProductModule.ProductPresentation
                 System.Console.WriteLine("3. Show Product By ID");
                 System.Console.WriteLine("4. Delete Product");
                 System.Console.WriteLine("5. Update Prroduct");
-                System.Console.WriteLine("7. Exit");
+                System.Console.WriteLine("6. Exit");
 
                 b = int.TryParse(System.Console.ReadLine(), out choice);
 
