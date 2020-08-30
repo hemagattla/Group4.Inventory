@@ -67,8 +67,17 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
             return rawMaterialDataAccessLayer.GetRawMaterialByRawMaterialID(RawMaterialID);
 
         }
+        public List<ProductRawMaterial> GetDetailsByProductID(ProductRawMaterial productRawMaterial)
+        {
+            return prda.GetDetailsByProductID(productRawMaterial);
+        }
+        public List<ProductRawMaterial> GetDetailsUsingOriderBy()
+        {
+            return prda.GetProductRawMaterial();
+        }
+        
 
-        public void AddProducts(Product n)
+            public void AddProducts(Product n)
         {
             throw new NotImplementedException();
         }

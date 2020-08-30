@@ -139,14 +139,25 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                                     System.Console.WriteLine("**************entered ProductID" + productRawMaterial.ProductID + "doesn't exists. Pls Try again*************");
                                 }
                                 break;
-                           /* case 5:
+                            case 5:
                                 if (productBusiness.GetProductByProductID(product.ProductID) != null)
                                 {
                                     productRawMaterial.ProductID = product.ProductID;
                                     GetDetailsByProductID(productRawMaterial.ProductID);
+                                    System.Console.WriteLine("******************* U Can see the of Product  ************** ");
                                 }
 
-                                break;*/
+                                else
+                                {
+                                    System.Console.WriteLine("**************entered ProductID" + productRawMaterial.ProductID + "doesn't exists. Pls Try again*************");
+                                }
+
+                                break;
+                            case 6:
+                                GetDetailsUsingOriderBy();
+                                System.Console.WriteLine("1st preference tp productID , then RawMaterialID and then RwmaterialName");
+
+                                break;
                             default:System.Console.WriteLine("enter the correct option");
                                 break;
                         
@@ -158,12 +169,13 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                         System.Console.WriteLine("Please Enter the only digits");
                     }
 
-                   } while (select != 5);
+                   } while (select != 7);
                 }
                 catch (Exception ex)
                 {
                 System.Console.WriteLine(ex.Message);
                 }
+           
         }
         public static void AddRawMaterialToProduct(string ProductID, string RawMaterialID, string RawMaterialName)
         {
@@ -216,10 +228,33 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
             productRawMaterial.Units = System.Console.ReadLine();
             productRawMaterialBusinessLogicLayer.UpdateRawMaterialOfProduct(productRawMaterial);
         }
-        /*public static void GetDetailsByProductID(productRawMaterial.ProductID)
+        public static void GetDetailsByProductID(string ProductID)
         {
-
-        }*/
+            ProductRawMaterial productRawMaterial = new ProductRawMaterial();
+            productRawMaterial.ProductID = ProductID;
+            System.Console.WriteLine("ProductID:-" + ProductID);
+            ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
+            List<ProductRawMaterial> prm= productRawMaterialBusinessLogicLayer.GetDetailsByProductID(productRawMaterial);
+            
+            foreach (ProductRawMaterial rm in prm)//to print the list
+            {
+                System.Console.WriteLine("RawMaterialID:-" + productRawMaterial.RawMaterialID + "            RawMaterialName:-" + productRawMaterial.RawMaterialName + "          Quantity:-" + rm.Quantity + "" + rm.Units);
+            }
+            System.Console.WriteLine("**********************************************************************************");
+        }
+        
+        public static void GetDetailsUsingOriderBy()
+        {
+            ProductRawMaterial productRawMaterial = new ProductRawMaterial();
+            ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
+            List<ProductRawMaterial> rms = productRawMaterialBusinessLogicLayer.GetProductRawMaterial();// call the GetRawMaterial method with no arguments in the BusinessLogicLayer by using Refernce Variable
+            System.Console.WriteLine("**********************************************************************************");
+            foreach (ProductRawMaterial rm in rms)//to print the list
+            {
+                System.Console.WriteLine("ProductID:-" + productRawMaterial.ProductID + "           RawMaterialID:-" + productRawMaterial.RawMaterialID + "            RawMaterialName:-" + productRawMaterial.RawMaterialName + "          Quantity:-" + rm.Quantity + "" + rm.Units);
+            }
+            System.Console.WriteLine("**********************************************************************************");
+        }
 
     }
 }

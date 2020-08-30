@@ -22,9 +22,13 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         {
             _orders = new List<OrderManagement>();
         }
-        /// <summary>
-        /// Method For Saving FileInformation
-        /// </summary>
+        
+
+
+
+    /// <summary>
+    /// Method For Saving FileInformation
+    /// </summary>
         public void SaveIntoFile()
         {
 
@@ -65,8 +69,8 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// <returns></returns>
         public List<OrderManagement> GetOrderDetails()
         {
-            GetFiledata();
-            return _orders;
+            return GetFiledata();
+           
            
         }
 

@@ -37,11 +37,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         {
             return k.GetWareHouses();
         }
-       IStockBusinessLogicLayer l = new StockBusinessLogicLayer();
-        public List<Stock> DisplayStock(Stock stock)
-        {
-           
-        }
+       
 
         //Creating Reference Variable for Products in BusinessLogicLayer 
         IProductBusinessLogicLayer i = new ProductBusiness();
