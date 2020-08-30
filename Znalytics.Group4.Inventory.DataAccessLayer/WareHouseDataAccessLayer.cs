@@ -29,7 +29,17 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// </summary>
         static WareHouseDataAccessLayer()
         {
-            _wareHouseList = new List<WareHouse>();
+            _wareHouseList = new List<WareHouse>()
+            {
+                //MOCK DATA
+                new WareHouse(){WareHouseId="WHID01",WareHouseName="A",MangerName="NITYA"},
+                new WareHouse(){WareHouseId="WHID02",WareHouseName="AB",MangerName="HEMA"},
+                new WareHouse(){WareHouseId="WHID03",WareHouseName="ABC",MangerName="DHANASRI"},
+                new WareHouse(){WareHouseId="WHID04",WareHouseName="ABCD",MangerName="KRUSHAL"},
+                new WareHouse(){WareHouseId="WHID05",WareHouseName="ABCDE",MangerName="RAMYA"},
+
+            };
+
 
             if (_wareHouseList.Count == 0)
             {
