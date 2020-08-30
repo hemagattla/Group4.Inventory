@@ -1,4 +1,4 @@
-﻿/*namespace Znalytics.Inventory.StockMaintain.Entities
+﻿namespace Znalytics.Inventory.StockMaintain.Entities
 {
     /// <summary>
     /// Stock Details
@@ -8,10 +8,12 @@
         //Private fields
         private string _wareHouseID;
         private string _addressID;
-        private int _productID;
+        private string _productID;
         private string _stockID;
         private int _editStock;
-        private int _quantity;
+
+
+
 
         //Property of WareHouseID
         public string WareHouseID
@@ -20,14 +22,14 @@
             {
                 //if input value and WareHouseID present in database matches then the value will be assigned to the _WareHouseID
                 //else it will throw an exception
-                if ((value.Length == 5) && (value.StartsWith("WHID")))
+                if ((value.Length == 6) && (value.StartsWith("WHID")))
                 {
                     _wareHouseID = value;
 
                 }
                 else
                 {
-                    throw new System.Exception("ur entered AddressID is invalid");
+                    throw new System.Exception("Entered AddressID is invalid");
                 }
 
             }
@@ -44,13 +46,13 @@
             {
                 //if input value and AddressID present in database matches then the value will be assigned to the _AddressID
                 //else it will throw an exception
-                if ((value.Length==5)&&(value.StartsWith("AID")))
+                if ((value.Length <= 6) && (value.StartsWith("AID")))
                 {
                     _addressID = value;
                 }
                 else
                 {
-                    throw new System.Exception("ur entered AddressID is invalid");
+                    throw new System.Exception("Entered AddressID is invalid");
                 }
             }
             get
@@ -60,19 +62,19 @@
         }
 
         //Property of ProductID
-        public int ProductID
+        public string ProductID
         {
             set
             {
                 //if input value and ProductID present in database matches then the value will be assigned to the _ProductID
                 //else it will throw an exception
-                if(value!=0)
-                { 
+                if (value != "")
+                {
                     _productID = value;
                 }
                 else
                 {
-                    throw new System.Exception("ur entered ProductID is invalid");
+                    throw new System.Exception("Entered ProductID is invalid");
                 }
             }
             get
@@ -80,7 +82,7 @@
                 return _productID;
             }
         }
-        /*public string StockID
+        public string StockID
         {
             set
             {
@@ -113,18 +115,13 @@
                 return _editStock;
             }
         }
-      
-        public int Quantity
-        {
-            set
-            {
 
-            }
-            get
-            {
-                return _quantity;
-            }
+        public int quantity
+        {
+            set;
+            get;
         }
 
+
     }
-}*/
+}

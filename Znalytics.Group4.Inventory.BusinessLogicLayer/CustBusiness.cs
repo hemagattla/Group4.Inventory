@@ -21,7 +21,7 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
             }
         }
 
-            public List<Customer> GetCoustomers()
+            public List<Customer> GetCustomers()
             {
                 return d.GetCustomers();// return to presentation layer
             }
@@ -33,10 +33,6 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
                 d.UpdateCustomer(c);
             }
             }
-        public List<Customer> GetCust()
-        {
-            return null;// d.GetCust();
-        }
         public void DelCustomer(Customer c)
             {
             d.DelCustomer(c);
