@@ -361,7 +361,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 }
                 else
                 {
-                    WriteLine("WareHouse id doesn't exist or is invalid")
+                    WriteLine("WareHouse id doesn't exist or is invalid");
                 }
 
 
