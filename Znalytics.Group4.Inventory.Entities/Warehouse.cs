@@ -53,7 +53,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
                 //Regular Expression for AlphaNumeric values
                 Regex r = new Regex("[A-Z0-9]$");
                 //WareHouseId should not be null or empty
-                if (!string.IsNullOrEmpty(value) && value.Length == 6&&value.StartsWith("WHID")&&r.IsMatch(value))
+                if (!string.IsNullOrEmpty(value)&&value.StartsWith("WHID")&&r.IsMatch(value) && value.Length == 6)
                 {
                    
                     
