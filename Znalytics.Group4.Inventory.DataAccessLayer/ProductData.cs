@@ -21,7 +21,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// <summary>
         /// creating a private List of Product class
         /// </summary>
-        private static List<Product> _ProductsList  //creating a reference varibale for List
+        private static List<Product> _productsList  //creating a reference varibale for List
         {
             set;
             get;
@@ -30,13 +30,17 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// <summary>
         /// static Constructor to initialize
         /// </summary>
-         static ProductData() // creating a list object in constructor
+        static ProductData() // creating a list object in constructor
         {
 
-            _ProductsList = new List<Product>();
-            if (_ProductsList.Count == 0)
+            _productsList = new List<Product>()
             {
-                _ProductsList = GetFiledata();
+                new Product(){ProductID="PID10",ProductName="mobile",Price=99}
+
+             };
+            if (_productsList.Count == 0)
+            {
+                _productsList = GetFiledata();
             }
 
 
@@ -51,7 +55,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         {
            
             
-                _ProductsList.Add(productDetails);
+                _productsList.Add(productDetails);
                 SaveIntoFile();
             
         }
@@ -60,13 +64,13 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// displaying the products in the List
         /// </summary>
 
-        public List<Product> DisplayProducts() => _ProductsList;
+        public List<Product> DisplayProducts() => _productsList;
 
         /// <summary>
         /// Removing a Product by using Product ID
         /// </summary>
         /// <param name="id">Product Id</param>
-        public void RemoveProduct(string id) => _ProductsList.RemoveAll(n => n.ProductID == id);
+        public void RemoveProduct(string id) => _productsList.RemoveAll(n => n.ProductID == id);
         //Removing a Product by using Product ID
 
 
@@ -78,7 +82,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         public Product GetProductByID(string productID)//Displaying product Details using Product ID
         {
             Product pe;
-            pe = _ProductsList.Find(n => n.ProductID == productID);
+            pe = _productsList.Find(n => n.ProductID == productID);
             return pe;
 
         }
@@ -91,7 +95,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 
         public void UpdateProductName(Product product)// update product Name
         {
-            Product PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
+            Product PE = _productsList.Find(n => n.ProductID == product.ProductID);
             if (PE != null)
             {
                 PE.ProductName = product.ProductName;
@@ -106,7 +110,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// <param name="product">object of Product class</param>
         public void UpdateProductPrice(Product product)
         {
-            Product PE = _ProductsList.Find(n => n.ProductID == product.ProductID);
+            Product PE = _productsList.Find(n => n.ProductID == product.ProductID);
             if (PE != null)
             {
                 PE.Price = product.Price;
@@ -120,7 +124,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// <returns></returns>
         public bool CheckProductID(string productID)
         {
-            return _ProductsList.Exists(n => n.ProductID == productID);
+            return _productsList.Exists(n => n.ProductID == productID);
 
         }
 
@@ -130,7 +134,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         public void SaveIntoFile()
         {
 
-            string s = JsonConvert.SerializeObject(_ProductsList);
+            string s = JsonConvert.SerializeObject(_productsList);
 
             //write data into file
             StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\ProcuctData.txt");
