@@ -7,6 +7,7 @@ using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Group4.Inventory.Entities;
 using Newtonsoft.Json;
 using System.IO;
+using System.Linq;
 using Znalytics.Inventory.AddressModule.DataAccessLayer;
 
 
@@ -99,10 +100,8 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         ///  Method to GET the added details
         /// </summary>
         /// <returns>It returns the list of WareHouses</returns>
-        public static List<WareHouse> GetWareHouses()
-        {
-            return _wareHouseList;
-        }
+        public static List<WareHouse> GetWareHouses() => _wareHouseList;
+        
 
         /// <summary>
         /// Method to GET the WareHouse by WareHouseID
@@ -114,7 +113,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
             {
-                return _wareHouseList.Find(temp => temp.WareHouseId == wareHouseID);
+                return (WareHouse)_wareHouseList.Where(temp => temp.WareHouseId == wareHouseID);
             }
             else
             {
