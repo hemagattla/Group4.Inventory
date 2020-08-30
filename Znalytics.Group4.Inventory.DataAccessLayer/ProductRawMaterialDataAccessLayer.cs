@@ -34,7 +34,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         /// AddRawMaterial is a static Method used to Add RawMaterial to the List
         /// </summary>
         /// <param name="rawMaterial">Represents the Reference variable of RawMarial class</param>
-        public void AddRawMaterial(ProductRawMaterials productRawMaterial)
+        public void AddRawMaterialToProduct(ProductRawMaterials productRawMaterial)
         {
 
             _productRawMaterialss.Add(productRawMaterial);//Addess RawMaterial details to List
@@ -142,9 +142,8 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
             streamReader.Close();
             return customers2;
 
-        }*/
+        }
     }
-}
-
+}*/
     
 
