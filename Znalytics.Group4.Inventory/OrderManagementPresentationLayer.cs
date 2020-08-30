@@ -109,7 +109,8 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 string AddressId = Console.ReadLine();
                 WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressId);
                 order.WareHouseAddress = houseAddress;
-                Console.WriteLine("==========AddressDetails================");
+                
+                Console.WriteLine("==========AddressDetails Of Customer================");
                 Console.WriteLine("Enter your CustomerId to Choose your Address");
                 int CustomerId = int.Parse(Console.ReadLine());
                 Customer customerAddress = orderBusiness.GetCustomerDetailsByCustomerID(CustomerId);
@@ -120,12 +121,13 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 {
                     order.OrderID = orderBusiness.OrderID();
                     Console.WriteLine("Your OrderID Is:" + order.OrderID);
+                    orderBusiness.AddOrderDetails(order);
                 }
                 else
                 {
-                    Console.WriteLine(" you are not sure about orders");
+                    Console.WriteLine(" you are not Conform your orders, Please TryAgain");
                 }
-                orderBusiness.AddOrderDetails(order);
+               
             }catch(Exception e)
             {
                 Console.WriteLine(e.Message);
