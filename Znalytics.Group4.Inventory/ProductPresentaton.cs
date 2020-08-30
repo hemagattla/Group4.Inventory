@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.Entitie;
+using Znalytics.Inventory.ProductModule.CustomException;
 
 namespace Znalytics.Inventory.ProductModule.ProductPresentation
 {
@@ -16,7 +17,7 @@ namespace Znalytics.Inventory.ProductModule.ProductPresentation
     {
 
 
-        static void Main()
+        public void menu()
         {
 
             int choice;
