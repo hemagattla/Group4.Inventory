@@ -175,6 +175,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                 {
                 System.Console.WriteLine(ex.Message);
                 }
+           
         }
         public static void AddRawMaterialToProduct(string ProductID, string RawMaterialID, string RawMaterialName)
         {
