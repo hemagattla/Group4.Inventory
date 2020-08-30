@@ -51,9 +51,9 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
                 System.Console.WriteLine("Entered Values contail null values");
             }
         }
-        public ProductRawMaterial GetProductRawMaterialByID(string ProductID)
+        public ProductRawMaterial GetProductRawMaterialByID(string ProductID,string RawMaterialID)
         {
-            return prda.GetProductRawMaterialByID(ProductID);
+           return prda.GetProductRawMaterialByID(ProductID,RawMaterialID);
         }
         public List<ProductRawMaterial> GetProductRawMaterial()
         {
