@@ -25,7 +25,11 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
         /// </summary>
         static StockDataAccessLogic()
         {
-            _stocks = new List<Stock>();
+            _stocks = new List<Stock>()
+            {
+                new Stock(){ StockID="1",WareHouseID="WHID01",AddressID="W1A1",ProductID="PID10",Quantity=10 }
+
+            };
 
         }
 

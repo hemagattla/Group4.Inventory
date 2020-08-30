@@ -16,7 +16,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
     /// <summary>
     /// referes to ProductData class in DataAccessLayer
     /// </summary>
-    public class ProductData
+    public class ProductDataAccessLogic
     {
         /// <summary>
         /// creating a private List of Product class
@@ -30,7 +30,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// <summary>
         /// static Constructor to initialize
         /// </summary>
-        static ProductData() // creating a list object in constructor
+        static ProductDataAccessLogic() // creating a list object in constructor
         {
 
             _productsList = new List<Product>()
