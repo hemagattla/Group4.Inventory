@@ -2,6 +2,7 @@
 
 //Importing Statements
 using System;
+using System.Text.RegularExpressions;
 using Znalytics.Group4.Inventory.Entities;
 
 //Created a namespace for Entity Layer of WareHouseAddress Module
@@ -56,19 +57,16 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                Regex r = new Regex("[A-Z0-9]$");
+                if (!string.IsNullOrEmpty(value)&&value.StartsWith("W")&&value.Length==4&&r.IsMatch(value) )
                 {
-                    bool spaceFound = value.Contains(" ");
-                    bool atFound = value.Contains("@");
-                    bool commaFound = value.Contains(",");
-                    if (!spaceFound && !atFound && !commaFound && value.StartsWith("W") )
-                    {
+                    
                         _addressId = value;
-                    }
+                    
                 }
                 else
                 {
-                    throw new WareHouseException("Invalid addressid. It should not contain spaces and length should be exactly 4");
+                    throw new WareHouseException("Invalid addressid. It should not contain spaces or Special Characters and length should be exactly 4");
                 }
             }
 
@@ -84,12 +82,11 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(value)&&value.Length<=30)
                 {
-                    if (value.Length <= 30)
-                    {
+                    
                         _doorNumber = value;
-                    }
+                    
                 }
                 else
                 {
@@ -110,15 +107,12 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-
-                if (!string.IsNullOrEmpty(value))
+                Regex r = new Regex("[a-zA-Z0-9_]+$");
+                if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
                 {
-                    bool atFound = value.Contains("@");
-                    bool commaFound = value.Contains(",");
-                    if (!atFound && !commaFound && value.Length <= 30)
-                    {
+                    
                         _locationName = value;
-                    }
+                    
                 }
 
                 else
@@ -139,8 +133,8 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-
-                if (!string.IsNullOrEmpty(value))
+                Regex r = new Regex("[a-zA-Z_]+$");
+                if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
                 {
                     bool atFound = value.Contains("@");
                     bool commaFound = value.Contains(",");
@@ -167,17 +161,10 @@ namespace Znalytics.Inventory.AddressModule.Entities
         {
             set
             {
-                if (!string.IsNullOrEmpty(value)&&value.Length == 6)
+                Regex r = new Regex("[0-9]+$");
+                if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length == 6)    
                 {
-                    
-                        for (int i = 0; i < value.Length; i++)
-                        {
-                            if (value[i] < '0' || value[i] > 9)
-                            {
-                                _pincode = value;
-                            }
-                        }
-                    
+                    _pincode = value;
                 }
                 else
                 {

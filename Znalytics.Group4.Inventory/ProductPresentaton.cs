@@ -79,7 +79,7 @@ namespace Znalytics.Inventory.ProductModule.ProductPresentation
                 }
 
 
-            } while (choice != 6);
+            } while (choice != 7);
         }
 
 

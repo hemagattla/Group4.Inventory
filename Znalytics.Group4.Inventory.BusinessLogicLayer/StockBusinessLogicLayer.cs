@@ -1,6 +1,8 @@
 ﻿using Znalytics.Inventory.StockMaintain.Entities;
 
 using Znalytics.Inventory.StockMaintain.DataAccessLayer;
+using System.Collections.Generic;
+using Znalytics.Inventory.StockMaintain.CustomException;
 
 //using Znalytics.Group4.Inventory.BusinessLogicLayer;
 //using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
@@ -28,16 +30,18 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
             }
         }
 
-        public void DeleteStockByWareHouseID(Stock stock)
-        {
-
-        }
-
-
-
         public int TotalQuantity(string stockID)
         {
             return stockDataAccesslogic.TotalQuantity(stockID);
+        }
+        /// <summary>
+        /// Displaying the Stock details of products in particular warehouse and warehouse Address
+        /// </summary>
+        /// <param name="stock">gettig details like warehouse and warehouse address from user to dispaly products</param>
+        /// <returns></returns>
+        public List<Stock> DisplayStock(Stock stock)
+        {
+            return stockDataAccesslogic.DisplayStock(stock);
         }
 
     }
