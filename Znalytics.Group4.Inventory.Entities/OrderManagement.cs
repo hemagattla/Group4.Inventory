@@ -4,6 +4,7 @@ using Znalytics.Inventory.ProductModule.Entitie;
 using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.Module.Entities;
 using Znalytics.Group4.Inventory.Entities;
+using System.Xml.Schema;
 
 namespace Znalytics.Inventory.OrderManagementModule.Entities
 {
@@ -17,7 +18,9 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         Customer _customerAddress;
         int _orderID;
         double _totalPrice;
-        int _quantity;
+
+        Dictionary<string, int> _pIdQuantity;
+        int _totalQuantity;
         
         /// <summary>
         /// Constructor That intializes the Fields
@@ -28,7 +31,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         /// <param name="price"></param>
         
         /// <param name="orderID"></param>
-        public OrderManagement(List<Product> products, WareHouseAddress wareHouseAddress,Customer customerAddress,double price,int orderID,int quantity)
+        public OrderManagement(List<Product> products, WareHouseAddress wareHouseAddress,Customer customerAddress,double price,int orderID,Dictionary<string,int> quantity,int totalQuantity)
         {
             products = _products;
             wareHouseAddress = _wareHouseAddress;
@@ -36,7 +39,8 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
            
             price = _totalPrice;
             orderID = _orderID;
-            quantity = _quantity;
+            quantity = _pIdQuantity;
+            totalQuantity = _totalQuantity;
         }
         /// <summary>
         /// Default constructor
@@ -149,6 +153,21 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
             }
         }
         /// <summary>
+        /// Property for storing Quantity in the index of ProductId
+        /// </summary>
+        public Dictionary<string,int> PIdQuantity
+        {
+            set
+            {
+                _pIdQuantity = value;
+            }
+            get
+            {
+                return _pIdQuantity;
+            }
+        }
+
+        /// <summary>
         /// Property for assigning Values to Quantity Field and Getting the value of Quantity
         /// </summary>
         public int TotalQuantity 
@@ -157,13 +176,13 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
             {
                 if (value > 0 && value != ' ')
                 {
-                    _quantity = value;
+                    _totalQuantity = value;
                 }
                 else throw new OrderManagementException("Quantity should be Greater than 0 and It Should not be null");
             }
             get
             {
-                return _quantity;
+                return _totalQuantity;
             }
         }
 

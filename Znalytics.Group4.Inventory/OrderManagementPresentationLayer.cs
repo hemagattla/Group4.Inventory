@@ -20,7 +20,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
     /// <summary>
     /// Represents PresentationLayer of OrderManagement
     /// </summary>
-     class OrderManagementPresentationLayer
+    class OrderManagementPresentationLayer
     {
         public void Menu()
         {
@@ -31,18 +31,18 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 Console.WriteLine(" OrdersManagement Menu");
                 Console.WriteLine("1. Place Order");
                 Console.WriteLine("2. Update OrderDetails");
-                Console.WriteLine("3. Cancel OrderDetails");
+                Console.WriteLine("3. Cancel Order");
                 Console.WriteLine("4. view OrderDetails");
                 Console.WriteLine("5. Exit");
                 Console.Write("Enter choice: ");
                 choice = int.Parse(Console.ReadLine());
 
-                
+
                 switch (choice)
                 {
                     case 1: PlaceOrder(); break;
                     case 2: UpdateOrderDetails(); break;
-                    case 3: CancelOrderDetails(); break;
+                    case 3: CancelOrder(); break;
                     case 4: viewOrderDetails(); break;
                     case 5: Console.WriteLine("Exit"); break;
 
@@ -52,23 +52,26 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
         /// <summary>
         /// Method for Adding OrderDetails to List
         /// </summary>
+
+
         public void PlaceOrder()
         {
-           try {
-               
+            try
+            {
+
                 OrderManagement order = new OrderManagement();
                 OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();
-                
+
                 //Displaying WareHouse Details
                 Console.WriteLine("==========WareHouseDetails=======");
                 List<WareHouse> wareHouses = orderBusiness.GetWareHouses();
                 foreach (WareHouse var in wareHouses)
                 {
-                    Console.WriteLine( "WareHouseId:" +var.WareHouseId + "    " + "WareHouseName"+ var.WareHouseName + "ManagerName"+"  " + var.MangerName);
+                    Console.WriteLine("WareHouseId:" + var.WareHouseId + "    " + "WareHouseName" + var.WareHouseName + "ManagerName" + "  " + var.MangerName);
                 }
-             
+
                 //Displaying WreHouseAddress Details
-                
+
                 Console.WriteLine("============WareHouseAddressDetails============");
                 List<WareHouseAddress> wareHouseAddresses = orderBusiness.GetWareHouseAddresses();
                 Console.WriteLine("WareHouseID" + "   " + "AddressID" + "  " + "Door Number" + "  " + "LocationName" + "  " + "State" + "  " + "Pincode");
@@ -83,20 +86,21 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 string AddressId = Console.ReadLine();
                 WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressId);
                 order.WareHouseAddress = houseAddress;
-               
+
                 //Calling the Method from StockPresentationLyer to Display the Details of Products and quatity of Products
                 StockPresentationLayer.DisplayStock();
 
                 Console.WriteLine("======ProductDetails=======");
-                
+
                 int choice = 0;
                 order.TotalPrice = 0;
                 order.TotalQuantity = 0;
 
-            
-              do{
 
-            
+                do
+                {
+
+
 
                     Console.WriteLine("Enter 1 if you want to select products for Order otherwise enter 2");
                     Console.Write("Enter choice: ");
@@ -109,9 +113,12 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                             string productId = (Console.ReadLine());
                             Console.WriteLine("Enter Quantity");
                             int quantity = int.Parse(Console.ReadLine());
+                            order.PIdQuantity[productId] = quantity;
                             Product product = orderBusiness.ProductDetails(productId);
                             order.Products.Add(product);
-                            order.TotalPrice += product.Price*quantity;
+                            Stock s = new Stock();
+                            s.Quantity -= order.PIdQuantity[productId];
+                            order.TotalPrice += product.Price * quantity;
                             order.TotalQuantity += quantity;
                             break;
 
@@ -119,11 +126,10 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                         case 2: Console.WriteLine("Exit"); break;
 
                     }
-                } while (choice != 2) ;
-                Stock s = new Stock();
-                 s.Quantity-= order.TotalQuantity;
-                
-                
+                } while (choice != 2);
+
+
+
                 Console.WriteLine("==========AddressDetails Of Customer================");
                 Console.WriteLine("Enter your CustomerId to Choose your Address");
                 int CustomerId = int.Parse(Console.ReadLine());
@@ -141,13 +147,14 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 {
                     Console.WriteLine(" you are not Conform your orders, Please TryAgain");
                 }
-               
-            }catch(Exception e)
+
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-            
-          
+
+
         }
         /// <summary>
         /// Represents method for updating orderDetails
@@ -160,10 +167,12 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
             {
                 Console.WriteLine(" Choose among following which details do you want to update");
                 Console.WriteLine("1. Product Details");
-                Console.WriteLine("2. WareHouse Details");
-                Console.WriteLine("3. Customer AddressDetails");
-                Console.WriteLine("4. Exit");
-                
+                Console.WriteLine("2. Quantity");
+                Console.WriteLine("3. WareHouse Details");
+                Console.WriteLine("4. Customer AddressDetails");
+                Console.WriteLine("5. Exit");
+
+
                 Console.Write("Enter choice: ");
                 choice = int.Parse(Console.ReadLine());
                 Console.WriteLine("Enter OrderId");
@@ -177,33 +186,41 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                             Console.WriteLine("Enter ProductID");
                             string ProductId = (Console.ReadLine());
                             Product p = orderBusiness.ProductDetails(ProductId);
-                            
+
                             products.Add(p);
 
                             Console.WriteLine("Enter 1 if you want to Update one more product otherwise enter 2");
                             Console.Write("Enter choice: ");
                             choice = int.Parse(Console.ReadLine());
 
-                           
-                        } while (choice== 1);
-                       
+
+                        } while (choice == 1);
+
                         orderBusiness.UpdateProductDetails(orderId, products);
                         break;
                     case 2:
-                        
+                        OrderManagement order = new OrderManagement();
+                        Console.WriteLine("Enter ProductId");
+                        string productid = (Console.ReadLine());
+                        Console.WriteLine("Enter the  Quantity that you want to Replace With Existing Quantity");
+                        int Quantity = int.Parse(Console.ReadLine());
+                        order.PIdQuantity[productid] = Quantity;
+                        break;
+                    case 3:
+
                         Console.WriteLine("Enter AddressID");
                         string AddressID = (Console.ReadLine());
                         WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressID);
-                        orderBusiness.UpdateWareHouseAddressDetails(orderId,houseAddress);
+                        orderBusiness.UpdateWareHouseAddressDetails(orderId, houseAddress);
                         break;
-                    case 3:
+                    case 4:
                         Console.WriteLine("Enter CustomerID");
                         int customerId = int.Parse(Console.ReadLine());
                         Customer customerAddress = orderBusiness.GetCustomerDetailsByCustomerID(customerId);
                         orderBusiness.UpdateCustomerAddressDetails(orderId, customerAddress);
                         break;
-                   
-                    case 4: Console.WriteLine("Exit"); break;
+
+                    case 5: Console.WriteLine("Exit"); break;
 
                 }
             } while (choice != 4);
@@ -211,7 +228,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
         /// <summary>
         /// Represents a  Method for cancel order Details
         /// </summary>
-        static void CancelOrderDetails()
+        static void CancelOrder()
         {
             Console.WriteLine("Enter OrderId");
             int orderId = int.Parse(Console.ReadLine());
@@ -224,15 +241,31 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
         /// </summary>
         static void viewOrderDetails()
         {
-            
+
             OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();
             Console.WriteLine("Enter EmployeeId");
-            int orderId = int.Parse(Console.ReadLine());
-            orderBusiness.GetOrderDetailsByEmployeeID(orderId);
-        }
+            int EmployeeId = int.Parse(Console.ReadLine());
+            List<OrderManagement> orders = orderBusiness.GetOrderDetailsByEmployeeID(EmployeeId);
+            foreach (var order in orders)
+            {
+                foreach (var product in order.Products)
+                {
 
+                    Product p = orderBusiness.ProductDetails(product.ProductID);
+                    System.Console.WriteLine(p.ProductID + "     " + p.ProductName + "      " + p.Price);
+                    Console.WriteLine("Quantity" + order.PIdQuantity[p.ProductID]);
+                }
+                Console.WriteLine(order.WareHouseAddress.WareHouseId + "       " + order.WareHouseAddress.AddressId + "     " + order.WareHouseAddress.DoorNumber + "    " + order.WareHouseAddress.LocationName + "     " + order.WareHouseAddress.State + "    " + order.WareHouseAddress.Pincode + "     ");
+                Console.WriteLine(order.CustomerAddress.CustomerId + "    " + order.CustomerAddress.CustomerName + "  " + order.CustomerAddress.Email + "     " + order.CustomerAddress.Country + "    " + order.CustomerAddress.State + "  " + order.CustomerAddress.City + "    " + order.CustomerAddress.PinNo + "  " + order.CustomerAddress.HNo);
+                Console.WriteLine(order.TotalPrice);
+
+            }
+
+        }
 
 
     }
 }
+
+
 

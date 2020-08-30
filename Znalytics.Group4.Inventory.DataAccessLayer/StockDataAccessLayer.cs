@@ -25,7 +25,11 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
         /// </summary>
         static StockDataAccessLogic()
         {
-            _stocks = new List<Stock>();
+            _stocks = new List<Stock>()
+            {
+                new Stock(){ StockID="1",WareHouseID="WHID01",AddressID="W1A1",ProductID="PID10",Quantity=10 }
+
+            };
 
         }
 
@@ -52,9 +56,9 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
 
         }
         /// <summary>
-        /// 
+        /// Displaying the number of Stocks available of product in each ware house
         /// </summary>
-        /// <param name="stock"></param>
+        /// <param name="stock">it contains the user entered warehouse id and warehouse adddress</param>
         /// <returns></returns>
         public List<Stock> DisplayStock(Stock stock)
         {
@@ -68,6 +72,17 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
                 throw new StockException("invlaid WarehouseID or AdressID");
             }
         }
+
+        public void UpdateStockQuantity(Stock stock)
+        {
+            Stock stock1 = _stocks.Find(n => n.WareHouseID == stock.WareHouseID&&n.AddressID==stock.AddressID);
+            if (stock1!= null)
+            {
+                stock1.Quantity = stock1.Quantity;
+              
+            }
+        }
+
 
     }
 }

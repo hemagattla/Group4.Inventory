@@ -20,7 +20,11 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                 do
                 {
                     System.Console.WriteLine("1. Add Stock");
-                    System.Console.Write("Enter Your Choice");
+                    System.Console.Write("2. DisplayStock");
+                    System.Console.WriteLine("3. Update Stock");
+                    System.Console.WriteLine("4. Exit");
+                    System.Console.Write("Enter Your Choice: ");
+                    
 
 
                     b = int.TryParse(System.Console.ReadLine(), out choice);
@@ -34,6 +38,9 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                                 AddStock();
                                 break;
                             case 2: DisplayStock();
+                                break;
+                            case 3:
+                                UpdateStockQuantity();
                                 break;
 
                             default:
@@ -51,7 +58,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                     }
 
 
-                } while (choice != 6);
+                } while (choice != 4);
             }
             catch (Exception e)
             {
@@ -92,7 +99,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                         
                         stockBusinessLogicLayer.AddStock(stock);
                         Console.WriteLine("Stock Added Sucessfully!!");
-                        stock.TotalQuantity = TotalQuantity(stock.StockID);
+                        
                     }
                 }
                 else
@@ -120,7 +127,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             Stock stock = new Stock();
             System.Console.WriteLine("Enter WareHouseID");
             stock.WareHouseID = System.Console.ReadLine();
-            System.Console.WriteLine("Enter Address Name");
+            System.Console.WriteLine("Enter AddressID");
             stock.AddressID = System.Console.ReadLine();
             List<Stock> stocks = stockBusinessLogicLayer.DisplayStock(stock);
             foreach (Stock item in stocks)
@@ -129,6 +136,26 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                 System.Console.WriteLine(item.ProductID + "  " + item.TotalQuantity);
             }
            
+        }
+       
+
+
+        public void UpdateStockQuantity()
+        {
+            StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
+            Stock stock = new Stock();
+            System.Console.WriteLine("enter to which WarehouseId you want to update the quantity:");
+            stock.WareHouseID = System.Console.ReadLine();
+            System.Console.WriteLine("enter to which WarehouseAddress you want to update the quantity:");
+            stock.AddressID = System.Console.ReadLine();
+            System.Console.WriteLine("enter the quantity to be updated:");
+            stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
+
+            stockBusinessLogicLayer.UpdateStockQuantity(stock);
+            System.Console.WriteLine("Stock quntity Updated Sucessfully");
+
+
+
         }
     }
 }
