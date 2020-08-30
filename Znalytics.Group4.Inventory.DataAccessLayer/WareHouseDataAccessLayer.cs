@@ -78,7 +78,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             string s = JsonConvert.SerializeObject(_wareHouseList);
 
             //write data into file
-            StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\WareHouseData.txt");
+            StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\WareHouse.txt");
             streamWriter.Write(s);
             streamWriter.Close();
         }
@@ -89,7 +89,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// <returns>Returns List of warehouses avaliable int WareHouseData.Txt</returns>
         public static List<WareHouse> GetFiledata()
         {
-            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseData.txt");
+            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouse.txt");
             string s1 = streamReader.ReadToEnd();
             List<WareHouse> ware = JsonConvert.DeserializeObject<List<WareHouse>>(s1);
             streamReader.Close();
@@ -115,7 +115,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
             {
                 //Linq returns an object of conditional data 
-                return (WareHouse)_wareHouseList.Where(temp => temp.WareHouseId == wareHouseID);
+                return _wareHouseList.Find(temp => temp.WareHouseId == wareHouseID);
             }
             else
             {
@@ -175,7 +175,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         public static void UpdateWareHouseName(WareHouse wareHouse)
         {
             //Condition to check whether the WareHouseId exists or not
-            if (_wareHouseList.Exists(n => n.WareHouseId == wareHouse.WareHouseId))
+           if (_wareHouseList.Exists(n => n.WareHouseId == wareHouse.WareHouseId))
             {
                 //Finds the matching element.The returned bool value is stored in a reference variable
                 WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
@@ -198,7 +198,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         public static void UpdateManagerName(WareHouse wareHouse)
         {
             //Condition to check whether the WareHouseId exists or not
-            if (_wareHouseList.Exists(temp => temp.WareHouseId == wareHouse.WareHouseId))
+           if (_wareHouseList.Exists(temp => temp.WareHouseId == wareHouse.WareHouseId))
             {
                 //Finds the matching element.The returned bool value is stored in a reference variable
                 WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
@@ -207,7 +207,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
                     w.MangerName = wareHouse.MangerName;
                     SaveIntoFile();
                 }
-            }
+           }
             else
             {
                 throw new WareHouseException("Warehouse doesn't exist");

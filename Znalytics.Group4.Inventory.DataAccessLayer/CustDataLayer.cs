@@ -23,6 +23,16 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
         {
             return _customers;
         }
+        public List<Customer> LoginCustomer(string CustomerName,string Password)
+        {
+            if (_customers.Exists(temp => temp.CustomerName == CustomerName))
+                {
+                if(_customers.Exists(temp=>temp.Password==Password))
+                {
+                    return _customers;
+                }
+            }
+        }
         public void UpdateCustomer(Customer c)
         {
             ///updating deatils based on cust id///
