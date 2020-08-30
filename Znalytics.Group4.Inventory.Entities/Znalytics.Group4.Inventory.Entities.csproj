@@ -55,7 +55,7 @@
     <Compile Include="ProductShippingAddress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stock.cs" />
-    <Compile Include="Warehouse.cs" />
+    <Compile Include="WareHouse.cs" />
     <Compile Include="WareHouseException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
