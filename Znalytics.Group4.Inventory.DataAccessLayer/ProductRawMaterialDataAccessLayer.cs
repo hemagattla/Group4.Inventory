@@ -24,7 +24,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
 
             _productRawMaterialss = new List<ProductRawMaterials>();//creating object for list 
 
-           // _productRawMaterialss = GetFiledata();
+            // _productRawMaterialss = GetFiledata();
 
 
 
@@ -48,7 +48,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         public void DeleteRawMaterial(ProductRawMaterials productRawMaterial)
         {
             _productRawMaterialss.RemoveAll(temp => temp.ProductID == productRawMaterial.ProductID && temp.RawMaterialID == productRawMaterial.RawMaterialID && temp.RawMaterialName == productRawMaterial.RawMaterialName);
-           // ListOfRawMaterials();
+            // ListOfRawMaterials();
         }
 
         /// <summary>
@@ -67,10 +67,10 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         public void UpdateRawMaterialPrice(ProductRawMaterials productRawMaterial)
         {
             ProductRawMaterials abc = _productRawMaterialss.Find(temp => temp.RawMaterialID == productRawMaterial.RawMaterialID && temp.RawMaterialName == productRawMaterial.RawMaterialName);
-           
-       
-                    abc.Quantity = productRawMaterial.Quantity;
-                   // ListOfRawMaterials();
+
+
+            abc.Quantity = productRawMaterial.Quantity;
+            // ListOfRawMaterials();
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
                 if (ab != null)
                 {
                     ab.Quantity = productRawMaterial.Quantity;
-                   // ListOfRawMaterials();
+                    // ListOfRawMaterials();
                 }
                 else
                 {
@@ -100,6 +100,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
 
 
         }
+
 
         /// <summary>
         /// GetRawMaterialByRawMaterialID is a instance method used to Return the Corresponding RawMaterial Details based on RawMaterialID

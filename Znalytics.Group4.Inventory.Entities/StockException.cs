@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Znalytics.Inventory.StockMaintain.CustomException
 {
-    class StockException:ApplicationException
+    public class StockException:ApplicationException
     {
 
         public StockException():base()

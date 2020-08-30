@@ -8,9 +8,7 @@ namespace Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer
     {
         void AddProducts(Product n);
 
-        void RemoveProductByID(int id);
-
-       void RemoveProductByName(string name);
+        void RemoveProduct(string id);
 
         void UpdateProductName(Product product);
 
