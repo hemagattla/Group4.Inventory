@@ -51,6 +51,10 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
                 System.Console.WriteLine("Entered Values contail null values");
             }
         }
+        public ProductRawMaterial GetProductRawMaterialByID(string ProductID)
+        {
+            return prda.GetProductRawMaterialByID(ProductID);
+        }
         public List<ProductRawMaterial> GetProductRawMaterial()
         {
             return prda.GetProductRawMaterial();
@@ -91,39 +95,6 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
         }
         
 
-            public void AddProducts(Product n)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveProductByID(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveProductByName(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateProductName(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateProductPrice(Product p)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Product> DispalyProducts()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveProduct(string id)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
