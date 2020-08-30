@@ -105,7 +105,7 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         {
             set
             {
-                Regex r = new Regex("[a-zA-Z0-9_]$");
+                Regex r = new Regex("[a-zA-Z_]$");
 
                 if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
                 {

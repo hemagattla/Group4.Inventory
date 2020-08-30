@@ -1,9 +1,9 @@
 ﻿using Znalytics.Inventory.StockMaintain.Entities;
 using Znalytics.Inventory.StockMaintain.BusinessLogicLayer;
-using Znalytics.Inventory.ProductModule.ProductPresentation;
+using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 using Znalytic.Inventory.WareHouseModule.PresentationLayer;
 using System.Xml.Serialization;
-using Znalytics.Inventory.ProductModule.CustomException;
+
 using System;
 using System.Collections.Generic;
 
@@ -73,7 +73,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
         /// </summary>
         public static void AddStock()
         {
-            ProductPresentation productPresentation = new ProductPresentation();
+            ProductBusiness productBusiness=new ProductBusiness();
             MenuPrensentor wareHousePresentation = new MenuPrensentor();
             StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer(); // creation stockBusinessLogic object
             Stock stock = new Stock();//creation of stock object of entite Layer
@@ -91,7 +91,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                 {
                     System.Console.WriteLine("Enter Product ID");
                     stock.ProductID = System.Console.ReadLine();
-                    if (productPresentation.CheckProductID(stock.ProductID))
+                    if (productBusiness.CheckProductID(stock.ProductID))
                     {
 
                         System.Console.WriteLine("Enter no of Quantities u want to add");

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.ProductModule.DataAccessLayer;
 using Znalytics.Inventory.ProductModule.Entitie;
-//using Znalytics.Group4.Inventory.IBusinessLogicLayer;
+
 using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
 
 namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
@@ -96,10 +96,21 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
         /// </summary>
         /// <param name="productID"> gets product id from user</param>
         /// <returns></returns>
+       
+        
+
         public bool CheckProductID(string productID)
         {
-            return d.CheckProductID(productID);
 
+            
+            bool result = d.CheckProductID(productID);
+            if (result == true)
+            {
+
+                System.Console.WriteLine("ProductID Exits");
+                return result;
+            }
+            return result;
         }
 
 

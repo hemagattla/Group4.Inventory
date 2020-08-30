@@ -13,7 +13,7 @@ using Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer;
 
 namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
 {
-    public class ProductRawMaterialBusinessLogicLayer: IProductBusinessLogicLayer, IRawMaterialBusinessLogicLayer
+    public class ProductRawMaterialBusinessLogicLayer : IProductBusinessLogicLayer, IRawMaterialBusinessLogicLayer
     {
         //ProductBusiness pb = new ProductBusiness();
         //RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
@@ -22,11 +22,11 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
         ProductDataAccessLogic productData = new ProductDataAccessLogic();
         public ProductRawMaterialBusinessLogicLayer()
         {
-              prda = new ProductRawMaterialDataAccessLayer();
+            prda = new ProductRawMaterialDataAccessLayer();
         }
         public void AddRawMaterialToProduct(ProductRawMaterial productRawMaterial)
         {
-            if((productRawMaterial.ProductID!=null)&&(productRawMaterial.RawMaterialID != null)&&(productRawMaterial.RawMaterialName != null)&&(productRawMaterial.Quantity != 0D)&&(productRawMaterial.Units != null))
+            if ((productRawMaterial.ProductID != null) && (productRawMaterial.RawMaterialID != null) && (productRawMaterial.RawMaterialName != null) && (productRawMaterial.Quantity != 0D) && (productRawMaterial.Units != null))
             {
                 prda.AddRawMaterialToProduct(productRawMaterial);
             }
@@ -99,6 +99,11 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
         }
 
         public void RemoveProduct(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ProductRawMaterial> GetDetailsByProductID(ProductRawMaterial productRawMaterial)
         {
             throw new NotImplementedException();
         }
