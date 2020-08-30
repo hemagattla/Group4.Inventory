@@ -86,7 +86,7 @@
         {
             set
             {
-                if (value.Length <= 2)
+                if (value.Length <= 2&!string.IsNullOrEmpty(value))
                 {
                     _stockID = value;
                 }

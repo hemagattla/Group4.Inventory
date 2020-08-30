@@ -43,6 +43,11 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
         {
             return stockDataAccesslogic.DisplayStock(stock);
         }
+       
+        public  void UpdateStockQuantity(Stock stock)
+        {
+            stockDataAccesslogic.UpdateStockQuantity(stock);
+        }
 
     }
 }
