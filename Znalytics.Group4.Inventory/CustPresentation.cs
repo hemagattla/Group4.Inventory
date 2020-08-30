@@ -55,10 +55,10 @@ class  CustPresentation
        cbl.AddCustomer(c);///call's the business logic layer of AddCustomer method///
         Console.WriteLine("customer details are  Added.\n");
     }
-    public static void GetCustomer()
+    public static void GetCustomers()
     {
         CustBusiness cbl = new CustBusiness();
-        List<Customer> customers = cbl.GetCust();
+        List<Customer> customers = cbl.GetCustomers();
 
         Console.WriteLine("===============   customer Details=============");
         Console.WriteLine("customerID" + "   " + "customerName" + "  " + "mail");

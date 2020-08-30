@@ -1,13 +1,14 @@
 ﻿using Znalytics.Inventory.StockMaintain.Entities;
+
 using Znalytics.Inventory.StockMaintain.DataAccessLayer;
 
-using Znalytics.Group4.Inventory.BusinessLogicLayer;
-using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
+//using Znalytics.Group4.Inventory.BusinessLogicLayer;
+//using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 
-using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
-using Znalytics.Group4.Inventory.IBusinessLogicLayer;
-using Znalytics.Inventory.AddressModule.BusinessLogicLayer;
-using Znalytics.Inventory.AddressModule.DataAccessLayer;
+//using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
+//using Znalytics.Group4.Inventory.IBusinessLogicLayer;
+//using Znalytics.Inventory.AddressModule.BusinessLogicLayer;
+//using Znalytics.Inventory.AddressModule.DataAccessLayer;
 
 namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
 {
@@ -29,12 +30,14 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
 
         public void DeleteStockByWareHouseID(Stock stock)
         {
-            
+
         }
 
-        public int ViewQuantity(Stock stock)
+
+
+        public int TotalQuantity(string stockID)
         {
-            return 0;
+            return stockDataAccesslogic.TotalQuantity(stockID);
         }
 
     }

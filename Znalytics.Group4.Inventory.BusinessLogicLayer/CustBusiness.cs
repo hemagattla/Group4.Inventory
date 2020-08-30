@@ -21,7 +21,7 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
             }
         }
 
-            public List<Customer> GetCoustomers()
+            public List<Customer> GetCustomers()
             {
                 return d.GetCustomers();// return to presentation layer
             }

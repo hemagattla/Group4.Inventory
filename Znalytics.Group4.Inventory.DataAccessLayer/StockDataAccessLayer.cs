@@ -1,14 +1,15 @@
 ﻿
 using System.Collections.Generic;
+using System.Linq;
 using Znalytics.Inventory.StockMaintain.Entities;
-using Znalytics.Group4.Inventory.StockMaintain.IDataAccessLayer;
+//using Znalytics.Group4.Inventory.StockMaintain.IDataAccessLayer;
 
 namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
 {
     /// <summary>
     /// This class represents data access logic for Stock
     /// </summary>
-    public class StockDataAccessLogic : IStockDataAccessLayer
+    public class StockDataAccessLogic// : IStockDataAccessLayer
     {
         //private field
         private static List<Stock> _stocks
@@ -22,15 +23,12 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
         /// </summary>
         static StockDataAccessLogic()
         {
-            _stocks = new List<Stock>()
-            {
-                new Stock() { WareHouseID = "1234", AddressID = "kukatpally", ProductID = "3456", Quantity = 5 },
-                new Stock() { WareHouseID = "1234", AddressID = "kukatpally", ProductID = "5678", Quantity = 34}
-            };
+            _stocks = new List<Stock>();
+
         }
 
-    
-        public  void StockID(Stock stock)
+
+        public void AddStock(Stock stock)
         {
             _stocks.Add(stock);
 
@@ -44,14 +42,21 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
 
         }
 
-        public void AddStock(Stock stock)
+
+        public int TotalQuantity(string stockID)
         {
-            throw new System.NotImplementedException();
+            bool result = _stocks.Exists(temp => temp.StockID == stockID);
+
+            if (result == true)
+            {
+                return _stocks.Select(x => x.quantity).Sum();
+            }
+            else
+            {
+                throw new System.Exception("no stock id");
+            }
+
         }
 
-        public int ViewQuantity(Stock stock)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
