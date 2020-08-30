@@ -8,6 +8,7 @@ using Znalytic.Inventory.WareHouseModule.PresentationLayer;
 using Znalytics.Inventory.ProductModule.ProductPresentation;
 using Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer;
 using Znalytics.Inventory.StockMaintain.PresentationLayer;
+using Znalytics.Group4.Inventory.PresentationLayer;
 
 namespace Znalytics.Group4.Inventory
 {
