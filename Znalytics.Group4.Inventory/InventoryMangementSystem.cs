@@ -9,6 +9,7 @@ using Znalytics.Inventory.ProductModule.ProductPresentation;
 using Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer;
 using Znalytics.Inventory.StockMaintain.PresentationLayer;
 using Znalytics.Group4.Inventory.PresentationLayer;
+using Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer;
 
 namespace Znalytics.Group4.Inventory
 {
@@ -73,6 +74,7 @@ namespace Znalytics.Group4.Inventory
                 ProductPresentation productPresentation = new ProductPresentation();
                 RawMaterialPresentationLayer rawMaterialPresentation = new RawMaterialPresentationLayer();
                 StockPresentationLayer stockPresentationLayer = new StockPresentationLayer();
+                ProductRawMaterialPresentation productRawMaterialPresentation = new ProductRawMaterialPresentation();
                 int option;
                 do
                 {
@@ -80,9 +82,9 @@ namespace Znalytics.Group4.Inventory
                     System.Console.WriteLine("2. Add Product");
                     System.Console.WriteLine("3. RawMaterialsDetails");
                     System.Console.WriteLine("4. Stock");
-                   // System.Console.WriteLine("4. ");
+                    System.Console.WriteLine("5.Add Product RawMaterial");
                     
-                    System.Console.WriteLine("5. Exit");
+                    System.Console.WriteLine("6. Exit");
 
                     bool b = int.TryParse(System.Console.ReadLine(), out option);
 
@@ -103,6 +105,9 @@ namespace Znalytics.Group4.Inventory
                                         break;
                                 case 4: stockPresentationLayer.menu();
                                         break;
+                                case 5:
+                                    productRawMaterialPresentation.ProductRawMaterialMenu();
+                                    break;
                                 default:
                                     System.Console.WriteLine("Please Enter the Correct Option");
                                     break;
