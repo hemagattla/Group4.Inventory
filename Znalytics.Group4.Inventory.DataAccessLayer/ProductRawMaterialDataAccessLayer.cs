@@ -55,11 +55,11 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         {
             return _productRawMaterials;
         }
-       public ProductRawMaterial GetProductRawMaterialByID(string ProductID)
-        {
-            ProductRawMaterial abc = _productRawMaterials.Find(temp => temp.ProductID == ProductID);
-            return abc;
-        }
+       public ProductRawMaterial GetProductRawMaterialByID(string ProductID,string RawMaterialID)
+       {
+          ProductRawMaterial abc = _productRawMaterials.Find(temp => temp.ProductID == ProductID && temp.RawMaterialID==RawMaterialID);
+          return abc;
+       }
 
         /// <summary>
         /// UpdateRawMaterialPrice is a instane method used to Update the RawMaterial Price Based on RawMaterialName and RawMaterialID

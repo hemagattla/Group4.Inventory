@@ -19,11 +19,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
     /// Represents class for Menu
     /// </summary>
     class MenuPrensentor
-    {
-
-       
-        
-
+    { 
         public void WareHouseMenu()
         {
             int choice = -1;
@@ -69,17 +65,25 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             } while (choice != 13);
         }
 
-        //Method to ADD WareHouse details to the list
-        public  void AddWareHouse()
+        /// <summary>
+        ///Method to ADD WareHouse details to the list
+        /// </summary>
+        public void AddWareHouse()
         {
             try
             {
+                //Created an object for Warehouse class and is stored in a reference variable
                 WareHouse n = new WareHouse();
+
+                //Created an object for Warehouse Business class and is stored in a reference variable
                 WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
+
                 WriteLine("you chose to enter the warehouse details");
                 WriteLine("Enter Warehouse Id that starts with WHID and length of 6");
-
                 n.WareHouseId = ReadLine();
+
+                //Condition to check whether the WareHouseid exists or not
+                //The Warehouseid should be unique
                 if (wbl.CheckWareHouseId(n.WareHouseId) == false)
                 {
 
@@ -107,10 +111,16 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
 
         }
-        // Method to GET the added details
+
+        /// <summary>
+        ///Method to GET the added details
+        /// </summary>
         public void GetWareHouses()
         {
+            //Created an object for Warehouse Business class and is stored in a reference variable
             WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
+
+            //WareHouse List is stored in a reference variable
             List<WareHouse> wareHouseList = wbl.GetWareHouses();
 
             WriteLine("===============   WareHouse Details=============");
@@ -129,13 +139,17 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         {
             try
             {
+                //Created an object for Warehouse Business class and is stored in a reference variable
                 WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
 
                 WriteLine("Enter Existing WareHouse ID");
                 string whID = ReadLine();
+
+                //Condition to check whether the WareHouseid exists or not
                 WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
                 if (ware != null)
                 {
+                    WriteLine("===============   WareHouse Details=============");
                     WriteLine("WareHouseID" + "   " + "WareHouseName" + "  " + "ManagerName");
                     WriteLine(ware.WareHouseId + "  " + ware.WareHouseName + "  " + ware.MangerName);
 
@@ -161,8 +175,12 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         //Method to REMOVE WareHouses
         public  void RemoveWareHouse()
         {
-            WareHouse w = new WareHouse();// creating the object for Warehouse class
-            WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();// Creating thhe object for WareHouseBusinessLogic class
+            // created the object for Warehouse class
+            WareHouse w = new WareHouse();
+
+            // Created an object for WareHouseBusinessLogic class
+            WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
+
             WriteLine("select on which type you want to remove the WareHouse");
             WriteLine("1.on WareHouseId");
             WriteLine("2.on WareHouseName");
@@ -193,10 +211,15 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 string wareHouseID = ReadLine();
                 try
                 {
+                    //Condition to check whether the warehouse id exists or not
                     if (wbl.GetWareHouseByWareHouseID(n.WareHouseId) == null)
                     {
                         wbl.RemoveWareHouseByID(wareHouseID);
                         WriteLine("Warehouse Removed");
+                    }
+                    else
+                    {
+                        WriteLine("Warehouse id doesn't exist");
                     }
                 }
                 catch (WareHouseException ex)
@@ -217,10 +240,15 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
                 try
                 {
+                    //Condition to check whether the warehouse id exists or not
                     if (wbl.GetWareHouseByWareHouseID(n.WareHouseName) == null)
                     {
                         wbl.RemoveWareHouseByName(name);
                         WriteLine("Warehouse Removed");
+                    }
+                    else
+                    {
+                        WriteLine("Warehouse doesn't exist by this name");
                     }
                 }
                 catch (WareHouseException ex)
@@ -230,7 +258,9 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             }
         }
 
-        //Method to UPDATE WareHouseName
+        /// <summary>
+        ///Method to UPDATE WareHouseName
+        /// </summary>
         public void UpdateWareHouse()
         {
 
@@ -305,7 +335,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         WriteLine("Enter new name for Manager");
                         ware.MangerName = ReadLine();
 
-                        wbl.UpdateWareHouseName(ware);
+                        wbl.UpdateManagerName(ware);
                         WriteLine("Manager Name Updated Sucessfully!!!");
                     }
                     else
