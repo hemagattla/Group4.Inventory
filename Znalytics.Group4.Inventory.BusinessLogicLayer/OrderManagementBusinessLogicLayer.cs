@@ -14,6 +14,7 @@ using Znalytics.Group4.Inventory.Entities;
 using Znalytics.Group4.Module.IBusinessLogicLayer;
 using Znalytics.Inventory.Module.BusinessLogicLayer;
 using Znalytics.Inventory.WareHouseModule.Entities;
+using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
 
 namespace Znalytics.Group4.Inventory.BusinessLogicLayer
 {/// <summary>
@@ -28,7 +29,12 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         {//Creating Object for DataManagementLayer
             dl = new OrderManagementDataLayer();
         }
-        
+        IWareHouseBusinessLogicLayer k = new WareHouseBusinessLogicLayer();
+        public List<WareHouse> GetWareHouses()
+        {
+            return k.GetWareHouses();
+        }
+
         //Creating Reference Variable for Products in BusinessLogicLayer 
         IProductBusinessLogicLayer i = new ProductBusiness();
         
