@@ -11,7 +11,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
 {
     class ProductRawMaterialPresentation
     {
-        public void ProductRawMaterial()
+        public void ProductRawMaterialMenu()
         {
            
                 System.Console.WriteLine("========================Product Raw Material==========================");
@@ -37,7 +37,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                         Product product = new Product();
                         ProductBusiness productBusiness = new ProductBusiness();
                         RawMaterialBusinessLogicLayer pb = new RawMaterialBusinessLogicLayer();
-                        ProductRawMaterials productRawMaterial = new ProductRawMaterials();
+                        ProductRawMaterial productRawMaterial = new ProductRawMaterial();
                         ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
                         System.Console.WriteLine("enter ProductID (ProductID must Starts With *PID*)");
                         productRawMaterial.RawMaterialID = System.Console.ReadLine();
@@ -93,7 +93,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                                 break;
 
                             case 3:
-                                GetRawMaterialByRawMaterialID();
+                                GetProductRawMaterial();
                                 /*if (productBusiness.GetProductByProductID(product.ProductID) != null)
                                 {
                                     productRawMaterial.ProductID = product.ProductID;
@@ -167,7 +167,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
         }
         public static void AddRawMaterialToProduct(string ProductID, string RawMaterialID, string RawMaterialName)
         {
-            ProductRawMaterials productRawMaterial = new ProductRawMaterials();
+            ProductRawMaterial productRawMaterial = new ProductRawMaterial();
             ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
             productRawMaterial.ProductID = ProductID;
             productRawMaterial.RawMaterialID =RawMaterialID;
@@ -180,7 +180,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
         }
         public static void DeleteRawMaterialOfProduct(string ProductID, string RawMaterialID, string RawMaterialName)
         {
-            ProductRawMaterials productRawMaterial = new ProductRawMaterials();
+            ProductRawMaterial productRawMaterial = new ProductRawMaterial();
             ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
             productRawMaterial.ProductID = ProductID;
             productRawMaterial.RawMaterialID = RawMaterialID;
@@ -191,13 +191,13 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
             //productRawMaterial.Units = System.Console.ReadLine();
             productRawMaterialBusinessLogicLayer.DeleteRawMaterialOfProduct(productRawMaterial);
         }
-        public static void GetRawMaterialByRawMaterialID()
+        public static void GetProductRawMaterial()
         {
-            ProductRawMaterials productRawMaterial = new ProductRawMaterials();
+            ProductRawMaterial productRawMaterial = new ProductRawMaterial();
             ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
-            List<ProductRawMaterials> rms = productRawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID();// call the GetRawMaterial method with no arguments in the BusinessLogicLayer by using Refernce Variable
+            List<ProductRawMaterial> rms = productRawMaterialBusinessLogicLayer.GetProductRawMaterial();// call the GetRawMaterial method with no arguments in the BusinessLogicLayer by using Refernce Variable
             System.Console.WriteLine("**********************************************************************************");
-            foreach (ProductRawMaterials rm in rms)//to print the list
+            foreach (ProductRawMaterial rm in rms)//to print the list
             {
                 System.Console.WriteLine("ProductID:-"+ productRawMaterial.ProductID+"           RawMaterialID:-" + productRawMaterial.RawMaterialID  + "            RawMaterialName:-" + productRawMaterial.RawMaterialName + "          Quantity:-" + rm.Quantity + "" + rm.Units );
             }
@@ -205,7 +205,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
         }
         public static void UpdateRawMaterialOfProduct(string ProductID, string RawMaterialID, string RawMaterialName)
         {
-            ProductRawMaterials productRawMaterial = new ProductRawMaterials();
+            ProductRawMaterial productRawMaterial = new ProductRawMaterial();
             ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
             productRawMaterial.ProductID = ProductID;
             productRawMaterial.RawMaterialID = RawMaterialID;

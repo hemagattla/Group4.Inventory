@@ -13,7 +13,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         /// <summary>
         /// creating list for RawMaterial Details
         /// </summary>
-        private static List<ProductRawMaterials> _productRawMaterialss;
+        private static List<ProductRawMaterial> _productRawMaterials;
 
         /// <summary>
         /// static constructor used to creating object for the list and add details to the list
@@ -21,23 +21,19 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         static ProductRawMaterialDataAccessLayer()
 
         {
-
-            _productRawMaterialss = new List<ProductRawMaterials>();//creating object for list 
+            _productRawMaterials = new List<ProductRawMaterial>();//creating object for list 
 
             // _productRawMaterialss = GetFiledata();
-
-
-
         }
 
         /// <summary>
         /// AddRawMaterial is a static Method used to Add RawMaterial to the List
         /// </summary>
         /// <param name="rawMaterial">Represents the Reference variable of RawMarial class</param>
-        public void AddRawMaterialToProduct(ProductRawMaterials productRawMaterial)
+        public void AddRawMaterialToProduct(ProductRawMaterial productRawMaterial)
         {
 
-            _productRawMaterialss.Add(productRawMaterial);//Addess RawMaterial details to List
+            _productRawMaterials.Add(productRawMaterial);//Addess RawMaterial details to List
             //ListOfRawMaterials();
         }
 
@@ -45,9 +41,9 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         /// DeleteRawMaterial is a instance Method used to Delete RawMaterial from the List
         /// </summary>
         /// <param name="rawMaterial">is a variable of RawMaterial type</param>
-        public void DeleteRawMaterial(ProductRawMaterials productRawMaterial)
+        public void DeleteRawMaterialOfProduct(ProductRawMaterial productRawMaterial)
         {
-            _productRawMaterialss.RemoveAll(temp => temp.ProductID == productRawMaterial.ProductID && temp.RawMaterialID == productRawMaterial.RawMaterialID && temp.RawMaterialName == productRawMaterial.RawMaterialName);
+            _productRawMaterials.RemoveAll(temp => temp.ProductID == productRawMaterial.ProductID && temp.RawMaterialID == productRawMaterial.RawMaterialID && temp.RawMaterialName == productRawMaterial.RawMaterialName);
             // ListOfRawMaterials();
         }
 
@@ -55,18 +51,18 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         /// Return the List of RawMaterial Details
         /// </summary>
         /// <returns>Returns the list</returns>
-        public List<ProductRawMaterials> GetRawMaterial()
+        public List<ProductRawMaterial> GetProductRawMaterial()
         {
-            return _productRawMaterialss;
+            return _productRawMaterials;
         }
 
         /// <summary>
         /// UpdateRawMaterialPrice is a instane method used to Update the RawMaterial Price Based on RawMaterialName and RawMaterialID
         /// </summary>
         /// <param name="rawMaterial">is a variable of RawMaterial type</param>
-        public void UpdateRawMaterialPrice(ProductRawMaterials productRawMaterial)
+        public void UpdateRawMaterialOfProduct(ProductRawMaterial productRawMaterial)
         {
-            ProductRawMaterials abc = _productRawMaterialss.Find(temp => temp.RawMaterialID == productRawMaterial.RawMaterialID && temp.RawMaterialName == productRawMaterial.RawMaterialName);
+            ProductRawMaterial abc = _productRawMaterials.Find(temp => temp.ProductID == productRawMaterial.ProductID && temp.RawMaterialID == productRawMaterial.RawMaterialID && temp.RawMaterialName == productRawMaterial.RawMaterialName);
 
 
             abc.Quantity = productRawMaterial.Quantity;
@@ -77,9 +73,9 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         /// UpdateRawMaterialQuantity is a instance method used to Update the RawMaterial Quantity Based on RawMaterialName and RawMaterialID
         /// </summary>
         /// <param name="rawMaterial">is a variable of RawMaterial type</param>
-        public void UpdateRawMaterialQuantity(ProductRawMaterials productRawMaterial)
+        /*public void UpdateRawMaterialQuantity(ProductRawMaterial productRawMaterial)
         {
-            ProductRawMaterials ab = _productRawMaterialss.Find(temp => temp.RawMaterialID == productRawMaterial.RawMaterialID && temp.RawMaterialName == productRawMaterial.RawMaterialName);
+            ProductRawMaterial ab = _productRawMaterials.Find(temp => temp.RawMaterialID == productRawMaterial.RawMaterialID && temp.RawMaterialName == productRawMaterial.RawMaterialName);
 
             try
             {
@@ -99,8 +95,9 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
             }
 
 
-        }
-
+        }*/
+    }
+}
 
         /// <summary>
         /// GetRawMaterialByRawMaterialID is a instance method used to Return the Corresponding RawMaterial Details based on RawMaterialID

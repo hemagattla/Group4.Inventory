@@ -30,7 +30,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// <summary>
         /// static Constructor to initialize
         /// </summary>
-        static ProductData() // creating a list object in constructor
+         static ProductData() // creating a list object in constructor
         {
 
             _ProductsList = new List<Product>();
@@ -41,7 +41,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 
 
         }
-        public ProductData() { }
+       
 
         /// <summary>
         /// adding the products into the List

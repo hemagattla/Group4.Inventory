@@ -10,6 +10,8 @@ using Znalytics.Inventory.AddressModule.Entities;
 using Znalytics.Inventory.Module.Entities;
 using Znalytics.Group4.Inventory.BusinessLogicLayer;
 using Znalytics.Inventory.ProductShippingAddressModule.Entities;
+using Znalytics.Inventory.ProductModule.ProductPresentation;
+using Znalytics.Inventory.WareHouseModule.Entities;
 
 namespace Znalytics.Group4.Inventory.PresentationLayer
 {
@@ -50,9 +52,17 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
         /// </summary>
         public void AddOrderDetails()
         {
-         
+           try {
+                
                 OrderManagement order = new OrderManagement();
                 OrderManagementBusinessLogicLayer orderBusiness = new OrderManagementBusinessLogicLayer();
+                Console.WriteLine("==========WareHouseDetails=======");
+                List<WareHouse> wareHouses = orderBusiness.GetWareHouses();
+                foreach (WareHouse var in wareHouses)
+                {
+                    Console.WriteLine( "WareHouseId:" +var.WareHouseId + "    " + "WareHouseName"+ var.WareHouseName + "ManagerName"+"  " + var.MangerName);
+                }
+
                 Console.WriteLine("======ProductDetails=======");
                 List<Product> products = orderBusiness.DispalyProducts();
                 Console.WriteLine("The following Products Available :");
@@ -60,13 +70,14 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 {
                     Console.WriteLine("ProductName:" + product.ProductName + "ProductID:" + product.ProductID + "Price:" + product.Price);
                 }
+               
                 int choice = 0;
                 order.Price = 0;
 
-                do
-                {
+            
+            {
 
-
+            
 
                     Console.WriteLine("Enter 1 if you want to select products for Order otherwise enter 2");
                     Console.Write("Enter choice: ");
@@ -87,7 +98,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                         case 2: Console.WriteLine("Exit"); break;
 
                     }
-                } while (choice != 2);
+                } while (choice != 2) ;
                 Console.WriteLine("============WareHouseDetails============");
                 List<WareHouseAddress> wareHouseAddresses = orderBusiness.GetWareHouseAddresses();
                 foreach (var warehouseaddress in wareHouseAddresses)
@@ -98,7 +109,8 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 string AddressId = Console.ReadLine();
                 WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressId);
                 order.WareHouseAddress = houseAddress;
-                Console.WriteLine("==========AddressDetails================");
+                
+                Console.WriteLine("==========AddressDetails Of Customer================");
                 Console.WriteLine("Enter your CustomerId to Choose your Address");
                 int CustomerId = int.Parse(Console.ReadLine());
                 Customer customerAddress = orderBusiness.GetCustomerDetailsByCustomerID(CustomerId);
@@ -109,13 +121,17 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 {
                     order.OrderID = orderBusiness.OrderID();
                     Console.WriteLine("Your OrderID Is:" + order.OrderID);
+                    orderBusiness.AddOrderDetails(order);
                 }
                 else
                 {
-                    Console.WriteLine(" you are not sure about orders");
+                    Console.WriteLine(" you are not Conform your orders, Please TryAgain");
                 }
-                orderBusiness.AddOrderDetails(order);
-            
+               
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
             
           
         }
