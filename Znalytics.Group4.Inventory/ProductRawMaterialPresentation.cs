@@ -44,7 +44,8 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                         switch (select)
                         {
                             case 1:
-                                System.Console.WriteLine("enter ProductID (ProductID must Starts With *PID*)");
+                                AddRawMaterialToProduct();
+                                /*System.Console.WriteLine("enter ProductID (ProductID must Starts With *PID*)");
                                 productRawMaterial.ProductID = System.Console.ReadLine();
                                
                                 if (prbl.GetProductByProductID(productRawMaterial.ProductID) != null)
@@ -70,7 +71,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                                 else
                                 {
                                     System.Console.WriteLine("**************entered ProductID  " + productRawMaterial.ProductID + "  doesn't exists. Pls Try again*************");
-                                }
+                                }*/
                                 break;
                             case 2:
                                 System.Console.WriteLine("enter ProductID (ProductID must Starts With *PID*)");
@@ -191,9 +192,9 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                 {
                 System.Console.WriteLine(ex.Message);
                 }
-           
+
         }
-        public static void AddRawMaterialToProduct(string ProductID, string RawMaterialID, string RawMaterialName)
+        /*public static void AddRawMaterialToProduct(string ProductID, string RawMaterialID, string RawMaterialName)
         {
             ProductRawMaterial productRawMaterial = new ProductRawMaterial();
             ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
@@ -205,8 +206,68 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
             System.Console.WriteLine("Enter the Units");
             productRawMaterial.Units = System.Console.ReadLine();
             productRawMaterialBusinessLogicLayer.AddRawMaterialToProduct(productRawMaterial);
+        }*/
+        /*if (prbl.GetProductByProductID(productRawMaterial.ProductID) != null)
+                                {
+                                    Product a = prbl.GetProductByProductID(productRawMaterial.ProductID);
+        productRawMaterial.ProductID = a.ProductID;
+                                    System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
+                                    productRawMaterial.RawMaterialID = System.Console.ReadLine();
+                                    if (prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID) != null)
+                                    {
+                                        RawMaterial prm = prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID);
+        productRawMaterial.RawMaterialID = prm.RawMaterialID;
+                                        productRawMaterial.RawMaterialName = prm.RawMaterialName;
+                                        AddRawMaterialToProduct(productRawMaterial.ProductID, productRawMaterial.RawMaterialID, productRawMaterial.RawMaterialName);
+        System.Console.WriteLine("******************* Successfully added RawMaterial Details to ProductID  " + productRawMaterial.ProductID + " ************** ");
+                                    }
+                                    else
+                                    {
+                                        System.Console.WriteLine("**************entered RawMaterialID " + productRawMaterial.RawMaterialID + " does not exists. Pls Try again*************");
+                                    }
+                                }
+
+                                else
+{
+    System.Console.WriteLine("**************entered ProductID  " + productRawMaterial.ProductID + "  doesn't exists. Pls Try again*************");
+}*/
+        public static void AddRawMaterialToProduct()
+        {
+            ProductRawMaterial productRawMaterial = new ProductRawMaterial();
+            ProductRawMaterialBusinessLogicLayer prbl = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
+            System.Console.WriteLine("enter ProductID (ProductID must Starts With *PID*)");
+            productRawMaterial.ProductID = System.Console.ReadLine();
+
+            if (prbl.GetProductByProductID(productRawMaterial.ProductID) != null)
+            {
+                Product a = prbl.GetProductByProductID(productRawMaterial.ProductID);
+                productRawMaterial.ProductID = a.ProductID;
+                System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
+                productRawMaterial.RawMaterialID = System.Console.ReadLine();
+                if (prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID) != null)
+                {
+                    RawMaterial prm = prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID);
+                    productRawMaterial.RawMaterialID = prm.RawMaterialID;
+                    productRawMaterial.RawMaterialName = prm.RawMaterialName;
+                    System.Console.WriteLine("Enter the Quantity");
+                    productRawMaterial.Quantity = System.Convert.ToDouble(System.Console.ReadLine());
+                    System.Console.WriteLine("Enter the Units");
+                    productRawMaterial.Units = System.Console.ReadLine();
+                    prbl.AddRawMaterialToProduct(productRawMaterial);
+                    System.Console.WriteLine("******************* Successfully added RawMaterial Details to ProductID  " + productRawMaterial.ProductID + " ************** ");
+                }
+                else
+                {
+                    System.Console.WriteLine("**************entered RawMaterialID " + productRawMaterial.RawMaterialID + " does not exists. Pls Try again*************");
+                }
+            }
+
+            else
+            {
+                System.Console.WriteLine("**************entered ProductID  " + productRawMaterial.ProductID + "  doesn't exists. Pls Try again*************");
+            }
         }
-        public static void DeleteRawMaterialOfProduct(string ProductID, string RawMaterialID, string RawMaterialName)
+            public static void DeleteRawMaterialOfProduct(string ProductID, string RawMaterialID, string RawMaterialName)
         {
             ProductRawMaterial productRawMaterial = new ProductRawMaterial();
             ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
@@ -227,7 +288,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
             System.Console.WriteLine("**********************************************************************************");
             foreach (ProductRawMaterial rm in rms)//to print the list
             {
-                System.Console.WriteLine("ProductID:-"+ productRawMaterial.ProductID+"           RawMaterialID:-" + productRawMaterial.RawMaterialID  + "            RawMaterialName:-" + productRawMaterial.RawMaterialName + "          Quantity:-" + rm.Quantity + "" + rm.Units );
+                System.Console.WriteLine("ProductID:-"+rm.ProductID+"           RawMaterialID:-" +rm.RawMaterialID  + "            RawMaterialName:-" + rm.RawMaterialName + "          Quantity:-" + rm.Quantity + "" + rm.Units );
             }
             System.Console.WriteLine("**********************************************************************************");
         }
