@@ -46,7 +46,7 @@
             {
                 //if input value and AddressID present in database matches then the value will be assigned to the _AddressID
                 //else it will throw an exception
-                if ((value.Length <= 6) && (value.StartsWith("AID")))
+                if ((value.Length <= 6) && (value.StartsWith("W")))
                 {
                     _addressID = value;
                 }

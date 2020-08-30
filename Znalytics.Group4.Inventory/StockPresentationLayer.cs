@@ -80,7 +80,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             {
                 System.Console.WriteLine("Enter Address Name");
                 stock.AddressID = System.Console.ReadLine();
-                if (wareHousePresentation.CheckWareHouseId(stock.AddressID))
+                if (wareHousePresentation.CheckAddressId(stock.AddressID))
                 {
                     System.Console.WriteLine("Enter Product ID");
                     stock.ProductID = System.Console.ReadLine();
@@ -89,9 +89,10 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
 
                         System.Console.WriteLine("Enter no of Quantities u want to add");
                         stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
-                        stock.TotalQuantity = TotalQuantity(stock.StockID);
+                        
                         stockBusinessLogicLayer.AddStock(stock);
                         Console.WriteLine("Stock Added Sucessfully!!");
+                        stock.TotalQuantity = TotalQuantity(stock.StockID);
                     }
                 }
                 else
@@ -122,8 +123,12 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             System.Console.WriteLine("Enter Address Name");
             stock.AddressID = System.Console.ReadLine();
             List<Stock> stocks = stockBusinessLogicLayer.DisplayStock(stock);
-            System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
-            System.Console.WriteLine(stock.ProductID + "  " + stock.TotalQuantity);
+            foreach (Stock item in stocks)
+            {
+                System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
+                System.Console.WriteLine(item.ProductID + "  " + item.TotalQuantity);
+            }
+           
         }
     }
 }
