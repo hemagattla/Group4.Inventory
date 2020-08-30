@@ -79,16 +79,10 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
 
             set
             {
-                Regex r = new Regex("[a-zA-Z\0-9-_s]$");
-                if (!string.IsNullOrEmpty(value)&&r.IsMatch(value))
+                Regex r = new Regex("[a-zA-Z0-9_]$");
+                if (!string.IsNullOrEmpty(value)&&r.IsMatch(value) && value.Length <= 30)
                 {
-                    bool atFound = value.Contains("@");
-                    bool commaFound = value.Contains(",");
-
-                    if (!atFound && !commaFound && value.Length <= 30)
-                    {
-                        _warehouseName = value;
-                    }
+                    _warehouseName = value;
 
                 }
 
@@ -111,16 +105,12 @@ namespace Znalytics.Inventory.WareHouseModule.Entities
         {
             set
             {
+                Regex r = new Regex("[a-zA-Z0-9_]$");
 
-                if (!string.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
                 {
-                    bool spaceFound = value.Contains(" ");
-                    bool atFound = value.Contains("@");
-                    bool commaFound = value.Contains(",");
-                    if (!atFound && !commaFound && value.Length <= 30)
-                    {
                         _managerName = value;
-                    }
+                    
                 }
 
 
