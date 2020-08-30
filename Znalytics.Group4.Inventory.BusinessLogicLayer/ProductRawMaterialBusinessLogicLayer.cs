@@ -97,5 +97,10 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
         {
             throw new NotImplementedException();
         }
+
+        public void RemoveProduct(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
