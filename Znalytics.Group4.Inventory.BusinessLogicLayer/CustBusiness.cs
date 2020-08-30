@@ -9,7 +9,7 @@ using Znalytics.Group4.Module.IBusinessLogicLayer;
 namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing bt collection of classes///
 {
 
-    public class CustBusiness:ICustBusinessLogicLayer
+    public class CustBusiness//:ICustBusinessLogicLayer                                                                  (changed)
     {
         CustDataLayer d = new CustDataLayer();
         public void AddCustomer( Customer c)///these method is called from presentation layer///
@@ -25,13 +25,13 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
             {
                 return d.GetCustomers();// return to presentation layer
             }
-        public List<Customer> LoginCustomer(string CustomerName,String Password)
+      /*  public List<Customer> LoginCustomer(string CustomerName,String Password)                                        (changed)
         {
             if(CustomerName!=null&&Password!=null)
             {
                 return d.LoginCustomer(CustomerName, Password);
             }
-        }
+        }*/
         public void UpdateCustomer(Customer c)
             {
             if(c.CustomerName!=null)
