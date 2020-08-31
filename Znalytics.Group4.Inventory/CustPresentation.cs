@@ -18,7 +18,7 @@ namespace CustPresentationLayer
                 Console.WriteLine("3. logincustomer");
                 Console.WriteLine("4.update customer");
                 Console.WriteLine("5. del customer");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("6. getcustomerby id");
                 Console.Write("Enter choice: ");
                 bool b = int.TryParse(Console.ReadLine(), out choice);
 
