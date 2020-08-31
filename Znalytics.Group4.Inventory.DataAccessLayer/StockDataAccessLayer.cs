@@ -66,7 +66,10 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
             
             if (result == true)
             {
+                
                     return _stocks.Select(x => x.Quantity).Sum();
+  
+              
             }
             else
             {
