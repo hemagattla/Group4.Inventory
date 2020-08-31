@@ -73,14 +73,26 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
                             case 4:
                                 System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
                                 rawMaterial.RawMaterialID = System.Console.ReadLine();
+                                System.Console.WriteLine("Enter RawMaterialName");
+                                rawMaterial.RawMaterialName = System.Console.ReadLine();
+                                
                                 if (rawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID) != null)//Checks wheather entered RawMaterialID exists in list or not
                                 {
-                                    UpdateRawMaterial(rawMaterial.RawMaterialID);//Static method we can call directly
-                                    System.Console.WriteLine("******************* Updated successfully RawMaterialID  " + rawMaterial.RawMaterialID + " *************** ");
+                                    RawMaterial a = rawMaterialBusinessLogicLayer.GetRawMaterialByRawMaterialID(rawMaterial.RawMaterialID);
+                                    if (a.RawMaterialName == rawMaterial.RawMaterialName)
+                                    {
+                                        rawMaterial.RawMaterialID = a.RawMaterialID;
+                                        UpdateRawMaterial(rawMaterial.RawMaterialID,rawMaterial.RawMaterialName);//Static method we can call directly
+                                        System.Console.WriteLine("******************* Updated successfully RawMaterialID  " + rawMaterial.RawMaterialID + " *************** ");
+                                    }
+                                    else
+                                    {
+                                        System.Console.WriteLine("**************entered RawMaterialName  " + rawMaterial.RawMaterialName + "  does not exists. Pls Try again*************");
+                                    }
                                 }
                                 else
                                 {
-                                    System.Console.WriteLine("**************entered RawMaterialID  " + rawMaterial.RawMaterialID + "  does not exists. Pls Try again*************");
+                                    System.Console.WriteLine("**************entered RawMaterialID " + rawMaterial.RawMaterialID + "  does not exists. Pls Try again*************");
                                 }
                                 break;
                             case 5:
@@ -149,14 +161,14 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
 
             rawMaterial.RawMaterialID = RawMaterialID;
-            System.Console.WriteLine("Enter RawMaterialName");
-            rawMaterial.RawMaterialName = System.Console.ReadLine();
-            System.Console.WriteLine("Enter Quantity");
+            //System.Console.WriteLine("Enter RawMaterialName");
+            //rawMaterial.RawMaterialName = System.Console.ReadLine();
+            /*System.Console.WriteLine("Enter Quantity");
             rawMaterial.Quantity = System.Convert.ToDouble(System.Console.ReadLine());
             System.Console.WriteLine("Enter units");
             rawMaterial.Units = System.Console.ReadLine();
             System.Console.WriteLine("Enter Price");
-            rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());
+            rawMaterial.Price = System.Convert.ToDouble(System.Console.ReadLine());*/
             rawMaterialBusinessLogicLayer.DeleteRawMaterial(rawMaterial);//calling the DeleteRawMaterial method prsent in businessLogicLayer by using Reference variable
         }
 
@@ -197,14 +209,15 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer
         /// UpdateRawMaterial is a static Method
         /// </summary>
         /// <param name="RawMaterialID">Repesents ID of the RawMaterial</param>
-        public static void UpdateRawMaterial(string RawMaterialID)
+        public static void UpdateRawMaterial(string RawMaterialID,string RawMaterialName)
         {
             RawMaterial rawMaterial = new RawMaterial();
             RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
             
             rawMaterial.RawMaterialID = RawMaterialID;
-            System.Console.WriteLine("Enter RawMaterialName");
-            rawMaterial.RawMaterialName = System.Console.ReadLine();
+            rawMaterial.RawMaterialName = RawMaterialName;
+            //System.Console.WriteLine("Enter RawMaterialName");
+            //rawMaterial.RawMaterialName = System.Console.ReadLine();
             System.Console.WriteLine("1.want to change price");
             System.Console.WriteLine("2.want to change Quantity");
             System.Console.WriteLine("enter the choice of changing quantity/price");
