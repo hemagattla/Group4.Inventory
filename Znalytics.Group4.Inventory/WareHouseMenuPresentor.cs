@@ -208,13 +208,14 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             {
                 WareHouse n = new WareHouse();
                 Write("Enter the WarehouseID to be Deleted:");
-                string wareHouseID = ReadLine();
+                string whID = ReadLine();
                 try
                 {
                     //Condition to check whether the warehouse id exists or not
-                    if (wbl.GetWareHouseByWareHouseID(n.WareHouseId) == null)
+                    WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
+                    if (ware != null)
                     {
-                        wbl.RemoveWareHouseByID(wareHouseID);
+                        wbl.RemoveWareHouseByID(whID);
                         WriteLine("Warehouse Removed");
                     }
                     else
@@ -240,7 +241,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
                 try
                 {
-                    //Condition to check whether the warehouse id exists or not
+                    //Condition to check whether the warehouse Name exists or not
                     if (wbl.GetWareHouseByWareHouseID(n.WareHouseName) == null)
                     {
                         wbl.RemoveWareHouseByName(name);
