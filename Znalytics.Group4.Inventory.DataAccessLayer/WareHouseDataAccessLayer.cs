@@ -62,6 +62,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             //Condition to check whether the WareHouseId exists or not
             if (warehouseDetails.WareHouseId != null)
             {
+                //Adds WareHouse details into the list and is saved into the file
                 _wareHouseList.Add(warehouseDetails);
                 SaveIntoFile();
             }
@@ -122,7 +123,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
             {
                 //Linq returns an object of conditional data 
-                return _wareHouseList.Find(temp => temp.WareHouseId == wareHouseID);
+                return _wareHouseList.FirstOrDefault(temp => temp.WareHouseId == wareHouseID);
             }
             else
             {
@@ -145,7 +146,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
                 //Created an object and is stored in a reference variable
                 WareHouseAddressDataAccessLayer wa = new WareHouseAddressDataAccessLayer();
 
-                //When a WareHouse is deleted, the corresponding addresses are also removed
+                //When a WareHouse is deleted, the corresponding addresses are also removed and is saved into the file
                 wa.RemoveAddressByWareHouseID(wareHouseID);
                 SaveIntoFile();
             }
@@ -165,7 +166,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             //Condition to check whether the WareHouseName exists or not
             if (_wareHouseList.Exists(n => n.WareHouseName == wareHouseName))
             {
-                //It removes all the condition matching elements
+                //It removes all the condition matching elements and is saved into the file
                 _wareHouseList.RemoveAll(n => n.WareHouseName == wareHouseName);
                 SaveIntoFile();
             }
@@ -188,6 +189,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
                 WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
                 if (w != null)
                 {
+                    //WareHouse Name is updated and is saved into the file
                     w.WareHouseName = wareHouse.WareHouseName;
                     SaveIntoFile();
                 }
@@ -211,6 +213,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
                 WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
                 if (w != null)
                 {
+                    //Manager Name is updated and is saved into the file
                     w.MangerName = wareHouse.MangerName;
                     SaveIntoFile();
                 }
