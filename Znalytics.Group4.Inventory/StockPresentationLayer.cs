@@ -165,7 +165,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                 System.Console.WriteLine("enter to which WarehouseAddress you want to update the quantity:");
                 stock.AddressID = System.Console.ReadLine();
                 System.Console.WriteLine("enter to which ProductID you want to update the quantity");
-                stock.AddressID = System.Console.ReadLine();
+                stock.ProductID = System.Console.ReadLine();
 
                 System.Console.WriteLine("enter the quantity to be updated:");
                 stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
