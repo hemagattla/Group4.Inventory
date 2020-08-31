@@ -20,16 +20,26 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
     public class StockBusinessLogicLayer
     {
         StockDataAccessLogic stockDataAccesslogic;
+        /// <summary>
+        /// parameterless Constructor creates an object when Stockbusiness layer object is created
+        /// </summary>
         public StockBusinessLogicLayer()
         {
             stockDataAccesslogic = new StockDataAccessLogic();
         }
-
+        /// <summary>
+        /// used to add stock details into the list
+        /// </summary>
+        /// <param name="stock"></param>
         public void AddStock(Stock stock)
         {
             if (stock.AddressID != "" && stock.ProductID != "")
             {
                 stockDataAccesslogic.AddStock(stock);
+            }
+            else
+            {
+                throw new StockException("no null values allowed");
             }
         }
 
