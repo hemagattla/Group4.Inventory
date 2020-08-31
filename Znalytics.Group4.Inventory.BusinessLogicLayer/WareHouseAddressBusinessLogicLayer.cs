@@ -49,7 +49,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         /// <returns>Returns the address list</returns>
         public List<WareHouseAddress> GetAddresses()
         {
-            return (List<WareHouseAddress>)wadl.GetEnumerator();
+            return wadl.GetAddresses();
         }
 
         /// <summary>

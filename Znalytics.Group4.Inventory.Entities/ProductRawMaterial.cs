@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities;
 
 namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
 {
@@ -15,13 +15,20 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
         {
             set
             {
-                if (value != "")
+                try
                 {
-                    _productId = value;
+                    if (value != "")
+                    {
+                        _productId = value;
+                    }
+                    else
+                    {
+                        throw new ProductRawMaterialException("Product ID Should not NULL");
+                    }
                 }
-                else
+                catch
                 {
-                    throw new Exception("Product ID Should not NULL");
+                    throw;
                 }
             }
             get
@@ -50,14 +57,14 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
                             }
                             else
                             {
-                                throw new Exception("******ur entered input contain other than Alphabets.pls enter the input which contains only Alphabets**********");
+                                throw new ProductRawMaterialException("******ur entered input contain other than Alphabets.pls enter the input which contains only Alphabets**********");
                             }
                         }
                     }
 
                     else
                     {
-                        throw new Exception("************ur entered rawmaterialname null**************");
+                        throw new ProductRawMaterialException("************ur entered rawmaterialname null**************");
                     }
                 }
                 catch
@@ -87,12 +94,12 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
                         }
                         else
                         {
-                            throw new Exception("************ur entered RawMaterialID is invalid*************");
+                            throw new ProductRawMaterialException("************ur entered RawMaterialID is invalid*************");
                         }
                     }
                     else
                     {
-                        throw new Exception("************ur entered RawMaterialID is contains space/Null.pls try again*************");
+                        throw new ProductRawMaterialException("************ur entered RawMaterialID is contains space/Null.pls try again*************");
                     }
                 }
                 catch
@@ -121,7 +128,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
                     }
                     else
                     {
-                        throw new Exception("***********ur entered quantity is invalid***********");
+                        throw new ProductRawMaterialException("***********ur entered quantity is invalid***********");
                     }
                 }
                 catch
@@ -153,12 +160,12 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
                         }
                         else
                         {
-                            throw new Exception("************* ur entered units are must contains only Alphabets and it should be like *kgs/liters/nos/pices*   ************* ");
+                            throw new ProductRawMaterialException("************* ur entered units are must contains only Alphabets and it should be like *kgs/liters/nos/pices*   ************* ");
                         }
                     }
                     else
                     {
-                        throw new Exception("************* ur entered units are invalid. must contains only Alphabets and it should be like *kgs/liters/nos/pices*   ************ ");
+                        throw new ProductRawMaterialException("************* ur entered units are invalid. must contains only Alphabets and it should be like *kgs/liters/nos/pices*   ************ ");
                     }
                 }
                 catch

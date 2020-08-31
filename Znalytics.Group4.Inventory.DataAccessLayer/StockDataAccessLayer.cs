@@ -82,7 +82,7 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
         /// </summary>
         /// <param name="stock">it contains the user entered warehouse id and warehouse adddress</param>
         /// <returns> returns Stock List</returns>
-        public List<Stock> DisplayStock(Stock stock)
+        public List<Stock> DisplayStock(Stock stock)        
         {
             bool result = _stocks.Exists(temp => temp.WareHouseID ==stock.WareHouseID && temp.AddressID ==stock.AddressID);
             if (result == true)

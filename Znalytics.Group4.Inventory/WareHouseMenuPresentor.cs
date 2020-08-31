@@ -86,7 +86,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 {
                     
                     WriteLine(" You chose to add a warehouse");
-                    WriteLine("Enter Warehouse Id that starts with WHID and length of 6.It shouldn't contain special characters");
+                    WriteLine("Enter Warehouse Id that starts with WHID and of length 6.It shouldn't contain special characters");
 
                     //Reads the WarehouseId
                     ware.WareHouseId = ReadLine();
@@ -97,10 +97,12 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     {
                         check = true;
                         WriteLine("Enter Warehouse Name");
+                        WriteLine("WareHouse Name shouldn'be null or empty.It shouldn't contain special characters also");
                         //Reads the WareHouseName
                         ware.WareHouseName = ReadLine();
 
                         WriteLine("Enter Manager Name");
+                        WriteLine("Manager Name shouldn'be null or empty.It shouldn't contain special characters also");
                         //Reads the MangerName
                         ware.MangerName = ReadLine();
 
@@ -139,7 +141,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             List<WareHouse> wareHouseList = wbl.GetWareHouses();
 
             WriteLine("===============   WareHouse Details=============");
-            WriteLine("WareHouseID" + "   " + "WareHouseName" + "  " + "ManagerName");
+            WriteLine("WareHouseID" + "     " + "WareHouseName" + "    " + "ManagerName");
             WriteLine("-----------------------------------------------------------------------");
 
             foreach (WareHouse var in wareHouseList)
@@ -153,7 +155,8 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         public void GetWareHouseByWareHouseID()
         {
             bool check = false;
-            
+            do
+            {
                 try
                 {
                     WriteLine(" You chose to get the details of  Warehouse by WareHouseId");
@@ -161,6 +164,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
 
                     WriteLine("Enter Existing WareHouse ID");
+                    WriteLine("The Warehouse Id should start with WHID and of length 6.It shouldn't contain special characters");
 
                     //Reads the WareHouseid and is stored in a reference variable
                     string whID = ReadLine();
@@ -171,6 +175,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     // Condition to check whether the WareHouseid exists or not
                     if (ware != null)
                     {
+                        check = true;
                         WriteLine("===============   WareHouse Details=============");
                         WriteLine("WareHouseID" + "   " + "WareHouseName" + "  " + "ManagerName");
                         WriteLine(ware.WareHouseId + "  " + ware.WareHouseName + "  " + ware.MangerName);
@@ -185,6 +190,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 {
                     WriteLine(ex.Message);
                 }
+            } while (check == false);
             
 
         }
@@ -224,17 +230,25 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             //Local Function to REMOVE WareHouse  by WareHouseId
             void RemoveWareHouseByID()
             {
-                
-                Write("Enter the WarehouseID to be Deleted:");
-                //Reads the WareHouseid and is stored in a reference variable
-                string whID = ReadLine();
+                bool check = false;
+                do
+                {
+                    WriteLine("You chose to Remove the WareHouse by WareHouseId");
+                    WriteLine("Enter the WarehouseID to be Deleted");
+                    WriteLine("The Warehouse Id should start with WHID and of length 6.It shouldn't contain special characters");
+
+                    //Reads the WareHouseid and is stored in a reference variable
+                    string whID = ReadLine();
                     try
                     {
                         //Condition to check whether the warehouse id exists or not
                         WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
                         if (ware != null)
                         {
-                            wbl.RemoveWareHouseByID(whID);
+                            check = true;
+
+                            //Calls the RemoveWareHouseByWareHouseID method of WareHouseBusiness Logic
+                            wbl.RemoveWareHouseByWareHouseID(whID);
                             WriteLine("Warehouse Removed Successfully!");
                         }
                         else
@@ -246,28 +260,34 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     {
                         WriteLine(ex.Message);
                     }
-                
-
-
-
-
+                } while (check == false);
+           
             }
             //Method to REMOVE WareHouse  by WareHouseName
             void RemoveWareHouseByWareHouseName()
             {
-                // created the object for Warehouse class
-                WareHouse ware = new WareHouse();
-                Write("Enter the Warehouse Name:");
-                string name = ReadLine();
+               
                 bool check = false;
                 do
                 {
                     try
                     {
+                        WriteLine("You chose to Remove the WareHouse by WareHouse Name");
+                        // created the object for Warehouse class
+                        WareHouse ware = new WareHouse();
+
+                        Write("Enter the Warehouse Name:");
+                        WriteLine("Warehouse Name should neither be null nor contain special characters");
+                        //Reads the WareHouseName and is stored in a reference variable
+                        string warName = ReadLine();
+
                         //Condition to check whether the warehouse Name exists or not
                         if (wbl.GetWareHouseByWareHouseID(ware.WareHouseName) == null)
                         {
-                            wbl.RemoveWareHouseByName(name);
+                            check = true;
+
+                            //Calls the RemoveWareHouseByWareHouseName WareHouseBusiness Logic 
+                            wbl.RemoveWareHouseByWareHouseName(warName);
                             WriteLine("Warehouse Removed");
                         }
                         else
@@ -322,7 +342,10 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 {
                     try
                     {
+                        WriteLine("You chose to Update the WareHouse Name");
                         WriteLine("Enter Existing WareHouse ID");
+                        WriteLine("The Warehouse Id should start with WHID and of length 6.It shouldn't contain special characters");
+
                         //Reads the WareHouseid and is stored in a reference variable
                         string whID = ReadLine();
 
@@ -330,7 +353,10 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
                         if (ware != null)
                         {
+                            check = true;
                             WriteLine("Enter new name for WareHouse");
+                            WriteLine("WareHouse Name shouldn'be null or empty.It shouldn't contain special characters also");
+
                             //Reads the WareHouseName and is stored in the object
                             ware.WareHouseName = ReadLine();
 
@@ -361,7 +387,10 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 {
                     try
                     {
+                        WriteLine("You chose to Update the Manager Name");
                         WriteLine("Enter Existing WareHouse ID");
+                        WriteLine("The Warehouse Id should start with WHID and of length 6.It shouldn't contain special characters");
+
                         //Reads the WareHouseid and is stored in a reference variable
                         string whID = ReadLine();
 
@@ -370,7 +399,9 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         //Condition to check whether the warehouse id exists or not
                         if (ware != null)
                         {
+                            check = true;
                             WriteLine("Enter new name for Manager");
+                            WriteLine("Manager Name shouldn'be null or empty.It shouldn't any contain special characters ");
                             //Reads the MangerName and is stored in the object
                             ware.MangerName = ReadLine();
 
@@ -403,6 +434,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             {
                 try
                 {
+                    WriteLine("You chose to Add the Address to a WareHouse");
                     //Created an object for WareHouseAddress class and stored it in a reference variable
                     WareHouseAddress a = new WareHouseAddress();
 
@@ -411,6 +443,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
                     WriteLine("You chose to add address to the WareHouse");
                     WriteLine("Enter Existing WareHouseId");
+                    WriteLine("The Warehouse Id should start with WHID and of length 6.It shouldn't contain special characters");
                     //Reads the WareHouseid and is stored in the WareHouseAddress object
                     a.WareHouseId = ReadLine();
 
@@ -420,6 +453,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         //Condition to check whether Addressid exists or not
                         if (CheckAddressId(a.AddressId) == false)
                         {
+                            check = true;
                             WriteLine("Enter Address id");
                             //Reads the AddressId and is stored in the WareHouseAddress object
                             a.AddressId = ReadLine();
@@ -464,17 +498,15 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     WriteLine(ex.Message);
                 }
             } while (check == false);
-
-
-
-
         }
+
 
         /// <summary>
         ///  Method to GET the address details
         /// </summary>
         public void GetAddresses()
         {
+            WriteLine("You chose to Get all the Addresses");
             //Created an object for WareHouseAddressBusinessLogicLayer and is stored in the reference variable
             WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
 
@@ -502,10 +534,13 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             {
                 try
                 {
+                    WriteLine("You chose to Get the Address details by AddressId");
                     //Created an object for WareHouseAddressBusinessLogicLayer and is stored in a reference variable
                     WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
 
                     WriteLine("Enter the existing WareHouse Address Id");
+                    WriteLine("The Address Id should start with W and of length 4.It shouldn't contain special characters");
+
                     //Reads the AddressId and is stored in a reference variable
                     string addressid = ReadLine();
 
@@ -515,6 +550,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     //Condition to check whether the address id exists or not
                     if (add != null)
                     {
+                        check = true;
                         WriteLine("WareHouseID" + "   " + "AddressID" + "  " + "Door Number" + "  " + "LocationName" + "  " + "State" + "  " + "Pincode");
                         WriteLine(add.WareHouseId + "    " + add.AddressId + "  " + add.DoorNumber + " " + add.LocationName + "  " + add.State + "  " + add.Pincode);
                     }
@@ -540,10 +576,12 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             {
                 try
                 {
+                    WriteLine("You chose to Get the Address details byWareHouseId");
                     //Created an object for WarehouseAddress Business class and is stored in a reference variable
                     WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
 
                     WriteLine("Enter the existing WareHouse Id");
+                    WriteLine("The Warehouse Id should start with WHID and of length 6.It shouldn't contain special characters");
                     //Reads the WareHouseId and is stored in a reference variable
                     string warehouseid = ReadLine();
 
@@ -553,6 +591,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     //Condition to check whether the address id exists or not
                     if (add != null)
                     {
+                        check = true;
                         WriteLine("WareHouseID" + "   " + "AddressID" + "  " + "Door Number" + "  " + "LocationName" + "  " + "State" + "  " + "Pincode");
                         WriteLine(add.WareHouseId + "    " + add.AddressId + "  " + add.DoorNumber + " " + add.LocationName + "  " + add.State + "  " + add.Pincode);
                     }
@@ -579,7 +618,9 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             {
                 try
                 {
+                    WriteLine("You chose to Get Address by Location Name");
                     WriteLine("Enter the locationName");
+                    WriteLine("The Location Name should neither be null nor empty.It shouldn't contain any special characters");
                     //Reads the location name and is stored in a reference variable
                     string locationName = ReadLine();
 
@@ -591,10 +632,13 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
                     //Condition to check whether the address id exists or not
                     if (addressList != null)
+                    {
+                        check = true;
                         foreach (WareHouseAddress item in addressList)
                         {
                             WriteLine(item.WareHouseId + "    " + item.AddressId + "  " + item.DoorNumber + " " + item.LocationName + "  " + item.State + "  " + item.Pincode);// Displaying the products
                         }
+                    }
 
                 }
                 catch (WareHouseException ex)
@@ -650,7 +694,9 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 {
                     try
                     {
+                        WriteLine("You chose to Update the Door Number of a WareHouse Address");
                         WriteLine("Enter Existing Address ID");
+                        WriteLine("The Address Id should start with W and of length 4.It shouldn't contain special characters");
                         //Reads the AddressId and is stored in a reference variable
                         string adId = ReadLine();
 
@@ -660,6 +706,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         //Condition to check whether AddressId is null or not
                         if (wadd != null)
                         {
+                            check = true;
                             WriteLine("Enter the new Door Number for the WareHouse");
                             //Reads the DoorNumber and is stored in reference variable
                             wadd.DoorNumber = ReadLine();
@@ -691,7 +738,10 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 {
                     try
                     {
+                        WriteLine("You chose to Update the LocationName of a WareHouse Address");
                         WriteLine("Enter Existing Address ID");
+                        WriteLine("The Address Id should start with W and of length 4.It shouldn't contain special characters");
+
                         //Reads the AddressId and is stored in a reference variable
                         string adId = ReadLine();
 
@@ -701,6 +751,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         //Condition to check whether AddressId is null or not
                         if (wadd != null)
                         {
+                            check = true;
                             WriteLine("Enter the new Location Name for the WareHouse");
                             //Reads the LocationName and is stored in reference variable
                             wadd.LocationName = ReadLine();
@@ -731,7 +782,10 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 {
                     try
                     {
+                        WriteLine("You chose to Update the State of a WareHouse Address");
                         WriteLine("Enter Existing Address ID");
+                        WriteLine("The Address Id should start with W and of length 4.It shouldn't contain special characters");
+
                         //Reads the AddressId and is stored in a reference variable
                         string adId = ReadLine();
 
@@ -740,6 +794,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         //Condition to check whether AddressId is null or not
                         if (wadd != null)
                         {
+                            check = true;
                             WriteLine("Enter the new State for the WareHouse");
                             //Reads the State and is stored in an reference variable
                             wadd.State = ReadLine();
@@ -771,7 +826,10 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 {
                     try
                     {
+                        WriteLine("You chose to Update the Pincode of a WareHouse Address");
                         WriteLine("Enter Existing Address ID");
+                        WriteLine("The Address Id should start with W and of length 4.It shouldn't contain special characters");
+
                         //Reads the AddressId and is stored in a reference variable
                         string adId = ReadLine();
 
@@ -780,6 +838,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         //Condition to check whether AddressId is null or not
                         if (wadd != null)
                         {
+                            check = true;
                             WriteLine("Enter the new Pincode for the WareHouse");
                             //Reads the Pincode and is stored in a reference variable
                             wadd.Pincode = ReadLine();
@@ -840,16 +899,20 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 bool check = false;
                 do
                 {
+                    WriteLine("You chose to Remove the Address by WareHouseId");
                     Write("Enter the WarehouseID of the Address to be Deleted:");
+                    WriteLine("The WareHouse Id should start with WHID and of length 6.It shouldn't contain special characters");
                     //Reads the WarehouseID and is stored in a reference variable
-                    string wareHouseID = ReadLine();
+                    string whID = ReadLine();
                     try
                     {
+                        WareHouseAddress addr = wabl.GetAddressByWareHouseID(whID);
                         // Condition to check whether WarHouseId exists or not
-                        if (wabl.GetAddressByAddressID(w.WareHouseId) == null)
+                        if (addr!=null)
                         {
+                            check = true;
                             //Calls the RemoveAddressByWareHouseID method of WareHouseAddressBusinessLogicLayer
-                            wabl.RemoveAddressByWareHouseID(wareHouseID);
+                            wabl.RemoveAddressByWareHouseID(whID);
                             WriteLine("Warehouse Removed");
                         }
                     }
@@ -870,15 +933,19 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 bool check = false;
                 do
                 {
+                    WriteLine("You chose to Remove the Address by AddressId");
                     Write("Enter the AddressId to be Deleted:");
+                    WriteLine("The Address Id should start with W and of length 4.It shouldn't contain special characters");
 
                     //Reads the entered AddressId
                     string addressId = ReadLine();
                     try
                     {
+                        WareHouseAddress addr=wabl.GetAddressByAddressID(addressId);
                         // Condition to check whether AddressId exists or not
-                        if (wabl.GetAddressByAddressID(w.AddressId) == null)
+                        if (addr!=null)
                         {
+                            check = true;
                             //Calls the RemoveAddressByAddressID method of WareHouseAddressBusinessLogicLayer
                             wabl.RemoveAddressByAddressID(addressId);
                             WriteLine("Warehouse Removed");

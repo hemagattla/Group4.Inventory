@@ -85,7 +85,7 @@ namespace Znalytics.Group4.Inventory
                     System.Console.WriteLine("2. Add Product");
                     System.Console.WriteLine("3. RawMaterialsDetails");
                     System.Console.WriteLine("4. Stock");
-                    System.Console.WriteLine("5.Add Product RawMaterial");
+                    System.Console.WriteLine("5. Add Product RawMaterial");
 
                     System.Console.WriteLine("6. Exit");
 
@@ -150,7 +150,7 @@ namespace Znalytics.Group4.Inventory
                 System.Console.WriteLine("3 Display Products");
                 System.Console.WriteLine("4 show stock");
                 System.Console.WriteLine("5.order");
-                 System.Console.WriteLine("5. Exit");
+                 System.Console.WriteLine("6. Exit");
 
                 bool b = int.TryParse(System.Console.ReadLine(), out option);
 
@@ -167,9 +167,8 @@ namespace Znalytics.Group4.Inventory
 
                                 break;
                             case 3: break;
-                            case 4:orderManagement.Menu();                                
-
-                                break;
+                            case 4:break;
+                            case 5: orderManagement.Menu();break;
                             default:
                                 System.Console.WriteLine("Please Enter the Correct Option");
                                 break;
