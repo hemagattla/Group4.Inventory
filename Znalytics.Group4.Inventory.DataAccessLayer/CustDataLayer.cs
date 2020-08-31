@@ -44,7 +44,7 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
             Customer cu = _customers.Find(temp => temp.CustomerId == c.CustomerId);
             if (cu != null)
             {
-                cu.Country = c.Country;
+                c.CustomerName = cu.CustomerName;          
             }
         }
         public void DelCustomer(Customer c)
