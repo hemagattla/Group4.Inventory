@@ -122,7 +122,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             //Condition to check whether the AddressId exists or not
             if (_addressList.Exists(temp => temp.AddressId == addressID))
             {
-
+                //Returns the condition matching elements
                 return _addressList.Find(temp => temp.AddressId == addressID);
             }
             else
@@ -142,6 +142,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             //Condition to check whether the WareHouseId exists or not
             if (_addressList.Exists(temp => temp.WareHouseId == wareHouseID))
             {
+                //Returns the condition matching elements
                 return _addressList.Find(temp => temp.WareHouseId == wareHouseID);
             }
             else
@@ -161,6 +162,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             //Condition to check whether the LocationName exists or not
             if (_addressList.Exists(temp => temp.LocationName == locationName))
             {
+                //Returns all the condition matching elements
                 return _addressList.FindAll(temp => temp.LocationName == locationName);
             }
             else
@@ -179,6 +181,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             //Condition to check whether the AddressId exists or not
             if (_addressList.Exists(temp => temp.AddressId == address.AddressId))
             {
+                //Returns the condition matching elements
                 WareHouseAddress wha = _addressList.Find(temp => temp.AddressId == address.AddressId);
                 if (wha != null)
                 {
