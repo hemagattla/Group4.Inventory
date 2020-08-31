@@ -71,7 +71,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                     }
                     else
                     {
-                        System.Console.WriteLine("Please Enter the only digits");
+                        throw new Exception("Please Enter the only digits");
                     }
 
                    } while (select != 7);
