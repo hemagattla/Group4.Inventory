@@ -60,20 +60,26 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
         /// <param name="addressID">calculation will be done if the addressID exits in the stokcs list</param>
         /// <returns></returns>
 
-        public int TotalQuantity(string warehouseID, string addressID, string productID)
+        public List<Stock> TotalQuantity(string warehouseID, string addressID)
         {
-            bool result = _stocks.Exists(temp => temp.WareHouseID == warehouseID && temp.AddressID == addressID && temp.ProductID == productID);
+            bool result = _stocks.Exists(temp => temp.WareHouseID == warehouseID && temp.AddressID == addressID );
             
             if (result == true)
             {
-                
-                    return _stocks.Select(x => x.Quantity).Sum();
-  
-              
+                List<Stock> productIDs = _stocks.Where(temp => temp.WareHouseID == warehouseID && temp.AddressID == addressID).ToList();
+                List<Stock> result1 = productIDs.GroupBy(l => l.ProductID).Select(cl => new Stock
+                {
+                    ProductID = cl.First().ProductID,
+                    Quantity = cl.Count(),
+                    TotalQuantity = cl.Sum(c => c.Quantity),
+                }).ToList();
+                return result1;
+
+
             }
             else
             {
-                return 0;
+                return null;
             }
         }
 

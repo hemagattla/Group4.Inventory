@@ -7,13 +7,7 @@ using Znalytics.Inventory.StockMaintain.DataAccessLayer;
 using System.Collections.Generic;
 using Znalytics.Inventory.StockMaintain.CustomException;
 
-//using Znalytics.Group4.Inventory.BusinessLogicLayer;
-//using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 
-//using Znalytics.Inventory.WareHouseModule.BusinessLogicLayer;
-//using Znalytics.Group4.Inventory.IBusinessLogicLayer;
-//using Znalytics.Inventory.AddressModule.BusinessLogicLayer;
-//using Znalytics.Inventory.AddressModule.DataAccessLayer;
 
 namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
 {
@@ -43,9 +37,9 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
             }
         }
 
-        public int TotalQuantity(string warehouseID, string addressID, string productID)
+        public List<Stock> TotalQuantity(string warehouseID, string addressID)
         {
-            return stockDataAccesslogic.TotalQuantity(warehouseID, addressID, productID);
+            return stockDataAccesslogic.TotalQuantity(warehouseID, addressID);
         }
         /// <summary>
         /// Displaying the Stock details of products in particular warehouse and warehouse Address

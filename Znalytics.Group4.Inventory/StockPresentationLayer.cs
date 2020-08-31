@@ -41,7 +41,8 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                             case 1:
                                 AddStock();
                                 break;
-                            case 2: DisplayStock();
+                            case 2:
+                            TotalQuantity();
                                 break;
                             case 3:
                                 UpdateStockQuantity();
@@ -158,11 +159,23 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
         /// <param name="warehouseID">parameter that accepts warehouseid of string type</param>
         /// <param name="addressID">parameter that accepts Address of string type</param>
         /// <returns> total stock availability of stock of a product</returns>
-        public static int TotalQuantity(string warehouseID, string addressID, string productID)
+        public static void  TotalQuantity()
         {
 
             StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
-            return stockBusinessLogicLayer.TotalQuantity(warehouseID, addressID, productID);
+            Stock stock = new Stock();
+            System.Console.WriteLine("Enter WareHouseID");
+            stock.WareHouseID = System.Console.ReadLine();
+            System.Console.WriteLine("Enter Address Name");
+            stock.AddressID = System.Console.ReadLine();
+            List<Stock> stocks = stockBusinessLogicLayer.TotalQuantity(stock.WareHouseID, stock.AddressID);
+
+            System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
+            foreach (Stock item in stocks)
+            {
+
+                System.Console.WriteLine(item.ProductID + "  " + item.TotalQuantity);
+            }
         }
 
         /// <summary>
@@ -183,8 +196,8 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
             foreach (string item in ProductIDs)
             {
-               
-                System.Console.WriteLine(item + "  " + TotalQuantity(stock.WareHouseID, stock.AddressID, item));
+
+                System.Console.WriteLine(item + "  "); //TotalQuantity(stock.WareHouseID, stock.AddressID, item));
             }
 
         }
