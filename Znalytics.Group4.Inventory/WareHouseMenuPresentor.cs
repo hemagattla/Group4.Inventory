@@ -240,7 +240,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         }
                         else
                         {
-                            WriteLine("Warehouse id doesn't exist.Please enter existing WareHouseId");
+                            WriteLine("Warehouse id doesn't exist.Please enter existing WareHius");
                         }
                     }
                     catch (WareHouseException ex)

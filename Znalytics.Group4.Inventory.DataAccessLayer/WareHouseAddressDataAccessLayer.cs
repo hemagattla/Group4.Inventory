@@ -9,7 +9,7 @@ using System;
 using Znalytics.Group4.Inventory.Entities;
 using Newtonsoft.Json;
 using System.IO;
-
+using System.Collections;
 
 /// <summary>
 ///Created a namespace for DataAccessLayer of WareHouseAddress Module
@@ -104,12 +104,15 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
 
         /// <summary>
-        ///Method to GET the added address details
+        ///Method to GET the  address List
         /// </summary>
         /// <returns>Returns the address list</returns>
-        public override List<WareHouseAddress> GetAddresses()
+        public IEnumerator GetEnumerator()
         {
-            return _addressList;
+            foreach (var item in _addressList)
+            {
+                yield return item;
+            }
         }
 
         /// <summary>
