@@ -27,7 +27,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
 
             _rawMaterials = new List<RawMaterial>()//creating object for list 
             {
-                new RawMaterial{RawMaterialID="RMID12", RawMaterialName="MILK",Quantity=3,Units="kgs",Price=23}
+                new RawMaterial{RawMaterialID="RMID12", RawMaterialName="MILK",Quantity=3,Units="ml",Price=23}
             };
             _rawMaterials = LoadDetailsToList();
 
@@ -52,7 +52,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
         /// <param name="rawMaterial">is a variable of RawMaterial type</param>
         public void DeleteRawMaterial(RawMaterial rawMaterial)
         {
-            _rawMaterials.RemoveAll(temp => temp.RawMaterialID == rawMaterial.RawMaterialID && temp.RawMaterialName == rawMaterial.RawMaterialName);
+            _rawMaterials.RemoveAll(temp => temp.RawMaterialID == rawMaterial.RawMaterialID);
             ListOfRawMaterials();
         }
 

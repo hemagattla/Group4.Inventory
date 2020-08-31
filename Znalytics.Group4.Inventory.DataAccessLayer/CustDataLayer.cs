@@ -30,12 +30,13 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
         {
             if (_customers.Exists(temp => temp.CustomerName ==CustomerName))
                 {
-                if (_customers.Exists(temp => temp.PassWord ==PassWord))
+                if (_customers.Exists(temp => temp.PassWord == PassWord))
                 {
-                    return (CustomerName, PassWord);
-
+                    return null; 
                 }
+         
             }
+            return null;
         }
         public void UpdateCustomer(Customer c)
         {
