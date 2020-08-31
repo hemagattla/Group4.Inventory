@@ -10,7 +10,7 @@ using Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer;
 using Znalytics.Inventory.StockMaintain.PresentationLayer;
 using Znalytics.Group4.Inventory.PresentationLayer;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer;
-using CustPresentation;
+using CustPresentationLayer;
 
 
 namespace Znalytics.Group4.Inventory
@@ -142,7 +142,8 @@ namespace Znalytics.Group4.Inventory
             int option;
             do
             {
-                OrderManagementPresentationLayer orderManagement = new OrderManagementPresentationLayer();   
+                OrderManagementPresentationLayer orderManagement = new OrderManagementPresentationLayer();
+                CustPresentation custpresentation = new CustPresentation();
                 System.Console.WriteLine("1. Display warehouse Details");
                 System.Console.WriteLine("2. Display Products");
                 System.Console.WriteLine("3. show stock");
