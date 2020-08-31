@@ -1,7 +1,11 @@
-﻿using Znalytics.Inventory.StockMaintain.Entities;
+﻿//created by R.Kruushal
+
+using Znalytics.Inventory.StockMaintain.Entities;
 using Znalytics.Inventory.StockMaintain.BusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 using Znalytic.Inventory.WareHouseModule.PresentationLayer;
+using Znalytics.Inventory.StockMaintain.CustomException;
+using Znalytics.Inventory.ProductModule.ProductPresentation;
 using System.Xml.Serialization;
 
 using System;
@@ -13,14 +17,13 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
     {
         public void menu()
         {
-            try
-            {
+           
                 int choice;
                 bool b;
                 do
                 {
                     System.Console.WriteLine("1. Add Stock");
-                    System.Console.Write("2. DisplayStock");
+                    System.Console.WriteLine("2. DisplayStock");
                     System.Console.WriteLine("3. Update Stock");
                     System.Console.WriteLine("4. Exit");
                     System.Console.Write("Enter Your Choice: ");
@@ -59,11 +62,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
 
 
                 } while (choice != 4);
-            }
-            catch (Exception e)
-            {
-                System.Console.WriteLine(e.Message);
-            }
+          
         }
 
 
@@ -73,88 +72,108 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
         /// </summary>
         public static void AddStock()
         {
-            ProductBusiness productBusiness=new ProductBusiness();
+            ProductPresentation productPresentation=new ProductPresentation();
             MenuPrensentor wareHousePresentation = new MenuPrensentor();
-            StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer(); // creation stockBusinessLogic object
-            Stock stock = new Stock();//creation of stock object of entite Layer
-
-            System.Console.WriteLine("Enter StockID");
-            stock.StockID = System.Console.ReadLine();
-
-            System.Console.WriteLine("Enter WareHouseID");
-            stock.WareHouseID = System.Console.ReadLine();
-            if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID) == true)
+            try
             {
-                System.Console.WriteLine("Enter Address Name");
-                stock.AddressID = System.Console.ReadLine();
-                if (wareHousePresentation.CheckAddressId(stock.AddressID))
-                {
-                    System.Console.WriteLine("Enter Product ID");
-                    stock.ProductID = System.Console.ReadLine();
-                    if (productBusiness.CheckProductID(stock.ProductID))
-                    {
+                StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer(); // creation stockBusinessLogic object
+                Stock stock = new Stock();//creation of stock object of entite Layer
 
-                        System.Console.WriteLine("Enter no of Quantities u want to add");
-                        stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
-                        
-                        stockBusinessLogicLayer.AddStock(stock);
-                        Console.WriteLine("Stock Added Sucessfully!!");
-                        
+                System.Console.WriteLine("Enter StockID");
+                stock.StockID = System.Console.ReadLine();
+
+                System.Console.WriteLine("Enter WareHouseID");
+                stock.WareHouseID = System.Console.ReadLine();
+                if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID) == true)
+                {
+                    System.Console.WriteLine("Enter Address Name");
+                    stock.AddressID = System.Console.ReadLine();
+                    if (wareHousePresentation.CheckAddressId(stock.AddressID))
+                    {
+                        System.Console.WriteLine("Enter Product ID");
+                        stock.ProductID = System.Console.ReadLine();
+                      //  if (productPresentation.CheckProductID(stock.ProductID))
+                       // {
+
+                            System.Console.WriteLine("Enter no of Quantities u want to add");
+                            stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
+
+                            stockBusinessLogicLayer.AddStock(stock);
+                            Console.WriteLine("Stock Added Sucessfully!!");
+
+                       // }
                     }
                 }
-                else
-                {
-                    throw new StockException("Ware address Does not Exits");
-                }
-
             }
-            else
+            catch(StockException e)
             {
-                throw new StockException("Warehouse ID Does not exist");
+                System.Console.WriteLine(e.Message);
             }
+
+          
         }
-       
-        public static int TotalQuantity(string stockID)
+        /// <summary>
+        /// local static funtion that calculates product stock of particular warehouseid and warehouse addressid of a product
+        /// </summary>
+        /// <param name="warehouseID">parameter that accepts warehouseid of string type</param>
+        /// <param name="addressID">parameter that accepts Address of string type</param>
+        /// <returns> total stock availability of stock of a product</returns>
+        public static int TotalQuantity(string warehouseID, string addressID)
         {
 
             StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
-            return stockBusinessLogicLayer.TotalQuantity(stockID);
+            return stockBusinessLogicLayer.TotalQuantity(warehouseID, addressID);
         }
 
+        /// <summary>
+        /// used to display all the stock details of a product in the particular warehouse id and addressid 
+        /// </summary>
         public static void DisplayStock()
         {
             StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
             Stock stock = new Stock();
             System.Console.WriteLine("Enter WareHouseID");
             stock.WareHouseID = System.Console.ReadLine();
-            System.Console.WriteLine("Enter AddressID");
+            System.Console.WriteLine("Enter Address Name");
             stock.AddressID = System.Console.ReadLine();
             List<Stock> stocks = stockBusinessLogicLayer.DisplayStock(stock);
             foreach (Stock item in stocks)
             {
                 System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
-                System.Console.WriteLine(item.ProductID + "  " + item.TotalQuantity);
+                System.Console.WriteLine(item.ProductID + "  " + TotalQuantity(stock.WareHouseID, stock.AddressID));
             }
-           
+
         }
-       
 
 
+        /// <summary>
+        /// used to update the stock of the product 
+        /// </summary>
         public void UpdateStockQuantity()
         {
-            StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
-            Stock stock = new Stock();
-            System.Console.WriteLine("enter to which WarehouseId you want to update the quantity:");
-            stock.WareHouseID = System.Console.ReadLine();
-            System.Console.WriteLine("enter to which WarehouseAddress you want to update the quantity:");
-            stock.AddressID = System.Console.ReadLine();
-            System.Console.WriteLine("enter the quantity to be updated:");
-            stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
-
-            stockBusinessLogicLayer.UpdateStockQuantity(stock);
-            System.Console.WriteLine("Stock quntity Updated Sucessfully");
+            try
+            {
 
 
+                StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
+                Stock stock = new Stock();
+                System.Console.WriteLine("enter to which WarehouseId you want to update the quantity:");
+                stock.WareHouseID = System.Console.ReadLine();
+                System.Console.WriteLine("enter to which WarehouseAddress you want to update the quantity:");
+                stock.AddressID = System.Console.ReadLine();
+                System.Console.WriteLine("enter to which ProductID you want to update the quantity");
+                stock.AddressID = System.Console.ReadLine();
+
+                System.Console.WriteLine("enter the quantity to be updated:");
+                stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
+
+                stockBusinessLogicLayer.UpdateStockQuantity(stock);
+                System.Console.WriteLine("Stock quntity Updated Sucessfully");
+            }
+            catch(StockException e)
+            {
+                System.Console.WriteLine(e.Message);
+            }
 
         }
     }

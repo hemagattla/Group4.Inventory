@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Znalytics.Inventory.ProductModule.CustomException;
 using Znalytics.Inventory.ProductModule.DataAccessLayer;
 using Znalytics.Inventory.ProductModule.Entitie;
 
@@ -13,12 +14,12 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
 {
 
     /// <summary>
-    /// refers tp Product BusinessLogic
+    /// refers t0 Product BusinessLogic
     /// </summary>
     public class ProductBusiness : IProductBusinessLogicLayer
     {
-        ProductDataAccessLogic d;
 
+        ProductDataAccessLogic d;
 
         public ProductBusiness()
         {
@@ -31,10 +32,18 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
         /// <param name="n"> gets object of ProductDetails</param>
         public void AddProducts(Product n)
         {
-            if (n.ProductName != null)
+            try
+            {
+                if (n.ProductName != null)
+                {
+
+                    d.AddProduct(n);
+                }
+            }
+            catch (Exception e)
             {
 
-                d.AddProduct(n);
+                throw new ProductException(e.Message);
             }
         }
 
@@ -95,14 +104,11 @@ namespace Znalytics.Inventory.ProductModule.BusinessLogicLayer
         /// checking whether Product is present in the list and return bool value
         /// </summary>
         /// <param name="productID"> gets product id from user</param>
-        /// <returns></returns>
-       
-        
-
+        /// <returns>return true or false if the product is present in the list</returns>
         public bool CheckProductID(string productID)
         {
 
-            
+
             bool result = d.CheckProductID(productID);
             if (result == true)
             {

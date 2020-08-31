@@ -25,12 +25,15 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                         System.Console.WriteLine("1.Add Raw Material Details into Product");
                         System.Console.WriteLine("2.Delete Raw Material Details from the Product");
                         System.Console.WriteLine("3.view Raw Material Details of Product");
-                        System.Console.WriteLine("4.Update Raw Material of the product");
+                        System.Console.WriteLine("4.Update Quantity of Raw Material");
                         System.Console.WriteLine("5.GetProductRawmaterial Details By ProductID");
-                        System.Console.WriteLine("6.Exit");
-                        System.Console.WriteLine("enter the choice");
-                        System.Console.WriteLine("=======================================================");
-                        q = int.TryParse(System.Console.ReadLine(), out select);//Trypase:- we are converting string to int
+                        System.Console.WriteLine("6.GetDetailsUsingOriderBy");
+                        System.Console.WriteLine("7.Exit");
+                        System.Console.Write("enter the choice:-");
+                    q = int.TryParse(System.Console.ReadLine(), out select);//Trypase:- we are converting string to in
+                    System.Console.Write("\n");
+                    System.Console.WriteLine("=======================================================");
+                       
 
                     if (q == true)
                     {
@@ -38,8 +41,8 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                         //Product product = new Product();
                         //ProductBusiness productBusiness = new ProductBusiness();
                         //RawMaterialBusinessLogicLayer pb = new RawMaterialBusinessLogicLayer();
-                        ProductRawMaterial productRawMaterial = new ProductRawMaterial();
-                        ProductRawMaterialBusinessLogicLayer prbl = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
+                        //ProductRawMaterial productRawMaterial = new ProductRawMaterial();
+                        //ProductRawMaterialBusinessLogicLayer prbl = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
                         
                         switch (select)
                         {
@@ -50,7 +53,8 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
 
                             case 3:GetProductRawMaterial();
                                 break;
-                            case 4:UpdateRawMaterialOfProduct();
+                            case 4:
+                                UpdateQuantityOfProduct();
                                 break;
                             case 5: GetDetailsByProductID();
                                 break;
@@ -145,7 +149,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
             }
             System.Console.WriteLine("**********************************************************************************");
         }
-        public static void UpdateRawMaterialOfProduct()
+        public static void UpdateQuantityOfProduct()
         {
             ProductRawMaterial productRawMaterial = new ProductRawMaterial();
             ProductRawMaterialBusinessLogicLayer prbl = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
@@ -157,9 +161,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
             {  
                 System.Console.WriteLine("Enter the Quantity");
                 productRawMaterial.Quantity = System.Convert.ToDouble(System.Console.ReadLine());
-                System.Console.WriteLine("Enter the Units");
-                productRawMaterial.Units = System.Console.ReadLine();
-                prbl.UpdateRawMaterialOfProduct(productRawMaterial);
+                prbl.UpdateQuantityOfProduct(productRawMaterial);
                 System.Console.WriteLine("******************* Successfully added RawMaterial Details to ProductID  " + productRawMaterial.ProductID + " ************** ");
             }
             else

@@ -42,7 +42,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
         }
         public void DeleteRawMaterialOfProduct(ProductRawMaterial productRawMaterial)
         {
-            if ((productRawMaterial.ProductID != null) && (productRawMaterial.RawMaterialID != null) && (productRawMaterial.RawMaterialName != null))// && (productRawMaterial.Quantity != 0D) && (productRawMaterial.Units != null))
+            if ((productRawMaterial.ProductID != null) && (productRawMaterial.RawMaterialID != null))// && (productRawMaterial.Quantity != 0D) && (productRawMaterial.Units != null))
             {
                 prda.DeleteRawMaterialOfProduct(productRawMaterial);
             }
@@ -59,11 +59,11 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
         {
             return prda.GetProductRawMaterial();
         }
-        public void UpdateRawMaterialOfProduct(ProductRawMaterial productRawMaterial)
+        public void UpdateQuantityOfProduct(ProductRawMaterial productRawMaterial)
         {
-            if ((productRawMaterial.ProductID != null) && (productRawMaterial.RawMaterialID != null) && (productRawMaterial.RawMaterialName != null) && (productRawMaterial.Quantity != 0D) && (productRawMaterial.Units != null))
+            if ((productRawMaterial.ProductID != null) && (productRawMaterial.RawMaterialID != null) && (productRawMaterial.Quantity != 0D))
             {
-                prda.UpdateRawMaterialOfProduct(productRawMaterial);
+                prda.UpdateQuantityOfProduct(productRawMaterial);
             }
             else
             {
