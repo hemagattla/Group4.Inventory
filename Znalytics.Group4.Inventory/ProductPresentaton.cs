@@ -141,6 +141,7 @@ namespace Znalytics.Inventory.ProductModule.ProductPresentation
                     try
                     {
                         System.Console.Write("Enter the ProductID to be Deleted:");
+                        System.Console.WriteLine("Product ID must start with PID and should be less than 6");
                         string id = System.Console.ReadLine();
                         if (pb.CheckProductID(id) == true)//checking whether the productId avaliable in the list or not
 
@@ -172,6 +173,7 @@ namespace Znalytics.Inventory.ProductModule.ProductPresentation
                     try
                     {
                         System.Console.Write("Enter the ProductID: ");
+                        System.Console.WriteLine("Product ID must start with PID and should be less than 6");
                         string productID = System.Console.ReadLine();
                         if (pb.CheckProductID(productID))
                         {
@@ -227,11 +229,13 @@ namespace Znalytics.Inventory.ProductModule.ProductPresentation
                         try
                         {
                             System.Console.WriteLine("Enter Existing Product ID");
+                            System.Console.WriteLine("Product ID must start with PID and should be less than 6");
                             product.ProductID = System.Console.ReadLine();
                             if (pb.CheckProductID(product.ProductID))//checking whether the productId avaliable in the list or not
                             {
                                 check1 = true;
                                 System.Console.WriteLine("Enter new name for Product");
+                                System.Console.WriteLine("ProductName must Contain only alphabets");
                                 product.ProductName = System.Console.ReadLine();
 
                                 pb.UpdateProductName(product);
@@ -264,6 +268,7 @@ namespace Znalytics.Inventory.ProductModule.ProductPresentation
                         try
                         {
                             System.Console.WriteLine("Enter Existing Product ID");
+                            System.Console.WriteLine("Product ID must start with PID and should be less than 6");
                             product.ProductID = System.Console.ReadLine();
                             if (pb.CheckProductID(product.ProductID))//checking whether the productId avaliable in the list or not
                             {

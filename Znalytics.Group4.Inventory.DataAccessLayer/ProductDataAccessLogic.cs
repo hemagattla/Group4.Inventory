@@ -29,12 +29,18 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 
         }
         /// <summary>
-        /// static Constructor to initialize
+        /// static Constructor to initialize Product List
         /// </summary>
         static ProductDataAccessLogic() // creating a list object in constructor
         {
 
-            _productsList = new List<Product>();
+            _productsList = new List<Product>()
+            {
+                new Product()
+                {
+                    ProductID="PID02",ProductName="MocK Tail",Price=100
+                }
+            };
 
             if (_productsList.Count == 0 && File.Exists(@"C:\Users\Administrator\Desktop\ProcuctData.txt"))
             {
