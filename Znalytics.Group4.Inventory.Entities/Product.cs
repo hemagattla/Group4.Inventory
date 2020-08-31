@@ -73,7 +73,24 @@ namespace Znalytics.Inventory.ProductModule.Entitie
         /// <summary>
         /// Property for Price
         /// </summary>
-        public double Price {  set;   get; }
+        public double Price
+        {
+            set
+            {
+                try
+                {
+                    _price = value;
+                }
+                catch
+                {
+                    throw new ProductException("price should not be empty and should contain only numbers");
+                }
+            }
+            get
+            {
+                return _price;
+            }
+        }
 
     }
 }
