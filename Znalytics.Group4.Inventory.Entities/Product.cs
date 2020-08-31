@@ -19,7 +19,7 @@ namespace Znalytics.Inventory.ProductModule.Entitie
         //creating private feilds
         private string _productName;
         private string _productId;
-
+        private double _price;
 
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Znalytics.Inventory.ProductModule.Entitie
         /// <summary>
         /// Property for Price
         /// </summary>
-        public double Price { set; get; }
+        public double Price {  set;   get; }
 
     }
 }
