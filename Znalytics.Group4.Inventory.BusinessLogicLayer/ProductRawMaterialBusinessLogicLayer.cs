@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
+﻿using System.Collections.Generic;
 using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
 using Znalytics.Group4.Inventory.IRawMaterialModule.BusinessLogicLayer;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities;
 using Znalytics.Group4.Inventory.RawMaterialModule.Entities;
-//using Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer;
-
 using Znalytics.Inventory.ProductModule.Entitie;
-//using Znalytics.Inventory.ProductModule.DataAccessLayer;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer;
-
 using Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 
@@ -21,11 +14,8 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
     {
         IRawMaterialBusinessLogicLayer irm; //= new RawMaterialBusinessLogicLayer();
         IProductBusinessLogicLayer ipb; //= new ProductBusiness();
-        //ProductBusiness pb = new ProductBusiness();
-        //RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
         ProductRawMaterialDataAccessLayer prda;
-        //RawMaterialDataAccessLayer rawMaterialDataAccessLayer = new RawMaterialDataAccessLayer();
-        //ProductData productData = new ProductData();
+
         public ProductRawMaterialBusinessLogicLayer()
         {
               prda = new ProductRawMaterialDataAccessLayer();
@@ -34,24 +24,38 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
         }
         public void AddRawMaterialToProduct(ProductRawMaterial productRawMaterial)
         {
-            if((productRawMaterial.ProductID!=null)&&(productRawMaterial.RawMaterialID != null)&&(productRawMaterial.RawMaterialName != null)&&(productRawMaterial.Quantity != 0D)&&(productRawMaterial.Units != null))
+            try
             {
-                prda.AddRawMaterialToProduct(productRawMaterial);
+                if ((productRawMaterial.ProductID != null) && (productRawMaterial.RawMaterialID != null) && (productRawMaterial.RawMaterialName != null) && (productRawMaterial.Quantity != 0D) && (productRawMaterial.Units != null))
+                {
+                    prda.AddRawMaterialToProduct(productRawMaterial);
+                }
+                else
+                {
+                    throw new ProductRawMaterialException("Entered Values contains null values");
+                }
             }
-            else
+            catch
             {
-                System.Console.WriteLine("Entered Values contail null values");
+                throw;
             }
         }
         public void DeleteRawMaterialOfProduct(ProductRawMaterial productRawMaterial)
         {
-            if ((productRawMaterial.ProductID != null) && (productRawMaterial.RawMaterialID != null))// && (productRawMaterial.Quantity != 0D) && (productRawMaterial.Units != null))
+            try
             {
-                prda.DeleteRawMaterialOfProduct(productRawMaterial);
+                if ((productRawMaterial.ProductID != null) && (productRawMaterial.RawMaterialID != null))// && (productRawMaterial.Quantity != 0D) && (productRawMaterial.Units != null))
+                {
+                    prda.DeleteRawMaterialOfProduct(productRawMaterial);
+                }
+                else
+                {
+                    throw new ProductRawMaterialException("Entered Values contains null values");
+                }
             }
-            else
+            catch
             {
-                System.Console.WriteLine("Entered Values contail null values");
+
             }
         }
         public ProductRawMaterial GetProductRawMaterialByID(string ProductID,string RawMaterialID)
@@ -64,32 +68,34 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
         }
         public void UpdateQuantityOfProduct(ProductRawMaterial productRawMaterial)
         {
-            if ((productRawMaterial.ProductID != null) && (productRawMaterial.RawMaterialID != null) && (productRawMaterial.Quantity != 0D))
+            try
             {
-                prda.UpdateQuantityOfProduct(productRawMaterial);
+                if ((productRawMaterial.ProductID != null) && (productRawMaterial.RawMaterialID != null) && (productRawMaterial.Quantity != 0D))
+                {
+                    prda.UpdateQuantityOfProduct(productRawMaterial);
+                }
+                else
+                {
+                    throw new ProductRawMaterialException("Entered Values contains null values");
+                }
             }
-            else
+            catch
             {
-                System.Console.WriteLine("Entered Values contail null values");
+                throw;
             }
         }
         public Product GetProductByProductID(string ProductID)
         {
-            //IProductBusinessLogicLayer ipb = new ProductBusiness();
+            
             return ipb.GetProductByProductID(ProductID);
         }
         public RawMaterial GetRawMaterialByRawMaterialID(string RawMaterialID)
         {
-            //IRawMaterialBusinessLogicLayer irm = new RawMaterialBusinessLogicLayer();
+            
             return irm.GetRawMaterialByRawMaterialID(RawMaterialID);
         }
 
-            //public Product GetProductByProductID(string ProductID) { return productData.GetProductByID(ProductID); }
-           /* public RawMaterial GetRawMaterialByRawMaterialID(string RawMaterialID)
-        {
-            return rawMaterialDataAccessLayer.GetRawMaterialByRawMaterialID(RawMaterialID);
-
-        }*/
+     
         public List<ProductRawMaterial> GetDetailsByProductID(ProductRawMaterial productRawMaterial)
         {
             return prda.GetDetailsByProductID(productRawMaterial);

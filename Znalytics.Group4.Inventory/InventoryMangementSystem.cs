@@ -85,7 +85,7 @@ namespace Znalytics.Group4.Inventory
                     System.Console.WriteLine("2. Add Product");
                     System.Console.WriteLine("3. RawMaterialsDetails");
                     System.Console.WriteLine("4. Stock");
-                    System.Console.WriteLine("5.Add Product RawMaterial");
+                    System.Console.WriteLine("5. Add Product RawMaterial");
 
                     System.Console.WriteLine("6. Exit");
 

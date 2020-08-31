@@ -84,7 +84,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         /// Method to REMOVE WareHouse by WareHouseID
         /// </summary>
         /// <param name="wareHouseID">Reprents WareHouse id</param>
-        public void RemoveWareHouseByID(string wareHouseID)
+        public void RemoveWareHouseByWareHouseID(string wareHouseID)
         {
             try
             {
@@ -104,7 +104,7 @@ namespace Znalytics.Inventory.WareHouseModule.BusinessLogicLayer
         /// Method to REMOVE WareHouse by WareHouse Name
         /// </summary>
         /// <param name="wareHouseName">Represents WareHouse Name</param>
-        public void RemoveWareHouseByName(string wareHouseName)
+        public void RemoveWareHouseByWareHouseName(string wareHouseName)
         {
 
             try
