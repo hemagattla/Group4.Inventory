@@ -1,5 +1,5 @@
 ﻿//Written By Dhanasri
-/*using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Znalytics.Inventory.OrderManagementModule.Entities;
@@ -22,6 +22,8 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
     /// </summary>
     class OrderManagementPresentationLayer
     {
+        private object stock;
+
         public void Menu()
         {
 
@@ -86,10 +88,15 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 string AddressId = Console.ReadLine();
                 WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressId);
                 order.WareHouseAddress = houseAddress;
-
+                Console.WriteLine("Enter WareHouseId");
+                string WareHouseId = Console.ReadLine();
                 //Calling the Method from StockPresentationLyer to Display the Details of Products and quatity of Products
-                StockPresentationLayer.DisplayStock();
-
+                List<Stock> stocks=orderBusiness.DisplayStock(WareHouseId, AddressId);
+                foreach (Stock item in stocks)
+                {
+                    System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
+                    System.Console.WriteLine(item.ProductID + "  " + TotalQuantity(WareHouseId, AddressId));
+                }
                 Console.WriteLine("======ProductDetails=======");
 
                 int choice = 0;
@@ -156,6 +163,12 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
 
 
         }
+
+        private string TotalQuantity(object wareHouseID, object addressID)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Represents method for updating orderDetails
         /// </summary>
@@ -265,7 +278,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
 
 
     }
-}*/
+}
 
 
 

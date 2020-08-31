@@ -42,9 +42,9 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
         /// </summary>
         /// <param name="stock">gettig details like warehouse and warehouse address from user to dispaly products</param>
         /// <returns></returns>
-        public List<Stock> DisplayStock(Stock stock)
+        public List<Stock> DisplayStock(string warehouseID, string addressID)
         {
-            return stockDataAccesslogic.DisplayStock(stock);
+            return stockDataAccesslogic.DisplayStock(warehouseID, addressID);
         }
         /// <summary>
         /// used to Update the quntity of Stock of Product of Particular WarehouseID and warehouse AddressId

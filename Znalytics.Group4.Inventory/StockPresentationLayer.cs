@@ -132,10 +132,10 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
             Stock stock = new Stock();
             System.Console.WriteLine("Enter WareHouseID");
-            stock.WareHouseID = System.Console.ReadLine();
+            string WareHouseID = System.Console.ReadLine();
             System.Console.WriteLine("Enter Address Name");
-            stock.AddressID = System.Console.ReadLine();
-            List<Stock> stocks = stockBusinessLogicLayer.DisplayStock(stock);
+            string AddressID = System.Console.ReadLine();
+            List<Stock> stocks = stockBusinessLogicLayer.DisplayStock(WareHouseID, AddressID);
             foreach (Stock item in stocks)
             {
                 System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
