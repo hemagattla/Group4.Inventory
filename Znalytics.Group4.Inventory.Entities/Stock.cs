@@ -41,7 +41,7 @@ namespace Znalytics.Inventory.StockMaintain.Entities
 
                 else
                 {
-                    throw new StockException("Enter valid warehouseid.It should not contain spaces and length be exactly 6");
+                    throw new StockException("Enter valid warehouseid.It should not contain spaces and length be exactly 6 and should start with WHID");
                 }
 
             }
@@ -70,7 +70,7 @@ namespace Znalytics.Inventory.StockMaintain.Entities
                 }
                 else
                 {
-                    throw new StockException("Invalid addressid. It should not contain spaces or Special Characters and length should be exactly 4");
+                    throw new StockException("Invalid addressid. It should not contain spaces or Special Characters and length should be exactly 4 and should start with W");
                 }
             }
             get

@@ -24,7 +24,7 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
         /// <summary>
         /// used to add stock details into the list
         /// </summary>
-        /// <param name="stock"></param>
+        /// <param name="stock">it has all the data entered by the user to insert into the list</param>
         public void AddStock(Stock stock)
         {
             if (stock.AddressID != "" && stock.ProductID != "")
@@ -36,25 +36,23 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
                 throw new StockException("no null values allowed");
             }
         }
-
-        public List<Stock> TotalQuantity(string warehouseID, string addressID)
-        {
-            return stockDataAccesslogic.TotalQuantity(warehouseID, addressID);
-        }
         /// <summary>
-        /// Displaying the Stock details of products in particular warehouse and warehouse Address
+        /// used to calculate total Quantity of product and get all stock availability of the product
         /// </summary>
-        /// <param name="stock">gettig details like warehouse and warehouse address from user to dispaly products</param>
-        /// <returns></returns>
-        public List<Stock> DisplayStock(Stock stock)
+        /// <param name="warehouseID">calculation will be done if the warehouseID exits in the stokcs list</param>
+        /// <param name="addressID">calculation will be done if the addressID exits in the stokcs list</param>
+        /// <returns>stock details of each product in the warehouse of particular loctaion</returns>
+        public List<Stock> GetAllStocks(string warehouseID, string addressID)
         {
-            return stockDataAccesslogic.DisplayStock(stock);
+            return stockDataAccesslogic.GetAllStocks(warehouseID, addressID);
         }
+
+
         /// <summary>
         /// used to Update the quntity of Stock of Product of Particular WarehouseID and warehouse AddressId
         /// </summary>
         /// <param name="stock">contains user entered information like Warehouseid,warehouse addreesid and Productid</param>
-        public  void UpdateStockQuantity(Stock stock)
+        public void UpdateStockQuantity(Stock stock)
         {
             stockDataAccesslogic.UpdateStockQuantity(stock);
         }
