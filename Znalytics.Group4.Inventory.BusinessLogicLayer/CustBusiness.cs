@@ -9,10 +9,10 @@ using Znalytics.Group4.Module.IBusinessLogicLayer;
 namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing bt collection of classes///
 {
 
-    public class CustBusiness:ICustBusinessLogicLayer
+    public class CustBusiness : ICustBusinessLogicLayer
     {
         CustDataLayer d = new CustDataLayer();
-        public void AddCustomer( Customer c)///these method is called from presentation layer///
+        public void AddCustomer(Customer c)///these method is called from presentation layer///
         {
             if (c.CustomerName != null)///validating the condition///
             {
@@ -21,17 +21,19 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
             }
         }
 
-            public List<Customer> GetCustomers()
-            {
-                return d.GetCustomers();// return to presentation layer
-            }
-        public Tuple<string,string> LoginCustomer(string CustomerName,string PassWord)
+        public List<Customer> GetCustomers()
         {
-            if(CustomerName!=null&&PassWord!=null)
+            return d.GetCustomers();// return to presentation layer
+        }
+        public Tuple<string, string> LoginCustomer(string CustomerName, string PassWord)
+        {
+            if (CustomerName != null && PassWord != null)
             {
-                return d.LoginCustomer(CustomerName, PassWord);
+              return d.LoginCustomer(CustomerName, PassWord);
+                
             }
         }
+    
         public void UpdateCustomer(Customer c)
             {
             if(c.CustomerName!=null)
