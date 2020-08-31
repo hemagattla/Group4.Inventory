@@ -12,7 +12,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using Znalytics.Group4.Inventory.Entities;
 
-//Created a namespace for PresentationLayer of WareHouse module
+/// <summary>
+///Created a namespace for PresentationLayer of WareHouse module
+/// </summary>
 namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 {
     /// <summary>
@@ -73,26 +75,32 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             try
             {
                 //Created an object for Warehouse class and is stored in a reference variable
-                WareHouse n = new WareHouse();
+                WareHouse ware = new WareHouse();
 
                 //Created an object for Warehouse Business class and is stored in a reference variable
                 WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
 
                 WriteLine("you chose to enter the warehouse details");
                 WriteLine("Enter Warehouse Id that starts with WHID and length of 6");
-                n.WareHouseId = ReadLine();
+
+                //Reads the WarehouseId
+                ware.WareHouseId = ReadLine();
 
                 //Condition to check whether the WareHouseid exists or not
                 //The Warehouseid should be unique
-                if (wbl.CheckWareHouseId(n.WareHouseId) == false)
+                if (wbl.CheckWareHouseId(ware.WareHouseId) == false)
                 {
 
                     WriteLine("Enter Warehouse Name");
-                    n.WareHouseName = ReadLine();
+                    //Reads the WareHouseName
+                    ware.WareHouseName = ReadLine();
 
                     WriteLine("Enter Manager Name");
-                    n.MangerName = ReadLine();
-                    wbl.AddWareHouse(n);
+                    //Reads the MangerName
+                    ware.MangerName = ReadLine();
+
+                    //Calls the AddWareHouse method of WareHouseBusinessLogic
+                    wbl.AddWareHouse(ware);
                     WriteLine("WareHouse added successfully");
                 }
                 else
@@ -120,7 +128,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             //Created an object for Warehouse Business class and is stored in a reference variable
             WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
 
-            //WareHouse List is stored in a reference variable
+            //Calls the GetWareHouses method of WareHouseBusinessLogic
             List<WareHouse> wareHouseList = wbl.GetWareHouses();
 
             WriteLine("===============   WareHouse Details=============");
@@ -143,10 +151,13 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
 
                 WriteLine("Enter Existing WareHouse ID");
+
+                //Reads the WareHouseid and is stored in a reference variable
                 string whID = ReadLine();
 
-                //Condition to check whether the WareHouseid exists or not
+                //Calls the GetWareHouseByWareHouseID of WareHouseBusinessLogic and is stored in Warehouse reference variable
                 WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
+               // Condition to check whether the WareHouseid exists or not
                 if (ware != null)
                 {
                     WriteLine("===============   WareHouse Details=============");
@@ -175,9 +186,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         //Method to REMOVE WareHouses
         public  void RemoveWareHouse()
         {
-            // created the object for Warehouse class
-            WareHouse w = new WareHouse();
-
+            
             // Created an object for WareHouseBusinessLogic class
             WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
 
@@ -186,6 +195,8 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             WriteLine("2.on WareHouseName");
             int Option;
             bool a;
+            
+            //TryParse returns a bool value
             a = int.TryParse(ReadLine(), out Option);
 
             if (a == true)
@@ -206,9 +217,9 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             //Method to REMOVE WareHouse  by WareHouseId
             void RemoveWareHouseByID()
             {
-                // created the object for Warehouse class
-                WareHouse n = new WareHouse();
+                
                 Write("Enter the WarehouseID to be Deleted:");
+                //Reads the WareHouseid and is stored in a reference variable
                 string whID = ReadLine();
                 try
                 {
@@ -237,14 +248,14 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             void RemoveWareHouseByWareHouseName()
             {
                 // created the object for Warehouse class
-                WareHouse n = new WareHouse();
+                WareHouse ware = new WareHouse();
                 Write("Enter the Warehouse Name:");
                 string name = ReadLine();
 
                 try
                 {
                     //Condition to check whether the warehouse Name exists or not
-                    if (wbl.GetWareHouseByWareHouseID(n.WareHouseName) == null)
+                    if (wbl.GetWareHouseByWareHouseID(ware.WareHouseName) == null)
                     {
                         wbl.RemoveWareHouseByName(name);
                         WriteLine("Warehouse Removed");
@@ -299,6 +310,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 try
                 {
                     WriteLine("Enter Existing WareHouse ID");
+                    //Reads the WareHouseid and is stored in a reference variable
                     string whID = ReadLine();
 
                     //Condition to check whether the warehouse id exists or not
@@ -306,8 +318,10 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     if (ware != null)
                     {
                         WriteLine("Enter new name for WareHouse");
+                        //Reads the WareHouseName and is stored in the object
                         ware.WareHouseName = ReadLine();
 
+                        //Calls the UpdateWareHouseName of WareHouseBusinessLogic
                         wbl.UpdateWareHouseName(ware);
                         WriteLine("WareHouse Name Updated Sucessfully!!!");
                     }
@@ -331,6 +345,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 try
                 {
                     WriteLine("Enter Existing WareHouse ID");
+                    //Reads the WareHouseid and is stored in a reference variable
                     string whID = ReadLine();
 
                     //Condition to check whether the warehouse id exists or not
@@ -339,8 +354,10 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     if (ware != null)
                     {
                         WriteLine("Enter new name for Manager");
+                        //Reads the MangerName and is stored in the object
                         ware.MangerName = ReadLine();
 
+                        //Calls the UpdateManagerName of WareHouseBusinessLogic
                         wbl.UpdateManagerName(ware);
                         WriteLine("Manager Name Updated Sucessfully!!!");
                     }
@@ -373,6 +390,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
                 WriteLine("You chose to add address to the WareHouse");
                 WriteLine("Enter Existing WareHouseId");
+                //Reads the WareHouseid and is stored in the WareHouseAddress object
                 a.WareHouseId = ReadLine();
 
                 //Condition to check whether WareHouseid exists or not
@@ -382,15 +400,26 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     if (CheckAddressId(a.AddressId) == false)
                     {
                         WriteLine("Enter Address id");
+                        //Reads the AddressId and is stored in the WareHouseAddress object
                         a.AddressId = ReadLine();
+
                         WriteLine("Enter Door Number");
+                        //Reads the DoorNumber and is stored in the WareHouseAddress object
                         a.DoorNumber = ReadLine();
+
                         WriteLine("Enter Location Name");
+                        //Reads the LocationName and is stored in the WareHouseAddress object
                         a.LocationName = ReadLine();
+
                         WriteLine("Enter State");
+                        //Reads the State and is stored in the WareHouseAddress object
                         a.State = ReadLine();
+
                         WriteLine("Enter the Pincode");
+                        //Reads the Pincode and is stored in the WareHouseAddress object
                         a.Pincode = ReadLine();
+
+                        //Calls the AddAddress method of WareHouseAddressBusinessLogic
                         wabl.AddAddress(a);
 
 
@@ -424,7 +453,10 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         /// </summary>
         public void GetAddresses()
         {
+            //Created an object for WareHouseAddressBusinessLogicLayer and is stored in the reference variable
             WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+
+            //Calls the GetAddresses method of WareHouseAddressBusinessLogicLayer
             List<WareHouseAddress> addressList = wabl.GetAddresses();
 
             WriteLine("===============   WareHouse Details=============");
@@ -445,11 +477,16 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         {
             try
             {
-                //Created an object for Warehouse Business class and is stored in a reference variable
+                //Created an object for WareHouseAddressBusinessLogicLayer and is stored in a reference variable
                 WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+
                 WriteLine("Enter the existing WareHouse Address Id");
+                //Reads the AddressId and is stored in a reference variable
                 string addressid = ReadLine();
+
+                //Calls the GetAddressByAddressID methof of WareHouseAddressBusinessLogicLayer
                 WareHouseAddress add = wabl.GetAddressByAddressID(addressid);
+
                 //Condition to check whether the address id exists or not
                 if (add != null)
                 {
@@ -747,6 +784,8 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             void RemoveAddressByAddressID()
             {
                 Write("Enter the AddressId to be Deleted:");
+
+                //Reads the entered AddressId
                 string addressId = ReadLine();
                 try
                 {
