@@ -9,7 +9,7 @@ using System;
 using Znalytics.Group4.Inventory.Entities;
 using Newtonsoft.Json;
 using System.IO;
-
+using System.Collections;
 
 /// <summary>
 ///Created a namespace for DataAccessLayer of WareHouseAddress Module
@@ -43,7 +43,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
                 new WareHouseAddress(){WareHouseId="WHID01",AddressId="W1A1",DoorNumber="1-1-1",LocationName="WARANGAL",Pincode="505005"},
                 new WareHouseAddress(){WareHouseId="WHID01",AddressId="W1A2",DoorNumber="1-2-2",LocationName="HYDERABAD",Pincode="506003"},
                 new WareHouseAddress(){WareHouseId="WHID02",AddressId="W2A1",DoorNumber="2-1-1",LocationName="KARIMNAGAR",Pincode="506002"},
-                new WareHouseAddress(){WareHouseId="WHID02",AddressId="W2A2",DoorNumber="2-2-2",LocationName="VIZA",Pincode="506009"},
+                new WareHouseAddress(){WareHouseId="WHID02",AddressId="W2A2",DoorNumber="2-2-2",LocationName="VIZAG",Pincode="506009"},
             };
             if (_addressList.Count == 0)
             {
@@ -104,12 +104,15 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
 
         /// <summary>
-        ///Method to GET the added address details
+        ///Method to GET the  address List
         /// </summary>
         /// <returns>Returns the address list</returns>
-        public override List<WareHouseAddress> GetAddresses()
+        public IEnumerator GetEnumerator()
         {
-            return _addressList;
+            foreach (var item in _addressList)
+            {
+                yield return item;
+            }
         }
 
         /// <summary>
@@ -303,7 +306,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         /// </summary>
         /// <param name="id">Represents the Address id</param>
         /// <returns></returns>
-        public static bool CheckAddressId(string id)
+        public  bool CheckAddressId(string id)
         {
             //Condition to check whether the WareHouseId exists or not
             bool result = _addressList.Exists(temp => temp.AddressId == id);

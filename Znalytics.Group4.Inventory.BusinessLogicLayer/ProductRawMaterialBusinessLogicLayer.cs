@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using Znalytics.Group4.Inventory.ProductModule.IBusinessLogicLayer;
 using Znalytics.Group4.Inventory.IRawMaterialModule.BusinessLogicLayer;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities;
@@ -18,8 +19,8 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
 {
     public class ProductRawMaterialBusinessLogicLayer
     {
-        IRawMaterialBusinessLogicLayer irm = new RawMaterialBusinessLogicLayer();
-        IProductBusinessLogicLayer ipb = new ProductBusiness();
+        IRawMaterialBusinessLogicLayer irm; //= new RawMaterialBusinessLogicLayer();
+        IProductBusinessLogicLayer ipb; //= new ProductBusiness();
         //ProductBusiness pb = new ProductBusiness();
         //RawMaterialBusinessLogicLayer rawMaterialBusinessLogicLayer = new RawMaterialBusinessLogicLayer();
         ProductRawMaterialDataAccessLayer prda;
@@ -28,6 +29,8 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
         public ProductRawMaterialBusinessLogicLayer()
         {
               prda = new ProductRawMaterialDataAccessLayer();
+            irm = new RawMaterialBusinessLogicLayer();
+            ipb = new ProductBusiness();
         }
         public void AddRawMaterialToProduct(ProductRawMaterial productRawMaterial)
         {
@@ -72,10 +75,12 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
         }
         public Product GetProductByProductID(string ProductID)
         {
+            //IProductBusinessLogicLayer ipb = new ProductBusiness();
             return ipb.GetProductByProductID(ProductID);
         }
         public RawMaterial GetRawMaterialByRawMaterialID(string RawMaterialID)
         {
+            //IRawMaterialBusinessLogicLayer irm = new RawMaterialBusinessLogicLayer();
             return irm.GetRawMaterialByRawMaterialID(RawMaterialID);
         }
 
@@ -89,12 +94,16 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
         {
             return prda.GetDetailsByProductID(productRawMaterial);
         }
-        public List<ProductRawMaterial> GetDetailsUsingOriderBy()
+        public List<ProductRawMaterial> GetDetailsUsingOrderBy()
         {
-            return prda.GetProductRawMaterial();
+            return prda.GetDetailsUsingOrderBy();
         }
-        
+        public ProductRawMaterial GetDetailsByProductIDAndRawMaterialID(ProductRawMaterial productRawMaterial)
+        {
 
-       
+            return prda.GetDetailsByProductIDAndRawMaterialID(productRawMaterial);
+        }
+
+
     }
 }

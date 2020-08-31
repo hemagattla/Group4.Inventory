@@ -6,6 +6,7 @@ using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.Entitie;
 using System;
+using Newtonsoft.Json;
 
 
 namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
@@ -59,7 +60,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                             case 5: GetDetailsByProductID();
                                 break;
                             case 6:
-                                GetDetailsUsingOriderBy();
+                                GetDetailsUsingOrderBy();
                                 System.Console.WriteLine("1st preference to productID , then RawMaterialID and then RwmaterialName");
 
                                 break;
@@ -101,13 +102,21 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                    // RawMaterial prm = prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID);
                     productRawMaterial.RawMaterialID = prm.RawMaterialID;
                     productRawMaterial.RawMaterialName = prm.RawMaterialName;
-                    System.Console.WriteLine("Enter the Quantity");
-                    productRawMaterial.Quantity = System.Convert.ToDouble(System.Console.ReadLine());
-                    System.Console.WriteLine("Enter the Units");
-                    productRawMaterial.Units = System.Console.ReadLine();
-                    prbl.AddRawMaterialToProduct(productRawMaterial);
-                    System.Console.WriteLine("******************* Successfully added RawMaterial Details to ProductID  " + productRawMaterial.ProductID + " ************** ");
+                    if (prbl.GetDetailsByProductIDAndRawMaterialID(productRawMaterial) == null)
+                    {
+                        System.Console.WriteLine("Enter the Quantity");
+                        productRawMaterial.Quantity = System.Convert.ToDouble(System.Console.ReadLine());
+                        System.Console.WriteLine("Enter the Units");
+                        productRawMaterial.Units = System.Console.ReadLine();
+                        prbl.AddRawMaterialToProduct(productRawMaterial);
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("*************** Entered all ready exits ********************");
+                    }
+                        System.Console.WriteLine("******************* Successfully added RawMaterial Details to ProductID  " + productRawMaterial.ProductID + " ************** ");
                 }
+            
                 else
                 {
                     System.Console.WriteLine("**************entered RawMaterialID " + productRawMaterial.RawMaterialID + " does not exists. Pls Try again*************");
@@ -169,21 +178,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                 System.Console.WriteLine("**************entered ProductID  " + productRawMaterial.ProductID + " and RawMaterialID  " + productRawMaterial.RawMaterialID+"  doesn't exists. Pls Try again*************");
             }
         }
-        /*
-         * System.Console.WriteLine("enter ProductID (ProductID must Starts With *PID*)");
-                                productRawMaterial.ProductID = System.Console.ReadLine();
-                                if (prbl.GetProductByProductID(productRawMaterial.ProductID) != null)
-                                {
-                                    productRawMaterial.ProductID = productRawMaterial.ProductID;
-                                    GetDetailsByProductID(productRawMaterial.ProductID);
-                                    System.Console.WriteLine("******************* U Can see the of Product  ************** ");
-                                }
-
-                                else
-                                {
-                                    System.Console.WriteLine("**************entered ProductID" + productRawMaterial.ProductID + "doesn't exists. Pls Try again*************");
-                                }
-        */
+       
         public static void GetDetailsByProductID()
         {
             ProductRawMaterial productRawMaterial = new ProductRawMaterial();
@@ -195,20 +190,20 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
             
             foreach (ProductRawMaterial rm in prm)//to print the list
             {
-                System.Console.WriteLine("RawMaterialID:-" + productRawMaterial.RawMaterialID + "            RawMaterialName:-" + productRawMaterial.RawMaterialName + "          Quantity:-" + rm.Quantity + "" + rm.Units);
+                System.Console.WriteLine("RawMaterialID:-" + rm.RawMaterialID + "            RawMaterialName:-" + rm.RawMaterialName + "          Quantity:-" + rm.Quantity + "" + rm.Units);
             }
             System.Console.WriteLine("**********************************************************************************");
         }
         
-        public static void GetDetailsUsingOriderBy()
+        public static void GetDetailsUsingOrderBy()
         {
             ProductRawMaterial productRawMaterial = new ProductRawMaterial();
-            ProductRawMaterialBusinessLogicLayer productRawMaterialBusinessLogicLayer = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
-            List<ProductRawMaterial> rms = productRawMaterialBusinessLogicLayer.GetProductRawMaterial();// call the GetRawMaterial method with no arguments in the BusinessLogicLayer by using Refernce Variable
+            ProductRawMaterialBusinessLogicLayer prbl = new ProductRawMaterialBusinessLogicLayer();//creating object of businessLogicLayer class
+            List<ProductRawMaterial> rms = prbl.GetDetailsUsingOrderBy();// call the GetRawMaterial method with no arguments in the BusinessLogicLayer by using Refernce Variable
             System.Console.WriteLine("**********************************************************************************");
             foreach (ProductRawMaterial rm in rms)//to print the list
             {
-                System.Console.WriteLine("ProductID:-" + productRawMaterial.ProductID + "           RawMaterialID:-" + productRawMaterial.RawMaterialID + "            RawMaterialName:-" + productRawMaterial.RawMaterialName + "          Quantity:-" + rm.Quantity + "" + rm.Units);
+                System.Console.WriteLine("ProductID:-" + rm.ProductID + "           RawMaterialID:-" + rm.RawMaterialID + "            RawMaterialName:-" + rm.RawMaterialName + "          Quantity:-" + rm.Quantity + "" + rm.Units);
             }
             System.Console.WriteLine("**********************************************************************************");
         }

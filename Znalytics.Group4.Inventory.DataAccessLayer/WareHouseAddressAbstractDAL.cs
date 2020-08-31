@@ -26,7 +26,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         ///Method to display the added address details
         /// </summary>
         /// <returns></returns>
-        public abstract List<WareHouseAddress> GetAddresses();
+       // public abstract List<WareHouseAddress> GetAddresses();
 
         /// <summary>
         /// Method to get the Address details by AddressID
