@@ -73,7 +73,7 @@ namespace CustPresentationLayer
 
             foreach (Customer item in customers)
             {
-                Console.WriteLine(item.CustomerId + "    " + item.CustomerName + "  " + item.Email);// Displaying the products
+                Console.WriteLine(item.CustomerId + " " + item.CustomerName + " " + item.Email+" "+item.PassWord+" "+item.MblNo+" "+item.Country+" "+item.State+" "+item.City+" "+item.HNo+" "+item.PinNo);// Displaying the products
             }
 
         }
