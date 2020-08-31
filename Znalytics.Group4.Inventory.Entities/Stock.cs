@@ -126,8 +126,10 @@ namespace Znalytics.Inventory.StockMaintain.Entities
         }
         public int TotalQuantity
         {
-            set;
-            get;
+            
+                set;
+                get;
+            
         }
 
 

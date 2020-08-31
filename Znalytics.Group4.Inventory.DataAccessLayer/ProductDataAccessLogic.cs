@@ -40,6 +40,10 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
                 new Product()
                 {
                     ProductID="PID02",ProductName="MocK Tail",Price=100
+                },
+                new Product()
+                {
+                    ProductID="PID01",ProductName="sample",Price=99
                 }
             };
 
