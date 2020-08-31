@@ -33,9 +33,9 @@ namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
             }
         }
 
-        public int TotalQuantity(string warehouseID, string addressID)
+        public int TotalQuantity(string warehouseID, string addressID, string productID)
         {
-            return stockDataAccesslogic.TotalQuantity(warehouseID, addressID);
+            return stockDataAccesslogic.TotalQuantity(warehouseID, addressID, productID);
         }
         /// <summary>
         /// Displaying the Stock details of products in particular warehouse and warehouse Address

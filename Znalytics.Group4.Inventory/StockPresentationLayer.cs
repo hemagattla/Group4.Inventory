@@ -10,6 +10,7 @@ using System.Xml.Serialization;
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Znalytics.Inventory.StockMaintain.PresentationLayer
 {
@@ -118,11 +119,11 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
         /// <param name="warehouseID">parameter that accepts warehouseid of string type</param>
         /// <param name="addressID">parameter that accepts Address of string type</param>
         /// <returns> total stock availability of stock of a product</returns>
-        public static int TotalQuantity(string warehouseID, string addressID)
+        public static int TotalQuantity(string warehouseID, string addressID, string productID)
         {
 
             StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
-            return stockBusinessLogicLayer.TotalQuantity(warehouseID, addressID);
+            return stockBusinessLogicLayer.TotalQuantity(warehouseID, addressID, productID);
         }
 
         /// <summary>
@@ -137,10 +138,12 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             System.Console.WriteLine("Enter Address Name");
             stock.AddressID = System.Console.ReadLine();
             List<Stock> stocks = stockBusinessLogicLayer.DisplayStock(stock);
-            foreach (Stock item in stocks)
+            List<string> ProductIDs = stocks.Select(temp => temp.ProductID).Distinct().ToList();
+            System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
+            foreach (string item in ProductIDs)
             {
-                System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
-                System.Console.WriteLine(item.ProductID + "  " + TotalQuantity(stock.WareHouseID, stock.AddressID));
+               
+                System.Console.WriteLine(item + "  " + TotalQuantity(stock.WareHouseID, stock.AddressID, item));
             }
 
         }

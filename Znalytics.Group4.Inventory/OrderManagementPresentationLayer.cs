@@ -14,6 +14,7 @@ using Znalytics.Inventory.ProductModule.ProductPresentation;
 using Znalytics.Inventory.WareHouseModule.Entities;
 using Znalytics.Inventory.StockMaintain.PresentationLayer;
 using Znalytics.Inventory.StockMaintain.Entities;
+using Znalytics.Inventory.StockMaintain.BusinessLogicLayer;
 
 namespace Znalytics.Group4.Inventory.PresentationLayer
 {
@@ -86,26 +87,32 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
 
                 Console.WriteLine("Enter AddressID of WareHouse Address From where you want Products");
                 string AddressId = Console.ReadLine();
-                WareHouseAddress houseAddress = orderBusiness.GetWareHouseByAddressID(AddressId);
-                order.WareHouseAddress = houseAddress;
-                Console.WriteLine("Enter WareHouseId");
-                string WareHouseId = Console.ReadLine();
                
-                //Calling the Method from StockPresentationLyer to Display the Details of Products and quatity of Products
-                List<Stock> stocks=orderBusiness.DisplayStock(WareHouseId, AddressId);
-                foreach (Stock item in stocks)
+                Stock stock = new Stock();
+                System.Console.WriteLine("Enter WareHouseID");
+                stock.WareHouseID = System.Console.ReadLine();
+                System.Console.WriteLine("Enter AddressId");
+                stock.AddressID = System.Console.ReadLine();
+                List<Stock> stocks = orderBusiness.DisplayStock(stock);
+                List<string> ProductIDs = stocks.Select(temp => temp.ProductID).Distinct().ToList();
+                System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
+                foreach (string item in ProductIDs)
                 {
-                    System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
-                    System.Console.WriteLine(item.ProductID + "  " + TotalQuantity(WareHouseId, AddressId));
+
+                    System.Console.WriteLine(item + "  " + orderBusiness.TotalQuantity(stock.WareHouseID, stock.AddressID, item));
                 }
+
+            
+
+                //Calling the Method from BusinessLogicLyer to Display the Details of Products and quatity of Products
+         
                 Console.WriteLine("======ProductDetails=======");
 
                 int choice = 0;
-                order.TotalPrice = 0;
-                order.TotalQuantity = 0;
+               
 
 
-                do
+               do
                 {
 
 
@@ -121,12 +128,16 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                             string productId = (Console.ReadLine());
                             Console.WriteLine("Enter Quantity");
                             int quantity = int.Parse(Console.ReadLine());
-                            order.PIdQuantity[productId] = quantity;
-                            Product product = orderBusiness.ProductDetails(productId);
-                            order.Products.Add(product);
+                            Dictionary<string, int> PIdQuantity = new Dictionary<string, int>();
+                            PIdQuantity[productId] = quantity;
+                            order.PIdQuantity = PIdQuantity;
+                            Product p = new Product();
+                           p= orderBusiness.ProductDetails(productId);
+                           
+                            order.Products.Add(p);
                             Stock s = new Stock();
                             s.Quantity -= order.PIdQuantity[productId];
-                            order.TotalPrice += product.Price * quantity;
+                            order.TotalPrice += p.Price * quantity;
                             order.TotalQuantity += quantity;
                             break;
 
@@ -134,7 +145,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                         case 2: Console.WriteLine("Exit"); break;
 
                     }
-                } while (choice != 2);
+                } while (choice == 1);
 
 
 

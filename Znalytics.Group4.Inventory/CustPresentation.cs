@@ -18,7 +18,7 @@ namespace CustPresentationLayer
                 Console.WriteLine("3. logincustomer");
                 Console.WriteLine("4.update customer");
                 Console.WriteLine("5. del customer");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("6. getcustomerby id");
                 Console.Write("Enter choice: ");
                 bool b = int.TryParse(Console.ReadLine(), out choice);
 
@@ -28,11 +28,12 @@ namespace CustPresentationLayer
                     case 2: GetCustomers(); break;
                     case 3: LoginCustomer(); break;
                     case 4: UpdateCustomer(); break;
-                    case 5:
-                        DelCustomer();
-                        break;
+                    case 5:DelCustomer();break;
+                    case 6:GetCustomerById();
+                         break;
+                      
                 }
-            } while (choice != 6);
+            } while (choice != 7);
         }
 
         static void AddCustomer()
@@ -42,7 +43,7 @@ namespace CustPresentationLayer
 
             Console.Write("Enter cust ID: ");
             c.CustomerId = int.Parse(Console.ReadLine());
-            Console.Write("Enter cust id: ");
+            Console.Write("Enter cust name: ");
             c.CustomerName = Console.ReadLine();
             Console.Write("Enter phno ");
             c.MblNo = Console.ReadLine();
@@ -73,7 +74,7 @@ namespace CustPresentationLayer
 
             foreach (Customer item in customers)
             {
-                Console.WriteLine(item.CustomerId + "    " + item.CustomerName + "  " + item.Email);// Displaying the products
+                Console.WriteLine(item.CustomerId + " " + item.CustomerName + " " + item.Email + " " + item.PassWord + " " + item.MblNo + " " + item.Country + " " + item.State + " " + item.City + " " + item.HNo + " " + item.PinNo);// Displaying the products
             }
 
         }
@@ -81,7 +82,9 @@ namespace CustPresentationLayer
         {
             Console.WriteLine("  =======login form=======");
             Console.WriteLine("===========");
+            System.Console.WriteLine("enter name");
             string CustomerName = System.Console.ReadLine();
+            System.Console.WriteLine("enter password");
             string PassWord = System.Console.ReadLine();
             CustBusiness cbl = new CustBusiness();
             Tuple<string, string> tuple = new Tuple<string, string>(CustomerName, PassWord);
@@ -109,10 +112,10 @@ namespace CustPresentationLayer
             cbl.DelCustomer(c);
             Console.WriteLine("customer has deleted");
         }
-        void GetCustomerByID()
+        static void GetCustomerById()
         {
 
-            System.Console.Write("Enter the ProductID: ");
+            System.Console.Write("Enter the customerID: ");
             int CustomerId = int.Parse(System.Console.ReadLine());
             CustBusiness cbl = new CustBusiness();
             Customer b = cbl.GetCustomerById(CustomerId);
