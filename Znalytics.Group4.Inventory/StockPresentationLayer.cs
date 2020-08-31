@@ -75,41 +75,80 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
         {
             ProductBusiness productBusinessLogic=new ProductBusiness();
             MenuPrensentor wareHousePresentation = new MenuPrensentor();
-            try
-            {
-                StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer(); // creation stockBusinessLogic object
-                Stock stock = new Stock();//creation of stock object of entite Layer
-
+           
+            StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer(); // creation stockBusinessLogic object
+            Stock stock = new Stock();//creation of stock object of entite Layer
+            bool check = false;
+            
                 System.Console.WriteLine("Enter StockID");
                 stock.StockID = System.Console.ReadLine();
-
-                System.Console.WriteLine("Enter WareHouseID");
-                stock.WareHouseID = System.Console.ReadLine();
-                if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID) == true)
+                
+                
+             do
+             {
+                try
                 {
-                    System.Console.WriteLine("Enter Address Name");
-                    stock.AddressID = System.Console.ReadLine();
-                    if (wareHousePresentation.CheckAddressId(stock.AddressID))
-                    {
-                        System.Console.WriteLine("Enter Product ID");
-                        stock.ProductID = System.Console.ReadLine();
-                       if (productBusinessLogic.CheckProductID(stock.ProductID))
-                       {
+                    bool check1 = false;
+                        System.Console.WriteLine("Enter WareHouseID");
+                        System.Console.WriteLine("It should not contain spaces and length be exactly 6");
+                        stock.WareHouseID = System.Console.ReadLine();
+                        if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID) == true)
+                        {
+                            do
+                            {
+                            try
+                            {
+                                check = true;
+                                System.Console.WriteLine("Enter Address ID");
+                                System.Console.WriteLine("It should not contain spaces or Special Characters and length should be exactly 4");
+                                stock.AddressID = System.Console.ReadLine();
+                                if (wareHousePresentation.CheckAddressId(stock.AddressID))
+                                {
+                                    bool check2 = false;
+                                    check1 = true;
+                                    do
+                                    {
+                                        try
+                                        {
+                                            System.Console.WriteLine("Enter Product ID");
+                                            System.Console.WriteLine("Product ID Should not NULL and ProductID Should Start with PID and 0-9 number and length should be 6");
+                                            stock.ProductID = System.Console.ReadLine();
+                                            if (productBusinessLogic.CheckProductID(stock.ProductID))
+                                            {
+                                                check2 = true;
 
-                            System.Console.WriteLine("Enter no of Quantities u want to add");
-                            stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
+                                                System.Console.WriteLine("Enter no of Quantities u want to add");
+                                                stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
 
-                            stockBusinessLogicLayer.AddStock(stock);
-                            Console.WriteLine("Stock Added Sucessfully!!");
+                                                stockBusinessLogicLayer.AddStock(stock);
+                                                Console.WriteLine("Stock Added Sucessfully!!");
+
+                                            }
+                                        }
+
+                                        catch (StockException e)
+                                        {
+                                            System.Console.WriteLine(e.Message);
+                                        }
+                                    } while (check2 == false);
+                                }
+                            }
+                            catch (StockException e)
+                            {
+                                System.Console.WriteLine(e.Message);
+                            }
+
+                        } while (check1 == false);
 
                         }
                     }
+                catch (StockException e)
+                {
+                    System.Console.WriteLine(e.Message);
                 }
-            }
-            catch(StockException e)
-            {
-                System.Console.WriteLine(e.Message);
-            }
+
+            } while (check == false);
+           
 
           
         }
@@ -134,8 +173,10 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
             Stock stock = new Stock();
             System.Console.WriteLine("Enter WareHouseID");
+            System.Console.WriteLine("It should not contain spaces and length be exactly 6");
             stock.WareHouseID = System.Console.ReadLine();
-            System.Console.WriteLine("Enter Address Name");
+            System.Console.WriteLine("Enter Address ID");
+            System.Console.WriteLine("It should not contain spaces or Special Characters and length should be exactly 4");
             stock.AddressID = System.Console.ReadLine();
             List<Stock> stocks = stockBusinessLogicLayer.DisplayStock(stock);
             List<string> ProductIDs = stocks.Select(temp => temp.ProductID).Distinct().ToList();
@@ -161,10 +202,13 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                 StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
                 Stock stock = new Stock();
                 System.Console.WriteLine("enter to which WarehouseId you want to update the quantity:");
+                System.Console.WriteLine("It should not contain spaces and length be exactly 6");
                 stock.WareHouseID = System.Console.ReadLine();
                 System.Console.WriteLine("enter to which WarehouseAddress you want to update the quantity:");
+                System.Console.WriteLine("It should not contain spaces or Special Characters and length should be exactly 4");
                 stock.AddressID = System.Console.ReadLine();
                 System.Console.WriteLine("enter to which ProductID you want to update the quantity");
+                System.Console.WriteLine("Product ID Should not NULL and ProductID Should Start with PID and 0-9 number and length should be 6");
                 stock.ProductID = System.Console.ReadLine();
 
                 System.Console.WriteLine("enter the quantity to be updated:");
