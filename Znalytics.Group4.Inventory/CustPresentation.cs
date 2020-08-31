@@ -28,11 +28,11 @@ namespace CustPresentationLayer
                     case 2: GetCustomers(); break;
                     case 3: LoginCustomer(); break;
                     case 4: UpdateCustomer(); break;
-                    case 5:
-                        DelCustomer();
-                        break;
+                    case 5:DelCustomer();break;
+                    case 6:GetCustomerByID();
+                         break;
                 }
-            } while (choice != 6);
+            } while (choice != 7);
         }
 
         static void AddCustomer()
@@ -81,7 +81,9 @@ namespace CustPresentationLayer
         {
             Console.WriteLine("  =======login form=======");
             Console.WriteLine("===========");
+            System.Console.WriteLine("enter name");
             string CustomerName = System.Console.ReadLine();
+            System.Console.WriteLine("enter password");
             string PassWord = System.Console.ReadLine();
             CustBusiness cbl = new CustBusiness();
             Tuple<string, string> tuple = new Tuple<string, string>(CustomerName, PassWord);
@@ -109,7 +111,7 @@ namespace CustPresentationLayer
             cbl.DelCustomer(c);
             Console.WriteLine("customer has deleted");
         }
-        void GetCustomerByID()
+        static void GetCustomerByID()
         {
 
             System.Console.Write("Enter the ProductID: ");
