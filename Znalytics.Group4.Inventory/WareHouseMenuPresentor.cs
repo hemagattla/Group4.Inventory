@@ -455,22 +455,27 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         {
                             check = true;
                             WriteLine("Enter Address id");
+                            WriteLine("Addressid must be of length 6 and should contain only alphanumeric values");
                             //Reads the AddressId and is stored in the WareHouseAddress object
                             a.AddressId = ReadLine();
 
                             WriteLine("Enter Door Number");
+                            WriteLine("Door Number shouldn't be null or empty");
                             //Reads the DoorNumber and is stored in the WareHouseAddress object
                             a.DoorNumber = ReadLine();
 
                             WriteLine("Enter Location Name");
+                            WriteLine("Location Name shouldn't be null and should contain alphabets");
                             //Reads the LocationName and is stored in the WareHouseAddress object
                             a.LocationName = ReadLine();
 
                             WriteLine("Enter State");
+                            WriteLine("State shouldn't be null and should contain alphabets");
                             //Reads the State and is stored in the WareHouseAddress object
                             a.State = ReadLine();
 
                             WriteLine("Enter the Pincode");
+                            WriteLine("Pincode must be numeric and length should be exactly 6");
                             //Reads the Pincode and is stored in the WareHouseAddress object
                             a.Pincode = ReadLine();
 
@@ -708,6 +713,8 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         {
                             check = true;
                             WriteLine("Enter the new Door Number for the WareHouse");
+                            WriteLine("Door Number shouldn't be null or empty");
+
                             //Reads the DoorNumber and is stored in reference variable
                             wadd.DoorNumber = ReadLine();
 
@@ -753,6 +760,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         {
                             check = true;
                             WriteLine("Enter the new Location Name for the WareHouse");
+                            WriteLine("Location name shouldn't be null or empty and special characters are not allowed ");
                             //Reads the LocationName and is stored in reference variable
                             wadd.LocationName = ReadLine();
 
@@ -796,6 +804,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         {
                             check = true;
                             WriteLine("Enter the new State for the WareHouse");
+                            WriteLine("State shouldn't be null or empty and special characters are not allowed ");
                             //Reads the State and is stored in an reference variable
                             wadd.State = ReadLine();
 
@@ -840,6 +849,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         {
                             check = true;
                             WriteLine("Enter the new Pincode for the WareHouse");
+                            WriteLine("Numeric values with length 6 are only allowed");
                             //Reads the Pincode and is stored in a reference variable
                             wadd.Pincode = ReadLine();
 
