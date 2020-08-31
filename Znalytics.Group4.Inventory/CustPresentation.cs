@@ -29,7 +29,7 @@ namespace CustPresentationLayer
                     case 3: LoginCustomer(); break;
                     case 4: UpdateCustomer(); break;
                     case 5:DelCustomer();break;
-                    case 6:GetCustomerByID();
+                    case 6:GetCustomerById();
                          break;
                       
                 }
@@ -43,7 +43,7 @@ namespace CustPresentationLayer
 
             Console.Write("Enter cust ID: ");
             c.CustomerId = int.Parse(Console.ReadLine());
-            Console.Write("Enter cust id: ");
+            Console.Write("Enter cust name: ");
             c.CustomerName = Console.ReadLine();
             Console.Write("Enter phno ");
             c.MblNo = Console.ReadLine();
@@ -112,10 +112,10 @@ namespace CustPresentationLayer
             cbl.DelCustomer(c);
             Console.WriteLine("customer has deleted");
         }
-        static void GetCustomerByID()
+        static void GetCustomerById()
         {
 
-            System.Console.Write("Enter the ProductID: ");
+            System.Console.Write("Enter the customerID: ");
             int CustomerId = int.Parse(System.Console.ReadLine());
             CustBusiness cbl = new CustBusiness();
             Customer b = cbl.GetCustomerById(CustomerId);

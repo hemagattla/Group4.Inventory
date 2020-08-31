@@ -45,6 +45,7 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
             if (cu != null)
             {
                 cu.Country = c.Country;
+                
             }
         }
         public void DelCustomer(Customer c)
