@@ -10,7 +10,7 @@ using Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer;
 using Znalytics.Inventory.StockMaintain.PresentationLayer;
 using Znalytics.Group4.Inventory.PresentationLayer;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer;
-using Znalytics.Inventor.Module.CustPresentation;
+using CustPresentation;
 
 
 namespace Znalytics.Group4.Inventory

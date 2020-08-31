@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Znalytics.Inventory.Module.BusinessLogicLayer;
 using Znalytics.Inventory.Module.Entities;
-namespace CustPresentation
+namespace CustPresentationLayer
 {
     class CustPresentation
     {
