@@ -36,6 +36,7 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
                 }
          
             }
+            return null;
         }
         public void UpdateCustomer(Customer c)
         {
