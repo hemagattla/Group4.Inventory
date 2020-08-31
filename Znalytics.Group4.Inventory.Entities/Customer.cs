@@ -48,6 +48,7 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
         {
             set
             {
+               
                 if (value >= 0 && value <= 9)
                 {
                     _CustomerId = value;
