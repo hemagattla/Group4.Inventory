@@ -117,7 +117,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// </summary>
         /// <param name="wareHouseID">Reprents WareHouse id</param>
         /// <returns></returns>
-        public static WareHouse GetWareHouseByWareHouseID(string wareHouseID)
+        public  static WareHouse GetWareHouseByWareHouseID(string wareHouseID)
         {
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
