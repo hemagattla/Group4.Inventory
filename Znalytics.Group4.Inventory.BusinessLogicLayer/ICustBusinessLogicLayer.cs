@@ -12,6 +12,6 @@ namespace Znalytics.Group4.Module.IBusinessLogicLayer
         void UpdateCustomer(Customer c);
       void DelCustomer(Customer c);
         Customer GetCustomerById(int CustomerId);
-        List<Customer> LoginCustomer(string CustomerName, String Password);
+        Tuple<string, string> LoginCustomer(string CustomerName, string PassWord);
     }
 }

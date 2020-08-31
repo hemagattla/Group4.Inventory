@@ -11,7 +11,9 @@ using System.Linq;
 using Znalytics.Inventory.AddressModule.DataAccessLayer;
 
 
-//Created a namespace for DataAccess Layer of WareHouse Module
+/// <summary>
+///Created a namespace for DataAccess Layer of WareHouse Module
+/// </summary>
 namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 {
     /// <summary>
@@ -19,7 +21,9 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
     /// </summary>
     public static class WareHouseDataAccessLayer//Can be accessed with ClassName only
     {
-        //Created a list for WareHouse. It is made static so that it doesn't override the previous data
+        /// <summary>
+        /// Created a list for WareHouse. It is made static so that it doesn't override the previous data
+        /// </summary>
         private static List<WareHouse> _wareHouseList
         {
             set;
@@ -74,10 +78,11 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// </summary>
         private static void SaveIntoFile()
         {
-            
+            //Serialization converts an object into Json Format/String
+            //Serialize object is stored in a reference variable of a string
             string s = JsonConvert.SerializeObject(_wareHouseList);
 
-            //write data into file
+            //Strean Writer writes data into file.
             StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\WareHouse.txt");
             streamWriter.Write(s);
             streamWriter.Close();
@@ -89,8 +94,10 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// <returns>Returns List of warehouses avaliable int WareHouseData.Txt</returns>
         public static List<WareHouse> GetFiledata()
         {
+            //Stream Reader reads the data from the given file
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouse.txt");
             string s1 = streamReader.ReadToEnd();
+            //Deserialization converts Json data/string to Object
             List<WareHouse> ware = JsonConvert.DeserializeObject<List<WareHouse>>(s1);
             streamReader.Close();
             return ware;
