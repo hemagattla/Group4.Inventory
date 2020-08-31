@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using Znalytics.Inventory.OrderManagementModule.DataAccessLayer;
 using Znalytics.Inventory.AddressModule.BusinessLogicLayer;
@@ -37,9 +37,13 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         {
             return k.GetWareHouses();
         }
-       
+        StockBusinessLogicLayer b = new StockBusinessLogicLayer();
+        public List<Stock> DisplayStock(string warehouseID, string addressID)
+        {
+            return b.DisplayStock(warehouseID, addressID);
+        }
 
-        //Creating Reference Variable for Products in BusinessLogicLayer 
+         //Creating Reference Variable for Products in BusinessLogicLayer 
         IProductBusinessLogicLayer i = new ProductBusiness();
         
         public List<Product> DispalyProducts()

@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +9,7 @@ using Znalytics.Group4.Module.IBusinessLogicLayer;
 namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing bt collection of classes///
 {
 
-    public class CustBusiness:ICustBusinessLogicLayer                                                                  
+    public class CustBusiness:ICustBusinessLogicLayer
     {
         CustDataLayer d = new CustDataLayer();
         public void AddCustomer( Customer c)///these method is called from presentation layer///
@@ -25,11 +25,11 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
             {
                 return d.GetCustomers();// return to presentation layer
             }
-        public List<Customer> LoginCustomer(string CustomerName,String Password)                                        
+        public Tuple<string,string> LoginCustomer(string CustomerName,string PassWord)
         {
-            if(CustomerName!=null&&Password!=null)
+            if(CustomerName!=null&&PassWord!=null)
             {
-                return d.LoginCustomer(CustomerName, Password);
+                return d.LoginCustomer(CustomerName, PassWord);
             }
         }
         public void UpdateCustomer(Customer c)
@@ -50,5 +50,5 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
         }
 
     }
-}*/
+}
 
