@@ -89,12 +89,16 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer
         {
             return prda.GetDetailsByProductID(productRawMaterial);
         }
-        public List<ProductRawMaterial> GetDetailsUsingOriderBy()
+        public List<ProductRawMaterial> GetDetailsUsingOrderBy()
         {
-            return prda.GetProductRawMaterial();
+            return prda.GetDetailsUsingOrderBy();
         }
-        
+        public ProductRawMaterial GetDetailsByProductIDAndRawMaterialID(ProductRawMaterial productRawMaterial)
+        {
 
-       
+            return prda.GetDetailsByProductIDAndRawMaterialID(productRawMaterial);
+        }
+
+
     }
 }

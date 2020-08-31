@@ -9,9 +9,11 @@ using System;
 using Znalytics.Group4.Inventory.Entities;
 using Newtonsoft.Json;
 using System.IO;
+using System.Collections;
 
-
-//Created a namespace for DataAccessLayer of WareHouseAddress Module
+/// <summary>
+///Created a namespace for DataAccessLayer of WareHouseAddress Module
+/// </summary>
 namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 {
 
@@ -20,7 +22,9 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
     /// </summary>
     public class WareHouseAddressDataAccessLayer : WareHouseAddressAbstractDAL
     {
-        //Created a list for WareHouse Addresses.It is made static so that it doesn't override the previous data
+        /// <summary>
+        ///Created a list for WareHouse Addresses.It is made static so that it doesn't override the previous data
+        /// </summary>
         private static List<WareHouseAddress> _addressList
         {
             set;
@@ -72,10 +76,11 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         /// </summary>
         private void SaveIntoFile()
         {
-
+            //Serialization converts an object into Json Format/String
+            //Serialize object is stored in a reference variable of a string
             string s = JsonConvert.SerializeObject(_addressList);
 
-            //write data into file
+            //Strean Writer writes data into file.
             StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\WareHouseDataAddress.txt");
             streamWriter.Write(s);
             streamWriter.Close();
@@ -87,8 +92,10 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         /// <returns>Returns List of warehouses avaliable int WareHouseAddress.Txt</returns>
         public static List<WareHouseAddress> GetFiledata()
         {
+            //Stream Reader reads the data from the given file
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouseAddress.txt");
             string s2 = streamReader.ReadToEnd();
+            //Deserialization converts Json data/string to Object
             List<WareHouseAddress> addr = JsonConvert.DeserializeObject<List<WareHouseAddress>>(s2);
             streamReader.Close();
             return addr;
@@ -97,12 +104,15 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
 
 
         /// <summary>
-        ///Method to GET the added address details
+        ///Method to GET the  address List
         /// </summary>
         /// <returns>Returns the address list</returns>
-        public override List<WareHouseAddress> GetAddresses()
+        public IEnumerator GetEnumerator()
         {
-            return _addressList;
+            foreach (var item in _addressList)
+            {
+                yield return item;
+            }
         }
 
         /// <summary>

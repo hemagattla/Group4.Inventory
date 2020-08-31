@@ -11,7 +11,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
     {
 
         /// <summary>
-        /// creating list for RawMaterial Details
+        /// creating list for ProductRawMaterial Details
         /// </summary>
         private static List<ProductRawMaterial> _productRawMaterials;
 
@@ -27,20 +27,20 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         }
 
         /// <summary>
-        /// AddRawMaterial is a static Method used to Add RawMaterial to the List
+        /// AddRawMaterialToProduct is a instance Method used to Add RawMaterial of product to the List
         /// </summary>
-        /// <param name="rawMaterial">Represents the Reference variable of RawMarial class</param>
+        /// <param name="ProductRawMaterial">Contain the all the Details of the feild present in ProductRawMaterial Class</param>
         public void AddRawMaterialToProduct(ProductRawMaterial productRawMaterial)
         {
 
-            _productRawMaterials.Add(productRawMaterial);//Addess RawMaterial details to List
+            _productRawMaterials.Add(productRawMaterial);//Addess ProductRawMaterial details to List
             //ListOfRawMaterials();
         }
 
         /// <summary>
-        /// DeleteRawMaterial is a instance Method used to Delete RawMaterial from the List
+        /// DeleteRawMaterialProduct is a instance Method used to Delete RawMaterial of the Product from the List
         /// </summary>
-        /// <param name="rawMaterial">is a variable of RawMaterial type</param>
+        /// <param name="productRawMaterial">Contain the all the Details of the feild present in ProductRawMaterial Class</param>
         public void DeleteRawMaterialOfProduct(ProductRawMaterial productRawMaterial)
         {
             _productRawMaterials.RemoveAll(temp => temp.ProductID == productRawMaterial.ProductID && temp.RawMaterialID == productRawMaterial.RawMaterialID);
@@ -48,13 +48,19 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         }
 
         /// <summary>
-        /// Return the List of RawMaterial Details
+        /// Return the List of ProductRawMaterial Details
         /// </summary>
         /// <returns>Returns the list</returns>
         public List<ProductRawMaterial> GetProductRawMaterial()
         {
             return _productRawMaterials;
         }
+        /// <summary>
+        /// GetProductRawMaterialByID is a instance method used to check weather the below condition satisfies or not
+        /// </summary>
+        /// <param name="ProductID">represents ID of the product</param>
+        /// <param name="RawMaterialID">represents ID of the RawMaterial</param>
+        /// <returns>Returns the details</returns>
        public ProductRawMaterial GetProductRawMaterialByID(string ProductID,string RawMaterialID)
        {
           ProductRawMaterial abc = _productRawMaterials.Find(temp => temp.ProductID == ProductID && temp.RawMaterialID==RawMaterialID);
@@ -62,7 +68,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
        }
 
         /// <summary>
-        /// UpdateRawMaterialPrice is a instane method used to Update the RawMaterial Price Based on RawMaterialName and RawMaterialID
+        /// UpdateQuantityOfProduct is a instane method used to Update the Quantity Based on ProductID and RawMaterialID
         /// </summary>
         /// <param name="rawMaterial">is a variable of RawMaterial type</param>
         public void UpdateQuantityOfProduct(ProductRawMaterial productRawMaterial)
@@ -72,16 +78,30 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
             abc.Quantity = productRawMaterial.Quantity;
             // ListOfRawMaterials();
         }
+        /// <summary>
+        /// GetDetailsByProductID is a instance method used to Return the List if ProductID matches
+        /// </summary>
+        /// <param name="productRawMaterial"></param>
+        /// <returns>Return the list</returns>
         public List<ProductRawMaterial> GetDetailsByProductID(ProductRawMaterial productRawMaterial)
         {
-            List<ProductRawMaterial> ab= _productRawMaterials.Where(temp => temp.ProductID == productRawMaterial.ProductID)/*.Select(temp=>new AddRawMaterial() { RawMaterialID, RawMaterialName }*/.ToList();
+            List<ProductRawMaterial> ab= _productRawMaterials.Where(temp => temp.ProductID == productRawMaterial.ProductID).ToList();
             return ab;
         }
-        public List<ProductRawMaterial> GetDetailsUsingOriderBy()
+        /// <summary>
+        /// GetDetailsUsingOrderBy is a instance method used to arrange the in assending order 1st preference to ProductID,2nd RawMaterialID and then RawMaterialName
+        /// </summary>
+        /// <returns>Return the in List assending order</returns>
+        public List<ProductRawMaterial> GetDetailsUsingOrderBy()
         {
             List<ProductRawMaterial> ab = _productRawMaterials.OrderBy(temp => temp.ProductID)
                 .ThenBy(temp=> temp.RawMaterialID)
                 .ThenBy(temp=>temp.RawMaterialName).ToList();
+            return ab;
+        }
+        public ProductRawMaterial GetDetailsByProductIDAndRawMaterialID(ProductRawMaterial productRawMaterial)
+        {
+            ProductRawMaterial ab = _productRawMaterials.Find(temp => temp.ProductID == productRawMaterial.ProductID && temp.RawMaterialID == productRawMaterial.RawMaterialID);
             return ab;
         }
     }

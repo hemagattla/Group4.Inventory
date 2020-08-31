@@ -12,7 +12,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using Znalytics.Group4.Inventory.Entities;
 
-//Created a namespace for PresentationLayer of WareHouse module
+/// <summary>
+///Created a namespace for PresentationLayer of WareHouse module
+/// </summary>
 namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 {
     /// <summary>
@@ -70,43 +72,52 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         /// </summary>
         public void AddWareHouse()
         {
-            try
+            bool check = false;
+            do
             {
-                //Created an object for Warehouse class and is stored in a reference variable
-                WareHouse n = new WareHouse();
-
-                //Created an object for Warehouse Business class and is stored in a reference variable
-                WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
-
-                WriteLine("you chose to enter the warehouse details");
-                WriteLine("Enter Warehouse Id that starts with WHID and length of 6");
-                n.WareHouseId = ReadLine();
-
-                //Condition to check whether the WareHouseid exists or not
-                //The Warehouseid should be unique
-                if (wbl.CheckWareHouseId(n.WareHouseId) == false)
+                try
                 {
+                    //Created an object for Warehouse class and is stored in a reference variable
+                    WareHouse ware = new WareHouse();
 
-                    WriteLine("Enter Warehouse Name");
-                    n.WareHouseName = ReadLine();
+                    //Created an object for Warehouse Business class and is stored in a reference variable
+                    WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
 
-                    WriteLine("Enter Manager Name");
-                    n.MangerName = ReadLine();
-                    wbl.AddWareHouse(n);
-                    WriteLine("WareHouse added successfully");
+                    WriteLine(" You chose to add a warehouse");
+                    WriteLine("Enter Warehouse Id that starts with WHID and length of 6.It shouldn't contain special characters");
+
+                    //Reads the WarehouseId
+                    ware.WareHouseId = ReadLine();
+
+                    //Condition to check whether the WareHouseid exists or not
+                    //The Warehouseid should be unique
+                    if (wbl.CheckWareHouseId(ware.WareHouseId) == false)
+                    {
+
+                        WriteLine("Enter Warehouse Name");
+                        //Reads the WareHouseName
+                        ware.WareHouseName = ReadLine();
+
+                        WriteLine("Enter Manager Name");
+                        //Reads the MangerName
+                        ware.MangerName = ReadLine();
+
+                        //Calls the AddWareHouse method of WareHouseBusinessLogic
+                        wbl.AddWareHouse(ware);
+                        WriteLine("WareHouse added successfully");
+                    }
+                    else
+                    {
+                        WriteLine("WareHouse Exists!");
+                    }
                 }
-                else
+
+
+                catch (WareHouseException ex)
                 {
-                    WriteLine("WareHouse Exists!");
+                    WriteLine(ex.Message);
                 }
-            }
-
-
-            catch (WareHouseException ex)
-            {
-                WriteLine(ex.Message);
-            }
-
+            } while (check== false);
 
 
 
@@ -117,10 +128,12 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         /// </summary>
         public void GetWareHouses()
         {
+            WriteLine(" You chose to Get the WareHouse Details");
+
             //Created an object for Warehouse Business class and is stored in a reference variable
             WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
 
-            //WareHouse List is stored in a reference variable
+            //Calls the GetWareHouses method of WareHouseBusinessLogic
             List<WareHouse> wareHouseList = wbl.GetWareHouses();
 
             WriteLine("===============   WareHouse Details=============");
@@ -137,37 +150,40 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         //Method to GET WareHouse details by WareHouseId
         public void GetWareHouseByWareHouseID()
         {
-            try
+            bool check = false;
+            do
             {
-                //Created an object for Warehouse Business class and is stored in a reference variable
-                WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
-
-                WriteLine("Enter Existing WareHouse ID");
-                string whID = ReadLine();
-
-                //Condition to check whether the WareHouseid exists or not
-                WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
-                if (ware != null)
+                try
                 {
-                    WriteLine("===============   WareHouse Details=============");
-                    WriteLine("WareHouseID" + "   " + "WareHouseName" + "  " + "ManagerName");
-                    WriteLine(ware.WareHouseId + "  " + ware.WareHouseName + "  " + ware.MangerName);
+                    WriteLine(" You chose to get the details of  Warehouse by WareHouseId");
+                    //Created an object for Warehouse Business class and is stored in a reference variable
+                    WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
 
+                    WriteLine("Enter Existing WareHouse ID");
+
+                    //Reads the WareHouseid and is stored in a reference variable
+                    string whID = ReadLine();
+
+                    //Calls the GetWareHouseByWareHouseID of WareHouseBusinessLogic and is stored in Warehouse reference variable
+                    WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
+                    // Condition to check whether the WareHouseid exists or not
+                    if (ware != null)
+                    {
+                        WriteLine("===============   WareHouse Details=============");
+                        WriteLine("WareHouseID" + "   " + "WareHouseName" + "  " + "ManagerName");
+                        WriteLine(ware.WareHouseId + "  " + ware.WareHouseName + "  " + ware.MangerName);
+
+                    }
+                    else
+                    {
+                        WriteLine("WareHouse doesn't exist");
+                    }
                 }
-                else
+                catch (WareHouseException ex)
                 {
-                    WriteLine("WareHouse doesn't exist");
+                    WriteLine(ex.Message);
                 }
-            }
-            catch (WareHouseException ex)
-            {
-                WriteLine(ex.Message);
-            }
-
-
-
-
-
+            } while (check == false);
 
         }
 
@@ -175,9 +191,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         //Method to REMOVE WareHouses
         public  void RemoveWareHouse()
         {
-            // created the object for Warehouse class
-            WareHouse w = new WareHouse();
-
+            
             // Created an object for WareHouseBusinessLogic class
             WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
 
@@ -186,6 +200,8 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             WriteLine("2.on WareHouseName");
             int Option;
             bool a;
+            
+            //TryParse returns a bool value
             a = int.TryParse(ReadLine(), out Option);
 
             if (a == true)
@@ -203,31 +219,35 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             {
                 WriteLine("Please Enter Correct Option");
             }
-            //Method to REMOVE WareHouse  by WareHouseId
+            //Local Function to REMOVE WareHouse  by WareHouseId
             void RemoveWareHouseByID()
             {
-                // created the object for Warehouse class
-                WareHouse n = new WareHouse();
+                
                 Write("Enter the WarehouseID to be Deleted:");
+                //Reads the WareHouseid and is stored in a reference variable
                 string whID = ReadLine();
-                try
+                bool check = false;
+                do
                 {
-                    //Condition to check whether the warehouse id exists or not
-                    WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
-                    if (ware != null)
+                    try
                     {
-                        wbl.RemoveWareHouseByID(whID);
-                        WriteLine("Warehouse Removed");
+                        //Condition to check whether the warehouse id exists or not
+                        WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
+                        if (ware != null)
+                        {
+                            wbl.RemoveWareHouseByID(whID);
+                            WriteLine("Warehouse Removed Successfully!");
+                        }
+                        else
+                        {
+                            WriteLine("Warehouse id doesn't exist.Please enter existing WareHius");
+                        }
                     }
-                    else
+                    catch (WareHouseException ex)
                     {
-                        WriteLine("Warehouse id doesn't exist");
+                        WriteLine(ex.Message);
                     }
-                }
-                catch (WareHouseException ex)
-                {
-                    WriteLine(ex.Message);
-                }
+                } while (check == false);
 
 
 
@@ -237,27 +257,30 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             void RemoveWareHouseByWareHouseName()
             {
                 // created the object for Warehouse class
-                WareHouse n = new WareHouse();
+                WareHouse ware = new WareHouse();
                 Write("Enter the Warehouse Name:");
                 string name = ReadLine();
-
-                try
+                bool check = false;
+                do
                 {
-                    //Condition to check whether the warehouse Name exists or not
-                    if (wbl.GetWareHouseByWareHouseID(n.WareHouseName) == null)
+                    try
                     {
-                        wbl.RemoveWareHouseByName(name);
-                        WriteLine("Warehouse Removed");
+                        //Condition to check whether the warehouse Name exists or not
+                        if (wbl.GetWareHouseByWareHouseID(ware.WareHouseName) == null)
+                        {
+                            wbl.RemoveWareHouseByName(name);
+                            WriteLine("Warehouse Removed");
+                        }
+                        else
+                        {
+                            WriteLine("Warehouse doesn't exist by this name");
+                        }
                     }
-                    else
+                    catch (WareHouseException ex)
                     {
-                        WriteLine("Warehouse doesn't exist by this name");
+                        WriteLine(ex.Message);
                     }
-                }
-                catch (WareHouseException ex)
-                {
-                    WriteLine(ex.Message);
-                }
+                } while (check == false);
             }
         }
 
@@ -295,31 +318,38 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             void UpdateWareHouseName()
             {
 
-
-                try
+                bool check = false;
+                do
                 {
-                    WriteLine("Enter Existing WareHouse ID");
-                    string whID = ReadLine();
-
-                    //Condition to check whether the warehouse id exists or not
-                    WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
-                    if (ware != null)
+                    try
                     {
-                        WriteLine("Enter new name for WareHouse");
-                        ware.WareHouseName = ReadLine();
+                        WriteLine("Enter Existing WareHouse ID");
+                        //Reads the WareHouseid and is stored in a reference variable
+                        string whID = ReadLine();
 
-                        wbl.UpdateWareHouseName(ware);
-                        WriteLine("WareHouse Name Updated Sucessfully!!!");
+                        //Condition to check whether the warehouse id exists or not
+                        WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
+                        if (ware != null)
+                        {
+                            WriteLine("Enter new name for WareHouse");
+                            //Reads the WareHouseName and is stored in the object
+                            ware.WareHouseName = ReadLine();
+
+                            //Calls the UpdateWareHouseName of WareHouseBusinessLogic
+                            wbl.UpdateWareHouseName(ware);
+
+                            WriteLine("WareHouse Name Updated Sucessfully!!!");
+                        }
+                        else
+                        {
+                            WriteLine("Warehouse id doesn't exist");
+                        }
                     }
-                    else
+                    catch (WareHouseException ex)
                     {
-                        WriteLine("Warehouse id doesn't exist");
+                        WriteLine(ex.Message);
                     }
-                }
-                catch (WareHouseException ex)
-                {
-                    WriteLine(ex.Message);
-                }
+                } while (check == false);
 
             }
 
@@ -327,32 +357,38 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
             void UpdateManagerName()
             {
-
-                try
+                bool check = false;
+                do
                 {
-                    WriteLine("Enter Existing WareHouse ID");
-                    string whID = ReadLine();
-
-                    //Condition to check whether the warehouse id exists or not
-                    WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
-                    //Condition to check whether the warehouse id exists or not
-                    if (ware != null)
+                    try
                     {
-                        WriteLine("Enter new name for Manager");
-                        ware.MangerName = ReadLine();
+                        WriteLine("Enter Existing WareHouse ID");
+                        //Reads the WareHouseid and is stored in a reference variable
+                        string whID = ReadLine();
 
-                        wbl.UpdateManagerName(ware);
-                        WriteLine("Manager Name Updated Sucessfully!!!");
+                        //Condition to check whether the warehouse id exists or not
+                        WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
+                        //Condition to check whether the warehouse id exists or not
+                        if (ware != null)
+                        {
+                            WriteLine("Enter new name for Manager");
+                            //Reads the MangerName and is stored in the object
+                            ware.MangerName = ReadLine();
+
+                            //Calls the UpdateManagerName of WareHouseBusinessLogic
+                            wbl.UpdateManagerName(ware);
+                            WriteLine("Manager Name Updated Sucessfully!!!");
+                        }
+                        else
+                        {
+                            WriteLine("Warehouse id doesn't exist");
+                        }
                     }
-                    else
+                    catch (WareHouseException ex)
                     {
-                        WriteLine("Warehouse id doesn't exist");
+                        WriteLine(ex.Message);
                     }
-                }
-                catch (WareHouseException ex)
-                {
-                    WriteLine(ex.Message);
-                }
+                } while (check== false);
 
             }
 
@@ -363,56 +399,72 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         /// </summary>
         public void AddAddress()
         {
-            try
+            bool check = false;
+            do
             {
-                //Created an object for WareHouseAddress class and stored it in a reference variable
-                WareHouseAddress a = new WareHouseAddress();
-
-                //Created an object for WareHouseAddress Business class and stored it in a reference variable
-                WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
-
-                WriteLine("You chose to add address to the WareHouse");
-                WriteLine("Enter Existing WareHouseId");
-                a.WareHouseId = ReadLine();
-
-                //Condition to check whether WareHouseid exists or not
-                if (CheckWareHouseId(a.WareHouseId) == true)
+                try
                 {
-                    //Condition to check whether Addressid exists or not
-                    if (CheckAddressId(a.AddressId) == false)
+                    //Created an object for WareHouseAddress class and stored it in a reference variable
+                    WareHouseAddress a = new WareHouseAddress();
+
+                    //Created an object for WareHouseAddress Business class and stored it in a reference variable
+                    WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+
+                    WriteLine("You chose to add address to the WareHouse");
+                    WriteLine("Enter Existing WareHouseId");
+                    //Reads the WareHouseid and is stored in the WareHouseAddress object
+                    a.WareHouseId = ReadLine();
+
+                    //Condition to check whether WareHouseid exists or not
+                    if (CheckWareHouseId(a.WareHouseId) == true)
                     {
-                        WriteLine("Enter Address id");
-                        a.AddressId = ReadLine();
-                        WriteLine("Enter Door Number");
-                        a.DoorNumber = ReadLine();
-                        WriteLine("Enter Location Name");
-                        a.LocationName = ReadLine();
-                        WriteLine("Enter State");
-                        a.State = ReadLine();
-                        WriteLine("Enter the Pincode");
-                        a.Pincode = ReadLine();
-                        wabl.AddAddress(a);
+                        //Condition to check whether Addressid exists or not
+                        if (CheckAddressId(a.AddressId) == false)
+                        {
+                            WriteLine("Enter Address id");
+                            //Reads the AddressId and is stored in the WareHouseAddress object
+                            a.AddressId = ReadLine();
+
+                            WriteLine("Enter Door Number");
+                            //Reads the DoorNumber and is stored in the WareHouseAddress object
+                            a.DoorNumber = ReadLine();
+
+                            WriteLine("Enter Location Name");
+                            //Reads the LocationName and is stored in the WareHouseAddress object
+                            a.LocationName = ReadLine();
+
+                            WriteLine("Enter State");
+                            //Reads the State and is stored in the WareHouseAddress object
+                            a.State = ReadLine();
+
+                            WriteLine("Enter the Pincode");
+                            //Reads the Pincode and is stored in the WareHouseAddress object
+                            a.Pincode = ReadLine();
+
+                            //Calls the AddAddress method of WareHouseAddressBusinessLogic
+                            wabl.AddAddress(a);
 
 
-                        WriteLine("Address added successfully");
+                            WriteLine("Address added successfully");
+                        }
+                        else
+                        {
+                            WriteLine("Address id exists already");
+                        }
+
                     }
                     else
                     {
-                        WriteLine("Address id exists already");
+                        WriteLine("WareHouse id doesn't exist or is invalid");
                     }
-                    
+
+
                 }
-                else
+                catch (WareHouseException ex)
                 {
-                    WriteLine("WareHouse id doesn't exist or is invalid");
+                    WriteLine(ex.Message);
                 }
-
-
-            }
-            catch (WareHouseException ex)
-            {
-                WriteLine(ex.Message);
-            }
+            } while (check == false);
 
 
 
@@ -424,7 +476,10 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         /// </summary>
         public void GetAddresses()
         {
+            //Created an object for WareHouseAddressBusinessLogicLayer and is stored in the reference variable
             WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+
+            //Calls the GetAddresses method of WareHouseAddressBusinessLogicLayer
             List<WareHouseAddress> addressList = wabl.GetAddresses();
 
             WriteLine("===============   WareHouse Details=============");
@@ -443,27 +498,36 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         /// </summary>
         public void GetAddressByAddressID()
         {
-            try
+            bool check = false;
+            do
             {
-                //Created an object for Warehouse Business class and is stored in a reference variable
-                WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
-                WriteLine("Enter the existing WareHouse Address Id");
-                string addressid = ReadLine();
-                WareHouseAddress add = wabl.GetAddressByAddressID(addressid);
-                //Condition to check whether the address id exists or not
-                if (add != null)
+                try
                 {
-                    WriteLine("WareHouseID" + "   " + "AddressID" + "  " + "Door Number" + "  " + "LocationName" + "  " + "State" + "  " + "Pincode");
-                    WriteLine(add.WareHouseId + "    " + add.AddressId + "  " + add.DoorNumber + " " + add.LocationName + "  " + add.State + "  " + add.Pincode);
+                    //Created an object for WareHouseAddressBusinessLogicLayer and is stored in a reference variable
+                    WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+
+                    WriteLine("Enter the existing WareHouse Address Id");
+                    //Reads the AddressId and is stored in a reference variable
+                    string addressid = ReadLine();
+
+                    //Calls the GetAddressByAddressID methof of WareHouseAddressBusinessLogicLayer
+                    WareHouseAddress add = wabl.GetAddressByAddressID(addressid);
+
+                    //Condition to check whether the address id exists or not
+                    if (add != null)
+                    {
+                        WriteLine("WareHouseID" + "   " + "AddressID" + "  " + "Door Number" + "  " + "LocationName" + "  " + "State" + "  " + "Pincode");
+                        WriteLine(add.WareHouseId + "    " + add.AddressId + "  " + add.DoorNumber + " " + add.LocationName + "  " + add.State + "  " + add.Pincode);
+                    }
+
+
+
                 }
-
-
-
-            }
-            catch (WareHouseException ex)
-            {
-                WriteLine(ex.Message);
-            }
+                catch (WareHouseException ex)
+                {
+                    WriteLine(ex.Message);
+                }
+            } while (check == false);
 
         }
 
@@ -472,28 +536,36 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         /// </summary>
         public void GetAddressByWareHouseID()
         {
-
-            try
+            bool check = false;
+            do
             {
-                //Created an object for WarehouseAddress Business class and is stored in a reference variable
-                WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
-                WriteLine("Enter the existing WareHouse Id");
-                string warehouseid = ReadLine();
-                WareHouseAddress add = wabl.GetAddressByWareHouseID(warehouseid);
-                //Condition to check whether the address id exists or not
-                if (add != null)
+                try
                 {
-                    WriteLine("WareHouseID" + "   " + "AddressID" + "  " + "Door Number" + "  " + "LocationName" + "  " + "State" + "  " + "Pincode");
-                    WriteLine(add.WareHouseId + "    " + add.AddressId + "  " + add.DoorNumber + " " + add.LocationName + "  " + add.State + "  " + add.Pincode);
+                    //Created an object for WarehouseAddress Business class and is stored in a reference variable
+                    WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+
+                    WriteLine("Enter the existing WareHouse Id");
+                    //Reads the WareHouseId and is stored in a reference variable
+                    string warehouseid = ReadLine();
+
+                    //Calls the GetAddressByAddressID methof of WareHouseAddressBusinessLogicLayer
+                    WareHouseAddress add = wabl.GetAddressByWareHouseID(warehouseid);
+
+                    //Condition to check whether the address id exists or not
+                    if (add != null)
+                    {
+                        WriteLine("WareHouseID" + "   " + "AddressID" + "  " + "Door Number" + "  " + "LocationName" + "  " + "State" + "  " + "Pincode");
+                        WriteLine(add.WareHouseId + "    " + add.AddressId + "  " + add.DoorNumber + " " + add.LocationName + "  " + add.State + "  " + add.Pincode);
+                    }
+
+
+
                 }
-
-
-
-            }
-            catch (WareHouseException ex)
-            {
-                WriteLine(ex.Message);
-            }
+                catch (WareHouseException ex)
+                {
+                    WriteLine(ex.Message);
+                }
+            } while (check == false);
 
         }
 
@@ -503,25 +575,34 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         //Method to GET WareHouseAddress details by LocationName
         public void GetAddressByLocationName()
         {
-            try
+            bool check = false;
+            do
             {
-                WriteLine("Enter the locationName");
-                string locationName = ReadLine();
-                //Created an object for WarehouseAddress Business class and is stored in a reference variable
-                WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
-                List<WareHouseAddress> addressList = wabl.GetAddressByLocationName(locationName);
-                //Condition to check whether the address id exists or not
-                if (addressList != null)
-                    foreach (WareHouseAddress item in addressList)
-                    {
-                        WriteLine(item.WareHouseId + "    " + item.AddressId + "  " + item.DoorNumber + " " + item.LocationName + "  " + item.State + "  " + item.Pincode);// Displaying the products
-                    }
+                try
+                {
+                    WriteLine("Enter the locationName");
+                    //Reads the location name and is stored in a reference variable
+                    string locationName = ReadLine();
 
-            }
-            catch (WareHouseException ex)
-            {
-                WriteLine(ex.Message);
-            }
+                    //Created an object for WarehouseAddress Business class and is stored in a reference variable
+                    WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
+
+                    //Calls the GetAddressByAddressID methof of WareHouseAddressBusinessLogicLayer
+                    List<WareHouseAddress> addressList = wabl.GetAddressByLocationName(locationName);
+
+                    //Condition to check whether the address id exists or not
+                    if (addressList != null)
+                        foreach (WareHouseAddress item in addressList)
+                        {
+                            WriteLine(item.WareHouseId + "    " + item.AddressId + "  " + item.DoorNumber + " " + item.LocationName + "  " + item.State + "  " + item.Pincode);// Displaying the products
+                        }
+
+                }
+                catch (WareHouseException ex)
+                {
+                    WriteLine(ex.Message);
+                }
+            } while (check == false);
 
 
         }
@@ -565,93 +646,120 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             //Local Function to UPDATE Door Number of WareHouse
             void UpdateDoorNumber()
             {
-
-                try
+                bool check = false;
+                do
                 {
-                    WriteLine("Enter Existing Address ID");
-                    string adId = ReadLine();
-                    WareHouseAddress wadd = wabl.GetAddressByAddressID(adId);
-                    //Condition to check whether AddressId is null or not
-                    if (wadd != null)
+                    try
                     {
-                        WriteLine("Enter the new Door Number for the WareHouse");
-                        wadd.DoorNumber = ReadLine();
+                        WriteLine("Enter Existing Address ID");
+                        //Reads the AddressId and is stored in a reference variable
+                        string adId = ReadLine();
 
-                        wabl.UpdateDoorNumber(wadd);
-                        WriteLine("Door Number Updated Sucessfully!!!");
+                        //Calls the GetAddressByAddressID methof of WareHouseAddressBusinessLogicLayer
+                        WareHouseAddress wadd = wabl.GetAddressByAddressID(adId);
 
+                        //Condition to check whether AddressId is null or not
+                        if (wadd != null)
+                        {
+                            WriteLine("Enter the new Door Number for the WareHouse");
+                            //Reads the DoorNumber and is stored in reference variable
+                            wadd.DoorNumber = ReadLine();
+
+                            //Calls the UpdateDoorNumber method of WareHouseAddressBusiess Logic
+                            wabl.UpdateDoorNumber(wadd);
+                            WriteLine("Door Number Updated Sucessfully!!!");
+
+                        }
+                        else
+                        {
+                            WriteLine("Address id doesn't exist");
+                        }
                     }
-                    else
+                    catch (WareHouseException ex)
                     {
-                        WriteLine("Address id doesn't exist");
+                        WriteLine(ex.Message);
                     }
-                }
-                catch (WareHouseException ex)
-                {
-                    WriteLine(ex.Message);
-                }
+                } while (check == false);
             }
+            
 
             //Local Function to UPDATE the Location Name of WareHouse
             void UpdateLocationName()
             {
 
-
-                try
+                bool check = false;
+                do
                 {
-                    WriteLine("Enter Existing Address ID");
-                    string adId = ReadLine();
-                    WareHouseAddress wadd = wabl.GetAddressByAddressID(adId);
-                    //Condition to check whether AddressId is null or not
-                    if (wadd != null)
+                    try
                     {
-                        WriteLine("Enter the new Location Name for the WareHouse");
-                        wadd.LocationName = ReadLine();
+                        WriteLine("Enter Existing Address ID");
+                        //Reads the AddressId and is stored in a reference variable
+                        string adId = ReadLine();
 
-                        wabl.UpdateLocationName(wadd);
-                        WriteLine("Door Number Updated Sucessfully!!!");
+                        //Calls the GetAddressByAddressID methof of WareHouseAddressBusinessLogicLayer
+                        WareHouseAddress wadd = wabl.GetAddressByAddressID(adId);
 
+                        //Condition to check whether AddressId is null or not
+                        if (wadd != null)
+                        {
+                            WriteLine("Enter the new Location Name for the WareHouse");
+                            //Reads the LocationName and is stored in reference variable
+                            wadd.LocationName = ReadLine();
+
+                            //Calls the UpdateLocationName method of WareHouseAddressBusiess Logic
+                            wabl.UpdateLocationName(wadd);
+                            WriteLine("Door Number Updated Sucessfully!!!");
+
+                        }
+                        else
+                        {
+                            WriteLine("Address id doesn't exist");
+                        }
                     }
-                    else
+                    catch (WareHouseException ex)
                     {
-                        WriteLine("Address id doesn't exist");
+                        WriteLine(ex.Message);
                     }
-                }
-                catch (WareHouseException ex)
-                {
-                    WriteLine(ex.Message);
-                }
+                } while (check == false);
 
             }
 
             //Local Function to UPDATE the State of WareHouse
             void UpdateState()
             {
-
-                try
+                bool check = false;
+                do
                 {
-                    WriteLine("Enter Existing Address ID");
-                    string adId = ReadLine();
-                    WareHouseAddress wadd = wabl.GetAddressByAddressID(adId);
-                    //Condition to check whether AddressId is null or not
-                    if (wadd != null)
+                    try
                     {
-                        WriteLine("Enter the new State for the WareHouse");
-                        wadd.State = ReadLine();
+                        WriteLine("Enter Existing Address ID");
+                        //Reads the AddressId and is stored in a reference variable
+                        string adId = ReadLine();
 
-                        wabl.UpdateState(wadd);
-                        WriteLine("Door Number Updated Sucessfully!!!");
+                        //Calls the GetAddressByAddressID method of WareHouseAddressBusinessLogicLayer
+                        WareHouseAddress wadd = wabl.GetAddressByAddressID(adId);
+                        //Condition to check whether AddressId is null or not
+                        if (wadd != null)
+                        {
+                            WriteLine("Enter the new State for the WareHouse");
+                            //Reads the State and is stored in an reference variable
+                            wadd.State = ReadLine();
 
+                            //Calls the UpdateState method of WareHouseAddressBusinessLogicLayer
+                            wabl.UpdateState(wadd);
+                            WriteLine("Door Number Updated Sucessfully!!!");
+
+                        }
+                        else
+                        {
+                            WriteLine("Address id doesn't exist");
+                        }
                     }
-                    else
+                    catch (WareHouseException ex)
                     {
-                        WriteLine("Address id doesn't exist");
+                        WriteLine(ex.Message);
                     }
-                }
-                catch (WareHouseException ex)
-                {
-                    WriteLine(ex.Message);
-                }
+                } while (check == false);
 
 
             }
@@ -659,31 +767,39 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             //Local Function to UPDATE the Pincode of WareHouse
             void UpdatePincode()
             {
-
-                try
+                bool check = false;
+                do
                 {
-                    WriteLine("Enter Existing Address ID");
-                    string adId = ReadLine();
-                    WareHouseAddress wadd = wabl.GetAddressByAddressID(adId);
-                    //Condition to check whether AddressId is null or not
-                    if (wadd != null)
+                    try
                     {
-                        WriteLine("Enter the new Pincode for the WareHouse");
-                        wadd.Pincode = ReadLine();
+                        WriteLine("Enter Existing Address ID");
+                        //Reads the AddressId and is stored in a reference variable
+                        string adId = ReadLine();
 
-                        wabl.UpdatePincode(wadd);
-                        WriteLine("Door Number Updated Sucessfully!!!");
+                        //Calls the GetAddressByAddressID method of WareHouseAddressBusinessLogicLayer
+                        WareHouseAddress wadd = wabl.GetAddressByAddressID(adId);
+                        //Condition to check whether AddressId is null or not
+                        if (wadd != null)
+                        {
+                            WriteLine("Enter the new Pincode for the WareHouse");
+                            //Reads the Pincode and is stored in a reference variable
+                            wadd.Pincode = ReadLine();
 
+                            //Calls the UpdatePincode method of WareHouseAddressBusinessLogicLayer
+                            wabl.UpdatePincode(wadd);
+                            WriteLine("Door Number Updated Sucessfully!!!");
+
+                        }
+                        else
+                        {
+                            WriteLine("Address id doesn't exist");
+                        }
                     }
-                    else
+                    catch (WareHouseException ex)
                     {
-                        WriteLine("Address id doesn't exist");
+                        WriteLine(ex.Message);
                     }
-                }
-                catch (WareHouseException ex)
-                {
-                    WriteLine(ex.Message);
-                }
+                } while (check == false);
 
 
             }
@@ -722,21 +838,27 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             //Local function to REMOVE an address of the Warehouse by wareHouseID
             void RemoveAddressByWareHouseID()
             {
-                Write("Enter the WarehouseID of the Address to be Deleted:");
-                string wareHouseID = ReadLine();
-                try
+                bool check = false;
+                do
                 {
-                    // Condition to check whether WarHouseId exists or not
-                    if (wabl.GetAddressByAddressID(w.WareHouseId) == null)
+                    Write("Enter the WarehouseID of the Address to be Deleted:");
+                    //Reads the WarehouseID and is stored in a reference variable
+                    string wareHouseID = ReadLine();
+                    try
                     {
-                        wabl.RemoveAddressByWareHouseID(wareHouseID);
-                        WriteLine("Warehouse Removed");
+                        // Condition to check whether WarHouseId exists or not
+                        if (wabl.GetAddressByAddressID(w.WareHouseId) == null)
+                        {
+                            //Calls the RemoveAddressByWareHouseID method of WareHouseAddressBusinessLogicLayer
+                            wabl.RemoveAddressByWareHouseID(wareHouseID);
+                            WriteLine("Warehouse Removed");
+                        }
                     }
-                }
-                catch (WareHouseException ex)
-                {
-                    WriteLine(ex.Message);
-                }
+                    catch (WareHouseException ex)
+                    {
+                        WriteLine(ex.Message);
+                    }
+                } while (check == false);
 
             }
 
@@ -746,21 +868,28 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
             //Local function to REMOVE an address of the Warehouse by addressID
             void RemoveAddressByAddressID()
             {
-                Write("Enter the AddressId to be Deleted:");
-                string addressId = ReadLine();
-                try
+                bool check = false;
+                do
                 {
-                    // Condition to check whether AddressId exists or not
-                    if (wabl.GetAddressByAddressID(w.AddressId) == null)
+                    Write("Enter the AddressId to be Deleted:");
+
+                    //Reads the entered AddressId
+                    string addressId = ReadLine();
+                    try
                     {
-                        wabl.RemoveAddressByAddressID(addressId);
-                        WriteLine("Warehouse Removed");
+                        // Condition to check whether AddressId exists or not
+                        if (wabl.GetAddressByAddressID(w.AddressId) == null)
+                        {
+                            //Calls the RemoveAddressByAddressID method of WareHouseAddressBusinessLogicLayer
+                            wabl.RemoveAddressByAddressID(addressId);
+                            WriteLine("Warehouse Removed");
+                        }
                     }
-                }
-                catch (WareHouseException ex)
-                {
-                    WriteLine(ex.Message);
-                }
+                    catch (WareHouseException ex)
+                    {
+                        WriteLine(ex.Message);
+                    }
+                } while (check == false);
             }
 
 
@@ -804,16 +933,6 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         }
 
 
-
     }
-
-
-
-
-
-
-
-
-
 
 }

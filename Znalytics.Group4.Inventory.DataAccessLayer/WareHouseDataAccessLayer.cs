@@ -11,7 +11,9 @@ using System.Linq;
 using Znalytics.Inventory.AddressModule.DataAccessLayer;
 
 
-//Created a namespace for DataAccess Layer of WareHouse Module
+/// <summary>
+///Created a namespace for DataAccess Layer of WareHouse Module
+/// </summary>
 namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
 {
     /// <summary>
@@ -19,7 +21,9 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
     /// </summary>
     public static class WareHouseDataAccessLayer//Can be accessed with ClassName only
     {
-        //Created a list for WareHouse. It is made static so that it doesn't override the previous data
+        /// <summary>
+        /// Created a list for WareHouse. It is made static so that it doesn't override the previous data
+        /// </summary>
         private static List<WareHouse> _wareHouseList
         {
             set;
@@ -58,6 +62,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             //Condition to check whether the WareHouseId exists or not
             if (warehouseDetails.WareHouseId != null)
             {
+                //Adds WareHouse details into the list and is saved into the file
                 _wareHouseList.Add(warehouseDetails);
                 SaveIntoFile();
             }
@@ -74,10 +79,11 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// </summary>
         private static void SaveIntoFile()
         {
-            
+            //Serialization converts an object into Json Format/String
+            //Serialize object is stored in a reference variable of a string
             string s = JsonConvert.SerializeObject(_wareHouseList);
 
-            //write data into file
+            //Strean Writer writes data into file.
             StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\WareHouse.txt");
             streamWriter.Write(s);
             streamWriter.Close();
@@ -89,8 +95,10 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// <returns>Returns List of warehouses avaliable int WareHouseData.Txt</returns>
         public static List<WareHouse> GetFiledata()
         {
+            //Stream Reader reads the data from the given file
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\WareHouse.txt");
             string s1 = streamReader.ReadToEnd();
+            //Deserialization converts Json data/string to Object
             List<WareHouse> ware = JsonConvert.DeserializeObject<List<WareHouse>>(s1);
             streamReader.Close();
             return ware;
@@ -115,7 +123,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
             {
                 //Linq returns an object of conditional data 
-                return _wareHouseList.Find(temp => temp.WareHouseId == wareHouseID);
+                return _wareHouseList.FirstOrDefault(temp => temp.WareHouseId == wareHouseID);
             }
             else
             {
@@ -138,7 +146,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
                 //Created an object and is stored in a reference variable
                 WareHouseAddressDataAccessLayer wa = new WareHouseAddressDataAccessLayer();
 
-                //When a WareHouse is deleted, the corresponding addresses are also removed
+                //When a WareHouse is deleted, the corresponding addresses are also removed and is saved into the file
                 wa.RemoveAddressByWareHouseID(wareHouseID);
                 SaveIntoFile();
             }
@@ -158,7 +166,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             //Condition to check whether the WareHouseName exists or not
             if (_wareHouseList.Exists(n => n.WareHouseName == wareHouseName))
             {
-                //It removes all the condition matching elements
+                //It removes all the condition matching elements and is saved into the file
                 _wareHouseList.RemoveAll(n => n.WareHouseName == wareHouseName);
                 SaveIntoFile();
             }
@@ -181,6 +189,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
                 WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
                 if (w != null)
                 {
+                    //WareHouse Name is updated and is saved into the file
                     w.WareHouseName = wareHouse.WareHouseName;
                     SaveIntoFile();
                 }
@@ -204,6 +213,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
                 WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
                 if (w != null)
                 {
+                    //Manager Name is updated and is saved into the file
                     w.MangerName = wareHouse.MangerName;
                     SaveIntoFile();
                 }

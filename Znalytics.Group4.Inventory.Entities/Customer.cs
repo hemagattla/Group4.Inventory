@@ -11,7 +11,7 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
         private int _CustomerId;
         private string _CustomerName;
         private string _Email;
-        private string _Password;
+        private string _PassWord;
         private string _MblNo;
         private string _Country;
         private string _City;
@@ -33,7 +33,7 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
             this.CustomerId = cid;///cuuurent method CoustomerId will be called and checks the conditons present in the method ant then asigns the value///
             this.CustomerName = cstname;
             this.Email = mail;
-            this.Password = password;
+            this.PassWord = password;
             this.MblNo = mblno;
             this.Country = cntry;
             this.City = ci;
@@ -48,6 +48,7 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
         {
             set
             {
+               
                 if (value >= 0 && value <= 9)
                 {
                     _CustomerId = value;
@@ -65,8 +66,10 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
         {
             set
             {
-                if (value.Length < 30)
-                {
+                Regex r = new Regex("[a-zA-Z_]$");
+                //customerName should not be null or empty
+                if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
+                { 
                     _CustomerName = value;
                 }
                 else
@@ -83,9 +86,13 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
         {
             set
             {
-                if (value.Length == 10 && value[0] != 0)
+                Regex r = new Regex("[0-9]$");
+                if (!string.IsNullOrEmpty(value) && r.IsMatch(value))
                 {
-                    _MblNo = value;
+                    if (value.Length == 10 && value[0] != 0)
+                    {
+                        _MblNo = value;
+                    }
                 }
                 else
                 {
@@ -119,34 +126,41 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
             }
         
           }
-    public string Password
+    public string PassWord
         {
             set
-            
+
             {
+                Regex r = new Regex("[a-zA-Z0-9]$");
+                if (!string.IsNullOrEmpty(value) && r.IsMatch(value))
+                {
                     if (value.Length == 6)
                     {
                         for (int i = 0; i < 6; i++)
                         {
                             if (value[i] > 0 || value[i] < 9)
                             {
-                                _PinNo = value;
+                                _PassWord = value;
                             }
                         }
                     }
                 }
-            get
-            {
-                return _Password;
             }
-        }
+                get
+                {
+                    return _PassWord;
+                }
+            }
            
 
         public string Country
         {
             set
             {
-                if (value.Length <= 10)
+
+                Regex r = new Regex("[a-zA-Z_]+$");
+                //LocationName should not be null or empty
+                if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
                 {
                     _Country = value;
                 }
@@ -162,7 +176,9 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
         {
             set
             {
-                if (value.Length <= 10)
+                Regex r = new Regex("[a-zA-Z_]+$");
+                //LocationName should not be null or empty
+                if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
                 {
                     _State = value;
                 }
@@ -172,18 +188,17 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
                 return _State;
             }
         }
-        public string GetState()
-        {
-            return _State;
-        }
+        
         public string City
         {
             set
             {
 
-
-                if (value.Length <= 10)
+                Regex r = new Regex("[a-zA-Z_]+$");
+                //LocationName should not be null or empty
+                if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
                 {
+                    
                     _City = value;
                 }
             }
@@ -196,7 +211,9 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
         {
             set
             {
-                if (value.Length <= 10)
+                Regex r = new Regex("[a-zA-Z_]+$");
+                //street should not be null or empty
+                if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
                 {
                     this._Street = value;
                 }
@@ -211,8 +228,9 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
         {
             set
             {
-                if (value.Length == 6)
-                {
+                ///pin should not be null or empty it should be length of 6///
+                if(!string.IsNullOrEmpty(value) && value.Length <= 6)
+                { 
                     for (int i = 0; i < 6; i++)
                     {
                         if (value[i] > 0 || value[i] < 9)
@@ -232,9 +250,10 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
         {
             set
             {
-                if (value.Length <= 6)
+                ///home number should not be null or empty///
+                if (!string.IsNullOrEmpty(value) && value.Length <= 30)
                 {
-                    this._HNo = value;
+                    _HNo = value;
                 }
             }
             get

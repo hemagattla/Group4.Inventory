@@ -44,6 +44,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                             if (('A' <= ch[i] && ch[i] <= 'Z') || ('a' <= ch[i] && ch[i] <= 'z'))//input should contains only alphabets
                             {
                                 _rawMaterialName = value;
+                                _rawMaterialName = _rawMaterialName.ToUpper();
                             }
                             else
                             {
