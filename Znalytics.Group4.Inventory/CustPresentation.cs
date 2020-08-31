@@ -31,6 +31,7 @@ namespace CustPresentationLayer
                     case 5:DelCustomer();break;
                     case 6:GetCustomerByID();
                          break;
+                      
                 }
             } while (choice != 7);
         }
