@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.IO;
 using Znalytics.Inventory.ProductModule.CustomException;
 using System.Xml.Linq;
+using System.Linq;
 
 namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 {
@@ -93,7 +94,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         public Product GetProductByID(string productID)//Displaying product Details using Product ID
         {
             Product pe;
-            pe = _productsList.Find(n => n.ProductID == productID);
+            pe = _productsList.FirstOrDefault(n => n.ProductID == productID);
             return pe;
 
         }
@@ -106,7 +107,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
 
         public void UpdateProductName(Product product)// update product Name
         {
-            Product PE = _productsList.Find(n => n.ProductID == product.ProductID);
+            Product PE = _productsList.FirstOrDefault(n => n.ProductID == product.ProductID);
             if (PE != null)
             {
                 PE.ProductName = product.ProductName;
@@ -121,7 +122,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         /// <param name="product">object of Product class</param>
         public void UpdateProductPrice(Product product)
         {
-            Product PE = _productsList.Find(n => n.ProductID == product.ProductID);
+            Product PE = _productsList.FirstOrDefault(n => n.ProductID == product.ProductID);
             if (PE != null)
             {
                 PE.Price = product.Price;
