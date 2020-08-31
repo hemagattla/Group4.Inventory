@@ -7,7 +7,7 @@ using Znalytics.Inventory.StockMaintain.Entities;
 using Znalytics.Inventory.StockMaintain.CustomException;
 using Newtonsoft.Json;
 using System.IO;
-
+using System.CodeDom.Compiler;
 
 namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
 {
@@ -60,21 +60,20 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
         /// <param name="addressID">calculation will be done if the addressID exits in the stokcs list</param>
         /// <returns></returns>
 
-        public int TotalQuantity(string warehouseID, string addressID)
+        public int TotalQuantity(string warehouseID, string addressID, string productID)
         {
-            bool result = _stocks.Exists(temp => temp.WareHouseID == warehouseID && temp.AddressID == addressID);
-
+            bool result = _stocks.Exists(temp => temp.WareHouseID == warehouseID && temp.AddressID == addressID && temp.ProductID == productID);
+            
             if (result == true)
             {
-                return _stocks.Select(x => x.Quantity).Sum();
-              
+                    return _stocks.Select(x => x.Quantity).Sum();
             }
             else
             {
-                throw new StockException("no stock id");
+                return 0;
             }
-
         }
+
         /// <summary>
         /// Displaying the number of Stocks available of product in each ware house
         /// </summary>
@@ -85,7 +84,7 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
             bool result = _stocks.Exists(temp => temp.WareHouseID ==stock.WareHouseID && temp.AddressID ==stock.AddressID);
             if (result == true)
             {
-                return _stocks;
+                return _stocks.Where(temp => temp.WareHouseID == stock.WareHouseID && temp.AddressID == stock.AddressID).ToList();
             }
             else
             {

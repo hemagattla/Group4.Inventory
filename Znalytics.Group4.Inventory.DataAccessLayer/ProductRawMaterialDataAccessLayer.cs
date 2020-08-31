@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
 {
@@ -23,7 +25,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         {
             _productRawMaterials = new List<ProductRawMaterial>();//creating object for list 
 
-            // _productRawMaterialss = GetFiledata();
+             _productRawMaterials = LoadDetailsToList();
         }
 
         /// <summary>
@@ -34,7 +36,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         {
 
             _productRawMaterials.Add(productRawMaterial);//Addess ProductRawMaterial details to List
-            //ListOfRawMaterials();
+            ListOfRawMaterials();
         }
 
         /// <summary>
@@ -44,7 +46,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         public void DeleteRawMaterialOfProduct(ProductRawMaterial productRawMaterial)
         {
             _productRawMaterials.RemoveAll(temp => temp.ProductID == productRawMaterial.ProductID && temp.RawMaterialID == productRawMaterial.RawMaterialID);
-            // ListOfRawMaterials();
+             ListOfRawMaterials();
         }
 
         /// <summary>
@@ -76,7 +78,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
             ProductRawMaterial abc = _productRawMaterials.Find(temp => temp.ProductID == productRawMaterial.ProductID && temp.RawMaterialID == productRawMaterial.RawMaterialID);
 
             abc.Quantity = productRawMaterial.Quantity;
-            // ListOfRawMaterials();
+             ListOfRawMaterials();
         }
         /// <summary>
         /// GetDetailsByProductID is a instance method used to Return the List if ProductID matches
@@ -102,7 +104,41 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         public ProductRawMaterial GetDetailsByProductIDAndRawMaterialID(ProductRawMaterial productRawMaterial)
         {
             ProductRawMaterial ab = _productRawMaterials.Find(temp => temp.ProductID == productRawMaterial.ProductID && temp.RawMaterialID == productRawMaterial.RawMaterialID);
-            return ab;
+            if (ab != null)
+            {
+                return ab;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public void ListOfRawMaterials()
+        {
+            string s = JsonConvert.SerializeObject(_productRawMaterials);
+
+            //write data into file
+            StreamWriter streamWriter = new StreamWriter(@"C:\Users\Administrator\Desktop\ProductRawMaterial\ProductRawMaterials.txt");
+            streamWriter.Write(s);
+            streamWriter.Close();
+        }
+        public static List<ProductRawMaterial> LoadDetailsToList()
+        {
+            StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\ProductRawMaterial\ProductRawMaterials.txt");
+            string s2 = streamReader.ReadToEnd();
+            List<ProductRawMaterial> productRawMaterials = JsonConvert.DeserializeObject<List<ProductRawMaterial>>(s2);
+            streamReader.Close();
+
+            if (productRawMaterials == null)
+            {
+                return new List<ProductRawMaterial>();
+            }
+            else
+            {
+                return productRawMaterials;
+
+            }
+
         }
     }
 }

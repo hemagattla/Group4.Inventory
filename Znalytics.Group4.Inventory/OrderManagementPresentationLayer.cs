@@ -22,7 +22,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
     /// </summary>
     class OrderManagementPresentationLayer
     {
-        private object stock;
+       
 
         public void Menu()
         {
@@ -90,6 +90,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 order.WareHouseAddress = houseAddress;
                 Console.WriteLine("Enter WareHouseId");
                 string WareHouseId = Console.ReadLine();
+               
                 //Calling the Method from StockPresentationLyer to Display the Details of Products and quatity of Products
                 List<Stock> stocks=orderBusiness.DisplayStock(WareHouseId, AddressId);
                 foreach (Stock item in stocks)

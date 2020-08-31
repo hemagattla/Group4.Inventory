@@ -44,6 +44,10 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
                 new Product()
                 {
                     ProductID="PID01",ProductName="sample",Price=99
+                },
+                new Product()
+                {
+                    ProductID="PID10",ProductName="sample",Price=99
                 }
             };
             // code for loading file data into collection when no elements are in List

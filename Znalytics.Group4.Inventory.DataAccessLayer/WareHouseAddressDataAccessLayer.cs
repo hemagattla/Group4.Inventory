@@ -43,7 +43,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
                 new WareHouseAddress(){WareHouseId="WHID01",AddressId="W1A1",DoorNumber="1-1-1",LocationName="WARANGAL",Pincode="505005"},
                 new WareHouseAddress(){WareHouseId="WHID01",AddressId="W1A2",DoorNumber="1-2-2",LocationName="HYDERABAD",Pincode="506003"},
                 new WareHouseAddress(){WareHouseId="WHID02",AddressId="W2A1",DoorNumber="2-1-1",LocationName="KARIMNAGAR",Pincode="506002"},
-                new WareHouseAddress(){WareHouseId="WHID02",AddressId="W2A2",DoorNumber="2-2-2",LocationName="VIZA",Pincode="506009"},
+                new WareHouseAddress(){WareHouseId="WHID02",AddressId="W2A2",DoorNumber="2-2-2",LocationName="VIZAG",Pincode="506009"},
             };
             if (_addressList.Count == 0)
             {
@@ -107,12 +107,9 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         ///Method to GET the  address List
         /// </summary>
         /// <returns>Returns the address list</returns>
-        public IEnumerator GetEnumerator()
+        public override List<WareHouseAddress> GetAddresses()
         {
-            foreach (var item in _addressList)
-            {
-                yield return item;
-            }
+            return _addressList;
         }
 
         /// <summary>
@@ -306,7 +303,7 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         /// </summary>
         /// <param name="id">Represents the Address id</param>
         /// <returns></returns>
-        public static bool CheckAddressId(string id)
+        public  bool CheckAddressId(string id)
         {
             //Condition to check whether the WareHouseId exists or not
             bool result = _addressList.Exists(temp => temp.AddressId == id);

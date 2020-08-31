@@ -11,6 +11,7 @@ using Znalytics.Inventory.StockMaintain.PresentationLayer;
 using Znalytics.Group4.Inventory.PresentationLayer;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer;
 using CustPresentationLayer;
+using Newtonsoft.Json;
 
 
 namespace Znalytics.Group4.Inventory
@@ -149,7 +150,7 @@ namespace Znalytics.Group4.Inventory
                 System.Console.WriteLine("3 Display Products");
                 System.Console.WriteLine("4 show stock");
                 System.Console.WriteLine("5.order");
-                 System.Console.WriteLine("5. Exit");
+                 System.Console.WriteLine("6. Exit");
 
                 bool b = int.TryParse(System.Console.ReadLine(), out option);
 
@@ -166,9 +167,8 @@ namespace Znalytics.Group4.Inventory
 
                                 break;
                             case 3: break;
-                            case 4:orderManagement.Menu();                                
-
-                                break;
+                            case 4:break;
+                            case 5: orderManagement.Menu();break;
                             default:
                                 System.Console.WriteLine("Please Enter the Correct Option");
                                 break;
