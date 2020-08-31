@@ -54,7 +54,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.BusinessLogicLayer
         {
             try
             {
-                if ((rawMaterial.RawMaterialName != null) && (rawMaterial.RawMaterialID != null) && (rawMaterial.Quantity != 0D) && (rawMaterial.Units != null) && (rawMaterial.Price != 0D))
+                if (rawMaterial.RawMaterialID != null) 
                 {
                     _rawMaterialDataAccessLayer.DeleteRawMaterial(rawMaterial);
                 }
