@@ -10,6 +10,8 @@ using Znalytics.Group4.Inventory.RawMaterialModule.PresentationLayer;
 using Znalytics.Inventory.StockMaintain.PresentationLayer;
 using Znalytics.Group4.Inventory.PresentationLayer;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer;
+using CustPresentationLayer;
+
 
 namespace Znalytics.Group4.Inventory
 {
@@ -140,12 +142,14 @@ namespace Znalytics.Group4.Inventory
             int option;
             do
             {
-                OrderManagementPresentationLayer orderManagement = new OrderManagementPresentationLayer();   
-                System.Console.WriteLine("1. Display warehouse Details");
-                System.Console.WriteLine("2. Display Products");
-                System.Console.WriteLine("3. show stock");
-                System.Console.WriteLine("4. order");
-                System.Console.WriteLine("5. Exit");
+                OrderManagementPresentationLayer orderManagement = new OrderManagementPresentationLayer();
+                CustPresentation custpresentation = new CustPresentation();
+                System.Console.WriteLine("1. customer details");
+                System.Console.WriteLine("2.warehouse details");
+                System.Console.WriteLine("3 Display Products");
+                System.Console.WriteLine("4 show stock");
+                System.Console.WriteLine("5.order");
+                 System.Console.WriteLine("5. Exit");
 
                 bool b = int.TryParse(System.Console.ReadLine(), out option);
 
@@ -155,7 +159,7 @@ namespace Znalytics.Group4.Inventory
                     {
                         switch (option)
                         {
-                            case 1:
+                            case 1:custpresentation.menu();
 
                                 break;
                             case 2:
