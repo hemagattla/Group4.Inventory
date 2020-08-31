@@ -46,7 +46,7 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
                     ProductID="PID01",ProductName="sample",Price=99
                 }
             };
-
+            // code for loading file data into collection when no elements are in List
             if (_productsList.Count == 0 && File.Exists(@"C:\Users\Administrator\Desktop\ProcuctData.txt"))
             {
                 _productsList = GetFiledata();

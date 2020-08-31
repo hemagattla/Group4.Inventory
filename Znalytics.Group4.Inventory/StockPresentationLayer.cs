@@ -72,7 +72,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
         /// </summary>
         public static void AddStock()
         {
-            ProductPresentation productPresentation=new ProductPresentation();
+            ProductBusiness productBusinessLogic=new ProductBusiness();
             MenuPrensentor wareHousePresentation = new MenuPrensentor();
             try
             {
@@ -92,8 +92,8 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                     {
                         System.Console.WriteLine("Enter Product ID");
                         stock.ProductID = System.Console.ReadLine();
-                      //  if (productPresentation.CheckProductID(stock.ProductID))
-                       // {
+                       if (productBusinessLogic.CheckProductID(stock.ProductID))
+                       {
 
                             System.Console.WriteLine("Enter no of Quantities u want to add");
                             stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
@@ -101,7 +101,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                             stockBusinessLogicLayer.AddStock(stock);
                             Console.WriteLine("Stock Added Sucessfully!!");
 
-                       // }
+                        }
                     }
                 }
             }
@@ -133,9 +133,9 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
             Stock stock = new Stock();
             System.Console.WriteLine("Enter WareHouseID");
-            string WareHouseID = System.Console.ReadLine();
+            stock.WareHouseID = System.Console.ReadLine();
             System.Console.WriteLine("Enter Address Name");
-            string AddressID = System.Console.ReadLine();
+            stock.AddressID = System.Console.ReadLine();
             List<Stock> stocks = stockBusinessLogicLayer.DisplayStock(stock);
             foreach (Stock item in stocks)
             {
