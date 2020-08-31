@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerException.cs" />
     <Compile Include="OrderManagement.cs" />
     <Compile Include="OrderManagementException.cs" />
     <Compile Include="ProductException.cs" />

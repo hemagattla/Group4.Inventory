@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.Module.DataAccessLayer;//importing dataaccesslayer by using keyword///
 using Znalytics.Inventory.Module.Entities;
+using Znalytics.Group4.Inventory.Entities;
 using Znalytics.Group4.Module.IBusinessLogicLayer;
+using System.Linq.Expressions;
+
 namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing bt collection of classes///
 {
 
@@ -14,12 +17,22 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
         CustDataLayer d = new CustDataLayer();
         public void AddCustomer(Customer c)///these method is called from presentation layer///
         {
-            if (c.CustomerName != null)///validating the condition///
+            try
             {
-                d.AddCustomer(c);///these calls the method of dataaccess layer///
+                if (c.CustomerName != null)///validating the condition///
+                {
+                    d.AddCustomer(c);///these calls the method of dataaccess layer///
 
+                }
             }
-        }
+            catch(Exception e)
+            {
+                throw new CustomerException(e.Message);
+            }
+                   
+            }
+      
+        
 
         public List<Customer> GetCustomers()
         {

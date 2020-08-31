@@ -87,7 +87,9 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
 
                 Console.WriteLine("Enter AddressID of WareHouse Address From where you want Products");
                 string AddressId = Console.ReadLine();
-               
+                WareHouseAddress w = orderBusiness.GetWareHouseByAddressID(AddressId);
+                order.WareHouseAddress = w;
+
                 Stock stock = new Stock();
                 System.Console.WriteLine("Enter WareHouseID");
                 stock.WareHouseID = System.Console.ReadLine();
@@ -128,13 +130,15 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                             string productId = (Console.ReadLine());
                             Console.WriteLine("Enter Quantity");
                             int quantity = int.Parse(Console.ReadLine());
-                            Dictionary<string, int> PIdQuantity = new Dictionary<string, int>();
-                            PIdQuantity[productId] = quantity;
-                            order.PIdQuantity = PIdQuantity;
-                            Product p = new Product();
-                           p= orderBusiness.ProductDetails(productId);
+                             order.PIdQuantity = new Dictionary<string, int>();
+                            order.PIdQuantity[productId] = quantity;
                            
+                            
+                          Product p= orderBusiness.ProductDetails(productId);
+                           
+                            order.Products = new List<Product>();
                             order.Products.Add(p);
+                            
                             Stock s = new Stock();
                             s.Quantity -= order.PIdQuantity[productId];
                             order.TotalPrice += p.Price * quantity;
