@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.Module.DataAccessLayer;//importing dataaccesslayer by using keyword///
 using Znalytics.Inventory.Module.Entities;
+using Znalytics.Group4.Inventory.Entities;
 using Znalytics.Group4.Module.IBusinessLogicLayer;
 using System.Linq.Expressions;
 
