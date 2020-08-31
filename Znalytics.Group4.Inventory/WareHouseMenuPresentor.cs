@@ -84,7 +84,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
 
                     WriteLine(" You chose to add a warehouse");
-                    WriteLine("Enter Warehouse Id that starts with WHID and length of 6");
+                    WriteLine("Enter Warehouse Id that starts with WHID and length of 6.It shouldn't contain special characters");
 
                     //Reads the WarehouseId
                     ware.WareHouseId = ReadLine();
@@ -185,11 +185,6 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 }
             } while (check == false);
 
-
-
-
-
-
         }
 
 
@@ -241,11 +236,11 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         if (ware != null)
                         {
                             wbl.RemoveWareHouseByID(whID);
-                            WriteLine("Warehouse Removed");
+                            WriteLine("Warehouse Removed Successfully!");
                         }
                         else
                         {
-                            WriteLine("Warehouse id doesn't exist");
+                            WriteLine("Warehouse id doesn't exist.Please enter existing WareHouseId");
                         }
                     }
                     catch (WareHouseException ex)
