@@ -11,6 +11,7 @@ using Znalytics.Inventory.StockMaintain.PresentationLayer;
 using Znalytics.Group4.Inventory.PresentationLayer;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer;
 using CustPresentationLayer;
+using Newtonsoft.Json;
 
 
 namespace Znalytics.Group4.Inventory

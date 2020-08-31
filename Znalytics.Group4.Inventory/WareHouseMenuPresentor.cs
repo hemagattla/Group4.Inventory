@@ -72,17 +72,19 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         /// </summary>
         public void AddWareHouse()
         {
+
+            //Created an object for Warehouse class and is stored in a reference variable
+            WareHouse ware = new WareHouse();
+
+            //Created an object for Warehouse Business class and is stored in a reference variable
+            WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
+
             bool check = false;
             do
             {
                 try
                 {
-                    //Created an object for Warehouse class and is stored in a reference variable
-                    WareHouse ware = new WareHouse();
-
-                    //Created an object for Warehouse Business class and is stored in a reference variable
-                    WareHouseBusinessLogicLayer wbl = new WareHouseBusinessLogicLayer();
-
+                    
                     WriteLine(" You chose to add a warehouse");
                     WriteLine("Enter Warehouse Id that starts with WHID and length of 6.It shouldn't contain special characters");
 
@@ -93,7 +95,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     //The Warehouseid should be unique
                     if (wbl.CheckWareHouseId(ware.WareHouseId) == false)
                     {
-
+                        check = true;
                         WriteLine("Enter Warehouse Name");
                         //Reads the WareHouseName
                         ware.WareHouseName = ReadLine();
@@ -151,8 +153,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
         public void GetWareHouseByWareHouseID()
         {
             bool check = false;
-            do
-            {
+            
                 try
                 {
                     WriteLine(" You chose to get the details of  Warehouse by WareHouseId");
@@ -166,6 +167,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
                     //Calls the GetWareHouseByWareHouseID of WareHouseBusinessLogic and is stored in Warehouse reference variable
                     WareHouse ware = wbl.GetWareHouseByWareHouseID(whID);
+
                     // Condition to check whether the WareHouseid exists or not
                     if (ware != null)
                     {
@@ -183,7 +185,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 {
                     WriteLine(ex.Message);
                 }
-            } while (check == false);
+            
 
         }
 
@@ -226,9 +228,6 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 Write("Enter the WarehouseID to be Deleted:");
                 //Reads the WareHouseid and is stored in a reference variable
                 string whID = ReadLine();
-                bool check = false;
-                do
-                {
                     try
                     {
                         //Condition to check whether the warehouse id exists or not
@@ -247,7 +246,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     {
                         WriteLine(ex.Message);
                     }
-                } while (check == false);
+                
 
 
 
