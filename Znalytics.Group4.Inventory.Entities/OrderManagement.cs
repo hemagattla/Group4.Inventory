@@ -55,6 +55,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
        public List<Product> Products{
             set
             {
+                List<Product> Products = new List<Product>();
                 if (value!= null)
                 {
                     _products = value;
