@@ -19,7 +19,7 @@ namespace Znalytics.Inventory.ProductModule.Entitie
         //creating private feilds
         private string _productName;
         private string _productId;
-
+        private double _price;
 
 
         /// <summary>
@@ -29,19 +29,17 @@ namespace Znalytics.Inventory.ProductModule.Entitie
         {
             set
             {
+                Regex r = new Regex("[a-zA-Z_]$");
 
-
-                if (!string.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(value) && r.IsMatch(value))
                 {
                     _productName = value;
 
                 }
                 else
                 {
-                    throw new ProductException("do not enter empty values");
+                    throw new ProductException("do not enter empty values and Product name should contain only characters");
                 }
-
-
 
             }
             get
@@ -57,13 +55,14 @@ namespace Znalytics.Inventory.ProductModule.Entitie
         {
             set
             {
-                if (value != "")
+                Regex r = new Regex("[A-Z0-9]$");
+                if (value != "" && value.StartsWith("PID") && r.IsMatch(value) && value.Length <= 6)
                 {
                     _productId = value;
                 }
                 else
                 {
-                    throw new ProductException("Product ID Should not NULL");
+                    throw new ProductException("Product ID Should not NULL and ProductID Should Start with PID and 0-9 number and length should be 6");
                 }
             }
             get
@@ -74,7 +73,7 @@ namespace Znalytics.Inventory.ProductModule.Entitie
         /// <summary>
         /// Property for Price
         /// </summary>
-        public double Price { set; get; }
+        public double Price {  set;   get; }
 
     }
 }

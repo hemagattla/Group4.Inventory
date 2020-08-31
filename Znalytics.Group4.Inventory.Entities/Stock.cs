@@ -1,4 +1,7 @@
-﻿namespace Znalytics.Inventory.StockMaintain.Entities
+﻿
+//created by R.Kruushal
+
+namespace Znalytics.Inventory.StockMaintain.Entities
 {
     /// <summary>
     /// Stock Details

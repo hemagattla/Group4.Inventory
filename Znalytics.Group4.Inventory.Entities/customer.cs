@@ -11,7 +11,7 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
         private int _CustomerId;
         private string _CustomerName;
         private string _Email;
-        private string _Password;
+        private string _PassWord;
         private string _MblNo;
         private string _Country;
         private string _City;
@@ -33,7 +33,7 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
             this.CustomerId = cid;///cuuurent method CoustomerId will be called and checks the conditons present in the method ant then asigns the value///
             this.CustomerName = cstname;
             this.Email = mail;
-            this.Password = password;
+            this.PassWord = password;
             this.MblNo = mblno;
             this.Country = cntry;
             this.City = ci;
@@ -119,7 +119,7 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
             }
         
           }
-    public string Password
+    public string PassWord
         {
             set
             
@@ -130,14 +130,14 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
                         {
                             if (value[i] > 0 || value[i] < 9)
                             {
-                                _PinNo = value;
+                            _PassWord = value;
                             }
                         }
                     }
                 }
             get
             {
-                return _Password;
+                return _PassWord;
             }
         }
            
