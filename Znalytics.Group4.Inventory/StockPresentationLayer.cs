@@ -5,6 +5,7 @@ using Znalytics.Inventory.StockMaintain.BusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 using Znalytic.Inventory.WareHouseModule.PresentationLayer;
 using Znalytics.Inventory.StockMaintain.CustomException;
+using Znalytics.Inventory.ProductModule.ProductPresentation;
 using System.Xml.Serialization;
 
 using System;
@@ -71,7 +72,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
         /// </summary>
         public static void AddStock()
         {
-            ProductBusiness productBusiness=new ProductBusiness();
+            ProductPresentation productPresentation=new ProductPresentation();
             MenuPrensentor wareHousePresentation = new MenuPrensentor();
             try
             {
@@ -91,8 +92,8 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                     {
                         System.Console.WriteLine("Enter Product ID");
                         stock.ProductID = System.Console.ReadLine();
-                        if (productBusiness.CheckProductID(stock.ProductID))
-                        {
+                      //  if (productPresentation.CheckProductID(stock.ProductID))
+                       // {
 
                             System.Console.WriteLine("Enter no of Quantities u want to add");
                             stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
@@ -100,7 +101,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                             stockBusinessLogicLayer.AddStock(stock);
                             Console.WriteLine("Stock Added Sucessfully!!");
 
-                        }
+                       // }
                     }
                 }
             }
