@@ -107,12 +107,9 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
         ///Method to GET the  address List
         /// </summary>
         /// <returns>Returns the address list</returns>
-        public IEnumerator GetEnumerator()
+        public override List<WareHouseAddress> GetAddresses()
         {
-            foreach (var item in _addressList)
-            {
-                yield return item;
-            }
+            return _addressList;
         }
 
         /// <summary>
