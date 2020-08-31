@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using Znalytics.Inventory.Module.Entities;
 using Znalytics.Inventory.IDataAccessLayer;
+using System.Security.Cryptography;
+
 namespace Znalytics.Inventory.Module.DataAccessLayer
 {
     public class CustDataLayer : IcustDataLayer
     {
         static List<Customer> _customers = new List<Customer>();/// <summary>
-                                                                /// creating list as customers///
+                                                      /// creating list as customers///
                                                                 /// </summary>
                                                                 /// <param name="c"></param>
         public void AddCustomer(Customer c)///called Add Customer method frm business logic layer///
@@ -23,13 +26,14 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
         {
             return _customers;
         }
-        public List<Customer> LoginCustomer(string CustomerName,string Password)
+        public Tuple<string,string> LoginCustomer(string CustomerName,string PassWord)
         {
-            if (_customers.Exists(temp => temp.CustomerName == CustomerName))
+            if (_customers.Exists(temp => temp.CustomerName ==CustomerName))
                 {
-                if(_customers.Exists(temp=>temp.Password==Password))
+                if (_customers.Exists(temp => temp.PassWord ==PassWord))
                 {
-                    return _customers;
+                    return (CustomerName, PassWord);
+
                 }
             }
         }

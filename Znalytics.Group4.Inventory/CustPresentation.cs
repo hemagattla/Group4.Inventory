@@ -82,7 +82,8 @@ class  CustPresentation
         string CustomerName = System.Console.ReadLine();
         string PassWord = System.Console.ReadLine();
         CustBusiness cbl = new CustBusiness();
-        List<Customer> cus = cbl.LoginCustomer( CustomerName,  PassWord);
+        Tuple<string, string> tuple = new Tuple<string, string>(CustomerName, PassWord);
+        Tuple<string,string> e=cbl.LoginCustomer(CustomerName, PassWord);
         Console.WriteLine("valid user");
     }
     static void UpdateCustomer()

@@ -25,11 +25,11 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
             {
                 return d.GetCustomers();// return to presentation layer
             }
-        public List<Customer> LoginCustomer(string CustomerName,String Password)
+        public Tuple<string,string> LoginCustomer(string CustomerName,string PassWord)
         {
-            if(CustomerName!=null&&Password!=null)
+            if(CustomerName!=null&&PassWord!=null)
             {
-                return d.LoginCustomer(CustomerName, Password);
+                return d.LoginCustomer(CustomerName, PassWord);
             }
         }
         public void UpdateCustomer(Customer c)
