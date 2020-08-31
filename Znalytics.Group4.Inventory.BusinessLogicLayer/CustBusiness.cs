@@ -53,9 +53,9 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
         }
 
         List<Customer> ICustBusinessLogicLayer.LoginCustomer(string CustomerName, string Password)
-        {
-            throw new NotImplementedException();
-        }
+         {
+           throw new NotImplementedException();
+     }
     }
 }
 
