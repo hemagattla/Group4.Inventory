@@ -66,7 +66,16 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
        public ProductRawMaterial GetProductRawMaterialByID(string ProductID,string RawMaterialID)
        {
           ProductRawMaterial abc = _productRawMaterials.Find(temp => temp.ProductID == ProductID && temp.RawMaterialID==RawMaterialID);
-          return abc;
+              if (abc != null)
+              {
+                 return abc;
+              }
+              else
+              {
+                return null;
+              }
+           
+
        }
 
         /// <summary>
@@ -104,14 +113,16 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         public ProductRawMaterial GetDetailsByProductIDAndRawMaterialID(ProductRawMaterial productRawMaterial)
         {
             ProductRawMaterial ab = _productRawMaterials.Find(temp => temp.ProductID == productRawMaterial.ProductID && temp.RawMaterialID == productRawMaterial.RawMaterialID);
-            if (ab != null)
-            {
-                return ab;
-            }
-            else
-            {
-                return null;
-            }
+          
+                if (ab != null)
+                {
+                    return ab;
+                }
+                else
+                {
+                    return null;
+                }
+
         }
         public void ListOfRawMaterials()
         {

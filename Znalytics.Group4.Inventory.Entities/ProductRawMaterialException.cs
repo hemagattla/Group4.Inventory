@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
 {
-    class ProductRawMaterialException: ApplicationException
+    public class ProductRawMaterialException: ApplicationException
     {
         public ProductRawMaterialException() : base()
         {

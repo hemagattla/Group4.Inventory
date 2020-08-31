@@ -155,9 +155,17 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
         {
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\RawMaterial\RawMaterials.txt");
             string s2 = streamReader.ReadToEnd();
-            List<RawMaterial> customers2 = JsonConvert.DeserializeObject<List<RawMaterial>>(s2);
+            List<RawMaterial> rawMaterials = JsonConvert.DeserializeObject<List<RawMaterial>>(s2);
             streamReader.Close();
-            return customers2;
+            if (rawMaterials == null)
+            {
+                return new List<RawMaterial>();
+            }
+            else
+            {
+                return rawMaterials;
+
+            }
 
         }
     }
