@@ -32,11 +32,16 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
                 {
                 if (_customers.Exists(temp => temp.PassWord == PassWord))
                 {
-                    return null; 
+                    return null;
+                }
+                else
+                {
+                    return null;
+                }
                 }
          
             }
-        }
+        
         public void UpdateCustomer(Customer c)
         {
             ///updating deatils based on cust id///
