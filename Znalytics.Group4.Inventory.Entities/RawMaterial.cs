@@ -43,8 +43,8 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                         {
                             if (('A' <= ch[i] && ch[i] <= 'Z') || ('a' <= ch[i] && ch[i] <= 'z'))//input should contains only alphabets
                             {
-                                _rawMaterialName = value;
-                                _rawMaterialName = _rawMaterialName.ToUpper();
+                                _rawMaterialName = value.ToLower();
+                               
                             }
                             else
                             {
@@ -174,7 +174,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.Entities
                         //value should match below condition
                         if (value.Equals("Kgs", StringComparison.OrdinalIgnoreCase) || value.Equals("Liters", StringComparison.OrdinalIgnoreCase) || value.Equals("Nos", StringComparison.OrdinalIgnoreCase) || value.Equals("Pices", StringComparison.OrdinalIgnoreCase) || value.Equals("ml", StringComparison.OrdinalIgnoreCase)|| value.Equals("gms", StringComparison.OrdinalIgnoreCase))
                         {
-                            _units = value;
+                            _units = value.ToLower();
                         }
                         else
                         {
