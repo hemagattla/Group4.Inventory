@@ -32,14 +32,14 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 if (address.AddressId != null)
                 {
 
-
+                    //Calls the AddAddress Method of WareHouseAddress Data Layer
                     wadl.AddAddress(address);
                 }
 
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message);
             }
         }
 
@@ -64,6 +64,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 //AddressId should not be null
                 if (addressId != null)
                 {
+                    //Calls the GetAddressByAddressID Method of WareHouseAddress Data Layer
                     return wadl.GetAddressByAddressID(addressId);
                 }
                 else
@@ -73,7 +74,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message);
             }
 
         }
@@ -90,6 +91,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 //WareHouseId should not be null
                 if (wareHouseId != null)
                 {
+                    //Calls the GetAddressByWareHouseID Method of WareHouseAddress Data Layer
                     return wadl.GetAddressByWareHouseID(wareHouseId);
                 }
                 else
@@ -99,7 +101,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message);
             }
         }
 
@@ -115,6 +117,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 //Location Name should not be null
                 if (locationName != null)
                 {
+                    //Calls the GetAddressByLocationName Method of WareHouseAddress Data Layer
                     return wadl.GetAddressByLocationName(locationName);
                 }
                 else
@@ -124,7 +127,7 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message);
             }
         }
 
@@ -140,12 +143,13 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 //AddressId should not be null
                 if (address.AddressId != null)
                 {
+                    //Calls the UpdateDoorNumber Method of WareHouseAddress Data Layer
                     wadl.UpdateDoorNumber(address);
                 }
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message);
             }
         }
 
@@ -161,12 +165,13 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
 
                     if (address.AddressId != null)
                     {
-                        wadl.UpdateLocationName(address);
+                    //Calls the UpdateLocationName Method of WareHouseAddress Data Layer
+                    wadl.UpdateLocationName(address);
                     }
                 }
                 catch (WareHouseException ex)
                 {
-                    throw;
+                    throw new WareHouseException(ex.Message);
                 }
             
 
@@ -183,12 +188,13 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 //AddressId should not be null
                 if (address.AddressId != null)
                     {
-                        wadl.UpdateState(address);
+                    //Calls the UpdateState Method of WareHouseAddress Data Layer
+                    wadl.UpdateState(address);
                     }
                 }
                 catch (WareHouseException ex)
                 {
-                    throw;
+                    throw new WareHouseException(ex.Message);
                 }
             
         }
@@ -205,12 +211,13 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 //AddressId should not be null
                 if (address.AddressId != null)
                 {
+                    //Calls the UpdatePincode Method of WareHouseAddress Data Layer
                     wadl.UpdatePincode(address);
                 }
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message);
             }
         }
 
@@ -225,12 +232,13 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 //WareHouseId should not be null
                 if (wareHouseID != null)
                 {
+                    //Call the RemoveAddressByWareHouseID method of WareHouseAddress Data Layer
                     wadl.RemoveAddressByWareHouseID(wareHouseID);
                 }
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message);
             }
         }
 
@@ -245,12 +253,13 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
                 //AddressId should not be null
                 if (addressID != null)
                 {
+                    //Call the RemoveAddressByAddressID method of WareHouseAddress Data Layer
                     wadl.RemoveAddressByAddressID(addressID);
                 }
             }
             catch (WareHouseException ex)
             {
-                throw;
+                throw new WareHouseException(ex.Message);
             }
         }
 
@@ -261,7 +270,8 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         /// <returns></returns>
         public bool CheckAddressId(string id)
         {
-            return WareHouseAddressDataAccessLayer.CheckAddressId(id);
+            //Call the CheckAddressId method of WareHouseAddress Data Layer
+            return wadl.CheckAddressId(id);
         }
 
 
