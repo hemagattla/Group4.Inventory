@@ -40,7 +40,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         StockBusinessLogicLayer b = new StockBusinessLogicLayer();
         public List<Stock> DisplayStock(string warehouseID, string addressID)
         {
-            return b.DisplayStock(warehouseID, addressID);
+            return null;//b.DisplayStock(warehouseID, addressID);
         }
 
          //Creating Reference Variable for Products in BusinessLogicLayer 
