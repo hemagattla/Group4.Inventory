@@ -116,7 +116,7 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
                 }
                 else
                 {
-                    throw new Exception("Email should not contain spaces and should include @ symbol.");
+                    throw new System.Exception("Email should not contain spaces and should include @ symbol.");
                 }
                 }
 
@@ -145,6 +145,10 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
                         }
                     }
                 }
+                else
+                {
+                  throw new   System.Exception("PassWord should contain onlt alphabets and digits and no spaces");
+                }
             }
                 get
                 {
@@ -164,6 +168,10 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
                 {
                     _Country = value;
                 }
+                else
+                {
+                    throw new System.Exception("invalid country name");
+                }
             }
             get
             {
@@ -181,6 +189,10 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
                 if (!string.IsNullOrEmpty(value) && r.IsMatch(value) && value.Length <= 30)
                 {
                     _State = value;
+                }
+                else
+                {
+                    throw new System.Exception(" inavlid state");
                 }
             }
             get
@@ -254,6 +266,10 @@ namespace Znalytics.Inventory.Module.Entities///collection of classes is namespa
                 if (!string.IsNullOrEmpty(value) && value.Length <= 30)
                 {
                     _HNo = value;
+                }
+                else
+                {
+                    throw new System.Exception("enter valid hno");
                 }
             }
             get
