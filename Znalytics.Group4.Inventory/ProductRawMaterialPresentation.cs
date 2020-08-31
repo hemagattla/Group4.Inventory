@@ -6,6 +6,7 @@ using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.BusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.Entitie;
 using System;
+using Newtonsoft.Json;
 
 
 namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
