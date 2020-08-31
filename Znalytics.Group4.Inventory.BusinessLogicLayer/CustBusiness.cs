@@ -32,6 +32,7 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
               return d.LoginCustomer(CustomerName, PassWord);
                 
             }
+            return null;
         }
     
         public void UpdateCustomer(Customer c)
@@ -51,6 +52,10 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
 
         }
 
+        List<Customer> ICustBusinessLogicLayer.LoginCustomer(string CustomerName, string Password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
