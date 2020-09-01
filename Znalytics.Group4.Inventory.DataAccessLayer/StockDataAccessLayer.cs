@@ -28,11 +28,8 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
         /// </summary>
         static StockDataAccessLogic()
         {
-            _stocks = new List<Stock>()// creating the Stock List object
-            {
-                new Stock(){ StockID="1",WareHouseID="WHID01",AddressID="W1A1",ProductID="PID10",Quantity=10 }
-
-            };
+            _stocks = new List<Stock>();// creating the Stock List object
+           
             if (_stocks.Count == 0 && File.Exists(@"C:\Users\Administrator\Desktop\StockData.txt")) 
             {
                 _stocks = GetFiledata();
