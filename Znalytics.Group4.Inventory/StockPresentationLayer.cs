@@ -41,7 +41,8 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                             case 1:
                                 AddStock();
                                 break;
-                            case 2: DisplayStock();
+                            case 2:
+                            GetAllStocks();
                                 break;
                             case 3:
                                 UpdateStockQuantity();
@@ -75,41 +76,80 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
         {
             ProductBusiness productBusinessLogic=new ProductBusiness();
             MenuPrensentor wareHousePresentation = new MenuPrensentor();
-            try
-            {
-                StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer(); // creation stockBusinessLogic object
-                Stock stock = new Stock();//creation of stock object of entite Layer
-
+           
+            StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer(); // creation stockBusinessLogic object
+            Stock stock = new Stock();//creation of stock object of entite Layer
+            bool check = false;
+            
                 System.Console.WriteLine("Enter StockID");
                 stock.StockID = System.Console.ReadLine();
-
-                System.Console.WriteLine("Enter WareHouseID");
-                stock.WareHouseID = System.Console.ReadLine();
-                if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID) == true)
+                
+                
+             do
+             {
+                try
                 {
-                    System.Console.WriteLine("Enter Address Name");
-                    stock.AddressID = System.Console.ReadLine();
-                    if (wareHousePresentation.CheckAddressId(stock.AddressID))
-                    {
-                        System.Console.WriteLine("Enter Product ID");
-                        stock.ProductID = System.Console.ReadLine();
-                       if (productBusinessLogic.CheckProductID(stock.ProductID))
-                       {
+                    bool check1 = false;
+                        System.Console.WriteLine("Enter WareHouseID");
+                        System.Console.WriteLine("It should not contain spaces and length be exactly 6");
+                        stock.WareHouseID = System.Console.ReadLine();
+                        if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID) == true)
+                        {
+                            do
+                            {
+                            try
+                            {
+                                check = true;
+                                System.Console.WriteLine("Enter Address ID");
+                                System.Console.WriteLine("It should not contain spaces or Special Characters and length should be exactly 4");
+                                stock.AddressID = System.Console.ReadLine();
+                                if (wareHousePresentation.CheckAddressId(stock.AddressID))
+                                {
+                                    bool check2 = false;
+                                    check1 = true;
+                                    do
+                                    {
+                                        try
+                                        {
+                                            System.Console.WriteLine("Enter Product ID");
+                                            System.Console.WriteLine("Product ID Should not NULL and ProductID Should Start with PID and 0-9 number and length should be 6");
+                                            stock.ProductID = System.Console.ReadLine();
+                                            if (productBusinessLogic.CheckProductID(stock.ProductID))
+                                            {
+                                                check2 = true;
 
-                            System.Console.WriteLine("Enter no of Quantities u want to add");
-                            stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
+                                                System.Console.WriteLine("Enter no of Quantities u want to add");
+                                                stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
 
-                            stockBusinessLogicLayer.AddStock(stock);
-                            Console.WriteLine("Stock Added Sucessfully!!");
+                                                stockBusinessLogicLayer.AddStock(stock);
+                                                Console.WriteLine("Stock Added Sucessfully!!");
+
+                                            }
+                                        }
+
+                                        catch (StockException e)
+                                        {
+                                            System.Console.WriteLine(e.Message);
+                                        }
+                                    } while (check2 == false);
+                                }
+                            }
+                            catch (StockException e)
+                            {
+                                System.Console.WriteLine(e.Message);
+                            }
+
+                        } while (check1 == false);
 
                         }
                     }
+                catch (StockException e)
+                {
+                    System.Console.WriteLine(e.Message);
                 }
-            }
-            catch(StockException e)
-            {
-                System.Console.WriteLine(e.Message);
-            }
+
+            } while (check == false);
+           
 
           
         }
@@ -119,34 +159,61 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
         /// <param name="warehouseID">parameter that accepts warehouseid of string type</param>
         /// <param name="addressID">parameter that accepts Address of string type</param>
         /// <returns> total stock availability of stock of a product</returns>
-        public static int TotalQuantity(string warehouseID, string addressID, string productID)
+        public static void  GetAllStocks()
         {
+                ProductBusiness productBusinessLogic = new ProductBusiness();
+                MenuPrensentor wareHousePresentation = new MenuPrensentor();
+                StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
+                Stock stock = new Stock();
+                bool check = false;
+                do
+                {
 
-            StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
-            return stockBusinessLogicLayer.TotalQuantity(warehouseID, addressID, productID);
+                try
+                {
+                    System.Console.WriteLine("Enter WareHouseID");
+                    System.Console.WriteLine("It should not contain spaces and length be exactly 6");
+                    stock.WareHouseID = System.Console.ReadLine();
+                    if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID));
+                    {
+                        bool check1 = false;
+                        check = true;
+                        do
+                        {
+                            try
+                            {
+                                System.Console.WriteLine("Enter Address ID");
+                                System.Console.WriteLine("It should not contain spaces or Special Characters and length should be exactly 4");
+                                stock.AddressID = System.Console.ReadLine();
+                                if (wareHousePresentation.CheckAddressId(stock.AddressID))
+                                {
+                                    check1 = true;
+                                    List<Stock> stocks = stockBusinessLogicLayer.GetAllStocks(stock.WareHouseID, stock.AddressID);
+
+                                    System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
+                                    foreach (Stock item in stocks)
+                                    {
+
+                                        System.Console.WriteLine(item.ProductID + "  " + item.TotalQuantity);
+                                    }
+                                }
+                            }
+                            catch (StockException e)
+                            {
+                                System.Console.WriteLine(e.Message);
+                            }
+                        } while (check1 == false);
+                    } 
+                }
+                catch (StockException e)
+                {
+                    System.Console.WriteLine(e.Message);
+                }
+            } while (check == false);
+           
         }
 
-        /// <summary>
-        /// used to display all the stock details of a product in the particular warehouse id and addressid 
-        /// </summary>
-        public static void DisplayStock()
-        {
-            StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
-            Stock stock = new Stock();
-            System.Console.WriteLine("Enter WareHouseID");
-            stock.WareHouseID = System.Console.ReadLine();
-            System.Console.WriteLine("Enter Address Name");
-            stock.AddressID = System.Console.ReadLine();
-            List<Stock> stocks = stockBusinessLogicLayer.DisplayStock(stock);
-            List<string> ProductIDs = stocks.Select(temp => temp.ProductID).Distinct().ToList();
-            System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
-            foreach (string item in ProductIDs)
-            {
-               
-                System.Console.WriteLine(item + "  " + TotalQuantity(stock.WareHouseID, stock.AddressID, item));
-            }
-
-        }
+      
 
 
         /// <summary>
@@ -154,29 +221,70 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
         /// </summary>
         public void UpdateStockQuantity()
         {
-            try
+            StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
+            Stock stock = new Stock();
+            ProductBusiness productBusinessLogic = new ProductBusiness();
+            MenuPrensentor wareHousePresentation = new MenuPrensentor();
+            bool check = false;
+            do
             {
+                try
+                {
 
+                    System.Console.WriteLine("enter to which WarehouseId you want to update the quantity:");
+                    System.Console.WriteLine("It should not contain spaces and length be exactly 6");
+                    stock.WareHouseID = System.Console.ReadLine();
+                    if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID)) ;
+                    {
+                        bool check1 = false;
+                        check = true;
+                        do
+                        {
+                            try
+                            {
+                                System.Console.WriteLine("enter to which WarehouseAddress you want to update the quantity:");
+                                System.Console.WriteLine("It should not contain spaces or Special Characters and length should be exactly 4");
+                                stock.AddressID = System.Console.ReadLine();
+                                if (wareHousePresentation.CheckAddressId(stock.AddressID))
+                                {
+                                    bool check2 = false;
+                                    check1 = true;
+                                    do
+                                    {
+                                        try
+                                        {
+                                            System.Console.WriteLine("enter to which ProductID you want to update the quantity");
+                                            System.Console.WriteLine("Product ID Should not NULL and ProductID Should Start with PID and 0-9 number and length should be 6");
+                                            stock.ProductID = System.Console.ReadLine();
+                                            if (productBusinessLogic.CheckProductID(stock.ProductID))
+                                            {
+                                                check2 = true;
+                                                System.Console.WriteLine("enter the quantity to be updated:");
+                                                stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
 
-                StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer();
-                Stock stock = new Stock();
-                System.Console.WriteLine("enter to which WarehouseId you want to update the quantity:");
-                stock.WareHouseID = System.Console.ReadLine();
-                System.Console.WriteLine("enter to which WarehouseAddress you want to update the quantity:");
-                stock.AddressID = System.Console.ReadLine();
-                System.Console.WriteLine("enter to which ProductID you want to update the quantity");
-                stock.AddressID = System.Console.ReadLine();
-
-                System.Console.WriteLine("enter the quantity to be updated:");
-                stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
-
-                stockBusinessLogicLayer.UpdateStockQuantity(stock);
-                System.Console.WriteLine("Stock quntity Updated Sucessfully");
-            }
-            catch(StockException e)
-            {
-                System.Console.WriteLine(e.Message);
-            }
+                                                stockBusinessLogicLayer.UpdateStockQuantity(stock);
+                                                System.Console.WriteLine("Stock quntity Updated Sucessfully");
+                                            }
+                                        }
+                                        catch (StockException e)
+                                        {
+                                            System.Console.WriteLine(e.Message);
+                                        }
+                                    } while (check2 == false);
+                                }
+                            }
+                            catch (StockException e)
+                            {
+                                System.Console.WriteLine(e.Message);
+                            }
+                        } while (check1 == false);
+                    }
+                }
+                catch (StockException e)
+                {
+                    System.Console.WriteLine(e.Message);
+                }
+            } while (check== false);
 
         }
     }
