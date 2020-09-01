@@ -69,7 +69,7 @@ namespace CustPresentationLayer
             List<Customer> customers = cbl.GetCustomers();
 
             Console.WriteLine("===============   customer Details=============");
-            Console.WriteLine("customerID" + "   " + "customerName" + "  " + "mail");
+            Console.WriteLine("customerID" + "   " + "customerName" + "  " + "mail" +"phno" +"password"+" "+"country"+"state");
             Console.WriteLine("-----------------------------------------------------------------------");
 
             foreach (Customer item in customers)
