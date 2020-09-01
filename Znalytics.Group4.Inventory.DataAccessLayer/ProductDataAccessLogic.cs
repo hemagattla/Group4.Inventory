@@ -36,8 +36,9 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         {
 
             _productsList = new List<Product>()
-            {new Product(){ProductID="PID01",ProductName="Juice",Price=99 },
-             new Product(){ProductID="PID02",ProductName="MockTail",Price=88}         //MockData for Product
+            {
+                new Product(){ProductID="PID01",ProductName="Juice",Price=99 },
+                new Product(){ProductID="PID02",ProductName="MockTail",Price=88}         //MockData for Product
             };// creating List object
             
             // code for loading file data into collection when no elements are in List
