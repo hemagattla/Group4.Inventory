@@ -18,6 +18,9 @@ namespace Znalytics.Group4.Inventory
 {
     class InventoryMangementSystem
     {
+        /// <summary>
+        /// Excecution starts from Main
+        /// </summary>
         static void Main()
         {
             System.Console.WriteLine("=============INVENTORY MANAGEMENT SYSTEM=====================");
