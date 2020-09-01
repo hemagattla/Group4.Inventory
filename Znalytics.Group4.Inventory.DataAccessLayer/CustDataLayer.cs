@@ -72,6 +72,19 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
         public void RemoveCustomer(int CustomerId) => _customers.RemoveAll(n => n.CustomerId == CustomerId);
         ///deleting customers deatils based on given condition///
     }
+   /* public  static Customer GetCustomerById(int CustomerID)
+        {
+            //Condition to check whether the cosutomerId exists or not
+            if (_customer.Exists(n => n.customerId == CustomerId))
+            {
+                //Linq returns an object of conditional data 
+                return _customer.FirstOrDefault(temp => temp.CustomerId == CustomerId);
+            }
+            else
+{
+    throw new CustomerException("WareHouse doesn't exist");
+}
+        }*/
 
    
 }
