@@ -22,7 +22,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         {
             _orders = new List<OrderManagement>(){new OrderManagement()
             {
-                ProductId="PID03",WareHouseAddressId="W1A1",CustomerAddressId=1,TotalPrice=567.00,Quantity=43,OrderID=1
+                ProductId="PID03",WareHouseAddressId="W1A1",CustomerAddressId=3,TotalPrice=567.00,Quantity=43,OrderID=1
             } };
                 
 
@@ -164,7 +164,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         public int OrderIdGeneration()
         {
            int orderid= _orders.Max(temp => temp.CustomerAddressId);
-            return orderid++;
+            return ++orderid;
         }
         /// <summary>
         /// Update ProductDetails
