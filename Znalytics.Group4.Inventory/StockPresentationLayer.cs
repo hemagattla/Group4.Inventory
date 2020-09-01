@@ -162,11 +162,9 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
 
         }
         /// <summary>
-        /// local static funtion that calculates product stock of particular warehouseid and warehouse addressid of a product
+        /// local static funtion that calculates product stock of particular warehouseid and warehouse addressid of a product and displays all products available and no of quantity
         /// </summary>
-        /// <param name="warehouseID">parameter that accepts warehouseid of string type</param>
-        /// <param name="addressID">parameter that accepts Address of string type</param>
-        /// <returns> total stock availability of stock of a product</returns>
+        
         public static void  GetAllStocks()
         {
                 ProductBusiness productBusinessLogic = new ProductBusiness();
