@@ -13,10 +13,20 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
 {
     public class CustDataLayer : IcustDataLayer
     {
-        static List<Customer> _customers = new List<Customer>();/// <summary>
-                                                      /// creating list as customers///
-                                                                /// </summary>
-                                                                /// <param name="c"></param>
+        static List<Customer> _customers = new List<Customer>()/// <summary> /// creating list as customers///
+                                                               /// </summary>
+        {
+            new Customer()
+            {
+                CustomerId=1,CustomerName="ramya",Email="ramyasuram1999@gmail.com",Country="india",State="telengana",Street="ramvada",PinNo="123456",HNo="123456"
+            },
+            new Customer()
+            {
+                  CustomerId=2,CustomerName="ram",Email="ram1999@gmail.com",Country="india",State="telengana",Street="ramvada",PinNo="123456",HNo="123789"
+            }
+
+        };
+
         public void AddCustomer(Customer c)///called Add Customer method frm business logic layer///
         {
             _customers.Add(c);///adding values to customers list///
@@ -50,7 +60,7 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
         }
         public void DelCustomer(Customer c)
         {
-            Customer t = _customers.Find((temp => temp.CustomerName == c.CustomerName));
+            Customer t = _customers.Find((temp => temp.CustomerId == c.CustomerId));
             _customers.Clear();///deleting customers deatils based on given condition///
         }
         public Customer GetCustomerById(int CustomerId)//Displaying product Details using Product ID
@@ -59,7 +69,9 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
             e = _customers.Find(n => n.CustomerId == CustomerId);
             return e;
         }
-        
-      
+        public void RemoveCustomer(int CustomerId) => _customers.RemoveAll(n => n.CustomerId == CustomerId);
+        ///deleting customers deatils based on given condition///
     }
+
+   
 }

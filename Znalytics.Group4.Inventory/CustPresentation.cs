@@ -19,6 +19,7 @@ namespace CustPresentationLayer
                 Console.WriteLine("4.update customer");
                 Console.WriteLine("5. del customer");
                 Console.WriteLine("6. getcustomerby id");
+                Console.WriteLine("7.to remove customer based on id");
                 Console.Write("Enter choice: ");
                 bool b = int.TryParse(Console.ReadLine(), out choice);
 
@@ -29,11 +30,10 @@ namespace CustPresentationLayer
                     case 3: LoginCustomer(); break;
                     case 4: UpdateCustomer(); break;
                     case 5:DelCustomer();break;
-                    case 6:GetCustomerById();
-                         break;
-                      
+                    case 6:GetCustomerById();break;
+                    case 7:RemoveCustomer();break;
                 }
-            } while (choice != 7);
+            } while (choice != 8);System.Console.WriteLine("enter valid choice");
         }
 
         static void AddCustomer()
@@ -69,7 +69,7 @@ namespace CustPresentationLayer
             List<Customer> customers = cbl.GetCustomers();
 
             Console.WriteLine("===============   customer Details=============");
-            Console.WriteLine("customerID" + "   " + "customerName" + "  " + "mail");
+            Console.WriteLine("customerID" + "   " + "customerName" + "  " + "mail" +"phno" +"password"+" "+"country"+"state");
             Console.WriteLine("-----------------------------------------------------------------------");
 
             foreach (Customer item in customers)
@@ -123,6 +123,16 @@ namespace CustPresentationLayer
 
 
         }
+          static void RemoveCustomer()
+
+          {
+            CustBusiness cbl = new CustBusiness();
+            Customer c = new Customer();
+            Console.Write("enter customer id");
+            int CustomerId = int.Parse(Console.ReadLine());
+            cbl.RemoveCustomer(CustomerId);
+            Console.WriteLine("customer has deleted");
+           }
 
     }
 }

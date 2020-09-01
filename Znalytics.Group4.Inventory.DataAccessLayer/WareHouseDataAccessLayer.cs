@@ -56,14 +56,14 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// <summary>
         ///Method to ADD WareHouse details to the list
         /// </summary>
-        /// <param name="warehouseDetails">Represents warehouse object</param>
-        public static void AddWareHouse(WareHouse warehouseDetails)
+        /// <param name="wareHouse">Represents warehouse object</param>
+        public static void AddWareHouse(WareHouse wareHouse)
         {
             //Condition to check whether the WareHouseId exists or not
-            if (warehouseDetails.WareHouseId != null)
+            if (wareHouse.WareHouseId != null)
             {
                 //Adds WareHouse details into the list and is saved into the file
-                _wareHouseList.Add(warehouseDetails);
+                _wareHouseList.Add(wareHouse);
                 SaveIntoFile();
             }
             else
