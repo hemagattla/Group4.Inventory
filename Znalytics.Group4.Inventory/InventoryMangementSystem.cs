@@ -129,7 +129,7 @@ namespace Znalytics.Group4.Inventory
                     {
                         System.Console.WriteLine("Please Enter the only digits");
                     }
-                } while (option != 3);
+                } while (option != 6);
 
             }
             else
