@@ -50,7 +50,7 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
         }
         public void DelCustomer(Customer c)
         {
-            Customer t = _customers.Find((temp => temp.CustomerName == c.CustomerName));
+            Customer t = _customers.Find((temp => temp.CustomerId == c.CustomerId));
             _customers.Clear();///deleting customers deatils based on given condition///
         }
         public Customer GetCustomerById(int CustomerId)//Displaying product Details using Product ID
