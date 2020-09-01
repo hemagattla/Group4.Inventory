@@ -286,7 +286,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                         {
                             check = true;
 
-                            //Calls the RemoveWareHouseByWareHouseName WareHouseBusiness Logic 
+                            //Calls the RemoveWareHouseByWareHouseName method of WareHouseBusiness Logic 
                             wbl.RemoveWareHouseByWareHouseName(warName);
                             WriteLine("Warehouse Removed");
                         }
@@ -360,7 +360,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                             //Reads the WareHouseName and is stored in the object
                             ware.WareHouseName = ReadLine();
 
-                            //Calls the UpdateWareHouseName of WareHouseBusinessLogic
+                            //Calls the UpdateWareHouseName method of WareHouseBusinessLogic
                             wbl.UpdateWareHouseName(ware);
 
                             WriteLine("WareHouse Name Updated Sucessfully!!!");
@@ -405,7 +405,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                             //Reads the MangerName and is stored in the object
                             ware.MangerName = ReadLine();
 
-                            //Calls the UpdateManagerName of WareHouseBusinessLogic
+                            //Calls the UpdateManagerName method of WareHouseBusinessLogic
                             wbl.UpdateManagerName(ware);
                             WriteLine("Manager Name Updated Sucessfully!!!");
                         }
