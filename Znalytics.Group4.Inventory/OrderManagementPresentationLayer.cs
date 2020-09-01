@@ -240,17 +240,15 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
             List<OrderManagement> orders = orderBusiness.GetOrderDetailsByEmployeeID(EmployeeId);
             foreach (var order in orders)
             {
-                
 
-                    Product p = orderBusiness.ProductDetails(order.ProductId);
-                    System.Console.WriteLine(p.ProductID + "     " + p.ProductName + "      " + p.Price);
-                    
-                WareHouseAddress w = orderBusiness.GetWareHouseByAddressID(order.WareHouseAddressId);
-                Console.WriteLine(w.WareHouseId + "       " + w.AddressId + "     " + w.DoorNumber + "    " + w.LocationName + "     " + w.State + "    " + w.Pincode + "     ");
-                Customer c = orderBusiness.GetCustomerDetailsByCustomerID(order.CustomerAddressId);
-                Console.WriteLine(c.CustomerId + "    " + c.CustomerName + "  " + c.Email + "     " + c.Country + "    " + c.State + "  " + c.City + "    " + c.PinNo + "  " + c.HNo);
-                Console.WriteLine(order.TotalPrice);
-                Console.WriteLine(order.Quantity);
+
+
+                System.Console.WriteLine("ProductId:"+order.ProductId);
+                System.Console.WriteLine("WareHouseId:"+order.WareHouseAddressId);
+                System.Console.WriteLine("CustomerAddressId:"+order.CustomerAddressId);
+            
+                Console.WriteLine("TotalPrice:"+order.TotalPrice);
+                Console.WriteLine("Quantity:"+order.Quantity);
             }
 
         }
