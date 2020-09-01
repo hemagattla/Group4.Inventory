@@ -151,6 +151,7 @@ namespace Znalytics.Group4.Inventory.RawMaterialModule.DataAccessLayer
             streamWriter.Write(s);
             streamWriter.Close();
         }
+        //Deserialization
         public static List<RawMaterial> LoadDetailsToList()
         {
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\RawMaterial\RawMaterials.txt");
