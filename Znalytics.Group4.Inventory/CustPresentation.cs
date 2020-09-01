@@ -36,7 +36,7 @@ namespace CustPresentationLayer
             } while (choice != 8);System.Console.WriteLine("enter valid choice");
         }
 
-        static void AddCustomer()
+        static void AddCustomer()///adding his/her details to list///
         {
             CustBusiness cbl = new CustBusiness();/// creating object for business logic layer
             Customer c = new Customer();///creating obj for customer class present in entity layer
@@ -63,7 +63,7 @@ namespace CustPresentationLayer
             cbl.AddCustomer(c);///call's the business logic layer of AddCustomer method///
             Console.WriteLine("customer details are  Added.\n");
         }
-        public static void GetCustomers()
+        public static void GetCustomers()///getting all the customers stored in list///
         {
             CustBusiness cbl = new CustBusiness();
             List<Customer> customers = cbl.GetCustomers();
@@ -91,19 +91,19 @@ namespace CustPresentationLayer
             Tuple<string, string> e = cbl.LoginCustomer(CustomerName, PassWord);
             Console.WriteLine("valid user");
         }
-        static void UpdateCustomer()
+        static void UpdateCustomer()///updating customer details by using customerid as primary key///
         {
             CustBusiness cbl = new CustBusiness();
             Customer c = new Customer();
 
-            Console.Write("Enter Existing customer ID: ");/// updating name and city by using primary key as customerid///
+            Console.Write("Enter Existing customer ID: ");
             c.CustomerId = int.Parse(Console.ReadLine());
             Console.Write("enter customer name");
             c.CustomerName = Console.ReadLine();
             cbl.UpdateCustomer(c);
             Console.WriteLine("Customer  Updated");
         }
-        static void DelCustomer()
+        static void DelCustomer()///which clears all the customers stored in list///
         {
             CustBusiness cbl = new CustBusiness();
             Customer c = new Customer();
@@ -112,18 +112,18 @@ namespace CustPresentationLayer
             cbl.DelCustomer(c);
             Console.WriteLine("customer has deleted");
         }
-        static void GetCustomerById()///geting all customers stored in database///
+        static void GetCustomerById()///geting singe customer details by using his/her id  as primarykey///
         {
 
             System.Console.Write("Enter the customerID: ");
             int CustomerId = int.Parse(System.Console.ReadLine());
             CustBusiness cbl = new CustBusiness();
-            Customer b = cbl.GetCustomerById(CustomerId);
+            Customer b = cbl.GetCustomerById(CustomerId);///which cls the businesslogic of getcustomerid method///
             System.Console.WriteLine(b.CustomerId + " " + b.CustomerName + " " + b.MblNo + " " + b.Email + " " + b.City + " " + b.Country + " " + b.HNo + " " + b.State + " " + b.PinNo);
 
 
         }
-          static void RemoveCustomer()///removing customer details by using customerid by taking primary key///
+          static void RemoveCustomer()///removing customer details by using customerid by taking  customer id as primary key///
 
           {
             CustBusiness cbl = new CustBusiness();

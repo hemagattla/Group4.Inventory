@@ -61,10 +61,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// <param name="addressID"></param>
         /// <param name="productID"></param>
         /// <returns></returns>
-        public int TotalQuantity(string warehouseID, string addressID, string productID)
-        {
-            return 0;//b.TotalQuantity(warehouseID, addressID, productID);
-        }
+        
 
         //Creating Reference Variable for Interface IProductBusinessLogicLayer
         IProductBusinessLogicLayer i = new ProductBusiness();
