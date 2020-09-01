@@ -5,17 +5,18 @@ using Znalytics.Inventory.StockMaintain.BusinessLogicLayer;
 using Znalytics.Inventory.ProductModule.BusinessLogicLayer;
 using Znalytic.Inventory.WareHouseModule.PresentationLayer;
 using Znalytics.Inventory.StockMaintain.CustomException;
-using Znalytics.Inventory.ProductModule.ProductPresentation;
-using System.Xml.Serialization;
+
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Znalytics.Inventory.StockMaintain.PresentationLayer
 {
     class StockPresentationLayer
     {
+        /// <summary>
+        /// menu presentaion for Stock Module
+        /// </summary>
         public void menu()
         {
            
@@ -80,16 +81,18 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
             StockBusinessLogicLayer stockBusinessLogicLayer = new StockBusinessLogicLayer(); // creation stockBusinessLogic object
             Stock stock = new Stock();//creation of stock object of entite Layer
             bool check = false;
-            
+            try
+            {
+
                 System.Console.WriteLine("Enter StockID");
                 stock.StockID = System.Console.ReadLine();
-                
-                
-             do
-             {
-                try
+
+
+                do
                 {
-                    bool check1 = false;
+                    try
+                    {
+                        bool check1 = false;
                         System.Console.WriteLine("Enter WareHouseID");
                         System.Console.WriteLine("It should not contain spaces and length be exactly 6");
                         stock.WareHouseID = System.Console.ReadLine();
@@ -97,68 +100,71 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                         {
                             do
                             {
-                            try
-                            {
-                                check = true;
-                                System.Console.WriteLine("Enter Address ID");
-                                System.Console.WriteLine("It should not contain spaces or Special Characters and length should be exactly 4");
-                                stock.AddressID = System.Console.ReadLine();
-                                if (wareHousePresentation.CheckAddressId(stock.AddressID))//checking whether the warehouse address is present in list of warehouse adress
+                                try
                                 {
-                                    bool check2 = false;
-                                    check1 = true;
-                                    do
+                                    check = true;
+                                    System.Console.WriteLine("Enter Address ID");
+                                    System.Console.WriteLine("It should not contain spaces or Special Characters and length should be exactly 4");
+                                    stock.AddressID = System.Console.ReadLine();
+                                    if (wareHousePresentation.CheckAddressId(stock.AddressID))//checking whether the warehouse address is present in list of warehouse adress
                                     {
-                                        try
+                                        bool check2 = false;
+                                        check1 = true;
+                                        do
                                         {
-                                            System.Console.WriteLine("Enter Product ID");
-                                            System.Console.WriteLine("Product ID Should not NULL and ProductID Should Start with PID and 0-9 number and length should be 6");
-                                            stock.ProductID = System.Console.ReadLine();
-                                            if (productBusinessLogic.CheckProductID(stock.ProductID))//checking whether product is available in the list or not
+                                            try
                                             {
-                                                check2 = true;
+                                                System.Console.WriteLine("Enter Product ID");
+                                                System.Console.WriteLine("Product ID Should not NULL and ProductID Should Start with PID and 0-9 number and length should be 6");
+                                                stock.ProductID = System.Console.ReadLine();
+                                                if (productBusinessLogic.CheckProductID(stock.ProductID))//checking whether product is available in the list or not
+                                                {
+                                                    check2 = true;
 
-                                                System.Console.WriteLine("Enter no of Quantities u want to add");
-                                                stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
+                                                    System.Console.WriteLine("Enter no of Quantities u want to add");
+                                                    stock.Quantity = System.Convert.ToInt32(System.Console.ReadLine());
 
-                                                stockBusinessLogicLayer.AddStock(stock);
-                                                Console.WriteLine("Stock Added Sucessfully!!");
+                                                    stockBusinessLogicLayer.AddStock(stock);
+                                                    Console.WriteLine("Stock Added Sucessfully!!");
 
+                                                }
                                             }
-                                        }
 
-                                        catch (StockException e)
-                                        {
-                                            System.Console.WriteLine(e.Message);
-                                        }
-                                    } while (check2 == false);
+                                            catch (StockException e)
+                                            {
+                                                System.Console.WriteLine(e.Message);
+                                            }
+                                        } while (check2 == false);
+                                    }
                                 }
-                            }
-                            catch (StockException e)
-                            {
-                                System.Console.WriteLine(e.Message);
-                            }
+                                catch (StockException e)
+                                {
+                                    System.Console.WriteLine(e.Message);
+                                }
 
-                        } while (check1 == false);
+                            } while (check1 == false);
 
                         }
                     }
-                catch (StockException e)
-                {
-                    System.Console.WriteLine(e.Message);
-                }
+                    catch (StockException e)
+                    {
+                        System.Console.WriteLine(e.Message);
+                    }
 
-            } while (check == false);
-           
+                } while (check == false);
+            }
+            catch (StockException e)
+            {
+                System.Console.WriteLine(e.Message);
+            }
 
-          
+
+
         }
+
         /// <summary>
-        /// local static funtion that calculates product stock of particular warehouseid and warehouse addressid of a product
+        /// local static funtion that calculates product stock of particular warehouseid and warehouse addressid of a product and displays all products available and no of quantity
         /// </summary>
-        /// <param name="warehouseID">parameter that accepts warehouseid of string type</param>
-        /// <param name="addressID">parameter that accepts Address of string type</param>
-        /// <returns> total stock availability of stock of a product</returns>
         public static void  GetAllStocks()
         {
                 ProductBusiness productBusinessLogic = new ProductBusiness();

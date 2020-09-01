@@ -1010,5 +1010,4 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
 
 
     }
-
 }
