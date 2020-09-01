@@ -82,7 +82,9 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         {
             return i.GetProductByProductID(ProductID);
 
+        
         }
+        
         IWareHouseAddressBusinessLogicLayer WareHouseAddress = new WareHouseAddressBusinessLogicLayer();
         /// <summary>
         /// Getting WarehouseAddressDetails using interface referance i.e. WareHouseAddress
@@ -129,7 +131,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
             catch (Exception e)
             {
                 throw;
-            }
+            
         
            
         }
@@ -184,6 +186,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
        public List<OrderManagement> GetOrderDetailsByEmployeeID(int value)
         {
             return dl.GetOrderDetailsByCustomerID(value);
+                
         }
         /// <summary>
         /// OrderId Generation

@@ -33,13 +33,14 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         /// <param name="orderID"></param>
         public OrderManagement(string products, string wareHouseAddress,int customerAddressId,double price,int orderID,int quantity)
         {
-            products = _productId;
-            wareHouseAddress = _wareHouseAddressId;
-            customerAddressId = _customerAddressId;
+         _productId=products;
+           _wareHouseAddressId = wareHouseAddress;
+            _customerAddressId= customerAddressId;
            
-            price = _totalPrice;
-            orderID = _orderID;
-            quantity = _quantity;
+           _totalPrice = price;
+            _orderID = orderID;
+           
+           _quantity= quantity;
            
         }
         /// <summary>
