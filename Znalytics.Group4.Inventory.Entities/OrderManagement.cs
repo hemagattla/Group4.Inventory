@@ -13,14 +13,14 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
 /// </summary>
     public class OrderManagement
     {    //private Fields
-        List<Product> _products;
-        WareHouseAddress _wareHouseAddress;
-        Customer _customerAddress;
+        string _productId;
+        string _wareHouseAddressId;
+        int _customerAddressId;
         int _orderID;
         double _totalPrice;
 
-        Dictionary<string, int> _pIdQuantity;
-        int _totalQuantity;
+        int _quantity;
+        
         
         /// <summary>
         /// Constructor That intializes the Fields
@@ -31,16 +31,16 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
         /// <param name="price"></param>
         
         /// <param name="orderID"></param>
-        public OrderManagement(List<Product> products, WareHouseAddress wareHouseAddress,Customer customerAddress,double price,int orderID,Dictionary<string,int> quantity,int totalQuantity)
+        public OrderManagement(string products, string wareHouseAddress,int customerAddressId,double price,int orderID,int quantity)
         {
-            products = _products;
-            wareHouseAddress = _wareHouseAddress;
-            customerAddress = _customerAddress;
+            products = _productId;
+            wareHouseAddress = _wareHouseAddressId;
+            customerAddressId = _customerAddressId;
            
             price = _totalPrice;
             orderID = _orderID;
-            quantity = _pIdQuantity;
-            totalQuantity = _totalQuantity;
+            quantity = _quantity;
+           
         }
         /// <summary>
         /// Default constructor
@@ -52,13 +52,13 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
 /// <summary>
 /// Property for setting values to Products field and Getting The value of the Field 
 /// </summary>
-       public List<Product> Products{
+       public string ProductId{
             set
             {
-                List<Product> Products = new List<Product>();
+                
                 if (value!= null)
                 {
-                    _products = value;
+                    _productId = value;
                 }
                 else
                 {
@@ -68,19 +68,19 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
             }
             get
             {
-                return _products;
+                return _productId;
             }
         }
         /// <summary>
         /// Property for setting values to WareHouseAddress field and Getting The value of the WareHouseAddress Field 
         /// </summary>
-        public WareHouseAddress WareHouseAddress
+        public string WareHouseAddressId
         {
             set
             {
                 if (value != null)
                 {
-                    _wareHouseAddress = value;
+                    _wareHouseAddressId = value;
                 }
             
                 else
@@ -90,19 +90,19 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
             }
             get
             {
-                return _wareHouseAddress;
+                return _wareHouseAddressId;
             }
         }
         /// <summary>
         /// Property for setting values to CustomerAddress field and Getting The value of the CustomerAddress Field 
         /// </summary>
-        public Customer CustomerAddress
+        public int CustomerAddressId
         {
             set
             {
-                if (value != null)
+                if (value != 0)
                 {
-                    _customerAddress = value;
+                    _customerAddressId = value;
                 }
                 else throw new OrderManagementException("Select Customer Address");
 
@@ -110,7 +110,7 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
             }
             get
             {
-                return _customerAddress;
+                return _customerAddressId;
             }
         }
         /// <summary>
@@ -154,39 +154,21 @@ namespace Znalytics.Inventory.OrderManagementModule.Entities
             }
         }
         /// <summary>
-        /// Property for storing Quantity in the index of ProductId
+        /// Property for storing Quantity 
         /// </summary>
-        public Dictionary<string,int> PIdQuantity
+        public int Quantity
         {
             set
             {
-                _pIdQuantity = value;
+                _quantity = value;
             }
             get
             {
-                return _pIdQuantity;
+                return _quantity;
             }
         }
 
-        /// <summary>
-        /// Property for assigning Values to Quantity Field and Getting the value of Quantity
-        /// </summary>
-        public int TotalQuantity 
-        {
-            set
-            {
-                if (value > 0 && value != ' ')
-                {
-                    _totalQuantity = value;
-                }
-                else throw new OrderManagementException("Quantity should be Greater than 0 and It Should not be null");
-            }
-            get
-            {
-                return _totalQuantity;
-            }
-        }
-
+        
      
         
     } 

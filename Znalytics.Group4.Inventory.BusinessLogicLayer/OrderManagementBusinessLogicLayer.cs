@@ -198,7 +198,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// </summary>
         /// <param name="orderid"></param>
         /// <param name="value"></param>
-        public void UpdateProductDetails(int orderid, List<Product> value)
+        public void UpdateProductDetails(int orderid, string value)
         {
 
             dl.UpdateProductDetails(orderid,value);
@@ -211,7 +211,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// <param name="orderid"></param>
         /// <param name="value"></param>
 
-        public void UpdateWareHouseAddressDetails(int orderid, WareHouseAddress value)
+        public void UpdateWareHouseAddressDetails(int orderid, string value)
         {
             dl.UpdateWareHouseAddressDetails(orderid, value);
 
@@ -221,11 +221,14 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// </summary>
         /// <param name="orderid"></param>
         /// <param name="value"></param>
-        public void UpdateCustomerAddressDetails(int orderid, Customer value)
+        public void UpdateCustomerAddressDetails(int orderid, int value)
         {
             dl.UpdateCustomerAddressDetails(orderid, value);
         }
-
+        public void UpdateQuantity(int orderId,int value)
+        {
+            dl.UpdateQuantity(orderId, value);
+        }
 
 
 
