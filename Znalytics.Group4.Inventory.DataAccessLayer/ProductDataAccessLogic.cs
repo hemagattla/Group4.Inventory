@@ -35,7 +35,11 @@ namespace Znalytics.Inventory.ProductModule.DataAccessLayer
         static ProductDataAccessLogic() // creating a list object in constructor
         {
 
-            _productsList = new List<Product>();// creating List object
+            _productsList = new List<Product>()
+            {
+                new Product(){ProductID="PID01",ProductName="Juice",Price=99 },
+                new Product(){ProductID="PID02",ProductName="MockTail",Price=88}         //MockData for Product
+            };// creating List object
             
             // code for loading file data into collection when no elements are in List
             if (_productsList.Count == 0 && File.Exists(@"C:\Users\Administrator\Desktop\ProcuctData.txt"))
