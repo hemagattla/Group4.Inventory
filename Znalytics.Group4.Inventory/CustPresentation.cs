@@ -31,9 +31,9 @@ namespace CustPresentationLayer
                     case 4: UpdateCustomer(); break;
                     case 5:DelCustomer();break;
                     case 6:GetCustomerById();
-                         break;
+                               break;
                     case 7:RemoveCustomer();
-                        break;
+                             break;
                 }
             } while (choice != 8);System.Console.WriteLine("enter valid choice");
         }
@@ -125,7 +125,7 @@ namespace CustPresentationLayer
 
 
         }
-         void RemoveCustomer()
+          static void RemoveCustomer()
 
         {
             CustBusiness cbl = new CustBusiness();
