@@ -19,6 +19,7 @@ namespace CustPresentationLayer
                 Console.WriteLine("4.update customer");
                 Console.WriteLine("5. del customer");
                 Console.WriteLine("6. getcustomerby id");
+                Console.WriteLine("7.to remove customer based on id");
                 Console.Write("Enter choice: ");
                 bool b = int.TryParse(Console.ReadLine(), out choice);
 
@@ -31,7 +32,8 @@ namespace CustPresentationLayer
                     case 5:DelCustomer();break;
                     case 6:GetCustomerById();
                          break;
-                      
+                    case 7:RemoveCustomer();
+                        break;
                 }
             } while (choice != 7);
         }
