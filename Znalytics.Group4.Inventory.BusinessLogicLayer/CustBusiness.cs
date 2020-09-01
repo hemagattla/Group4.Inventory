@@ -58,7 +58,7 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
         public void DelCustomer(Customer c)
 
         {
-            if (c.CustomerId != null)
+            if (c.CustomerId != 0)
             {
                 d.DelCustomer(c);
             }

@@ -1,23 +1,31 @@
-﻿using System;
+﻿//Created by Hema
+using System;
 using Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities;
 
 namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
 {
+    /// <summary>
+    /// EntityLayer for ProductRawMaterialModule
+    /// </summary>
     public class ProductRawMaterial
     {
+        //private fields
         private string _productId;
         private string _rawMaterialName;
         private string _rawMaterialID;
         private double _quantity;
         private string _units;
 
+        /// <summary>
+        /// Represents ProductID
+        /// </summary>
         public string ProductID
         {
             set
             {
                 try
                 {
-                    if (value != "")
+                    if (!string.IsNullOrEmpty(value))
                     {
                         _productId = value;
                     }
@@ -37,7 +45,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
             }
         }
         /// <summary>
-        /// write and read Property of string data type
+        /// Represents RawMaterialName
         /// </summary>
         public string RawMaterialName
         {
@@ -78,7 +86,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
             }
         }
         /// <summary>
-        /// property for RawMaterialID of string data type
+        /// Represents RawMaterialID
         /// </summary>
         public string RawMaterialID
         {
@@ -113,7 +121,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
             }
         }
         /// <summary>
-        /// Property for Quantity of double data type
+        /// Represents Quantity
         /// </summary>
         public double Quantity
         {
@@ -143,7 +151,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.Entities
         }
        
         /// <summary>
-        /// Property for units of string data type
+        /// Represents Units
         /// </summary>
         public string Units
         {

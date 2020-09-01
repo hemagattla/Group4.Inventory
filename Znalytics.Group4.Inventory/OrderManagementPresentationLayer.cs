@@ -90,20 +90,21 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 WareHouseAddress w = orderBusiness.GetWareHouseByAddressID(AddressId);
                 order.WareHouseAddress = w;
 
-                Stock stock = new Stock();
+               
                 System.Console.WriteLine("Enter WareHouseID");
                 string wareHouseID = System.Console.ReadLine();
                 System.Console.WriteLine("Enter AddressId");
                 string addressID = System.Console.ReadLine();
-                List<Stock> stocks = orderBusiness.GetAllStocks(wareHouseID, addressID);
-                List<string> ProductIDs = stocks.Select(temp => temp.ProductID).Distinct().ToList();
+                List<Stock> stocks = orderBusiness.GetAllStocks(wareHouseID,addressID);
+                //List<string> ProductIDs = stocks.Select(temp => temp.ProductID).Distinct().ToList();
                 System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
-                foreach (string item in ProductIDs)
+                foreach (var item in stocks)
                 {
 
-                    System.Console.WriteLine(item + "  " + orderBusiness.TotalQuantity(stock.WareHouseID, stock.AddressID, item));
+                    System.Console.WriteLine(item.ProductID + "  " + item.TotalQuantity);
                 }
-
+                System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
+               
             
 
                 //Calling the Method from BusinessLogicLyer to Display the Details of Products and quatity of Products
