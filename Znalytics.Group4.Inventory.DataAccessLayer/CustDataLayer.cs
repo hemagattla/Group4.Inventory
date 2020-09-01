@@ -13,10 +13,20 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
 {
     public class CustDataLayer : IcustDataLayer
     {
-        static List<Customer> _customers = new List<Customer>();/// <summary>
-                                                      /// creating list as customers///
-                                                                /// </summary>
-                                                                /// <param name="c"></param>
+        static List<Customer> _customers = new List<Customer>()/// <summary> /// creating list as customers///
+                                                               /// </summary>
+        {
+            new Customer()
+            {
+                CustomerId=1,CustomerName="ramya",Email="ramyasuram1999@gmail.com",Country="india",State="telengana",Street="ramvada",PinNo="123456",HNo="123456"
+            },
+            new Customer()
+            {
+                  CustomerId=2,CustomerName="ram",Email="ram1999@gmail.com",Country="india",State="telengana",Street="ramvada",PinNo="123456",HNo="123789"
+            }
+
+        };
+
         public void AddCustomer(Customer c)///called Add Customer method frm business logic layer///
         {
             _customers.Add(c);///adding values to customers list///
