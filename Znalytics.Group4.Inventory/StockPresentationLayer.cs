@@ -161,10 +161,10 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
 
 
         }
+
         /// <summary>
         /// local static funtion that calculates product stock of particular warehouseid and warehouse addressid of a product and displays all products available and no of quantity
         /// </summary>
-        
         public static void  GetAllStocks()
         {
                 ProductBusiness productBusinessLogic = new ProductBusiness();
