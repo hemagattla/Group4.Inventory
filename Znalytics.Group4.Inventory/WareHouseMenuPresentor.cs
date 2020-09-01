@@ -166,7 +166,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     WriteLine("Enter Existing WareHouse ID");
                     WriteLine("The Warehouse Id should start with WHID and of length 6.It shouldn't contain special characters");
 
-                    //Reads the WareHouseid and is stored in a reference variable
+                    //Reads the WareHouseid 
                     string whID = ReadLine();
 
                     //Calls the GetWareHouseByWareHouseID of WareHouseBusinessLogic and is stored in Warehouse reference variable
