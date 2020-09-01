@@ -105,7 +105,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
          
                         productRawMaterial.RawMaterialID = prm.RawMaterialID;
                         productRawMaterial.RawMaterialName = prm.RawMaterialName;
-                        System.Console.WriteLine(productRawMaterial);
+                        System.Console.WriteLine(productRawMaterial.RawMaterialName);
                         if (prbl.GetDetailsByProductIDAndRawMaterialID(productRawMaterial) == null)
                         {
                             System.Console.WriteLine("Enter the Quantity");
@@ -174,7 +174,8 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
             ProductRawMaterial a = prbl.GetProductRawMaterialByID(productRawMaterial.ProductID, productRawMaterial.RawMaterialID);
             if (a != null)
             {
-                System.Console.WriteLine(a.RawMaterialName);
+                productRawMaterial.RawMaterialName = a.RawMaterialName;
+                System.Console.WriteLine(productRawMaterial.RawMaterialName);
                 System.Console.WriteLine("Enter the Quantity");
                 productRawMaterial.Quantity = System.Convert.ToDouble(System.Console.ReadLine());
                 prbl.UpdateQuantityOfProduct(productRawMaterial);
