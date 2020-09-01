@@ -30,10 +30,8 @@ namespace CustPresentationLayer
                     case 3: LoginCustomer(); break;
                     case 4: UpdateCustomer(); break;
                     case 5:DelCustomer();break;
-                    case 6:GetCustomerById();
-                               break;
-                    case 7:RemoveCustomer();
-                             break;
+                    case 6:GetCustomerById();break;
+                    case 7:RemoveCustomer();break;
                 }
             } while (choice != 8);System.Console.WriteLine("enter valid choice");
         }
