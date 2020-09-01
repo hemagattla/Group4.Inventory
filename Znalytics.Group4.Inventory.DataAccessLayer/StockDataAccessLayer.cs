@@ -54,43 +54,38 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
 
 
         /// <summary>
-        /// used to calculate total Quantity of product
+        /// used to calculate total Quantity of product and get all stock availability of the product
         /// </summary>
         /// <param name="warehouseID">calculation will be done if the warehouseID exits in the stokcs list</param>
         /// <param name="addressID">calculation will be done if the addressID exits in the stokcs list</param>
-        /// <returns></returns>
+        /// <returns>stock details of each product in the warehouse of particular loctaion</returns>
 
-        public int TotalQuantity(string warehouseID, string addressID, string productID)
+        public List<Stock> GetAllStocks(string warehouseID, string addressID)
         {
-            bool result = _stocks.Exists(temp => temp.WareHouseID == warehouseID && temp.AddressID == addressID && temp.ProductID == productID);
+            bool result = _stocks.Exists(temp => temp.WareHouseID == warehouseID && temp.AddressID == addressID );
             
             if (result == true)
             {
-                    return _stocks.Select(x => x.Quantity).Sum();
+                //used to return products of particular warehouse id and addressid of warehouse
+                List<Stock> productIDs = _stocks.Where(temp => temp.WareHouseID == warehouseID && temp.AddressID == addressID).ToList();
+                //summing up all the products quantity in the list
+                List<Stock> result1 = productIDs.GroupBy(l => l.ProductID).Select(cl => new Stock
+                {
+                    ProductID = cl.First().ProductID,
+                    Quantity = cl.Count(),
+                    TotalQuantity = cl.Sum(c => c.Quantity),
+                }).ToList();
+                return result1;
+
+
             }
             else
             {
-                return 0;
+                return null;
             }
         }
 
-        /// <summary>
-        /// Displaying the number of Stocks available of product in each ware house
-        /// </summary>
-        /// <param name="stock">it contains the user entered warehouse id and warehouse adddress</param>
-        /// <returns> returns Stock List</returns>
-        public List<Stock> DisplayStock(Stock stock)        
-        {
-            bool result = _stocks.Exists(temp => temp.WareHouseID ==stock.WareHouseID && temp.AddressID ==stock.AddressID);
-            if (result == true)
-            {
-                return _stocks.Where(temp => temp.WareHouseID == stock.WareHouseID && temp.AddressID == stock.AddressID).ToList();
-            }
-            else
-            {
-                throw new StockException("invlaid WarehouseID or AdressID");
-            }
-        }
+       
 
         /// <summary>
         /// used to Update the quntity of Stock of Product of Particular WarehouseID and warehouse AddressId

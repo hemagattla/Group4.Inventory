@@ -45,7 +45,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         }
         public int TotalQuantity(string warehouseID, string addressID, string productID)
         {
-            return b.TotalQuantity(warehouseID, addressID, productID);
+            return 0;//b.TotalQuantity(warehouseID, addressID, productID);
         }
 
         //Creating Reference Variable for Products in BusinessLogicLayer 

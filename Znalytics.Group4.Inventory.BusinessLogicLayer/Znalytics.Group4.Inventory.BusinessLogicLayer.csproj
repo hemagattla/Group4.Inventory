@@ -47,6 +47,7 @@
     <Compile Include="ICustBusinessLogicLayer.cs" />
     <Compile Include="IOrderManagementBusinessLayer.cs" />
     <Compile Include="IRawMaterialBusinessLogicLayer.cs" />
+    <Compile Include="IStockBusinessLogic.cs" />
     <Compile Include="IWareHouseAddressBusinessLogicLayer.cs" />
     <Compile Include="OrderManagementBusinessLogicLayer.cs" />
     <Compile Include="ProductRawMaterialBusinessLogicLayer.cs" />
