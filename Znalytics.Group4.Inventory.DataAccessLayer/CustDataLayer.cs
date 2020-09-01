@@ -67,11 +67,12 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
         {
             Customer e;
             e = _customers.Find(n => n.CustomerId == CustomerId);
+            /// e = _customers.FirstOrdefault(n => n.CustomerId == CustomerId);///linq  example
+            ///  e = _customers.OrderedBy(n => n.CustomerId == CustomerId);
             return e;
         }
         public void RemoveCustomer(int CustomerId) => _customers.RemoveAll(n => n.CustomerId == CustomerId);
         ///deleting customers deatils based on given condition///
     }
-
-   
+  
 }
