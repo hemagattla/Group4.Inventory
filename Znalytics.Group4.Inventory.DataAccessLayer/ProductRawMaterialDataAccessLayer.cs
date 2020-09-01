@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Created By Hema
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,9 @@ using System.IO;
 
 namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
 {
+    /// <summary>
+    /// ProductRawMaterialDataAccessLayer used to details in list
+    /// </summary>
     public class ProductRawMaterialDataAccessLayer
     {
 
@@ -81,7 +85,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         /// <summary>
         /// UpdateQuantityOfProduct is a instane method used to Update the Quantity Based on ProductID and RawMaterialID
         /// </summary>
-        /// <param name="rawMaterial">is a variable of RawMaterial type</param>
+        /// <param name="productRawMaterial">Contain the all the Details of the feild present in ProductRawMaterial Class</param>
         public void UpdateQuantityOfProduct(ProductRawMaterial productRawMaterial)
         {
             ProductRawMaterial abc = _productRawMaterials.Find(temp => temp.ProductID == productRawMaterial.ProductID && temp.RawMaterialID == productRawMaterial.RawMaterialID);
@@ -92,7 +96,7 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
         /// <summary>
         /// GetDetailsByProductID is a instance method used to Return the List if ProductID matches
         /// </summary>
-        /// <param name="productRawMaterial"></param>
+        /// <param name="productRawMaterial">Contain the all the Details of the feild present in ProductRawMaterial Class</param>
         /// <returns>Return the list</returns>
         public List<ProductRawMaterial> GetDetailsByProductID(ProductRawMaterial productRawMaterial)
         {
@@ -110,6 +114,11 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
                 .ThenBy(temp=>temp.RawMaterialName).ToList();
             return ab;
         }
+        /// <summary>
+        /// checks weather entered details contains or not in the List
+        /// </summary>
+        /// <param name="productRawMaterial">Contain the all the Details of the feild present in ProductRawMaterial Class</param>
+        /// <returns>Returns the details based on ProductID and RwMaterialID</returns>
         public ProductRawMaterial GetDetailsByProductIDAndRawMaterialID(ProductRawMaterial productRawMaterial)
         {
             ProductRawMaterial ab = _productRawMaterials.Find(temp => temp.ProductID == productRawMaterial.ProductID && temp.RawMaterialID == productRawMaterial.RawMaterialID);
@@ -124,6 +133,9 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
                 }
 
         }
+        /// <summary>
+        /// serialization
+        /// </summary>
         public void ListOfRawMaterials()
         {
             string s = JsonConvert.SerializeObject(_productRawMaterials);
@@ -133,6 +145,10 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.DataAccessLayer
             streamWriter.Write(s);
             streamWriter.Close();
         }
+        /// <summary>
+        /// Deserialization
+        /// </summary>
+        /// <returns>returns the list</returns>
         public static List<ProductRawMaterial> LoadDetailsToList()
         {
             StreamReader streamReader = new StreamReader(@"C:\Users\Administrator\Desktop\ProductRawMaterial\ProductRawMaterials.txt");
