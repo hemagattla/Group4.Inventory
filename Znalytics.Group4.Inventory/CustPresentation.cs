@@ -112,7 +112,7 @@ namespace CustPresentationLayer
             cbl.DelCustomer(c);
             Console.WriteLine("customer has deleted");
         }
-        static void GetCustomerById()
+        static void GetCustomerById()///geting all customers stored in database///
         {
 
             System.Console.Write("Enter the customerID: ");
@@ -123,7 +123,7 @@ namespace CustPresentationLayer
 
 
         }
-          static void RemoveCustomer()
+          static void RemoveCustomer()///removing customer details by using customerid by taking primary key///
 
           {
             CustBusiness cbl = new CustBusiness();
