@@ -88,9 +88,14 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 Console.WriteLine("Enter AddressID of WareHouse Address From where you want Products");
                 string AddressId = Console.ReadLine();
                 WareHouseAddress w = orderBusiness.GetWareHouseByAddressID(AddressId);
-                order.WareHouseAddress = w;
-
+                order.WareHouseAddress.AddressId = w.AddressId;
+                order.WareHouseAddress.DoorNumber = w.DoorNumber;
+                order.WareHouseAddress.LocationName = w.LocationName;
+                order.WareHouseAddress.Pincode = w.Pincode;
+                order.WareHouseAddress.State = w.State;
                
+
+
                 System.Console.WriteLine("Enter WareHouseID");
                 string wareHouseID = System.Console.ReadLine();
                 System.Console.WriteLine("Enter AddressId");
@@ -98,7 +103,8 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 List<Stock> stocks = orderBusiness.GetAllStocks(wareHouseID,addressID);
                 //List<string> ProductIDs = stocks.Select(temp => temp.ProductID).Distinct().ToList();
                 System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
-                foreach (var item in stocks)
+                foreach (var item 
+                    in stocks)
                 {
 
                     System.Console.WriteLine(item.ProductID + "  " + item.TotalQuantity);
@@ -136,10 +142,15 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                            
                             
                           Product p= orderBusiness.ProductDetails(productId);
-                           
+
                             order.Products = new List<Product>();
-                            order.Products.Add(p);
-                            
+                            foreach (var item in order.Products)
+                            {
+
+                                item.ProductName = p.ProductName;
+                                item.ProductID = p.ProductID;
+                                item.Price = p.Price;
+                            }
                             Stock s = new Stock();
                             s.Quantity -= order.PIdQuantity[productId];
                             order.TotalPrice += p.Price * quantity;
@@ -158,6 +169,14 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 Console.WriteLine("Enter your CustomerId to Choose your Address");
                 int CustomerId = int.Parse(Console.ReadLine());
                 Customer customerAddress = orderBusiness.GetCustomerDetailsByCustomerID(CustomerId);
+                order.CustomerAddress.CustomerId = customerAddress.CustomerId;
+                order.CustomerAddress.Country = customerAddress.Country;
+                order.CustomerAddress.State = customerAddress.State;
+                order.CustomerAddress.City = customerAddress.City;
+                order.CustomerAddress.HNo = customerAddress.HNo;
+                order.CustomerAddress.MblNo = customerAddress.MblNo;
+                order.CustomerAddress.PinNo = customerAddress.PinNo;
+                order.CustomerAddress.Email = customerAddress.Email;
                 Console.WriteLine("price for Selected Products is:" + order.TotalPrice);
                 Console.WriteLine("Enter 1 if You want to conform your Order");
                 int i = int.Parse(Console.ReadLine());
