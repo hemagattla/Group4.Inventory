@@ -34,7 +34,7 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
             
             };// creating the Stock List object
            
-            if (_stocks.Count == 0 && File.Exists(@"C:\Users\Administrator\Desktop\StockData.txt")) 
+            if (_stocks.Count == 0 && File.Exists(@"C:\Users\Administrator\Desktop\StockData.txt")) //adding the File content into the list if the list is empty
             {
                 _stocks = GetFiledata();
             }
@@ -48,8 +48,8 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
         /// <param name="stock">its of Stock class type which contains stock details to be stored into the list</param>
         public void AddStock(Stock stock)
         {
-            _stocks.Add(stock);
-            SaveIntoFile();
+            _stocks.Add(stock);//adding stock details into the Stocks List
+            SaveIntoFile(); //serializing into the file 
 
         }
 
@@ -63,7 +63,7 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
 
         public List<Stock> GetAllStocks(string warehouseID, string addressID)
         {
-            bool result = _stocks.Exists(temp => temp.WareHouseID == warehouseID && temp.AddressID == addressID );
+            bool result = _stocks.Exists(temp => temp.WareHouseID == warehouseID && temp.AddressID == addressID ); //checking whether the warehousid and warehouse address id is present in the list or not
             
             if (result == true)
             {
@@ -72,7 +72,7 @@ namespace Znalytics.Inventory.StockMaintain.DataAccessLayer
                 //summing up all the products quantity in the list
                 List<Stock> result1 = productIDs.GroupBy(l => l.ProductID).Select(cl => new Stock
                 {
-                    ProductID = cl.First().ProductID,
+                    ProductID = cl.First().ProductID,                                
                     Quantity = cl.Count(),
                     TotalQuantity = cl.Sum(c => c.Quantity),
                 }).ToList();

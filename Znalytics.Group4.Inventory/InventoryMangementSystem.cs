@@ -18,6 +18,9 @@ namespace Znalytics.Group4.Inventory
 {
     class InventoryMangementSystem
     {
+        /// <summary>
+        /// Excecution starts from Main
+        /// </summary>
         static void Main()
         {
             System.Console.WriteLine("=============INVENTORY MANAGEMENT SYSTEM=====================");
@@ -129,7 +132,7 @@ namespace Znalytics.Group4.Inventory
                     {
                         System.Console.WriteLine("Please Enter the only digits");
                     }
-                } while (option != 3);
+                } while (option != 6);
 
             }
             else
