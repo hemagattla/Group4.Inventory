@@ -266,12 +266,12 @@ namespace Znalytics.Inventory.AddressModule.BusinessLogicLayer
         /// <summary>
         /// Method to check whether the AddressId exists or not
         /// </summary>
-        /// <param name="id">Represents the Address id</param>
+        /// <param name="addressId">Represents the Address id</param>
         /// <returns></returns>
-        public bool CheckAddressId(string id)
+        public bool CheckAddressId(string addressId)
         {
             //Call the CheckAddressId method of WareHouseAddress Data Layer
-            return wadl.CheckAddressId(id);
+            return wadl.CheckAddressId(addressId);
         }
 
 

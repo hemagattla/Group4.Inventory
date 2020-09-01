@@ -436,7 +436,7 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                 {
                     WriteLine("You chose to Add the Address to a WareHouse");
                     //Created an object for WareHouseAddress class and stored it in a reference variable
-                    WareHouseAddress a = new WareHouseAddress();
+                    WareHouseAddress address = new WareHouseAddress();
 
                     //Created an object for WareHouseAddress Business class and stored it in a reference variable
                     WareHouseAddressBusinessLogicLayer wabl = new WareHouseAddressBusinessLogicLayer();
@@ -445,42 +445,42 @@ namespace Znalytic.Inventory.WareHouseModule.PresentationLayer
                     WriteLine("Enter Existing WareHouseId");
                     WriteLine("The Warehouse Id should start with WHID and of length 6.It shouldn't contain special characters");
                     //Reads the WareHouseid and is stored in the WareHouseAddress object
-                    a.WareHouseId = ReadLine();
+                    address.WareHouseId = ReadLine();
 
                     //Condition to check whether WareHouseid exists or not
-                    if (CheckWareHouseId(a.WareHouseId) == true)
+                    if (CheckWareHouseId(address.WareHouseId) == true)
                     {
                         //Condition to check whether Addressid exists or not
-                        if (CheckAddressId(a.AddressId) == false)
+                        if (CheckAddressId(address.AddressId) == false)
                         {
                             check = true;
                             WriteLine("Enter Address id");
                             WriteLine("Addressid must be of length 6 and should contain only alphanumeric values");
                             //Reads the AddressId and is stored in the WareHouseAddress object
-                            a.AddressId = ReadLine();
+                            address.AddressId = ReadLine();
 
                             WriteLine("Enter Door Number");
                             WriteLine("Door Number shouldn't be null or empty");
                             //Reads the DoorNumber and is stored in the WareHouseAddress object
-                            a.DoorNumber = ReadLine();
+                            address.DoorNumber = ReadLine();
 
                             WriteLine("Enter Location Name");
                             WriteLine("Location Name shouldn't be null and should contain alphabets");
                             //Reads the LocationName and is stored in the WareHouseAddress object
-                            a.LocationName = ReadLine();
+                            address.LocationName = ReadLine();
 
                             WriteLine("Enter State");
                             WriteLine("State shouldn't be null and should contain alphabets");
                             //Reads the State and is stored in the WareHouseAddress object
-                            a.State = ReadLine();
+                            address.State = ReadLine();
 
                             WriteLine("Enter the Pincode");
                             WriteLine("Pincode must be numeric and length should be exactly 6");
                             //Reads the Pincode and is stored in the WareHouseAddress object
-                            a.Pincode = ReadLine();
+                            address.Pincode = ReadLine();
 
                             //Calls the AddAddress method of WareHouseAddressBusinessLogic
-                            wabl.AddAddress(a);
+                            wabl.AddAddress(address);
 
 
                             WriteLine("Address added successfully");
