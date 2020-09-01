@@ -68,8 +68,15 @@ namespace Znalytics.Inventory.Module.BusinessLogicLayer///namespace is nothing b
             return d.GetCustomerById(CustomerId);
 
         }
+        public void RemoveCustomer(int CustomerId)
+        {
+            if (CustomerId != null)
+            {
+                d.RemoveCustomer(CustomerId);
+            }
+        }
 
-        
+
     }
 }
 

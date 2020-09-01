@@ -59,7 +59,9 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
             e = _customers.Find(n => n.CustomerId == CustomerId);
             return e;
         }
-        
-      
+        public void RemoveCustomer(int CustomerId) => _customers.RemoveAll(n => n.CustomerId == CustomerId);
+        ///deleting customers deatils based on given condition///
     }
+
+   
 }
