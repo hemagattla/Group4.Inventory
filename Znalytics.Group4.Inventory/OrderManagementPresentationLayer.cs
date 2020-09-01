@@ -163,8 +163,8 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 int i = int.Parse(Console.ReadLine());
                 if (i == 1)
                 {
-                    order.OrderID = orderBusiness.OrderID();
-                    Console.WriteLine("Your OrderID Is:" + order.OrderID);
+                    //order.OrderID = orderBusiness.OrderID();
+                    Console.WriteLine("Your OrderID Is:" + DateTime.Now);
                     orderBusiness.AddOrderDetails(order);
                 }
                 else

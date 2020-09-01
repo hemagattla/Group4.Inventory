@@ -10,7 +10,7 @@ using Znalytics.Group4.Inventory.DataAccessLayer;
 using System;
 using Newtonsoft.Json;
 using System.IO;
-
+using Znalytics.Inventory.Module.DataAccessLayer;
 namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
 {/// <summary>
 ///  Represents the OrderManagement Details in DataLayer
@@ -22,9 +22,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         {
             _orders = new List<OrderManagement>();
 
-            {
-                new OrderManagement() { OrderID = 1 };
-            }
+           
         }
         
 
@@ -159,7 +157,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// <returns></returns>
         public int OrderIdGeneration()
         {
-           int orderid= _orders.Max(temp => temp.OrderID);
+           int orderid= _orders.Max(temp => temp.CustomerAddress.CustomerId);
             return orderid++;
         }
         /// <summary>
