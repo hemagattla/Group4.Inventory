@@ -149,11 +149,8 @@ namespace Znalytics.Group4.Inventory
                 OrderManagementPresentationLayer orderManagement = new OrderManagementPresentationLayer();
                 CustPresentation custpresentation = new CustPresentation();
                 System.Console.WriteLine("1. customer details");
-                System.Console.WriteLine("2. warehouse details");
-                System.Console.WriteLine("3. Display Products");
-                System.Console.WriteLine("4. show stock");
-                System.Console.WriteLine("5. order");
-                System.Console.WriteLine("6. Exit");
+                System.Console.WriteLine("2. order");
+                System.Console.WriteLine("3. Exit");
 
                 bool b = int.TryParse(System.Console.ReadLine(), out option);
 
@@ -166,12 +163,7 @@ namespace Znalytics.Group4.Inventory
                             case 1:custpresentation.menu();
 
                                 break;
-                            case 2:
-
-                                break;
-                            case 3: break;
-                            case 4:break;
-                            case 5: orderManagement.Menu();break;
+                            case 2: orderManagement.Menu();break;
                             default:
                                 System.Console.WriteLine("Please Enter the Correct Option");
                                 break;
