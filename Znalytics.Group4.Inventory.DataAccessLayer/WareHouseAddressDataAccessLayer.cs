@@ -40,10 +40,10 @@ namespace Znalytics.Inventory.AddressModule.DataAccessLayer
             _addressList = new List<WareHouseAddress>()
             {
                 //Mock Data
-                new WareHouseAddress(){WareHouseId="WHID01",AddressId="W1A1",DoorNumber="1-1-1",LocationName="WARANGAL",Pincode="505005"},
-                new WareHouseAddress(){WareHouseId="WHID01",AddressId="W1A2",DoorNumber="1-2-2",LocationName="HYDERABAD",Pincode="506003"},
-                new WareHouseAddress(){WareHouseId="WHID02",AddressId="W2A1",DoorNumber="2-1-1",LocationName="KARIMNAGAR",Pincode="506002"},
-                new WareHouseAddress(){WareHouseId="WHID02",AddressId="W2A2",DoorNumber="2-2-2",LocationName="VIZAG",Pincode="506009"},
+                new WareHouseAddress(){WareHouseId="WHID01",AddressId="W1A1",DoorNumber="1-1-1",LocationName="WARANGAL",State="TELANGANA",Pincode="505005"},
+                new WareHouseAddress(){WareHouseId="WHID01",AddressId="W1A2",DoorNumber="1-2-2",LocationName="HYDERABAD",State="TELANGANA",Pincode="506003"},
+                new WareHouseAddress(){WareHouseId="WHID02",AddressId="W2A1",DoorNumber="2-1-1",LocationName="KARIMNAGAR",State="TELANGANA",Pincode="506002"},
+                new WareHouseAddress(){WareHouseId="WHID02",AddressId="W2A2",DoorNumber="2-2-2",LocationName="VIZAG",State="ANDHRA PRADESH",Pincode="506009"},
             };
             if (_addressList.Count == 0)
             {
