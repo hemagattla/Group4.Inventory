@@ -93,7 +93,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                         System.Console.WriteLine("Enter WareHouseID");
                         System.Console.WriteLine("It should not contain spaces and length be exactly 6");
                         stock.WareHouseID = System.Console.ReadLine();
-                        if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID) == true)
+                        if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID) == true)//checking whether the Warehouse Id is present in the list of warehouse
                         {
                             do
                             {
@@ -103,7 +103,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                                 System.Console.WriteLine("Enter Address ID");
                                 System.Console.WriteLine("It should not contain spaces or Special Characters and length should be exactly 4");
                                 stock.AddressID = System.Console.ReadLine();
-                                if (wareHousePresentation.CheckAddressId(stock.AddressID))
+                                if (wareHousePresentation.CheckAddressId(stock.AddressID))//checking whether the warehouse address is present in list of warehouse adress
                                 {
                                     bool check2 = false;
                                     check1 = true;
@@ -114,7 +114,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                                             System.Console.WriteLine("Enter Product ID");
                                             System.Console.WriteLine("Product ID Should not NULL and ProductID Should Start with PID and 0-9 number and length should be 6");
                                             stock.ProductID = System.Console.ReadLine();
-                                            if (productBusinessLogic.CheckProductID(stock.ProductID))
+                                            if (productBusinessLogic.CheckProductID(stock.ProductID))//checking whether product is available in the list or not
                                             {
                                                 check2 = true;
 
@@ -174,7 +174,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                     System.Console.WriteLine("Enter WareHouseID");
                     System.Console.WriteLine("It should not contain spaces and length be exactly 6");
                     stock.WareHouseID = System.Console.ReadLine();
-                    if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID));
+                    if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID)) //checking whether the Warehouse Id is present in the list of warehouse
                     {
                         bool check1 = false;
                         check = true;
@@ -185,7 +185,8 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                                 System.Console.WriteLine("Enter Address ID");
                                 System.Console.WriteLine("It should not contain spaces or Special Characters and length should be exactly 4");
                                 stock.AddressID = System.Console.ReadLine();
-                                if (wareHousePresentation.CheckAddressId(stock.AddressID))
+                                if (wareHousePresentation.CheckAddressId(stock.AddressID))//checking whether the warehouse address is present in list of warehouse adress
+
                                 {
                                     check1 = true;
                                     List<Stock> stocks = stockBusinessLogicLayer.GetAllStocks(stock.WareHouseID, stock.AddressID);
@@ -234,7 +235,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                     System.Console.WriteLine("enter to which WarehouseId you want to update the quantity:");
                     System.Console.WriteLine("It should not contain spaces and length be exactly 6");
                     stock.WareHouseID = System.Console.ReadLine();
-                    if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID)) ;
+                    if (wareHousePresentation.CheckWareHouseId(stock.WareHouseID)) //checking whether the Warehouse Id is present in the list of warehouse
                     {
                         bool check1 = false;
                         check = true;
@@ -245,7 +246,8 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                                 System.Console.WriteLine("enter to which WarehouseAddress you want to update the quantity:");
                                 System.Console.WriteLine("It should not contain spaces or Special Characters and length should be exactly 4");
                                 stock.AddressID = System.Console.ReadLine();
-                                if (wareHousePresentation.CheckAddressId(stock.AddressID))
+                                if (wareHousePresentation.CheckAddressId(stock.AddressID))//checking whether the warehouse address is present in list of warehouse adress
+
                                 {
                                     bool check2 = false;
                                     check1 = true;
@@ -256,7 +258,7 @@ namespace Znalytics.Inventory.StockMaintain.PresentationLayer
                                             System.Console.WriteLine("enter to which ProductID you want to update the quantity");
                                             System.Console.WriteLine("Product ID Should not NULL and ProductID Should Start with PID and 0-9 number and length should be 6");
                                             stock.ProductID = System.Console.ReadLine();
-                                            if (productBusinessLogic.CheckProductID(stock.ProductID))
+                                            if (productBusinessLogic.CheckProductID(stock.ProductID))//checking whether product is available in the list or not
                                             {
                                                 check2 = true;
                                                 System.Console.WriteLine("enter the quantity to be updated:");
