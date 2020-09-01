@@ -53,7 +53,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         }
 
         /// <summary>
-        /// Add OrderDetails
+        /// Method for Adding OrderDetails
         /// </summary>
         /// <param name="values"></param>
 
@@ -75,7 +75,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         }
 
        /// <summary>
-       /// Cancel OrderDetails By OrderID
+       /// Cancel OrderDetails By Using OrderID
        /// </summary>
        /// <param name="values"></param>
         public void CancelOrder(int value)
@@ -106,7 +106,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
             return order;
         }
         /// <summary>
-        /// Get OrderDetails by ProductID
+        /// Get OrderDetails by using ProductID
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -129,7 +129,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
             return order;
         }
         /// <summary>
-        /// Get OrderDetails By CustomerID
+        /// Get OrderDetails By using CustomerID
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>

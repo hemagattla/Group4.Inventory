@@ -27,30 +27,51 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
     {
         OrderManagementDataLayer dl;
         
-
+        //Represents a Constructor of OrderManagementBusineeLogicLayer Class
         public OrderManagementBusinessLogicLayer()
         {
             dl = new OrderManagementDataLayer();
         }
+        //Creating Reference variable for Interface for IWareHouseBusinessLogicLayer
         IWareHouseBusinessLogicLayer k = new WareHouseBusinessLogicLayer();
+        /// <summary>
+        /// Method for Getting Details of WareHouses
+        /// </summary>
+        /// <returns></returns>
         public List<WareHouse> GetWareHouses()
         {
             return k.GetWareHouses();
         }
+        //Creating Object for StockBusinessLogicLayer
         StockBusinessLogicLayer b = new StockBusinessLogicLayer();
-   
-        public List<Stock> DisplayStock(Stock stock)
+        /// <summary>
+        /// Method for Getting All Stocks
+        /// </summary>
+        /// <param name="warehouseID"></param>
+        /// <param name="addressID"></param>
+        /// <returns></returns>
+        public List<Stock> GetAllStocks(string warehouseID, string addressID)
         {
-            return b.DisplayStock(stock);
+            return b.GetAllStocks(warehouseID, addressID);
         }
+        /// <summary>
+        /// Method for Getting Total Quantity
+        /// </summary>
+        /// <param name="warehouseID"></param>
+        /// <param name="addressID"></param>
+        /// <param name="productID"></param>
+        /// <returns></returns>
         public int TotalQuantity(string warehouseID, string addressID, string productID)
         {
             return 0;//b.TotalQuantity(warehouseID, addressID, productID);
         }
 
-        //Creating Reference Variable for Products in BusinessLogicLayer 
+        //Creating Reference Variable for Interface IProductBusinessLogicLayer
         IProductBusinessLogicLayer i = new ProductBusiness();
-        
+        /// <summary>
+        /// Metod for Displaying Products
+        /// </summary>
+        /// <returns></returns>
         public List<Product> DispalyProducts()
         {
             return i.DispalyProducts();
@@ -74,6 +95,11 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         {
             return WareHouseAddress.GetAddresses();
         }
+        /// <summary>
+        /// Getting WareHouse Details by AddressId
+        /// </summary>
+        /// <param name="AddressID"></param>
+        /// <returns></returns>
         public WareHouseAddress GetWareHouseByAddressID(string AddressID)
         {
             return WareHouseAddress.GetAddressByAddressID(AddressID);
@@ -85,6 +111,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         /// </summary>
         /// <param name="CustomerId"></param>
         /// <returns></returns>
+        
         public Customer GetCustomerDetailsByCustomerID(int CustomerId)
         {
             return CustomerAddress.GetCustomerById(CustomerId);
@@ -125,7 +152,7 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         }
 
         /// <summary>
-        /// Cancel OrderDetails
+        /// Cancel OrderDetails By OrderId
         /// </summary>
         /// <param name="value"></param>
         public void CancelOrderDetails(int value)
@@ -161,6 +188,10 @@ namespace Znalytics.Group4.Inventory.BusinessLogicLayer
         {
             return dl.GetOrderDetailsByCustomerID(value);
         }
+        /// <summary>
+        /// OrderId Generation
+        /// </summary>
+        /// <returns></returns>
         public int OrderID()
         {
             return dl.OrderIdGeneration();
