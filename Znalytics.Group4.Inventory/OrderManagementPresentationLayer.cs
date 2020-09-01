@@ -86,17 +86,15 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                 }
 
                 Console.WriteLine("Enter AddressID of WareHouse Address From where you want Products");
-                string AddressId = Console.ReadLine();
-                WareHouseAddress w = orderBusiness.GetWareHouseByAddressID(AddressId);
-                order.WareHouseAddressId = w.AddressId;
-              
+                string addressId = Console.ReadLine();
+                order.WareHouseAddressId = addressId;
+               
 
 
                 System.Console.WriteLine("Enter WareHouseID");
                 string wareHouseID = System.Console.ReadLine();
-                System.Console.WriteLine("Enter AddressId");
-                string addressID = System.Console.ReadLine();
-                List<Stock> stocks = orderBusiness.GetAllStocks(wareHouseID,addressID);
+              
+                List<Stock> stocks = orderBusiness.GetAllStocks(wareHouseID,addressId);
                 
                 System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
                 foreach (var item 
@@ -132,9 +130,9 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
 
                 Console.WriteLine("==========AddressDetails Of Customer================");
                 Console.WriteLine("Enter your CustomerId to Choose your Address");
-                int CustomerId = int.Parse(Console.ReadLine());
-                Customer customerAddress = orderBusiness.GetCustomerDetailsByCustomerID(CustomerId);
-                order.CustomerAddressId = customerAddress.CustomerId;
+                int customerId = int.Parse(Console.ReadLine());
+                Customer customerAddress = orderBusiness.GetCustomerDetailsByCustomerID(customerId);
+                order.CustomerAddressId = customerId;
                 
                 Console.WriteLine("price for Selected Products is:" + order.TotalPrice);
                 Console.WriteLine("Enter 1 if You want to conform your Order");
