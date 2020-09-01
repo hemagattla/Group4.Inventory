@@ -95,16 +95,17 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
                 Product a = prbl.GetProductByProductID(productRawMaterial.ProductID);
                 if (a != null)
                 {
-                    //Product a = prbl.GetProductByProductID(productRawMaterial.ProductID);
+                    
                     productRawMaterial.ProductID = a.ProductID;
                     System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
                     productRawMaterial.RawMaterialID = System.Console.ReadLine();
                     RawMaterial prm = prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID);
                     if (prm != null)
                     {
-                        // RawMaterial prm = prbl.GetRawMaterialByRawMaterialID(productRawMaterial.RawMaterialID);
+         
                         productRawMaterial.RawMaterialID = prm.RawMaterialID;
                         productRawMaterial.RawMaterialName = prm.RawMaterialName;
+                        System.Console.WriteLine(productRawMaterial);
                         if (prbl.GetDetailsByProductIDAndRawMaterialID(productRawMaterial) == null)
                         {
                             System.Console.WriteLine("Enter the Quantity");
@@ -170,8 +171,10 @@ namespace Znalytics.Group4.Inventory.ProductRawMaterialModule.PresentationLayer
             productRawMaterial.ProductID = System.Console.ReadLine();
             System.Console.WriteLine("enter RawMaterialID (RawMaterialID must Starts With *RMID* and length should be *6*)");
             productRawMaterial.RawMaterialID = System.Console.ReadLine();
-            if (prbl.GetProductRawMaterialByID(productRawMaterial.ProductID,productRawMaterial.RawMaterialID) != null)
-            {  
+            ProductRawMaterial a = prbl.GetProductRawMaterialByID(productRawMaterial.ProductID, productRawMaterial.RawMaterialID);
+            if (a != null)
+            {
+                System.Console.WriteLine(a.RawMaterialName);
                 System.Console.WriteLine("Enter the Quantity");
                 productRawMaterial.Quantity = System.Convert.ToDouble(System.Console.ReadLine());
                 prbl.UpdateQuantityOfProduct(productRawMaterial);
