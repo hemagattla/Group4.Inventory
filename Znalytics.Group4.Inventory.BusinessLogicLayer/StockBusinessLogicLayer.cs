@@ -6,12 +6,11 @@ using Znalytics.Inventory.StockMaintain.Entities;
 using Znalytics.Inventory.StockMaintain.DataAccessLayer;
 using System.Collections.Generic;
 using Znalytics.Inventory.StockMaintain.CustomException;
-
-
+using Znalytics.Inventory.StockMaintain.IDataAccessLayer;
 
 namespace Znalytics.Inventory.StockMaintain.BusinessLogicLayer
 {
-    public class StockBusinessLogicLayer
+    public class StockBusinessLogicLayer : IStockBusinessLogic
     {
         StockDataAccessLogic stockDataAccesslogic;
         /// <summary>
