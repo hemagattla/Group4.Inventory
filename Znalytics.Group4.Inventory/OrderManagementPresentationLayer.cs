@@ -118,17 +118,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
                             order.Quantity = quantity;
              Product p = orderBusiness.ProductDetails(order.ProductId);
              order.TotalPrice +=  p.Price* quantity;
-                            
-                           
-
-
-                        
-
-                  
-
-
-
-                Console.WriteLine("==========AddressDetails Of Customer================");
+             Console.WriteLine("==========AddressDetails Of Customer================");
                 Console.WriteLine("Enter your CustomerId to Choose your Address");
                 int customerId = int.Parse(Console.ReadLine());
                 Customer customerAddress = orderBusiness.GetCustomerDetailsByCustomerID(customerId);
