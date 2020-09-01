@@ -127,14 +127,14 @@ namespace CustPresentationLayer
         }
           static void RemoveCustomer()
 
-        {
+          {
             CustBusiness cbl = new CustBusiness();
             Customer c = new Customer();
             Console.Write("enter customer id");
             int CustomerId = int.Parse(Console.ReadLine());
             cbl.RemoveCustomer(CustomerId);
             Console.WriteLine("customer has deleted");
-        }
+           }
 
     }
 }
