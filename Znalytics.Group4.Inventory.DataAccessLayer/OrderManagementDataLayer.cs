@@ -21,6 +21,10 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         public OrderManagementDataLayer()
         {
             _orders = new List<OrderManagement>();
+
+            {
+                new OrderManagement() { OrderID = 1 };
+            }
         }
         
 
