@@ -56,14 +56,14 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// <summary>
         ///Method to ADD WareHouse details to the list
         /// </summary>
-        /// <param name="warehouseDetails">Represents warehouse object</param>
-        public static void AddWareHouse(WareHouse warehouseDetails)
+        /// <param name="wareHouse">Represents warehouse object</param>
+        public static void AddWareHouse(WareHouse wareHouse)
         {
             //Condition to check whether the WareHouseId exists or not
-            if (warehouseDetails.WareHouseId != null)
+            if (wareHouse.WareHouseId != null)
             {
                 //Adds WareHouse details into the list and is saved into the file
-                _wareHouseList.Add(warehouseDetails);
+                _wareHouseList.Add(wareHouse);
                 SaveIntoFile();
             }
             else
@@ -135,7 +135,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// Method to REMOVE WareHouse by WareHouseID
         /// </summary>
         /// <param name="wareHouseID">Reprents WareHouse id</param>
-        public static void RemoveWareHouseByID(string wareHouseID)
+        public static void RemoveWareHouseByWareHouseID(string wareHouseID)
         {
             //Condition to check whether the WareHouseId exists or not
             if (_wareHouseList.Exists(n => n.WareHouseId == wareHouseID))
@@ -161,7 +161,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// Method to REMOVE WareHouse by WareHouse Name
         /// </summary>
         /// <param name="wareHouseName">Represents WareHouse Name</param>
-        public static void RemoveWareHouseByName(string wareHouseName)
+        public static void RemoveWareHouseByWareHouseName(string wareHouseName)
         {
             //Condition to check whether the WareHouseName exists or not
             if (_wareHouseList.Exists(n => n.WareHouseName == wareHouseName))
@@ -185,7 +185,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             //Condition to check whether the WareHouseId exists or not
            if (_wareHouseList.Exists(n => n.WareHouseId == wareHouse.WareHouseId))
             {
-                //Finds the matching element.The returned bool value is stored in a reference variable
+                //Returns the condition matching element.The returned bool value is stored in a reference variable
                 WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
                 if (w != null)
                 {
@@ -209,7 +209,7 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
             //Condition to check whether the WareHouseId exists or not
            if (_wareHouseList.Exists(temp => temp.WareHouseId == wareHouse.WareHouseId))
             {
-                //Finds the matching element.The returned bool value is stored in a reference variable
+                //Returns the condition matching element.The returned bool value is stored in a reference variable
                 WareHouse w = _wareHouseList.Find(n => n.WareHouseId == wareHouse.WareHouseId);
                 if (w != null)
                 {
@@ -227,12 +227,12 @@ namespace Znalytics.Inventory.WareHouseModule.DataAccessLayer
         /// <summary>
         /// Method to check whether WareHouseId exists or not
         /// </summary>
-        /// <param name="id">Represents warehouse id</param>
+        /// <param name="whId">Represents warehouse id</param>
         /// <returns></returns>
-        public static bool CheckWareHouseId(string id)
+        public static bool CheckWareHouseId(string whId)
         {
             //Condition to check whether the WareHouseId exists or not
-            bool result = _wareHouseList.Exists(temp => temp.WareHouseId == id);
+            bool result = _wareHouseList.Exists(temp => temp.WareHouseId == whId);
             return result;
         }
     }

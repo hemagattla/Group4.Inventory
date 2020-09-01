@@ -1,10 +1,13 @@
 ﻿
 //created by R.Kruushal
 
+using System.Text.RegularExpressions;
+using Znalytics.Inventory.StockMaintain.CustomException;
+
 namespace Znalytics.Inventory.StockMaintain.Entities
 {
     /// <summary>
-    /// Stock Details
+    /// refers Stock class in entite
     /// </summary>
     public class Stock
     {
@@ -13,26 +16,32 @@ namespace Znalytics.Inventory.StockMaintain.Entities
         private string _addressID;
         private string _productID;
         private string _stockID;
-        private int _editStock;
 
 
 
 
-        //Property of WareHouseID
+        /// <summary>
+        /// Property of WareHouseID
+        /// /// </summary>
+
         public string WareHouseID
         {
             set
             {
-                //if input value and WareHouseID present in database matches then the value will be assigned to the _WareHouseID
-                //else it will throw an exception
-                if ((value.Length == 6) && (value.StartsWith("WHID")))
+                //Regular Expression for AlphaNumeric values
+                Regex r = new Regex("[A-Z0-9]$");
+                //WareHouseId should not be null or empty
+                if (!string.IsNullOrEmpty(value) && value.StartsWith("WHID") && r.IsMatch(value) && value.Length == 6)
                 {
+
+
                     _wareHouseID = value;
 
                 }
+
                 else
                 {
-                    throw new System.Exception("Entered AddressID is invalid");
+                    throw new StockException("Enter valid warehouseid.It should not contain spaces and length be exactly 6 and should start with WHID");
                 }
 
             }
@@ -42,20 +51,26 @@ namespace Znalytics.Inventory.StockMaintain.Entities
                 return _wareHouseID;
             }
         }
-        //Property of AddressName
+        /// <summary>
+        ///  Property of AddressName
+        /// </summary>
+
         public string AddressID
         {
             set
             {
-                //if input value and AddressID present in database matches then the value will be assigned to the _AddressID
-                //else it will throw an exception
-                if ((value.Length <= 6) && (value.StartsWith("W")))
+                //Regular Expression for AlphaNumeric values
+                Regex r = new Regex("[A-Z0-9]$");
+                //AddressId should not be null or empty
+                if (!string.IsNullOrEmpty(value) && value.StartsWith("W") && value.Length == 4 && r.IsMatch(value))
                 {
+
                     _addressID = value;
+
                 }
                 else
                 {
-                    throw new System.Exception("Entered AddressID is invalid");
+                    throw new StockException("Invalid addressid. It should not contain spaces or Special Characters and length should be exactly 4 and should start with W");
                 }
             }
             get
@@ -64,27 +79,32 @@ namespace Znalytics.Inventory.StockMaintain.Entities
             }
         }
 
-        //Property of ProductID
+        /// <summary>
+        /// Property of ProductID
+        /// </summary>
         public string ProductID
         {
             set
             {
-                //if input value and ProductID present in database matches then the value will be assigned to the _ProductID
-                //else it will throw an exception
-                if (value != "")
+
+                Regex r = new Regex("[A-Z0-9]$");
+                if (value != "" && value.StartsWith("PID") && r.IsMatch(value) && value.Length <= 6)
                 {
                     _productID = value;
                 }
                 else
                 {
-                    throw new System.Exception("Entered ProductID is invalid");
+                    throw new StockException("Product ID Should not NULL and ProductID Should Start with PID and 0-9 number and length should be 6");
                 }
             }
-            get
+                get
             {
                 return _productID;
             }
         }
+        /// <summary>
+        /// Property of StockId
+        /// </summary>
         public string StockID
         {
             set
@@ -103,27 +123,18 @@ namespace Znalytics.Inventory.StockMaintain.Entities
                 return _stockID;
             }
         }
-        public int EditStock
-        {
-            set
-            {
-                if (value != 0)
-                {
-                    //it takes in put value and add to the exsisting quantity
-                    _editStock = value;
-                }
-            }
-            get
-            {
-                return _editStock;
-            }
-        }
-
+       
+        /// <summary>
+        /// autoimplemented property of Quantity
+        /// </summary>
         public int Quantity
         {
             set;
             get;
         }
+        /// <summary>
+        /// autoimplemented property of TotalQuantity
+        /// </summary>
         public int TotalQuantity
         {
             

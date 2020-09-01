@@ -92,10 +92,10 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
 
                 Stock stock = new Stock();
                 System.Console.WriteLine("Enter WareHouseID");
-                stock.WareHouseID = System.Console.ReadLine();
+                string wareHouseID = System.Console.ReadLine();
                 System.Console.WriteLine("Enter AddressId");
-                stock.AddressID = System.Console.ReadLine();
-                List<Stock> stocks = orderBusiness.DisplayStock(stock);
+                string addressID = System.Console.ReadLine();
+                List<Stock> stocks = orderBusiness.GetAllStocks(wareHouseID, addressID);
                 List<string> ProductIDs = stocks.Select(temp => temp.ProductID).Distinct().ToList();
                 System.Console.WriteLine("ProductID     " + "      " + "StockAvalibale");
                 foreach (string item in ProductIDs)
@@ -180,10 +180,7 @@ namespace Znalytics.Group4.Inventory.PresentationLayer
 
         }
 
-        private string TotalQuantity(object wareHouseID, object addressID)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         /// <summary>
         /// Represents method for updating orderDetails
