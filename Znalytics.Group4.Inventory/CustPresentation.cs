@@ -35,7 +35,7 @@ namespace CustPresentationLayer
                     case 7:RemoveCustomer();
                         break;
                 }
-            } while (choice != 7);
+            } while (choice != 7);System.Console.WriteLine("enter valid choice");
         }
 
         static void AddCustomer()
