@@ -13,7 +13,7 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
 {
     public class CustDataLayer : IcustDataLayer
     {
-        static List<Customer> _customers = new List<Customer>()/// <summary> /// creating list as customers///
+       static   List<Customer> _customers = new List<Customer>()/// <summary> /// creating list as customers///
                                                                /// </summary>
         {
             new Customer()
@@ -22,7 +22,7 @@ namespace Znalytics.Inventory.Module.DataAccessLayer
             },
             new Customer()
             {
-                  CustomerId=2,CustomerName="ram",Email="ram1999@gmail.com",Country="india",State="telengana",Street="ramvada",PinNo="123456",HNo="123789"
+                  CustomerId=1,CustomerName="ram",Email="ramyasuram1999@gmail.com",  Country="india",State="telengana",Street="ramvada",PinNo="123456",HNo="123789"
             }
 
         };
