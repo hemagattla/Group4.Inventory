@@ -20,7 +20,11 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         private static List<OrderManagement> _orders;
         public OrderManagementDataLayer()
         {
-            _orders = new List<OrderManagement>();
+            _orders = new List<OrderManagement>(){new OrderManagement()
+            {
+                ProductId="PID03",WareHouseAddressId="W1A1",CustomerAddressId=3,TotalPrice=567.00,Quantity=43,OrderID=1
+            } };
+                
 
            
         }
@@ -97,7 +101,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
             List<OrderManagement> order = new List<OrderManagement>();
             foreach (var orders in _orders)
             {
-                if (orders.WareHouseAddress.AddressId == value)
+                if (orders.WareHouseAddressId == value)
                 {
 
                     order.Add(orders);
@@ -117,17 +121,19 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
             List<OrderManagement> order = new List<OrderManagement>();
 
 
+
             foreach (var orders in _orders)
             {
-                foreach (var products in orders.Products)
+
+                if (orders.ProductId == value)
                 {
-                    if (products.ProductID == value)
+                    order.Add(orders);
 
-                        order.Add(orders);
-                    
+
                 }
-
             }
+
+            
             return order;
         }
         /// <summary>
@@ -142,7 +148,7 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
 
             foreach (var orders in _orders)
             {
-                if (orders.CustomerAddress.CustomerId == value)
+                if (orders.CustomerAddressId == value)
                 {
                     order.Add(orders);
                 }
@@ -157,20 +163,20 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// <returns></returns>
         public int OrderIdGeneration()
         {
-           int orderid= _orders.Max(temp => temp.CustomerAddress.CustomerId);
-            return orderid++;
+           int orderid= _orders.Max(temp => temp.CustomerAddressId);
+            return ++orderid;
         }
         /// <summary>
         /// Update ProductDetails
         /// </summary>
         /// <param name="orderid"></param>
         /// <param name="value"></param>
-        public void UpdateProductDetails(int orderid,List<Product> value)
+        public void UpdateProductDetails(int orderid,string value)
         {
             OrderManagement order = _orders.Find(temp => temp.OrderID == orderid);
            
 
-            order.Products = value;
+            order.ProductId = value;
             SaveIntoFile();
             }
         /// <summary>
@@ -179,10 +185,10 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// <param name="orderid"></param>
         /// <param name="value"></param>
   
-        public void UpdateWareHouseAddressDetails(int orderid, WareHouseAddress value)
+        public void UpdateWareHouseAddressDetails(int orderid, string value)
         {
             OrderManagement order = _orders.Find(temp => temp.OrderID == orderid);
-            order.WareHouseAddress = value;
+            order.WareHouseAddressId = value;
             SaveIntoFile();
         }
         /// <summary>
@@ -190,11 +196,18 @@ namespace Znalytics.Inventory.OrderManagementModule.DataAccessLayer
         /// </summary>
         /// <param name="orderid"></param>
         /// <param name="value"></param>
-        public void UpdateCustomerAddressDetails(int orderid, Customer value)
+        public void UpdateCustomerAddressDetails(int orderid, int value)
         {
             OrderManagement order = _orders.Find(temp => temp.OrderID == orderid);
             
-            order.CustomerAddress = value;
+            order.CustomerAddressId = value;
+            SaveIntoFile();
+        }
+        public void UpdateQuantity(int orderid, int value)
+        {
+            OrderManagement order = _orders.Find(temp => temp.OrderID == orderid);
+
+            order.Quantity = value;
             SaveIntoFile();
         }
 
